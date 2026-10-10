@@ -1,0 +1,1294 @@
+
+===== p1 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+迴歸預測
+Regression & Forecasting
+by
+Prof. Chih-Hsuan Wang (王志軒)
+
+===== p2 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+The Role of Forecasting
+Forecasting is a vital function and affects every 
+significant management decision.
+Finance and accounting use forecasts as the basis 
+for budgeting and cost control.
+Sales and marketing relies on forecasts to make key 
+decisions such as new product planning and 
+personnel compensation.
+Production uses forecasts to select suppliers; 
+determine capacity requirements; and drive 
+decisions about purchasing, staffing, and inventory.
+
+===== p3 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+預測的種類
+There are four basic types of forecasts.
+–
+Qualitative (老闆、主管或專家說了算)
+–
+Time series analysis (根據過去歷史資料)
+–
+Causal relationships (迴歸就是用X預測Y)
+–
+Simulation (需考慮機率或不確定性)
+Time series (時間序列) analysis is based on the idea 
+that data relating to past demand can be used to 
+predict future demand.
+
+===== p4 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Time Series Analysis
+Using the past to predict the future
+• Used mainly for tactical decisions
+Short term – forecasting less than 3 months
+• Used to develop a strategy that will be implemented over the next 6 to 
+18 months (e.g., meeting demand)
+Medium term – forecasting 3 months to 2 years
+• Useful for detecting general trends and identifying major turning points
+Long term – forecasting greater than 2 years
+
+===== p5 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Forecasting Method Selection Guide
+Forecasting Method
+Amount of Historical Data
+Data Pattern
+Forecast 
+Horizon
+Simple moving 
+average
+6 to 12 months; weekly 
+data are often used
+Stationary (i.e., no 
+trend or seasonality)
+Short
+Weighted moving 
+average and simple 
+exponential smoothing
+5 to 10 observations 
+needed to start
+Stationary
+Short
+Exponential 
+smoothing with trend
+5 to 10 observations 
+needed to start
+Stationary and trend
+Short
+Linear regression
+10 to 20 observations
+Stationary, trend, 
+and seasonality
+Short to 
+medium
+
+===== p6 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+迴歸績效指標衡量
+MSE =   Actualt −Forecastt 2
+n −1
+   
+MAD =
+  Actualt −Forecastt 
+n
+  
+MAPE =
+  Actualt −Forecastt
+Actualt
+ 
+n
+∗100% 
+Mean Squared Error
+Mean Absolute Deviation
+Mean Absolute Percentage Error
+
+===== p7 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Tracking Signals
+A measure that indicates whether a method of forecasting is 
+accurately predicting actual changes in demand
+Useful when forecast systems are computerized because it 
+alerts analysts when forecast are getting far from desirable 
+limits (CFE: cumulative forecasting error)
+Tracking signal =
+CFE
+MAD
+Each period, the CFE and MAD are updated to reflect 
+current error, and the tracking signal is compared to some 
+predetermined limits
+
+===== p8 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
++2.0 –
++1.5 –
++1.0 –
++0.5 –
+0 –
+–0.5 –
+–1.0 –
+–1.5 –
+|
+|
+|
+|
+|
+0
+5
+10
+15
+20
+25
+Observation number
+Tracking signal
+Out of control
+Tracking Signals
+Control limit
+Control limit
+Figure 13.7 – Tracking Signal
+
+===== p9 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Simple Moving Average
+Forecast is the average of a fixed number of past 
+periods (以過去歷史資料的平均預測未來).
+Useful when demand is not growing or declining 
+rapidly and no seasonality is present.
+Removes some of the random fluctuation from the 
+data.
+Selecting the period length is important.
+– Longer periods provide more smoothing.
+– Shorter periods react to trends more quickly.
+
+===== p10 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Simple Moving Average Formula
+
+就是股市當中的五日、十日、20日移動平均線
+
+===== p11 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Simple Moving Average – Example
+
+===== p12 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Simple Moving Average – 2016 stock
+n越小越貼近原始資料的波動
+
+===== p13 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Weighted Moving Average
+The simple moving average formula implies equal 
+weighting for all periods (簡單移動平均假設不同時
+間的資料權重均相同).
+A weighted moving average allows unequal 
+weighting of prior time periods.
+– The sum of the weights must be equal to one.
+– Often, more recent periods are given higher 
+weights than periods farther in the past.
+– 加權移動平均的問題在於不知如何決定不同時
+間點的資料權重
+
+===== p14 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Exponential Smoothing
+A weighted average method that includes all past data in 
+the forecasting calculation
+More recent results weighted more heavily
+The most used of all forecasting techniques
+An integral part of computerized forecasting
+Well accepted for six reasons
+Exponential models are surprisingly accurate.
+Formulating an exponential model is relatively easy.
+Little computation is required to use the model.
+Computer storage requirements are small.
+Tests for accuracy are easy to compute.
+
+===== p15 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Exponential Smoothing Model
+= αAt-1 + (1- α ) Ft-1
+=αAt-1 + (1- α ) [αAt-2 + (1- α ) Ft-2]……
+指數平滑法假設越近的資料越重要，越遠的資料越不重要
+Alpha一般介於0.1~0.5之間
+
+===== p16 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Exponential Smoothing Example
+Week
+Demand
+Forecast
+1
+820
+820
+2
+775
+820
+3
+680
+811
+4
+655
+785
+5
+750
+759
+6
+802
+757
+7
+798
+766
+8
+689
+772
+9
+775
+756
+10
+760
+
+===== p17 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Exponential Smoothing– 2016 stock
+alpha越大越貼近原始資料的波動
+
+===== p18 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Criteria for Selecting Methods
+
+Criteria to use in making forecast method and parameter 
+choices include 
+1. Minimizing MAPE, MAD, or MSE
+2. Meeting managerial expectations of changes in the 
+components of demand
+3. Minimizing the forecast error last period
+Statistical performance measures can be used
+1. For projections of more stable demand patterns, use 
+lower α values or larger n values
+2. For projections of more dynamic demand patterns try 
+higher α values or smaller n values
+
+===== p19 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Holt-Winter’s moving average
+)
+)(
+1(
+)
+(
+L
+1
+1
+
+
+
+
+
+
+
+
+t
+t
+s
+t
+t
+t
+b
+L
+S
+y
+
+
+1
+1
+)
+1(
+)
+(
+T
+
+
+
+
+
+
+t
+t
+t
+t
+T
+L
+L
+
+
+s
+t
+t
+t
+t
+S
+L
+y
+
+
+
+
+
+)
+1(
+)
+(
+S
+
+
+s
+k
+t
+t
+t
+k
+t
+S
+kb
+L
+
+
+
+
+
+
+F
+Forecast consists of level (L), trend (T), and seasonal (S) components
+
+===== p20 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+MLR的判定係數
+傳統上，MLR (multiple linear regression)迴
+歸模型的評估常使用判定係數(coefficient of 
+determination): Y=a0+a1x1+a2x2+a3x3+….
+或調整後判定係數（adjusted coefficient of 
+determination:）避免使用過多沒必要的X (k
+表示X的個數, T表示樣本數)
+2
+SSR
+R
+SST
+
+2
+2
+1
+1
+(1
+)
+T
+R
+R
+T
+k
+
+
+
+
+
+===== p21 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+MARS介紹
+統計物理學家Friedman 於1991 年提出多元適應雲形
+迴歸，其屬於一種多變量無母數迴歸處理的程序。
+其能夠正確的預測連續與二元的相依變數，找出隱
+藏在高維度資料中的複雜結構及變數的交互作用。
+過去對於資料之分析，常常不論資料是否符合常態
+，均用線性迴歸進行實證，導致模型適用性出現問
+題，而MARS為多變量無母數分析技術，相較於傳統
+之線性迴歸，可解決資料非線性、非常態等問題。
+Multivariate Adaptive Regression Splines
+(MARS多元自適雲形迴歸)
+
+===== p22 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+MARS原理
+MARS 基本概念為運用分段基底函數(Spline Basis Function, 
+BF)加總，以組合較有彈性的預測模型解決複雜的資料配適。
+有關BF之後段累程之部分，主要是根據需求變化而得：
+上式中a0與am皆為參數值；M為BF的個數；Km為切割之節點
+(knot)個數；Skm之值為+1或-1，作用為顯示方向；v(k,m)是對
+變數的標示；tkm是各節點的臨界值。
+
+===== p23 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+MARS基底函數
+模式中所以用的片段線性基底函數形式如下(+表示正值)：
+(X-t)+ = {X-t, if X > t ; 0, otherwise}，
+(t-X)+ = {t-X, if X < t ; 0, otherwise}
+X為預測變數，t為獨立的觀察值，表示折點(knot)的位置
+；通常(X-t)+與(t-X)+會成對出現。例如：t=0.5時，基底函
+數為(X-0.5)+與(0.5-X)+ ，如圖二所示。
+片斷線性基底函數，只
+會依據測試，選取左邊
+或右邊的任一片段當作
+基底的一員
+
+===== p24 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+MARS與MLR的比較
+
+===== p25 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+MARS使用片段線性基底進行估計
+
+
+===== p26 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+MARS執行過程
+篩選的過程採用前推式與後推式(Forward and 
+Backward Stepwise Procedure) 的演算法：
+(一)前推式階段
+不斷增加解釋方程式(所有的主要效果、新的主
+要影響因子、折點或交互作用)的個數，使模型不斷
+成長直到找出一個完整模型為止。
+注意：在此階段會有過度配適
+(over fitting)的問題
+
+===== p27 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+(二)後推式階段(general cross validation)
+此階段根據缺適性的概念加以判斷，選擇重要
+變數的過程中使用GCV 法為判定原則，所以當一
+變數由模型中去除後使GCV 顯著降低，則可知此
+變數為重要關鍵要素。
+上式中分子為實際值減預測值，
+C(M)為採用M個BF所花費的成本。
+MARS執行過程
+
+===== p28 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+什麼時候需要偏差迴歸?
+•
+脊迴歸(Ridge Regression)
+•
+拉索迴歸(Lasso Regression)
+•
+彈性網路(Elastic Net)
+•
+可適性拉索迴歸(Adaptive Lasso Regression)
+變數很多，但資料量不夠時: 如30個機台參數，但只有50筆資料
+
+===== p29 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+脊迴歸(Ridge Regression)
+進行迴歸分析時，當遭遇以下幾種情況時，可能要注意迴歸
+模式中是否存在多元共線性(multi-collinearity)的問題：
+共線性指標超過標準
+迴歸係數的方向性與相關係數相反
+解釋力R平方很高，但個別變項的係數未達顯著水準
+解決共線性的方法如下：
+刪除共線性X變項
+利用主成分分析將線性重合的自變數重新建構成新的潛
+在變項，來替代原有的自變數
+使用「偏差迴歸分析法」(Biased Regression Analysis,簡
+稱BRA)，如使用Ridge regression analysis (脊迴歸)。
+
+===== p30 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+脊迴歸(Ridge)
+• 在LS（least square）最小平方法估計法下：β̂具有BLUE
+（best linear unbiased estimator）特性，即不偏性和有效性
+• 而Ridge regression則是犧牲一點不偏性，但仍具有效性，
+模型如下：
+Penalty
+誤差
+
+===== p31 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+套索迴歸(Lasso)
+套索迴歸（Least Absolute Shrinkage and Selection Operator- Lasso）
+•
+首先由TIBSHIRAN提出，是處理多重共線性問題的迴歸方法
+•
+它是一種壓縮估計，基本思想是在迴歸係數的絕對值之和小於
+一個常數的約束條件下，使殘差平方和最小化，從而能夠產生
+某些嚴格等於0的迴歸係數(刪除變數)，得到可以解釋的模型
+Penalty
+誤差
+
+===== p32 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+向量範數（vector norm）
+•
+是具有「長度」概念的函數，其為向量空間內的所有向量
+賦予非零的正長度或大小。
+L2-norm = 
+脊迴歸
+L1-norm = 
+套索迴歸
+脊迴歸vs. 套索迴歸
+
+1
+
+
+2
+
+
+===== p33 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+脊迴歸vs. 套索迴歸
+脊迴歸：
+係數不為0
+套索迴歸：
+係數變成0
+
+===== p34 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+彈性網路(ElasticNet)
+↑Penalty
+•
+ElasticNet對於p遠大於n或者嚴重的多重共線性情況有明顯的效果
+•
+Elastic net融合了norm1和norm2兩種方法
+•
+一般來說，彈性網路是脊迴歸和拉索迴歸很好的折衷
+
+===== p35 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+自適性套索迴歸
+自適性套索迴歸（Adaptive LASSO, ALSSO）
+Penalty
+
+===== p36 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+特殊迴歸的綜合比較
+Ridge Regression：
+•
+Good for multi-collinearity, group selection
+•
+Not good for variable selection.
+Lasso Regression：
+•
+Good for variable selection
+•
+Not good for group selection for strongly correlated predictors.
+Elastic Net：
+•
+Combining the strength of Ridge regression with Lasso regression
+Adaptive Lasso：
+•
+Enhancing Lasso regression to focus on variable selection
+
+===== p37 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+機器學習的非線性迴歸
+•
+最近鄰居法(KNN- K nearest neighbor)
+•
+迴歸樹(RT- Regression Tree/CART)
+•
+隨機森林(RF- Random Forest)
+•
+集成式演算(AB-Adaboost/GB-Gradient boosting)
+•
+倒傳遞網路(BPN- Back Propagation Network)
+•
+支援向量法(SVR- Support Vector Regression)
+
+===== p38 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+迴歸演算法總結
+迴歸與分類的差別在於因(Y)變數是連續數值或間
+斷類別
+除SVR、BPN、KNN(只接受數值型X變數)外，其
+他迴歸幾乎都能提供X變數對預測Y的重要性判斷
+RT(CART)、RF較不易受離群值影響，且能計算X
+變數的重要性(MLR, MARS易受離群值影響)
+線性迴歸的解釋力(R^2)不佳，不表示X對Y沒有預
+測力，僅表示該份資料不適用線性模型來處理
+Ridge及Lasso適合處理X變數特多但資料筆數不夠
+的狀況(新產品或新製程剛開發出來時)
+
+===== p39 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+平衡計分卡四大構面
+A1
+Debt ratio
+A2
+Current ratio
+A3
+Quick ratio
+A4
+Turnover rate of accounts receivable
+A5
+Turnover rate of inventory
+A6
+Turnover rate of fixed assets
+A7
+Ratio of cash flow
+A8
+Product sale revenue
+A9
+Turnover rate of total assets
+A10
+Days of inventory turn
+B1
+Number of employees
+B2
+Turnover rate of employees
+B3
+Average working years of employees
+B4
+Average age of employees
+B5
+Patent term
+C1
+Product varieties
+C2
+Profit margin of major products
+C3
+Proportion of major products
+C4
+Export ratio of major products
+D1
+Ratio of employees’ stock bonus
+D2
+Ratio of R&D investment
+D3
+Ratio of operational expense
+D4
+Growth rate of revenues
+D5
+Operational efficiency
+以24個因子X預測
+EPS (每股盈餘)- Y
+
+===== p40 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Overall Comparison: Ridge, Lasso, ElasNet
+Intercept
+-1.971
+-0.725
+0.658
+A1
+-1.003
+A2
+-1.343
+A3
+0.506
+A4
+-0.648
+A5
+-0.389
+A6
+1.112
+A7
+1.336
+2.750
+0.829
+A8
+4.072
+A9
+2.668
+2.886
+1.898
+A10
+-1.336
+-2.751
+-0.681
+B1
+-1.252
+B2
+0.483
+B3
+1.407
+-0.197
+B4
+0.232
+B5
+4.190
+C1
+-0.730
+-1.352
+-0.066
+C2
+0.300
+C3
+0.953
+C4
+-0.642
+D1
+2.607
+D2
+3.959
+D3
+-3.837
+-1.617
+-1.416
+D4
+0.159
+1.873
+0.515
+D5
+0.910
+1.330
+0.874
+MSE Error 
+Ridge: 1.644, 
+Lasso: 1.782, 
+ElasNet: 1.701
+
+===== p41 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Supply chain analytics
+
+===== p42 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Supply chain forecasting
+Y=f(x1, x2, x3, …., xn), Y is a dependent variable, xi are predictors 
+(先定義X、Y變數)
+Y can be production capacity, unit prices, sales revenues, 
+sales volume (shipments), ??
+Applications: PCB/MB, memory, panel, foundry manufacturing
+Scheme 1: Regression based on downstream consumer-electronics
+Scheme 2: Time series considering cyclic patterns, trends, and etc.
+Scheme 3: Dynamic forecasting considering interactive dynamics (between 
+the competing brands, firms, vendors, and etc.)
+
+===== p43 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Capacity planning (產能規劃)
+
+===== p44 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+利用決策分析進行規劃為何常常失敗呢？
+Work backwards to calculate the value of each decision/event
+$765,000
+$365,000
+$863,000
+$413,000
+$843,000
+$850,000
+$525,000
+$660,500
+$703,750
+Do nothing = $850,000
+Do nothing = $703,750
+Do nothing has 
+higher value than 
+expand, so choose 
+to do nothing
+Do nothing has higher 
+value than expand or 
+move, so choose to do 
+nothing
+5-44
+
+===== p45 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Bulk_carriers
+
+===== p46 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+綜合比較
+
+===== p47 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Maritime indices for container ships
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+4000
+Jan-11
+Jul-11
+Jan-12
+Jul-12
+Jan-13
+Jul-13
+Jan-14
+Jul-14
+Jan-15
+Jul-15
+Jan-16
+Jul-16
+Jan-17
+Jul-17
+Jan-18
+Jul-18
+Jan-19
+Jul-19
+Jan-20
+Jul-20
+Jan-21
+Container shipping freight index
+HSI
+CCFI
+SCFI
+GCTIx10
+GCTI (global container throughput index), HSI (Harpex shipping 
+index), SCFI (Shanghai containerized freight index), 
+CCFI (China containerized freight index)
+
+===== p48 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Maritime indices for bulk carriers
+-500
+500
+1500
+2500
+3500
+4500
+Feb-11
+Jul-11
+Dec-11
+May-12
+Oct-12
+Mar-13
+Aug-13
+Jan-14
+Jun-14
+Nov-14
+Apr-15
+Sep-15
+Feb-16
+Jul-16
+Dec-16
+May-17
+Oct-17
+Mar-18
+Aug-18
+Jan-19
+Jun-19
+Nov-19
+Apr-20
+Sep-20
+Feb-21
+Baltic shipping index
+BPI
+BHI
+BCI
+BSI
+BCI (Baltic Capesize Index), BPI (Baltic Panamax Index), 
+BSI (Baltic Supramax Index), BHI (Baltic Handysize Index)
+
+===== p49 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Key performance indicators for container ships
+Container
+RF
+XGB
+CART
+MARS
+AVG
+GCTI
+18.27%
+11.75%
+23.40%
+21%
+18.61%
+HSI
+20.59%
+4.77%
+44.48%
+17.46%
+CCFI
+17.98%
+5.96%
+29%
+13.24%
+SCFI
+25.90%
+10.39%
+6.93%
+10.81%
+Retail sales index (European Unit)
+11.10%
+9.03%
+17.90%
+9.51%
+IPI (Taiwan)
+2.70%
+7.84%
+3.83%
+21%
+8.84%
+Retail sales index (China)
+0.21%
+10.22%
+14%
+6.11%
+Export of base metals
+0.02%
+4.26%
+14%
+4.57%
+Import of chemicals
+0.08%
+3.75%
+14%
+4.46%
+Export of chemicals
+0.70%
+7.84%
+2.14%
+Retail sales index (United States)
+0.68%
+6.98%
+1.92%
+Import of base metals
+0.12%
+4.09%
+3.45%
+1.92%
+Seasonal factor
+0.28%
+4.60%
+1.22%
+Import of food goods
+0.07%
+4.09%
+1.04%
+Crude Oil
+1.20%
+1.70%
+0.73%
+Export of plastics and textile goods
+0.10%
+2.73%
+0.71%
+
+===== p50 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Sales forecasting for container ships
+0
+500000000
+1E+09
+1.5E+09
+2E+09
+2.5E+09
+3E+09
+3.5E+09
+Jan-11
+Jun-11
+Nov-11
+Apr-12
+Sep-12
+Feb-13
+Jul-13
+Dec-13
+May-14
+Oct-14
+Mar-15
+Aug-15
+Jan-16
+Jun-16
+Nov-16
+Apr-17
+Sep-17
+Feb-18
+Jul-18
+Dec-18
+May-19
+Oct-19
+Mar-20
+Aug-20
+Jan-21
+Jun-21
+Prediction for container ships
+Container
+RF
+XGB
+CART
+MARS
+SVR
+DNN
+
+===== p51 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Key performance indicators for capesize carriers
+Container
+RF
+XGB
+CART
+MARS
+AVG
+BSI_t-1
+7.07%
+4.78%
+29.06%
+17%
+14.48%
+PPI (United States)
+25.20%
+5.48%
+13.34%
+6%
+12.51%
+BCI_t-1
+10.21%
+11.94%
+5.77%
+14%
+10.48%
+BPI_t-1
+24.78%
+3.65%
+5.77%
+4%
+9.55%
+Australian thermal coal
+4.36%
+6.74%
+6.29%
+15%
+8.10%
+Soybean
+3.43%
+9.55%
+12.72%
+5%
+7.68%
+Wheat
+3.11%
+11.94%
+3.59%
+12%
+7.66%
+Corn
+2.94%
+6.74%
+2.29%
+9%
+5.24%
+Metal production (China)
+1.76%
+10.53%
+5.66%
+3%
+5.24%
+BHI_t-1
+1.25%
+4.35%
+1.81%
+10%
+4.35%
+Crude Oil
+2.84%
+5.76%
+3.61%
+5%
+4.3%
+Seasonal factor
+4.79%
+3.09%
+4.37%
+3.06%
+Rock phosphate
+1.55%
+4.21%
+2.44%
+2.05%
+Iron ore
+1.18%
+4.49%
+2.04%
+1.93%
+Base metal index
+2.81%
+3.09%
+1.75%
+1.91%
+PPI (China)
+2.72%
+3.65%
+1.59%
+
+===== p52 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Sales forecasting for capesize carriers
+20000000
+30000000
+40000000
+50000000
+60000000
+70000000
+80000000
+Feb-11
+Jul-11
+Dec-11
+May-12
+Oct-12
+Mar-13
+Aug-13
+Jan-14
+Jun-14
+Nov-14
+Apr-15
+Sep-15
+Feb-16
+Jul-16
+Dec-16
+May-17
+Oct-17
+Mar-18
+Aug-18
+Jan-19
+Jun-19
+Nov-19
+Apr-20
+Sep-20
+Feb-21
+Prediction for bulk_capesize marine transportation
+Bulk_capesize
+RF
+XGB
+CART
+MARS
+SVR
+DNN
+
+===== p53 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Key performance indicators for handysize carriers
+Container
+RF
+XGB
+CART
+MARS
+AVG
+Metal production (China)
+49.94%
+14.80%
+36.43%
+55.00%
+39.04%
+Australian thermal coal
+7.43%
+16.47%
+19.91%
+17.00%
+15.20%
+Rock phosphate
+4.55%
+11.69%
+5.37%
+2.00%
+5.90%
+PPI (China)
+1.85%
+7.16%
+6.24%
+4.00%
+4.81%
+PPI (United States)
+3.93%
+7.88%
+7.35%
+4.79%
+BHI_t-1
+2.60%
+6.44%
+8.17%
+4.30%
+BPI_t-1
+0.19%
+8.35%
+0.34%
+8.00%
+4.22%
+Crude Oil
+0.70%
+5.49%
+3.15%
+6.00%
+3.84%
+Soybean
+8.80%
+3.10%
+2.32%
+3.56%
+Iron Ore
+8.57%
+4.06%
+0.00%
+3.16%
+Corn
+2.68%
+4.30%
+1.39%
+3.00%
+2.84%
+BSI_t-1
+6.42%
+2.15%
+0.38%
+2.24%
+Base metal index
+1.35%
+0.95%
+2.48%
+4.00%
+2.20%
+Wheat
+0.47%
+2.63%
+3.20%
+1.58%
+Seasonal factor
+0.12%
+3.10%
+1.11%
+1.08%
+BCI_t-1
+0.40%
+1.43%
+2.11%
+0.99%
+
+===== p54 =====
+陽明交通大學工業工程與管理學系電子化企業實驗室
+Sales forecasting for handysize carriers
+20000000
+30000000
+40000000
+50000000
+60000000
+70000000
+80000000
+90000000
+100000000
+110000000
+Feb-11
+Jul-11
+Dec-11
+May-12
+Oct-12
+Mar-13
+Aug-13
+Jan-14
+Jun-14
+Nov-14
+Apr-15
+Sep-15
+Feb-16
+Jul-16
+Dec-16
+May-17
+Oct-17
+Mar-18
+Aug-18
+Jan-19
+Jun-19
+Nov-19
+Apr-20
+Sep-20
+Feb-21
+Prediction for bulk-handysize marine transportation 
+Bulk_Handysize
+RF
+XGB
+CART
+MARS
+SVR
+DNN

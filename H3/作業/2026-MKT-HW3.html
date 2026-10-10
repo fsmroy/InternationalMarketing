@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-MKT-HW3 作業解析與指引</title>
+<style>
+  :root{
+    --bg:#0f1420; --panel:#161d2e; --panel2:#1d2740; --ink:#e8edf7; --muted:#9fb0cc;
+    --accent:#4fd1c5; --accent2:#7aa2ff; --warn:#ffb020; --ok:#54d68a;
+    --line:#2a3854;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:"Segoe UI","Microsoft JhengHei","PingFang TC",system-ui,sans-serif;
+    background:linear-gradient(160deg,#0b0f18,#0f1420 40%,#0d1322); color:var(--ink);
+    line-height:1.75; font-size:16px;
+  }
+  header{
+    padding:48px 24px 36px; background:radial-gradient(1200px 300px at 20% 0%,rgba(79,209,197,.18),transparent),
+    radial-gradient(900px 260px at 90% 0%,rgba(122,162,255,.16),transparent);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{max-width:1080px;margin:0 auto;}
+  header h1{margin:0 0 8px;font-size:34px;letter-spacing:.5px;}
+  header .sub{color:var(--muted);font-size:15px;}
+  .badges{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;}
+  .badge{background:var(--panel2);border:1px solid var(--line);padding:5px 12px;border-radius:999px;font-size:13px;color:var(--accent);}
+  main{max-width:1080px;margin:0 auto;padding:32px 24px 80px;}
+  nav.toc{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:32px;
+  }
+  nav.toc h2{margin:0 0 10px;font-size:16px;color:var(--accent2);}
+  nav.toc a{color:var(--ink);text-decoration:none;border-bottom:1px dashed transparent;}
+  nav.toc a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+  nav.toc ol{margin:0;padding-left:22px;}
+  nav.toc li{margin:4px 0;}
+  section{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:26px 28px;margin-bottom:26px;
+  }
+  section h2{
+    margin:0 0 6px;font-size:24px;color:var(--ink);
+    padding-bottom:10px;border-bottom:2px solid var(--accent);display:inline-block;
+  }
+  section h3{color:var(--accent2);margin:26px 0 8px;font-size:18px;}
+  h4{color:var(--accent);margin:20px 0 6px;font-size:16px;}
+  p{margin:8px 0;}
+  code{background:#0b0f18;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-family:"Cascadia Code",Consolas,monospace;font-size:14px;color:#ffe6a6;}
+  pre{
+    background:#0b0f18;border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:10px;padding:14px 16px;overflow:auto;font-family:"Cascadia Code",Consolas,monospace;
+    font-size:13.5px;line-height:1.6;color:#d7e2f5;
+  }
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px;}
+  th,td{border:1px solid var(--line);padding:8px 11px;text-align:left;}
+  th{background:var(--panel2);color:var(--accent);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  .note,.warn,.ok{
+    border-radius:10px;padding:12px 16px;margin:14px 0;border-left:4px solid;
+  }
+  .note{background:rgba(122,162,255,.08);border-color:var(--accent2);}
+  .warn{background:rgba(255,176,32,.09);border-color:var(--warn);}
+  .ok{background:rgba(84,214,138,.08);border-color:var(--ok);}
+  .pill{display:inline-block;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:1px 8px;font-size:13px;color:var(--muted);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:760px){.grid{grid-template-columns:1fr;}}
+  .step{counter-increment:step;position:relative;padding-left:46px;margin:16px 0;}
+  .step:before{
+    content:counter(step);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;
+    background:var(--accent);color:#08131a;font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  .steps{counter-reset:step;}
+  footer{max-width:1080px;margin:0 auto;padding:0 24px 60px;color:var(--muted);font-size:13px;}
+  a{color:var(--accent);}
+  .kbd{font-family:monospace;background:#0b0f18;border:1px solid var(--line);border-radius:5px;padding:1px 6px;}
+  .hr{height:1px;background:var(--line);margin:22px 0;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>2026-MKT-HW3 作業解析與完整作業指引</h1>
+    <div class="sub">International Marketing HW3 — AHP / TOPSIS / Kano / 二元整數規劃｜檔案整理日期：2026-10-10</div>
+    <div class="badges">
+      <span class="badge">Problem 1 · AHP 二階層</span>
+      <span class="badge">Problem 2 · TOPSIS</span>
+      <span class="badge">Problem 3 · Kano</span>
+      <span class="badge">Problem 4 · BIP 分群</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<nav class="toc">
+  <h2>目錄</h2>
+  <ol>
+    <li><a href="#p1">作業內容說明與解釋</a>（四大題逐題拆解 + 公式）</li>
+    <li><a href="#ref">要參考哪幾份檔案內容</a>（資料、講義、範本 Excel）</li>
+    <li><a href="#r">R 程式在哪裡 / R 如何實作</a></li>
+    <li><a href="#how">如何一步步完成作業</a></li>
+    <li><a href="#caution">注意事項與原文疑義</a></li>
+  </ol>
+</nav>
+
+<!-- ================= 1 ================= -->
+<section id="p1">
+  <h2>1. 作業內容說明與解釋</h2>
+  <p>本作業分為四個連貫的題目，主軸是「<strong>多準則決策（MCDM）</strong>」與「<strong>顧客需求分析</strong>」，最後用數學規劃做產品分群。以下逐題說明「要做什麼、用到什麼方法、對應公式」。</p>
+
+  <h3>Problem 1 — 以 AHP 對三個港口做二階層評估</h3>
+  <p><strong>任務：</strong>對三個港口城市 <span class="pill">Kaohsiung 高雄</span> <span class="pill">Busan 釜山</span> <span class="pill">Tokyo 東京</span> 做 <strong>two-level（二階層）AHP</strong> 評估。準則為：living cost、natural environment、city tourism、food、transportation、courtesy（共六項）。</p>
+  <p><strong>要產出：</strong></p>
+  <ol>
+    <li>畫出評估流程的<strong>階層圖</strong>（Goal → Criteria → 二階 Alternatives）。</li>
+    <li>依團隊成員的成對比較，計算<strong>各準則的權重</strong>（取平均）。</li>
+    <li>對所有準則分別評估三個城市（第二階層的成對比較）。</li>
+    <li>計算三個城市的<strong>加權總分</strong>並排名。</li>
+  </ol>
+  <div class="note">
+    <strong>AHP 權重公式（平均法 / 課程 Excel 採用的做法）：</strong>
+    對成對比較矩陣 $A=[a_{ij}]$（$a_{ij}=1/a_{ji}$，對角為 1）先<strong>逐欄正規化</strong>：
+    $$\tilde a_{ij}=\frac{a_{ij}}{\sum_{k=1}^{n}a_{kj}}$$
+    再對每一列取平均，得到權重：
+    $$w_i=\frac{1}{n}\sum_{j=1}^{n}\tilde a_{ij}$$
+    權重總和 $\sum_i w_i = 1$。
+  </div>
+  <p><strong>一致性檢定（Consistency）：</strong>AHP 需檢查判斷矩陣是否一致。</p>
+  $$\lambda_{max}\text{（最大特徵值）},\quad CI=\frac{\lambda_{max}-n}{n-1},\quad CR=\frac{CI}{RI}$$
+  <p>$CR<0.1$ 視為可接受。RI 查表：</p>
+  <table>
+    <tr><th>n</th><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+    <tr><th>R.I.</th><td>0.58</td><td>0.90</td><td>1.12</td><td>1.24</td><td>1.32</td><td>1.41</td><td>1.45</td><td>1.49</td></tr>
+  </table>
+  <div class="warn"><strong>原文疑義：</strong>題目寫「the average weights of the <em>four</em> criteria」，但前文列了<strong>六項</strong>準則。以課程範本（四準則：品質/交期/成本/永續，三方案）推測，此處「four」很可能與範本一致或為筆誤，建議先與老師／助教確認準則數量。</div>
+
+  <h3>Problem 2 — 用 TOPSIS 取代第二階層的 AHP</h3>
+  <p><strong>任務：</strong>沿用 Problem 1 求得的<strong>準則權重</strong>，但把第二階層改用 <strong>TOPSIS</strong> 評估三城市。以五點李克特量表計分，PIS = (5,5,5,5,5,5)、NIS = (1,1,1,1,1,1)。最後討論 AHP 與 TOPSIS 結果差異。</p>
+  <div class="note">
+    <strong>TOPSIS 五步（課程講義 通路管理 p.55–65 的標準流程）：</strong>
+    <ol>
+      <li><strong>Step 1</strong> 建立決策矩陣 $x_{kj}$（方案 × 準則）與權重 $w_j$。</li>
+      <li><strong>Step 2</strong> 正規化：$r_{kj}=\dfrac{x_{kj}}{\sqrt{\sum_k x_{kj}^2}}$，加權 $v_{kj}=w_j\,r_{kj}$。</li>
+      <li><strong>Step 3</strong> 決定正理想解 $A^*$（benefit 取 max、cost 取 min）與負理想解 $A^-$（反之）。</li>
+      <li><strong>Step 4</strong> 計算各方案與理想解距離
+        $$D_k^+=\sqrt{\sum_j (v_{kj}-v_j^*)^2},\qquad D_k^-=\sqrt{\sum_j (v_{kj}-v_j^-)^2}$$</li>
+      <li><strong>Step 5</strong> 計算貼近度並排名
+        $$C_k=\frac{D_k^-}{D_k^+ + D_k^-}\in[0,1]$$</li>
+    </ol>
+  </div>
+  <p class="pill">本題簡化為「以加權距離直接比較」——範本 Excel 用的是加權歐氏距離版本（見第 2 節說明）。</p>
+
+  <h3>Problem 3 — Kano 模型評估智慧型手機功能</h3>
+  <p><strong>任務：</strong>對四項功能 <span class="pill">water proof</span> <span class="pill">optical zoom</span> <span class="pill">wireless charging</span> <span class="pill">foldable screen</span> 做 Kano 評估，依團隊成員的 Kano 分類百分比，推導 <strong>delight（滿意度）</strong> 與 <strong>disgust（不滿意度）</strong>。</p>
+  <p>Kano 分類：A（Attractive 魅力）、M（Must-be 必備）、O（One-dimensional 一維）、R（Reverse 反向）、I（Indifferent 無差異）、Q（Questionable 可疑）。</p>
+  <div class="note">
+    <strong>對應公式（課程講義 服務品質與問卷設計 p.16–17）：</strong>
+    $$\text{Delight}_i=\frac{A_i+O_i}{A_i+M_i+O_i+I_i}\qquad(\text{正值}\ 0\sim1)$$
+    $$\text{Disgust}_i=-\,\frac{O_i+M_i}{A_i+M_i+O_i+I_i}\qquad(\text{負值}\ -1\sim0)$$
+  </div>
+  <div class="warn"><strong>重要：</strong>拆解出的課程範本 Excel（<code>多準則決策.xlsx</code> 之 <code>Kano</code> 工作表）實際公式含有 <code>-I</code> 項：
+    <code>Delight=(A+O−I)/N</code>、<code>Disgust=−(O+M−I)/N</code>。
+    這與講義 p.16 的標準式不同。<strong>交作業前務必釐清要用哪一版</strong>（講義版本較常見）。</div>
+
+  <h3>Problem 4 — 二元整數規劃做價格基礎分群</h3>
+  <p><strong>任務：</strong>承接 Problem 3，用 <strong>BIP（Binary Integer Programming）</strong>做價格基礎顧客分群，目標為「最大化 delight」或「最小化 disgust」，對 high / medium / low 三個價格分群找出最佳產品配置。</p>
+  <p><strong>參數：</strong>基礎成本 10,000；功能成本 water proof = 2,500、optical zoom = 3,500、wireless charging = 1,500、foldable screen = 155,000。</p>
+  <div class="note">
+    <strong>模型（決策變數 $y_f\in\{0,1\}$ 表是否搭載功能 $f$）：</strong>
+    $$\max\ \sum_f w_f\,d_f\,y_f \quad(\text{或}\ \min\ \sum_f w_f\,e_f\,(1-y_f))$$
+    限制式為成本上限（依分群價格）：
+    $$10000+\sum_f c_f\,y_f \le P_{\text{segment}},\qquad y_f\in\{0,1\}$$
+    其中 $d_f$ = delight、$e_f$ = disgust（Problem 3 求得）、$w_f$ = 功能權重。
+  </div>
+  <div class="warn"><strong>原文疑義：</strong>foldable screen 成本寫 <code>155000</code>，遠高於其他功能，極可能為 <strong>5000 或 15000</strong> 之筆誤，請向老師確認。</div>
+</section>
+
+<!-- ================= 2 ================= -->
+<section id="ref">
+  <h2>2. 要參考哪幾份檔案內容</h2>
+  <p>以下為本作業真正需要參考的檔案（皆位於 <code>H3\</code> 根目錄）。<strong>請注意：本作業為自建問卷／自訂資料，並非直接讀課程 CSV。</strong></p>
+
+  <h3>2.1 核心參考：方法範本（最重要）</h3>
+  <table>
+    <tr><th>檔案</th><th>工作表</th><th>用途</th></tr>
+    <tr><td rowspan="4"><code>多準則決策.xlsx</code></td><td><code>AHP</code></td><td>AHP 成對比較矩陣 + 逐欄正規化 + 權重（範本）</td></tr>
+    <tr><td><code>AHP_TOPSIS</code></td><td>AHP 權重 + TOPSIS 距離 <code>D+ / D- / Ratio / Rank</code> + 加權分數</td></tr>
+    <tr><td><code>Kano</code></td><td>Kano 分類百分比 → Delight / Disgust + 熵權重</td></tr>
+    <tr><td><code>Satisfaction</code></td><td>BIP：功能選用變數、成本、Satisfaction、分群（Low/Medium/High）</td></tr>
+  </table>
+  <div class="note">這是與本作業四個題目<strong>一對一對應</strong>的範本試算表，建議直接以它的欄位與公式為藍本，套入港口城市／手機功能資料。</div>
+
+  <h3>2.2 講義（方法理論）</h3>
+  <table>
+    <tr><th>檔案</th><th>重點頁面</th><th>對應題目</th></tr>
+    <tr><td><code>通路管理.pdf</code></td><td>p.31, p.43–54（AHP 與一致性）、p.55–65（TOPSIS 五步與範例）</td><td>Problem 1、2</td></tr>
+    <tr><td><code>服務品質與問卷設計.pdf</code></td><td>p.10–17（Kano 模型、滿意度公式、聚合分類）</td><td>Problem 3</td></tr>
+    <tr><td><code>產品策略.pdf</code></td><td>p.49–58（Kano 於產品／服務設計、滿意度量化）</td><td>Problem 3</td></tr>
+  </table>
+
+  <h3>2.3 資料檔（課程 CSV）— 本作業多為自建，僅供延伸</h3>
+  <p>課程 <code>data\</code> 與 <code>MKT_data\</code> 內的 CSV（如 <code>car_brand.csv</code>、<code>iris.csv</code>、<code>Asia_index.csv</code>…）對應到 R 講義各單元，但<strong>沒有一個是 AHP/TOPSIS/Kano 的現成資料</strong>。AHP/TOPSIS 需自行設計問卷矩陣；Kano 需自行調查分類百分比。</p>
+
+  <h3>2.4 本次整理產出</h3>
+  <table>
+    <tr><th>檔案</th><th>說明</th></tr>
+    <tr><td><code>作業\2026-MKT-HW3.md</code></td><td>作業 docx 的 Markdown 整理版（題目全文 + 重點）</td></tr>
+    <tr><td><code>作業\2026-MKT-HW3.html</code></td><td>本檔（完整解析與指引）</td></tr>
+  </table>
+</section>
+
+<!-- ================= 3 ================= -->
+<section id="r">
+  <h2>3. R 程式在哪裡</h2>
+  <p><strong>結論：本次作業沒有現成的 AHP / TOPSIS / Kano R 程式，已為你自撰完成。</strong> 課程提供的 R 程式只在壓縮檔 <code>MKT_Rcode.zip</code> 中，且不含本作業所需方法。四題的 R 程式已寫好放在 <code>作業\R-code\</code>：</p>
+
+  <div class="ok">
+    <strong>已為你撰寫的 R 程式（純 base R，免安裝套件）</strong>：<code>作業\R-code\</code><br>
+    <code>P1_AHP.R</code>、<code>P2_TOPSIS.R</code>、<code>P3_Kano.R</code>、<code>P4_BIP.R</code>，<code>run_all.R</code> 可一次跑完四題。
+  </div>
+  <table>
+    <tr><th>檔案</th><th>對應題目</th><th>產出</th></tr>
+    <tr><td><code>P1_AHP.R</code></td><td>Problem 1</td><td>準則權重與 CR、各準則下城市得分、加權總分、階層圖 <code>P1_AHP_hierarchy.png</code></td></tr>
+    <tr><td><code>P2_TOPSIS.R</code></td><td>Problem 2</td><td>D+ / D− / CC 貼近度與排名、AHP vs TOPSIS 比較、<code>P2_TOPSIS_scores.png</code></td></tr>
+    <tr><td><code>P3_Kano.R</code></td><td>Problem 3</td><td>delight / disgust / entropy 權重、分類、<code>P3_Kano_plot.png</code>、輸出 <code>P3_kano_result.rds</code></td></tr>
+    <tr><td><code>P4_BIP.R</code></td><td>Problem 4</td><td>三段價格最佳配置（max delight / min disgust）、敏感度分析、<code>P4_BIP_config.png</code></td></tr>
+  </table>
+  <div class="warn">執行前請把程式內標有 <code>▶</code> 的區塊換成你們團隊的實際資料。詳見 <code>作業\R-code\README.md</code>。</div>
+
+  <h3>3.1 課程 R 程式位置（僅供延伸參考）</h3>
+  <pre>H3\MKT_Rcode.zip            ← 需解壓縮
+├─ Unit1_statistics.R            統計檢定（卡方／比例／t 檢定）
+├─ Unit2_positioning.R           定位分析（MDS／聯合分析／CA）
+├─ Unit3_cross_selling.R         關聯規則（arules）
+├─ Unit4_clustering.R            集群/描述統計/離群
+├─ Unit5_historical_stock.R      移動平均、時間序列
+├─ Unit6_regression_stock.R      迴歸預測（MLR/MARS/KNN）
+├─ Unit7_crm_telecom.R           電信流失特徵選擇
+├─ Unit8_retail_regression.R     零售迴歸（earth/rpart/FNN）
+├─ Unit9_classifier.R            分類器
+└─ Unit10_Movie_recommend.R      推薦系統（KNN/rpart/RF）</pre>
+  <div class="warn">十個檔案中<strong>沒有任何一個含 AHP / TOPSIS / Kano / BIP</strong>（已全文檢索確認）。若要「以 R 完成作業」，需自行撰寫（rpart 等套件僅用於其他單元）。</div>
+
+  <h3>3.2 對應單元（供延伸參考寫法）</h3>
+  <table>
+    <tr><th>作業題</th><th>可參考的 R 概念</th><th>建議套件</th></tr>
+    <tr><td>Problem 1（AHP）</td><td>矩陣運算、<code>eigen()</code> 求最大特徵值、逐欄正規化</td><td>base R（<code>eigen</code>）</td></tr>
+    <tr><td>Problem 2（TOPSIS）</td><td>向量化距離計算、<code>sqrt(rowSums())</code></td><td>base R（亦可 <code>topsis</code> 套件）</td></tr>
+    <tr><td>Problem 3（Kano）</td><td>分類百分比統計、熵權重</td><td>base R</td></tr>
+    <tr><td>Problem 4（BIP）</td><td>整數規劃求解</td><td><code>lpSolve</code> / <code>ompr</code></td></tr>
+  </table>
+
+  <h3>3.3 R 環境與檔案放置</h3>
+  <div class="ok">
+    R 腳本採相對路徑讀檔（如 <code>read.csv("car_brand.csv")</code>）。<br>
+    請把要用的資料 CSV 與你的 <code>.R</code> 放在<strong>同一資料夾</strong>，並用 <code>setwd()</code> 設為工作目錄，例如：<br>
+    <code>setwd("D:/OneDrive/OneDrive - PEGATRON CORPORATION/交大/國際行銷/H3/data")</code>
+  </div>
+</section>
+
+<!-- ================= 4 ================= -->
+<section id="how">
+  <h2>4. 如何一步步完成作業</h2>
+  <p>建議流程：<strong>先確認題意 → 設計/收集資料 → 用範本 Excel 或 R 計算 → 畫圖 → 寫討論</strong>。以下分題給出步驟。</p>
+
+  <h3>4.0 前置準備</h3>
+  <div class="steps">
+    <div class="step">與團隊確認<strong>準則數量</strong>（六項？四項？）與 <strong>foldable screen 成本</strong>是否為筆誤。</div>
+    <div class="step">建立<strong>問卷資料</strong>：每個受訪者對「準則成對比較」與「城市評分」提供 1–9 尺度答案（Problem 1/2）。</div>
+    <div class="step">建立 <strong>Kano 問卷</strong>：對每個功能問「有 / 沒有」的正向與反向感受，分類為 A/M/O/R/I/Q（Problem 3）。</div>
+    <div class="step">打開範本 <code>多準則決策.xlsx</code>，逐表對應（AHP / AHP_TOPSIS / Kano / Satisfaction）。</div>
+  </div>
+
+  <h3>4.1 Problem 1 步驟（AHP）</h3>
+  <div class="steps">
+    <div class="step">畫<strong>階層圖</strong>：最上層 Goal（選最佳港口）、中層 Criteria（六準則）、下層 Alternatives（高雄/釜山/東京）。可用 PowerPoint、draw.io 或 R（<code>DiagrammeR</code>）。</div>
+    <div class="step">建立<strong>準則成對比較矩陣</strong>：對每一對準則比較重要性（1–9 與倒數），每位成員各一份。</div>
+    <div class="step"><strong>正規化求權重</strong>：逐欄除以欄和，再對每列平均（見 §1 公式）。多成員則對各成員權重取平均。</div>
+    <div class="step"><strong>一致性檢定</strong>：以 <code>eigen()</code> 求 $\lambda_{max}$，算 $CI$、$CR$，確認 $CR<0.1$。</div>
+    <div class="step">對每個準則，建三個城市的<strong>成對比較矩陣</strong>並求局部分數（第二階層）。</div>
+    <div class="step"><strong>加權彙總</strong>：$\text{Score}_k=\sum_j w_j \cdot s_{kj}$，得出三城市排名。</div>
+  </div>
+  <pre># AHP 核心（節錄；完整可執行版見 作業\R-code\P1_AHP.R）
+A <- matrix(c(1,1/2,2,1,  2,1,3,2,  1/2,1/3,1,1,  1,1/2,1,1), nrow=4, byrow=TRUE)
+col_sum <- colSums(A)
+norm <- sweep(A, 2, col_sum, "/")     # 逐欄正規化
+w <- rowMeans(norm)                   # 準則權重
+lambda_max <- Re(eigen(A)$values[1])  # 最大特徵值
+n <- nrow(A); CI <- (lambda_max-n)/(n-1); RI <- 0.90; CR <- CI/RI
+print(round(w,4)); print(round(CR,4)) # CR 需 < 0.1</pre>
+
+  <h3>4.2 Problem 2 步驟（TOPSIS）</h3>
+  <div class="steps">
+    <div class="step">整理<strong>評分矩陣</strong>：三城市 × 六準則（五點量表；此為 local score，可用團隊評分平均）。</div>
+    <div class="step">帶入 <strong>PIS=(5,5,5,5,5,5)</strong>、<strong>NIS=(1,1,1,1,1,1)</strong>。</div>
+    <div class="step">以 Problem 1 的<strong>權重 $w_j$</strong> 計算加權距離：
+      <code>D+ = sqrt(sum(w_j*(x-PIS)^2))</code>、<code>D- = sqrt(sum(w_j*(x-NIS)^2))</code>。</div>
+    <div class="step">算貼近度 <code>Ratio = D-/(D++D-)</code> 並排名。</div>
+    <div class="step"><strong>討論差異</strong>：AHP 為相對比較、逐準則兩兩比較；TOPSIS 為與理想解距離之妥協解。比較排名是否一致，並說明原因（權重保留、評分基礎不同）。</div>
+  </div>
+  <pre># TOPSIS 核心（節錄；完整可執行版見 作業\R-code\P2_TOPSIS.R）
+X   <- rbind(Kaohsiung=c(5,3,3,3,4,4),
+             Busan    =c(4,4,4,5,5,4),
+             Tokyo    =c(2,5,5,4,5,5))
+PIS <- rep(5, ncol(X)); NIS <- rep(1, ncol(X))
+Dp  <- sqrt(rowSums(sweep((X-PIS)^2, 2, w, "*")))
+Dn  <- sqrt(rowSums(sweep((X-NIS)^2, 2, w, "*")))
+ratio <- Dn/(Dp+Dn)
+print(round(sort(ratio, decreasing=TRUE),4))   # 貼近度越高越佳</pre>
+
+  <h3>4.3 Problem 3 步驟（Kano）</h3>
+  <div class="steps">
+    <div class="step">發放 Kano 問卷（每功能一組正向/反向題），統計每位／全體的 A、M、O、R、I、Q 比例。</div>
+    <div class="step">計算每個功能的 <strong>Delight = (A+O)/N</strong>、<strong>Disgust = −(O+M)/N</strong>，$N=A+M+O+I$（R、Q 通常不計）。</div>
+    <div class="step">（可選）以<strong>熵權重</strong>求各功能權重，供 Problem 4 使用——範本用 <code>K = -Σ p·ln p / ln 5</code>、<code>Weight = (1-K)/Σ(1-K)</code>。</div>
+    <div class="step">判讀各功能屬性：A 為魅力、M 為必備、O 為一維。</div>
+  </div>
+
+  <h3>4.4 Problem 4 步驟（BIP）</h3>
+  <div class="steps">
+    <div class="step">以 Problem 3 的 delight / disgust 與功能權重建立目標函數。</div>
+    <div class="step">設定決策變數 $y_f\in\{0,1\}$（四功能）。</div>
+    <div class="step">建立成本限制式：$10000+\sum c_f y_f \le P$，$P\in\{15000,22000,30000\}$。</div>
+    <div class="step">分別對 high / medium / low 求解最大 delight（或最小 disgust）的<strong>最佳產品組合</strong>。</div>
+    <div class="step">可用 Excel 規劃求解，或用 R <code>lpSolve</code>：</div>
+  </div>
+  <pre># BIP（節錄；完整可執行版見 作業\R-code\P4_BIP.R，內含 base R 窮舉與 lpSolve 兩種寫法）
+library(lpSolve)
+c_f  <- c(2500, 3500, 1500, 5000)   # 功能成本（foldable 以確認後的數字為準）
+val  <- c(0.45, 0.55, 0.60, 0.50)   # delight（或改用 -disgust）
+for (P in c(15000, 22000, 30000)) {
+  res <- lp("max", val, matrix(c_f, nrow=1), "<=", P-10000, all.bin=TRUE)
+  cat(sprintf("P=%d  選用功能=%s  delight=%.3f\n",
+              P, paste(which(res$solution==1), collapse=","), res$objval))
+}</pre>
+
+  <h3>4.5 繳交前檢核</h3>
+  <div class="ok">
+    ✔ 四題都有<br>
+    ✔ AHP 有一致性檢定（CR&lt;0.1）<br>
+    ✔ 有畫出評估流程圖<br>
+    ✔ TOPSIS 有 PIS/NIS 與排名，並有 AHP vs TOPSIS 差異討論<br>
+    ✔ Kano 有 delight/disgust（且公式版本已與老師確認）<br>
+    ✔ BIP 三種價格分群都有最佳配置
+  </div>
+</section>
+
+<!-- ================= 5 ================= -->
+<section id="caution">
+  <h2>5. 注意事項與原文疑義</h2>
+  <table>
+    <tr><th>項目</th><th>原文</th><th>建議</th></tr>
+    <tr><td>準則數量</td><td>Problem 1：列出六準則，卻說 "four criteria"</td><td>與老師確認；範本 Excel 為四準則（品質/交期/成本/永續）</td></tr>
+    <tr><td>foldable 成本</td><td>Problem 4：155000</td><td>極可能筆誤（5000 或 15000），務必確認</td></tr>
+    <tr><td>Kano 公式</td><td>講義 p.16：(A+O)/N、−(O+M)/N；範本 Excel：含 −I 項</td><td>以課程指定版本為準，兩者結果不同</td></tr>
+    <tr><td>TOPSIS 正規化</td><td>講義用向量正規化 <code>x/√Σx²</code>；範本 Excel 用原始值直接算加權距離</td><td>確認老師要哪一種（本指引兩者都列出）</td></tr>
+  </table>
+  <div class="warn">上述疑義若未釐清，容易整題方向錯誤，<strong>建議第一時間向老師／助教確認</strong>。</div>
+</section>
+
+</main>
+
+<footer>
+  本指引由課程講義（通路管理、服務品質與問卷設計、產品策略）、範本試算表 <code>多準則決策.xlsx</code> 與作業文件彙整而成。<br>
+  產出檔案：<code>作業\2026-MKT-HW3.md</code>、<code>作業\2026-MKT-HW3.html</code>。
+</footer>
+</body>
+</html>

@@ -1,0 +1,1414 @@
+
+===== p1 =====
+陽明交通大學工業工程與管理學系
+心理層面與廣告的影響
+促銷策略
+關聯規則與產品推薦
+實務運用與影片分享
+促銷策略介紹
+電子化企業實驗室
+
+===== p2 =====
+陽明交通大學工業工程與管理學系
+促銷策略與關連規則
+一碗拉麵6000元消費者竟然搶著要？從Gogoro、鬍鬚張、一蘭拉麵看定
+價策略- 行銷人(marketersgo.com)
+15定价策略，以提高您的销售（与示例）(thatsmyhorse.com)
+定價策略》安卓手機，為何「特別容易」被猜出定價？－網民肥皂箱
+｜商周(businessweekly.com.tw)
+星巴克為什麼要賣月餅？行銷4P：以對的時間、定價，把對的產品
+放在對的位置－管理知識內參｜商周(businessweekly.com.tw)
+經營網店如何做好商品定價(訂價)？- TechTeller (科技說)
+有效提升廣告轉換率！吸引消費者注意力，用這6種廣告標題法- 行銷人
+(marketersgo.com)
+電子化企業實驗室
+
+===== p3 =====
+陽明交通大學工業工程與管理學系
+購買決策模式
+電子化企業實驗室
+
+===== p4 =====
+陽明交通大學工業工程與管理學系
+購買資訊處理
+電子化企業實驗室
+
+===== p5 =====
+陽明交通大學工業工程與管理學系
+衝動性購買
+總是不小心「手滑」多買？簡單抵抗衝動性購物的十大方法
+(greenvines.com.tw)
+電子化企業實驗室
+
+===== p6 =====
+陽明交通大學工業工程與管理學系
+強迫性購買
+愛花錢也是一種精神病！認識「強迫購物症」- Heho健康
+電子化企業實驗室
+
+===== p7 =====
+陽明交通大學工業工程與管理學系
+蠻牛廣告的魅力
+(462) 蠻牛廣告-電話篇(完整60秒) - YouTube
+(462) 蠻牛-倒垃圾篇201112 - YouTube
+(462) 保力達蠻牛腳踏車店篇- YouTube
+(462) 蠻牛-開鎖篇60秒完整版- YouTube
+(462) 0928 蠻牛臨演篇網路長版- YouTube
+(462) 保力達蠻牛-駕訓班篇- YouTube
+電子化企業實驗室
+
+===== p8 =====
+陽明交通大學工業工程與管理學系
+汽車廣告的魅力
+(462) THE ALL-NEW FORD FOCUS ACTIVE X林依晨感動鉅獻
+｜迷路｜FORD TAIWAN - YouTube
+(462) V60 終於自我| 睽違19 年陳柏霖與桂綸鎂攜手獻映100
+秒完整版- YouTube
+(462) NISSAN KICKS 都會時尚跨界休旅全新上市HD -
+YouTube
+(462) MONDEO MetroStar CF 盲人賓士篇- YouTube
+(462) Ford 2008 Mondeo超溫馨廣告家庭篇- YouTube
+(462) [My Baby]三菱Outlander 2010廣告(完整版)~ Stanley 的第
+5支廣告喔^^ - YouTube
+電子化企業實驗室
+
+===== p9 =====
+陽明交通大學工業工程與管理學系
+科技接受模式(TAM)
+外部變數
+External
+Variables
+知覺有用
+Perceived
+Usefulness
+知覺易用
+Perceived
+Ease of use
+使用態度
+Attitude
+Toward use
+行為意向
+Behavioral
+Intention
+系統使用
+System 
+usage
+電子化企業實驗室
+
+===== p10 =====
+陽明交通大學工業工程與管理學系
+智能電視(Smart TV)
+Typical smart-TV brands
+Samsung
+Panasonic
+LG
+Sony
+Engineering features (EFs): PU
+E1- On-demand video service
+*
+*
+*
+*
+E2- Game consoler entertainment
+*
+*
+*
+*
+E3- 2D/3D virtual reality
+*
+*
+*
+*
+E4- Recording and cloud storage
+*
+*
+*
+*
+E5- Searching & recommendation
+*
+*
+*
+*
+E6- Gesture recognition and control
+*
+*
+E7- Voice control
+*
+*
+Device 
+Device
+E8- Face recognition
+*
+*
+E9- Individual APP platform
+*
+*
+*
+*
+E10- Smart device enabled control
+*
+*
+*
+*
+Gesture features (GFs): PEOU
+G1- Wave a hand
+*
+*
+G2- Flip to left/right
+*
+*
+G3- Mouse-like move
+*
+*
+G4- Thumb up
+*
+G5- Grab to select TV channels
+*
+*
+G6- Long grab adjust volume
+*
+*
+G7- Rotate and return to previous step
+*
+*
+G8- Grab and move to power on/off
+*
+G9- Wave two hands
+*
+G10- Grab to zoom in/out a photo
+*
+G11- Grab and rotate a photo
+*
+電子化企業實驗室
+
+===== p11 =====
+陽明交通大學工業工程與管理學系
+智能電視(Smart TV)
+G1
+G2
+G3
+G4
+G5
+G6
+G7
+G8
+G9
+G10
+G11
+電子化企業實驗室
+
+===== p12 =====
+陽明交通大學工業工程與管理學系
+案例：松下的美顏智慧鏡子
+松下（Panasonic）開發了的美顏
+智慧鏡子「Beauty Smart Mirror
+」，它可以做到化妝預覽，完全
+運用到擴增實境的技術，讓使用
+者可以未上妝先體驗上妝後的風
+格。可以模擬的有眉妝、眼妝、
+腮紅、唇妝和鬍子等，選擇後再
+看整體的化妝效果。還可以看到
+幾個使用者用過這個化妝模式以
+及多少使用者喜歡這個內容的社
+群激勵部分。
+(661) Panasonic’s Innovative Future Mirror in Action at Panasonic CES 2016 - YouTube
+電子化企業實驗室
+
+===== p13 =====
+陽明交通大學工業工程與管理學系
+使用人工智慧，做到皮膚分析的功能，利用毛孔、斑點、
+皮膚透亮程度、皺紋及微笑紋五項內容做成雷達圖，可以
+看出你的皮膚是否需要水分，而且跟之前的紀錄比較，看
+皮膚狀況是否改進，如果這是使用保養品的結果的話，就
+可以知道保養品的使用是否有效，並具體提出改善的方式
+，像是遮瑕膏等。
+同時它還能跟智慧型手機上的行事曆同步，提醒你是要上
+班、出席聚會，對應到不同的妝。在鏡子的底部具備化妝
+面膜製作機，經過演算法分析後生成一種化妝面膜，用戶
+透過設備將妝敷上臉部，就完成化妝了。
+不過2016年底版本的設備產生的這個面膜利用數分鐘製作
+好，但是卻需一天風乾後才能使用，並不符合消費者需求
+。松下智慧鏡子已經研發多年，但現在仍屬實驗性產品。
+案例：松下的美顏智慧鏡子
+電子化企業實驗室
+
+===== p14 =====
+陽明交通大學工業工程與管理學系
+產品推薦模式
+電子化企業實驗室
+
+===== p15 =====
+陽明交通大學工業工程與管理學系
+內容導向推薦模式
+電子化企業實驗室
+
+===== p16 =====
+陽明交通大學工業工程與管理學系
+偕同過濾推薦模式
+電子化企業實驗室
+
+===== p17 =====
+陽明交通大學工業工程與管理學系
+關聯規則Association Rule
+Given a set of transactions, find rules that will 
+predict the occurrence of an item based on the 
+occurrences of other items in the transaction
+TID 
+Items 
+1 
+Bread, Milk 
+2 
+Bread, Diaper, Beer, Eggs 
+3 
+Milk, Diaper, Beer, Coke  
+4 
+Bread, Milk, Diaper, Beer 
+5 
+Bread, Milk, Diaper, Coke  
+ 
+Example of Association Rules
+{Diaper} {Beer},
+{Milk, Bread} {Eggs,Coke},
+{Beer, Bread} {Milk},
+Implication means co-occurrence, 
+not causality!
+Market-Basket transactions
+(購物籃分析)
+電子化企業實驗室
+
+===== p18 =====
+陽明交通大學工業工程與管理學系
+Definition: Frequent Itemset
+Itemset
+A collection of one or more items
+Example: {Milk, Bread, Diaper}
+k-itemset
+An itemset that contains k items
+Support count ()
+Frequency of occurrence of an itemset
+E.g.   ({Milk, Bread, Diaper}) = 2 
+Support
+Fraction of transactions that contain an 
+itemset
+E.g.   s({Milk, Bread, Diaper}) = 2/5
+Frequent Itemset
+An itemset whose support is greater 
+than or equal to a minsup threshold
+TID 
+Items 
+1 
+Bread, Milk 
+2 
+Bread, Diaper, Beer, Eggs 
+3 
+Milk, Diaper, Beer, Coke  
+4 
+Bread, Milk, Diaper, Beer 
+5 
+Bread, Milk, Diaper, Coke  
+ 
+電子化企業實驗室
+
+===== p19 =====
+陽明交通大學工業工程與管理學系
+Definition: Association Rule
+Example:
+Beer
+}
+Diaper
+,
+Milk
+{
+
+4.0
+5
+2
+|
+T
+|
+)
+Beer
+Diaper,
+,
+Milk
+(
+
+
+
+s
+67
+.0
+3
+2
+)
+Diaper
+,
+Milk
+(
+)
+Beer
+Diaper,
+Milk,
+(
+
+
+
+
+
+c
+Association Rule (LHS RHS)
+– An implication expression of the 
+form X Y, where X and Y are 
+itemsets
+– Example:
+{Milk, Diaper} {Beer}
+Rule Evaluation Metrics
+– Support (s)
+Fraction (probability) of 
+transactions that contain both X 
+and Y
+– Confidence (c)
+Measures (conditional probability) 
+how often items in Y appear in 
+transactions that contain X
+TID 
+Items 
+1 
+Bread, Milk 
+2 
+Bread, Diaper, Beer, Eggs 
+3 
+Milk, Diaper, Beer, Coke  
+4 
+Bread, Milk, Diaper, Beer 
+5 
+Bread, Milk, Diaper, Coke  
+ 
+電子化企業實驗室
+
+===== p20 =====
+陽明交通大學工業工程與管理學系
+Association Rule Mining Task
+Given a set of transactions T, the goal of 
+association rule mining is to find all rules having 
+support ≥ minsup threshold
+confidence ≥ minconf threshold
+Brute-force approach:
+List all possible association rules
+Compute the support and confidence for each rule
+Prune rules that fail the minsup and minconf
+thresholds
+Computationally prohibitive!
+電子化企業實驗室
+
+===== p21 =====
+陽明交通大學工業工程與管理學系
+Mining Association Rules
+Example of Rules:
+{Milk,Diaper} {Beer} (s=0.4, c=0.67)
+{Milk,Beer} {Diaper} (s=0.4, c=1.0)
+{Diaper,Beer} {Milk} (s=0.4, c=0.67)
+{Beer} {Milk,Diaper} (s=0.4, c=0.67) 
+{Diaper} {Milk,Beer} (s=0.4, c=0.5) 
+{Milk} {Diaper,Beer} (s=0.4, c=0.5)
+TID 
+Items 
+1 
+Bread, Milk 
+2 
+Bread, Diaper, Beer, Eggs 
+3 
+Milk, Diaper, Beer, Coke  
+4 
+Bread, Milk, Diaper, Beer 
+5 
+Bread, Milk, Diaper, Coke  
+ 
+Observations:
+• All the above rules are binary partitions of the same itemset: 
+{Milk, Diaper, Beer}
+• Rules originating from the same itemset have identical support but
+can have different confidence
+• Thus, we may decouple the support and confidence requirements
+電子化企業實驗室
+
+===== p22 =====
+陽明交通大學工業工程與管理學系
+Frequent Itemset Generation
+null
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+A
+B
+C
+D
+E
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+ABCD
+ABCE
+ABDE
+ACDE
+BCDE
+ABCDE
+Given d items, there are 
+2d possible candidate 
+itemsets
+電子化企業實驗室
+
+===== p23 =====
+陽明交通大學工業工程與管理學系
+Computational Complexity (二項式定理)
+Given d unique items:
+Total number of itemsets = 2d
+Total number of possible association rules: 
+1
+2
+3
+1
+1
+1
+1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d
+d
+d
+k
+k
+d
+j
+j
+k
+d
+k
+d
+R
+If d=6 items,  R = 602 rules
+電子化企業實驗室
+
+===== p24 =====
+陽明交通大學工業工程與管理學系
+Frequent Itemset Generation Strategies
+Reduce the number of candidates (M)
+Complete search: M=2d
+Use pruning techniques to reduce M
+Reduce the number of transactions (N)
+Reduce size of N as the size of itemset increases
+Used by DHP and vertical-based mining algorithms
+Reduce the number of comparisons (NM)
+Use efficient data structures to store the candidates or 
+transactions
+No need to match every candidate against every 
+transaction
+電子化企業實驗室
+
+===== p25 =====
+陽明交通大學工業工程與管理學系
+Reducing Number of Candidates
+Apriori principle:
+If an itemset is frequent, then all of its subsets must also 
+be frequent
+Apriori principle holds due to the following 
+property of the support measure:
+Support of an itemset never exceeds the support of its 
+subsets
+This is known as the anti-monotone property of support
+)
+(
+)
+(
+)
+(:
+,
+Y
+s
+X
+s
+Y
+X
+Y
+X
+
+
+
+
+電子化企業實驗室
+
+===== p26 =====
+陽明交通大學工業工程與管理學系
+Found to be 
+Infrequent
+null
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+A
+B
+C
+D
+E
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+ABCD
+ABCE
+ABDE
+ACDE
+BCDE
+ABCDE
+Illustrating Apriori Principle
+null
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+A
+B
+C
+D
+E
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+ABCD
+ABCE
+ABDE
+ACDE
+BCDE
+ABCDE
+Pruned 
+supersets
+電子化企業實驗室
+
+===== p27 =====
+陽明交通大學工業工程與管理學系
+Drawback of Confidence
+Coffee
+Coffee
+Tea
+15
+5
+20
+Tea
+75
+5
+80
+90
+10
+100
+Association Rule: Tea Coffee
+Confidence= P(Coffee|Tea) = 0.75 (15/20)
+but P(Coffee) = 0.9 (90/100)
+Although confidence is high, rule is misleading
+P(Coffee|Tea) = 0.9375 (75/80)
+電子化企業實驗室
+
+===== p28 =====
+陽明交通大學工業工程與管理學系
+Statistical Independence
+Population of 1000 students
+600 students know how to swim (S)
+700 students know how to bike (B)
+420 students know how to swim and bike (S,B)
+P(SB) = 420/1000 = 0.42
+P(S) P(B) = 0.6 0.7 = 0.42
+P(SB) = P(S) P(B) => Statistically independent
+P(SB) > P(S) P(B) => Positively correlated
+P(SB) < P(S) P(B) => Negatively correlated
+電子化企業實驗室
+
+===== p29 =====
+陽明交通大學工業工程與管理學系
+Statistical-based Measures
+Measures that take into account statistical 
+dependence
+)]
+(
+1
+)[
+(
+)]
+(
+1
+)[
+(
+)
+(
+)
+(
+)
+,
+(
+)
+(
+)
+(
+)
+,
+(
+)
+(
+)
+(
+)
+,
+(
+)
+(
+)
+|
+(
+Y
+P
+Y
+P
+X
+P
+X
+P
+Y
+P
+X
+P
+Y
+X
+P
+t
+coefficien
+Y
+P
+X
+P
+Y
+X
+P
+PS
+Y
+P
+X
+P
+Y
+X
+P
+Interest
+Y
+P
+X
+Y
+P
+Lift
+
+
+
+
+
+
+
+
+
+
+Lift is equal to interest
+Support: LHS & RHS同時發生的機率
+Confidence: LHS發生的前提下，RHS也發生的條
+件機率
+Lift: LHS & RHS同時發生的機率除以LHS & RHS個
+別發生的機率
+電子化企業實驗室
+
+===== p30 =====
+陽明交通大學工業工程與管理學系
+Example: Lift/Interest
+Coffee
+Coffee
+Tea
+15
+5
+20
+Tea
+75
+5
+80
+90
+10
+100
+Association Rule: Tea Coffee
+Confidence= P(Coffee|Tea) = 0.75
+but P(Coffee) = 0.9
+Lift = 0.75/0.9=0.15/(0.2*0.9)= 0.8333 (< 1, therefore is negatively 
+associated)
+電子化企業實驗室
+
+===== p31 =====
+陽明交通大學工業工程與管理學系
+預測的種類
+There are four basic types of forecasts.
+
+Qualitative (老闆、主管或專家說了算)
+
+Time series analysis (根據過去歷史資料)
+
+Causal relationships (迴歸就是用X預測Y)
+
+Simulation (需考慮機率或不確定性)
+Time series (時間序列) analysis is based on the 
+idea that data relating to past demand can be 
+used to predict future demand.
+電子化企業實驗室
+
+===== p32 =====
+陽明交通大學工業工程與管理學系
+績效指標衡量
+MSE =   Actualt −Forecastt 2
+n −1
+   
+MAD =   Actualt −Forecastt 
+n
+  
+MAPE =
+  Actualt −Forecastt
+Actualt
+ 
+n
+∗100% 
+Mean Squared Error
+Mean Absolute Deviation
+Mean Absolute Percentage Error
+電子化企業實驗室
+
+===== p33 =====
+陽明交通大學工業工程與管理學系
+Simple Moving Average
+Forecast is the average of a fixed number of past 
+periods (以過去歷史資料的平均預測未來).
+Useful when demand is not growing or declining 
+rapidly and no seasonality is present.
+Removes some of the random fluctuation from 
+the data.
+Selecting the period length is important.
+Longer periods provide more smoothing.
+Shorter periods react to trends more quickly.
+電子化企業實驗室
+
+===== p34 =====
+陽明交通大學工業工程與管理學系
+Simple Moving Average Formula
+
+就是股市當中的五日、十日、20日移動平均線
+電子化企業實驗室
+
+===== p35 =====
+陽明交通大學工業工程與管理學系
+Simple Moving Average – Example
+電子化企業實驗室
+
+===== p36 =====
+陽明交通大學工業工程與管理學系
+Weighted Moving Average
+The simple moving average formula implies 
+equal weighting for all periods (簡單移動平均
+假設不同時間的資料權重均相同).
+A weighted moving average allows unequal 
+weighting of prior time periods.
+The sum of the weights must be equal to one.
+Often, more recent periods are given higher weights 
+than periods farther in the past.
+加權移動平均的問題在於不知如何決定不同時間
+點的資料權重
+電子化企業實驗室
+
+===== p37 =====
+陽明交通大學工業工程與管理學系
+Exponential Smoothing
+A weighted average method that includes all past 
+data in the forecasting calculation
+More recent results weighted more heavily
+The most used of all forecasting techniques
+An integral part of computerized forecasting
+Well accepted for six reasons
+
+Exponential models are surprisingly accurate.
+
+Formulating an exponential model is relatively easy.
+
+Little computation is required to use the model.
+
+Computer storage requirements are small.
+
+Tests for accuracy are easy to compute.
+電子化企業實驗室
+
+===== p38 =====
+陽明交通大學工業工程與管理學系
+Exponential Smoothing Model
+= αAt-1 + (1- α ) Ft-1
+=αAt-1 + (1- α ) [αAt-2 + (1- α ) Ft-2]……
+指數平滑法假設越近的資料越重要，越遠的資料越不重要
+Alpha一般介於0.1~0.5之間
+電子化企業實驗室
+
+===== p39 =====
+陽明交通大學工業工程與管理學系
+Exponential Smoothing Example
+Week
+Demand
+Forecast
+1
+820
+820
+2
+775
+820
+3
+680
+811
+4
+655
+785
+5
+750
+759
+6
+802
+757
+7
+798
+766
+8
+689
+772
+9
+775
+756
+10
+760
+電子化企業實驗室
+
+===== p40 =====
+陽明交通大學工業工程與管理學系
+Criteria for Selecting Methods
+Criteria to use in making forecast method and parameter 
+choices include 
+1. Minimizing MAPE, MAD, or MSE
+2. Meeting managerial expectations of changes in the 
+components of demand
+3. Minimizing the forecast error last period
+Statistical performance measures can be used
+1. For projections of more stable demand patterns, use 
+lower α values or larger n values
+2. For projections of more dynamic demand patterns try 
+higher α values or smaller n values
+電子化企業實驗室
+
+===== p41 =====
+陽明交通大學工業工程與管理學系
+Holt-Winters moving average
+)
+)(
+1(
+)
+(
+L
+1
+1
+
+
+
+
+
+
+
+
+t
+t
+s
+t
+t
+t
+b
+L
+S
+y
+
+
+1
+1
+)
+1(
+)
+(
+T
+
+
+
+
+
+
+t
+t
+t
+t
+T
+L
+L
+
+
+s
+t
+t
+t
+t
+S
+L
+y
+
+
+
+
+
+)
+1(
+)
+(
+S
+
+
+s
+k
+t
+t
+t
+k
+t
+S
+kb
+L
+
+
+
+
+
+
+F
+Forecast consists of level (L), trend (T), and seasonal (S) components
+電子化企業實驗室
+
+===== p42 =====
+陽明交通大學工業工程與管理學系
+MLR的判定係數
+傳統上，MLR (multiple linear regression)迴
+歸模型的評估常使用判定係數(coefficient of 
+determination): Y=a0+a1x1+a2x2+a3x3+….
+或調整後判定係數（adjusted coefficient of 
+determination:）避免使用過多沒必要的X (k
+表示X的個數, T表示樣本數)
+2
+SSR
+R
+SST
+
+2
+2
+1
+1
+(1
+)
+T
+R
+R
+T
+k
+
+
+
+
+電子化企業實驗室
+
+===== p43 =====
+陽明交通大學工業工程與管理學系
+MARS介紹
+統計物理學家Friedman 於1991 年提出多元適應雲形
+迴歸，其屬於一種多變量無母數迴歸處理的程序。
+其能夠正確的預測連續與二元的相依變數，找出隱
+藏在高維度資料中的複雜結構及變數的交互作用。
+過去對於資料之分析，常常不論資料是否符合常態
+，均用線性迴歸進行實證，導致模型適用性出現問
+題，而MARS為多變量無母數分析技術，相較於傳統
+之線性迴歸，可解決資料非線性、非常態等問題。
+Multivariate Adaptive Regression Splines
+(MARS多元自適雲形迴歸)
+電子化企業實驗室
+
+===== p44 =====
+陽明交通大學工業工程與管理學系
+MARS原理
+MARS 基本概念為運用分段基底函數(Spline Basis Function, 
+BF)加總，以組合較有彈性的預測模型解決複雜的資料配適。
+有關BF之後段累程之部分，主要是根據需求變化而得：
+上式中a0與am皆為參數值；M為BF的個數；Km為切割之節點
+(knot)個數；Skm之值為+1或-1，作用為顯示方向；v(k,m)是對
+變數的標示；tkm是各節點的臨界值。
+電子化企業實驗室
+
+===== p45 =====
+陽明交通大學工業工程與管理學系
+MARS基底函數
+模式中所以用的片段線性基底函數形式如下(+表示正值)
+：
+(X-t)+ = {X-t, if X > t ; 0, otherwise}，
+(t-X)+ = {t-X, if X < t ; 0, otherwise}
+
+X為預測變數，t為獨立的觀察值，表示折點(knot)的位置
+；通常(X-t)+與(t-X)+會成對出現。例如：t=0.5時，基底函
+數為(X-0.5)+與(0.5-X)+ ，如圖二所示。
+片斷線性基底函數，只
+會依據測試，選取左邊
+或右邊的任一片段當作
+基底的一員
+電子化企業實驗室
+
+===== p46 =====
+陽明交通大學工業工程與管理學系
+MARS與MLR的比較
+電子化企業實驗室
+
+===== p47 =====
+陽明交通大學工業工程與管理學系
+MARS使用片段線性基底進行估計
+
+電子化企業實驗室
+
+===== p48 =====
+陽明交通大學工業工程與管理學系
+MARS執行過程
+篩選的過程採用前推式與後推式(Forward and 
+Backward Stepwise Procedure) 的演算法：
+(一)前推式階段
+不斷增加解釋方程式(所有的主要效果、新的
+主要影響因子、折點或交互作用)的個數，使模
+型不斷成長直到找出一個完整模型為止。
+注意：在此階段會有過度配適
+(over fitting)的問題
+電子化企業實驗室
+
+===== p49 =====
+陽明交通大學工業工程與管理學系
+(二)後推式階段(general cross validation)
+此階段根據缺適性的概念加以判斷，選擇重要
+變數的過程中使用GCV 法為判定原則，所以當
+一變數由模型中去除後使GCV 顯著降低，則可
+知此變數為重要關鍵要素。
+上式中分子為實際值減預測值，
+C(M)為採用M個BF所花費的成本。
+MARS執行過程
+電子化企業實驗室
+
+===== p50 =====
+陽明交通大學工業工程與管理學系
+因應價格管制的措施
+調整產品組合
+改變目標市場與區隔
+上市新產品或修改現有產品的形式
+和政府溝通或談判
+預先採取因應措施
+電子化企業實驗室
+
+===== p51 =====
+陽明交通大學工業工程與管理學系
+傾銷的定義
+進口商品以低於母
+國或來源國普遍的
+價位來定價。
+如果其價格是低於
+該產品的生產成本
+再加上廠商應得的
+8%利潤，或是低於
+生產國的普遍價格
+，則可判定其為傾
+銷。
+電子化企業實驗室
+
+===== p52 =====
+陽明交通大學工業工程與管理學系
+傾銷的類別
+掠奪性傾銷（Predatory Dumping）：指某一
+跨國公司以增加國內的生產成本為代價，或
+是刻意虧損，來達成在另一個國家低價銷售
+以奪取市場占有率的目的。
+無心傾銷（Unintentional Dumping）: 由於交
+易日、運送日，和到達日之間的時間落差而
+產生的價格差異。由於價格隱含著匯率的因
+素，當匯率因為時間的關係而改變時，則有
+可能造成最終售價低於其生產成本或母國的
+當地價格，因此在無意間造成傾銷。
+電子化企業實驗室
+
+===== p53 =====
+陽明交通大學工業工程與管理學系
+因應競爭廠商傾銷的措施
+產品升級
+強化服務
+配銷與溝通
+採取訴訟
+在美服刑2343天
+友達鐵血大將軍陳炫彬：不後悔| ETtoday財經雲
+| ETtoday新聞雲
+三年牢獄之災友達反壟斷案讓台灣學到什麼教訓？- 今周刊
+(businesstoday.com.tw)
+友達遭美反托拉斯毒手
+李焜耀2重臣異國坐牢【富豪列傳李焜耀5
+】(nextmgz.com)
+電子化企業實驗室
+
+===== p54 =====
+陽明交通大學工業工程與管理學系
+因應價格攀升的措施
+重新安排通路
+刪減某些產品屬性
+在國外生產或組裝產
+品
+修改產品規格
+重新定位
+電子化企業實驗室
+
+===== p55 =====
+陽明交通大學工業工程與管理學系
+因應高通貨膨脹的措施
+修改產品
+調整原物料供應廠商
+降低投資成本
+透過長期合約來避險
+以相對較穩定的貨幣來
+報價
+追求快速的存貨周轉率
+向曾在高通貨膨脹國家
+運作的廠商學習
+電子化企業實驗室
+
+===== p56 =====
+陽明交通大學工業工程與管理學系
+Understanding Inflation
+Inflation: Increase in amount of money needed to purchase same amount
+of goods or services. Inflation results in a decrease in 
+purchasing power, i.e., one unit of money buys less 
+goods or services
+Constant-value dollars =  future dollars 
+(1+ f)n  
+(1) Convert to constant value (CV) dollars, then use real rate i. 
+If f = inflation rate (% per year), the equation is:
+(2)Leave money amounts as is and use interest 
+rate adjusted for inflation, if
+if = i + f + (i)(f)
+Two ways to work problems when considering inflation:
+電子化企業實驗室
+
+===== p57 =====
+陽明交通大學工業工程與管理學系
+Example: Constant Value Dollars
+Solution: Solve for future dollars 
+How much would be required today to purchase an item that increased in cost 
+by exactly the inflation rate? The cost 30 years ago was $1000 and inflation 
+has  consistently averaged 4% per year.
+Future dollars = constant value dollars(1 + f)n
+= 1000(1 + 0.04)30
+= $3243
+Note: This calculation only accounts for the decreased purchasing power   
+of the currency. It does not take into account the time value of money
+(to be discussed)    
+Deflation: Opposite of inflation; purchasing power of money is greater in
+future than at present; however, money, credit, jobs are ‘tighter’ 
+電子化企業實驗室
+
+===== p58 =====
+陽明交通大學工業工程與管理學系
+Three Different Rates
+►
+Real or inflation rate i – Rate at which interest is 
+earned when effects of inflation are removed; i
+represents the real increase in purchasing power
+►Market or inflation-adjusted rate if – Rate that 
+takes inflation into account. Commonly stated rate 
+everyday
+►Inflation rate f – Rate of change in value of 
+currency
+Relation between three rates is derived using the 
+relation
+Market rate is:         if = i + f + (i)(f)
+電子化企業實驗室
+
+===== p59 =====
+陽明交通大學工業工程與管理學系
+Example: Market vs. Real Rate
+Money in a medium-risk investment makes a guaranteed 
+8% per year. Inflation rate has averaged 5.5% per year. 
+What is the real rate of return on the investment?
+Solution: Solve for the real rate i in relation for if
+if = i + f + (i)(f)
+1 + f
+if – f
+0.08 – 0.055
+1 + 0.055
+0.024
+Investment pays only 2.4% per year in real terms vs. the 
+stated 8%
+i = 
+=
+=
+電子化企業實驗室
+
+===== p60 =====
+陽明交通大學工業工程與管理學系
+PW Calculations with Inflation
+Two ways to account for inflation in PW calculations
+(2) Express cash flow in future (then-current ) dollars and use inflated
+interest rate where if = i + f + (i)(f)
+( Note: Inflated interest rate is the market interest rate) 
+(1) Convert cash flow into constant-value (CV) dollars and use regular i
+where:     CV = future dollars/(1 + f)n = then-current dollars/(1 + f)n
+f = inflation rate
+(Note: Calculations up to now have assumed constant-value dollars)
+電子化企業實驗室
+
+===== p61 =====
+陽明交通大學工業工程與管理學系
+Example: PW with Inflation
+A honing machine will have a cost of $25,000 (future cost) six years from 
+now. Find the PW of the machine, if the real interest rate is 10% per year 
+and  the inflation rate is 5% per year using (a) constant-value dollars, 
+and (b) future dollars.
+CV = 25,000 / (1 + 0.05)6 = $18,655
+PW = 18,655(P/F,10%,6)
+= $10,530
+Solution:
+(a  Determine constant-value dollars and use i in PW equation
+(b) Leave as future dollars and use if in PW equation
+if = 0.10 + 0.05 + (0.10)(0.05) = 15.5%
+PW = 25,000(P/F,15.5%,6)
+= $10,530
+電子化企業實驗室
+
+===== p62 =====
+陽明交通大學工業工程與管理學系
+FW Calculations with Inflation
+FW values can have four different interpretations
+(2) The purchasing power in terms of CV dollars of the future amount
+Use if in FW equation and divide by (1+f)n or use real i
+where real i = (if – f)/(1 + f)
+FW = PW(F/P,i,n)
+(3) The number of future dollars required to have the same purchasing
+power as a dollar today with no time value of money considered
+Use f instead of i in F/P factor             FW = PW(F/P,f,n)
+(1) The actual amount accumulated
+Use if in FW equation
+FW = PW(F/P, if, n)
+(4) The amount required to maintain the purchasing power of the present 
+sum and earn a stated real rate of return
+Use if in FW equation
+FW = PW(F/P, if, n)
+電子化企業實驗室
+
+===== p63 =====
+陽明交通大學工業工程與管理學系
+Example: FW with Inflation
+An engineer invests $15,000 in a savings account that pays
+interest at a real 8% per year. If the inflation rate is 5% per year,
+Determine (a) the amount of money that will be accumulated in 10 years,
+(b) the purchasing power of the accumulated amount
+(in terms of today’s dollars), (c) the number of future dollars
+that will have the same purchasing power as the $15,000 today,
+and (d) the amount to maintain purchasing power and earn a
+real 8% per year return.
+(a)The amount accumulated is a function of the market 
+interest rate, if
+if = 0.08 + 0.05 + (0.08)(0.05) = 13.4%
+Amount Accumulated = 15,000(F/P,13.4%,10)
+= $52,750  
+Solution:
+電子化企業實驗室
+
+===== p64 =====
+陽明交通大學工業工程與管理學系
+Example: FW with Inflation (cont’d)
+(c) The number of future dollars required to purchase goods that cost
+$15,000 now is the inflated cost of the goods
+Number of future dollars = 15,000(F/P,5%,10)
+= $24,434
+(b) To find the purchasing power of the accumulated amount deflate
+the inflated dollars 
+Purchasing power = 15,000(F/P,13.4%,10) / (1 + 0.05)10
+=15,000(F/P, 8%,10) = $32,384
+(d) In order to maintain purchasing power and earn a real return, money must 
+grow by the inflation rate and the interest rate, or if = 13.4%, as in part (a)
+FW = 15,000(F/P,13.4%,10)
+= $52,750  
+電子化企業實驗室

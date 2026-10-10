@@ -1,0 +1,1022 @@
+
+===== p1 =====
+陽明交通大學工業工程與管理學系
+產品設計/製造/銷售
+產品開發策略
+產品管理的實用手法
+產品開發策略簡介
+QFD/Kano Model 
+電子化企業實驗室
+
+===== p2 =====
+陽明交通大學工業工程與管理學系
+產品開發策略
+規劃
+目標市場、企業目標、主要的假設與限制條件
+概念設計
+定義市場需求、發展評選產品概念(外觀、特色)方案
+(評估投資、市佔率、產品壽命週期、產品線幅度)
+系統整體設計
+定義整體架構與組成元件、生產系統之組成要素
+細部設計
+定義零件型態(工程圖) 、物料表、品質規格、製程及
+對應之設備及工具
+測試與修正
+發展產品雛型以測試品質規格達成狀況
+試產
+以擬採行之生產系統製作新產品，訓練人員、發現與
+解決潛在問題
+電子化企業實驗室
+
+===== p3 =====
+陽明交通大學工業工程與管理學系
+時間
+產品發展
+階段
+引進期
+利潤
+銷售
+成長期
+成熟期
+衰退期
+投資或損失
+銷售與
+利潤
+Sales and Profits Over the Product Life
+產品生命週期管理(PLM)
+電子化企業實驗室
+
+===== p4 =====
+陽明交通大學工業工程與管理學系
+電子化企業實驗室
+4
+1.早期市場：應用研究、技術創新
+2.利基市場：產品創新、維持毛利
+3.全面市場：主導標準、擴大市佔
+4.成熟市場：製程創新、Cost down
+5.衰退市場：尋找另一個應用出現
+產業生命週期分析
+
+===== p5 =====
+陽明交通大學工業工程與管理學系
+新產品失敗之原因
+產品設計缺陷
+上市時間不對
+競爭者太強
+市場分析錯誤
+成本計算錯誤
+產品定價錯誤
+產品定位錯誤
+配銷通路不當
+廣告促銷不當
+電子化企業實驗室
+
+===== p6 =====
+陽明交通大學工業工程與管理學系
+Smart phone’s market share
+電子化企業實驗室
+
+===== p7 =====
+陽明交通大學工業工程與管理學系
+Smart phone’s profit share
+Source: http://pocketnow.com/2015/11/17/iphone-profits
+電子化企業實驗室
+
+===== p8 =====
+陽明交通大學工業工程與管理學系
+Apple iPhone’s cost structure
+Source: http://www.forbes.com/sites/chuckjones/2014/09/24/apples-iphone-6-teardown-and-
+other-costs-analysis/#41f124b72327
+電子化企業實驗室
+
+===== p9 =====
+陽明交通大學工業工程與管理學系
+Acer- Sze’s Smiling Curve (微笑曲線)
+電子化企業實驗室
+
+===== p10 =====
+陽明交通大學工業工程與管理學系
+- A short video to tell you Taiwan’s 
+innovation capabilities in 2004
+- What new product/service is promising now?
+- What resources do you have?
+- Whom do you want to sell?
+- How to promote your product/service?
+- How long does it take to break even?
+Video 1
+電子化企業實驗室
+
+===== p11 =====
+陽明交通大學工業工程與管理學系
+Break-even analysis
+電子化企業實驗室
+
+===== p12 =====
+陽明交通大學工業工程與管理學系
+策略規劃缺口
+電子化企業實驗室
+
+===== p13 =====
+陽明交通大學工業工程與管理學系
+填補策略規畫差距
+密集式成長機會
+整合式成長機會
+多角化成長機會
+在公司現有的事業中尋求
+進一步成長的機會。
+建立或取得與公司現有事
+業有關的事業機會。
+增加具吸引力且與現有事
+業不相關的事業機會。
+電子化企業實驗室
+
+===== p14 =====
+陽明交通大學工業工程與管理學系
+填補策略規畫差距一
+密集式成長機會
+每朝健康綠茶提出「三比八」
+黃金身材比例的訴求，鼓勵
+消費者天天喝每朝。
+
+===== p15 =====
+陽明交通大學工業工程與管理學系
+填補策略規畫差距一
+密集式成長機會
+每朝健康進
+軍大陸市場
+電子化企業實驗室
+
+===== p16 =====
+陽明交通大學工業工程與管理學系
+填補策略規畫差距一
+密集式成長機會
+開發新產品「每
+朝健康烏龍茶」
+電子化企業實驗室
+
+===== p17 =====
+陽明交通大學工業工程與管理學系
+填補策略規畫差距二
+建立或取得與公司現有事業有關的事業機會
+向後整合：康師傅併購全家便利超商。
+向前整合：康師傅併購乾燥蔬菜製造廠。
+水平整合：康師傅併購味丹泡麵與味全品牌。
+整合式成長機會
+電子化企業實驗室
+
+===== p18 =====
+陽明交通大學工業工程與管理學系
+填補策略規畫差距三
+增加具吸引力且與現有事業不相關的事業
+機會：
+集中式多角化－不同顧客但產品線具有綜效，
+如華碩製造主機板與電腦(PC/NB)。
+水平式多角化－現有顧客但產品線不相關，如
+永豐餘投資電子紙市場(元太科技)。
+複合式多角化－與現有產品或市場皆無關，如
+台達電或台積電進入綠能領域。
+多角化成長機會
+電子化企業實驗室
+
+===== p19 =====
+陽明交通大學工業工程與管理學系
+成長機會分類整理
+密集式成長
+整合式成長
+多角化成長
+市場滲透
+上游(向前)
+集中式
+市場開發
+下游(向後)
+水平式
+產品開發
+水平
+複合式
+全聯買下大潤發，公平會有條件通過！超市、量販將採雙品
+牌營運｜數位時代BusinessNext (bnext.com.tw)
+鴻海斥資25.2億元買下旺宏6吋廠、聚焦車用半導體！對雙方
+各有哪些好處？｜數位時代BusinessNext (bnext.com.tw)
+鴻海大手筆入股紫光，背後深藏兩大盤算- 今周刊
+(businesstoday.com.tw)
+電子化企業實驗室
+
+===== p20 =====
+陽明交通大學工業工程與管理學系
+What are new products?
+1. Promoting/exporting current products to new markets
+2. Radical innovation like using magnetic RAM to 
+replace dynamic RAM,
+3. Process improvement to increase yield rate or lower 
+costs (OLED displays, solar-cells’ efficiencies)
+4. Extension of existing products- from digital cameras to
+smart cameras (i.e. Wifi),
+5. Repositioning old products- changing medical drugs 
+(for therapy) into healthcare drugs (for prevention)
+6. Product-service system (PSS): car dealers switch to 
+rental & maintenance service by using IoT sensors 
+電子化企業實驗室
+
+===== p21 =====
+陽明交通大學工業工程與管理學系
+TRIZ (the theory of inventive problem solving)
+Inventor : Genrich Altshuller (Russian)
+Location : Russian researchers
+Analysis 200,000 patents to find a rule
+Text mining + Patent analysis??
+Anti-wind umbrella– Spear VS. Shield 
+(#4 Asymmetry)
+(467) 智慧機器人輪椅貼心照護銀髮族- YouTube
+(467) SENZ Umbrellas - Highlights - YouTube
+電子化企業實驗室
+
+===== p22 =====
+陽明交通大學工業工程與管理學系
+TRIZ’s general process
+電子化企業實驗室
+
+===== p23 =====
+陽明交通大學工業工程與管理學系
+TRIZ’s inventive solution
+電子化企業實驗室
+
+===== p24 =====
+陽明交通大學工業工程與管理學系
+TRIZ’s design for phone-cameras
+#1- Sony’s QX series
+#5- Samsung’s K zoom
+#28- Nokia’s Lumia 1020
+電子化企業實驗室
+
+===== p25 =====
+陽明交通大學工業工程與管理學系
+TRIZ’s design for phone-pads
+#7- Asus’s PadFone
+#14- LG’s G flex
+#17- Samsung’s galaxy beam
+電子化企業實驗室
+
+===== p26 =====
+陽明交通大學工業工程與管理學系
+Design for Manufacturing (DFM) and 
+Assembly (DFA)
+符合生產的要求
+為製造而設計
+產品設計時考量到與組織製造能力(產能、裝配能力
+等)的相容性
+易製性
+簡單容易的設計原則
+設計階段即考慮製造問題
+為裝配而設計
+產品設計時考量到產品如何裝配
+減少裝配線上零組件的數目、裝配方法及裝配的程序
+電子化企業實驗室
+
+===== p27 =====
+陽明交通大學工業工程與管理學系
+Industrial Practices
+為製造而設計或為裝配而設計其目的都為了降低生產成本
+儘量以最少的零件來設計產品
+最底層零件能盡量作為其他零件組裝時的基座
+以按扣方式取代螺絲、螺帽等裝配方式
+零件之順序必須考量，以避免裝上後必須取下重裝
+零件應容易握持與定位
+利用工作研究方法決定作業員動作的經濟原則
+使用標準化且易得的更換零件
+避免過度客製化要求超出需要的公差
+電子化企業實驗室
+
+===== p28 =====
+陽明交通大學工業工程與管理學系
+Proposed Motor Drive Design
+電子化企業實驗室
+
+===== p29 =====
+陽明交通大學工業工程與管理學系
+Redesign of Motor Drive Assembly Following 
+DFM/DFA
+電子化企業實驗室
+
+===== p30 =====
+陽明交通大學工業工程與管理學系
+Ecodesign
+Ecodesign: the incorporation of environmental 
+considerations in the design and development of 
+products or services
+The whole life cycle is considered
+The product is considered as a system
+A multi-criteria approach is used
+Application of ecodesign can benefit business
+BioBag biodegradable and 
+compostable plastic bags are used for 
+carrying produce and are supplied on 
+a roll. Text on the bag says “This bag 
+is certified compostable. Use, reuse, 
+then compost.” 
+電子化企業實驗室
+
+===== p31 =====
+陽明交通大學工業工程與管理學系
+環境衝擊
+全球暖化(global warming)
+資源逐漸耗盡(depletion of natural resources)
+固態廢棄物(solid waste)
+水污染(water pollution)
+空氣污染(air pollution)
+土地退化(land degradation)
+生物多樣性(biological diversity)
+臭氧逐漸耗盡(depletion of ozone layers )
+Environmental impacts of product development
+電子化企業實驗室
+
+===== p32 =====
+陽明交通大學工業工程與管理學系
+Nature lifecycle and product lifecycle
+電子化企業實驗室
+
+===== p33 =====
+陽明交通大學工業工程與管理學系
+新產品開發的步驟
+•
+Opportunity identification 
+•
+Concept generation & evaluation
+•
+Prototype development 
+•
+Prototype testing & refinement
+•
+Production management (resource allocation)
+•
+Commercialization & launch management 
+(after-sales)
+電子化企業實驗室
+
+===== p34 =====
+陽明交通大學工業工程與管理學系
+A declining trend of digital still cameras
+電子化企業實驗室
+
+===== p35 =====
+陽明交通大學工業工程與管理學系
+Worldwide camera’s shipment value
+電子化企業實驗室
+
+===== p36 =====
+陽明交通大學工業工程與管理學系
+Camera’s product characteristics
+Specifications (levels)
+Descriptions
+Affective
+features
+(multi-levels)
+F1 Zoom lens (3)
+Standard (F11), Exchangeable (F12), Periscopic 
+(F13)
+F3 Screen type (3)
+Dual (A21), Up-twistable (A22), Side- twistable 
+(A23)
+F3 Flash light (3)
+Embedded (F31), Pop-up (F32), Add-on (F33)
+Functional
+attributes
+(dichotomous)
+A1 Big image sensor
+Greater than 2/3 inch
+A2 Super wide angle
+Less than 25mm
+A3 Ultra optical zoom
+More than 10X
+A4 High-speed shutter
+Above 10fps
+A5 Large aperture
+Below f=3.0
+A6 Water proof
+At least 5m
+A7 Dust proof
+At least IP67
+A8 Digital compass
+Direction identification
+A9 GPS tagging
+Position tracking
+A10 Wifi connectivity
+Internet communication
+A11 Touch panel
+High sensitivity
+A12 Electronic view finder
+Better visualization under exposure of sunlight
+電子化企業實驗室
+
+===== p37 =====
+陽明交通大學工業工程與管理學系
+Exchangeable lenses-
+Sony’s A6000
+Built-in lenses-
+Sony’s WX300
+Periscopic lenses-
+Sony’s TX30
+Kansei feature 1- Zoom Lenses
+電子化企業實驗室
+
+===== p38 =====
+陽明交通大學工業工程與管理學系
+Kansei feature 2- screen type
+Dual screen-
+Samsung’s DV300f
+Up-twistable screen-
+Samsung’s MV900f
+Side-twistable screen-
+Samsung’s EX2
+電子化企業實驗室
+
+===== p39 =====
+陽明交通大學工業工程與管理學系
+Kansei feature 3- flash light
+Embedded flash-
+Nikon’s S6900
+Pop-up flash-
+Nikon’s P600
+Add-on flash
+電子化企業實驗室
+
+===== p40 =====
+陽明交通大學工業工程與管理學系
+Kansei features based segmentation
+H (128/473)
+P 
+(239/540)
+H (93/473)
+S (285/397)
+Zoom lens
+Flash light
+Screen type
+Built-in
+Periscopic
+Add-on
+Dual
+Dual
+Up-
+Twistable
+Screen type
+Exchangeable
+P 
+(118/540)
+Pop-up
+P (84/540)
+Side-
+twistable
+H (76/473)
+Embedded
+電子化企業實驗室
+
+===== p41 =====
+陽明交通大學工業工程與管理學系
+Validation assessment of decision rules
+Rule
+Antecedent (if)
+Consequent 
+(then)
+Support=
+Confidence=
+1
+(Lens=built-in) and (Flash=embedded) 
+and (Screen=dual)
+Home
+27%
+64.9%
+2
+(Lens=built-in) and (Flash=embedded) 
+and (Screen=side-twistable)
+Professional
+15.6%
+51.7%
+3
+(Lens=built-in) and (Flash=pop-up)
+Home
+16.1%
+65.7%
+4
+(Lens=built-in) and (Flash=add-on)
+Professional
+20.7%
+71%
+5
+(Lens=exchangeable)
+Professional
+44.3%
+96 %
+6
+(Lens=periscopic) and 
+(Screen=twistable)
+Home
+19.7%
+54.8%
+7
+(Lens=periscopic) and (Screen=dual)
+Sport
+71.8%
+82.5%
+then
+then
+if
+/)
+(
+
+if
+then
+if
+/)
+(
+
+電子化企業實驗室
+
+===== p42 =====
+陽明交通大學工業工程與管理學系
+Using correspondence analysis to identify key FAs
+電子化企業實驗室
+
+===== p43 =====
+陽明交通大學工業工程與管理學系
+Quality Function Deployment (Akao, 1990)
+Correlation 
+Matrix
+Technical
+Attributes
+Customer
+Requirements
+Marketing
+Assessment
+Relationship
+Matrix
+Technical 
+Assessment
+電子化企業實驗室
+
+===== p44 =====
+陽明交通大學工業工程與管理學系
+House of Quality Matrix for a Car Door
+Customer requirements 
+information forms the 
+basis for this matrix, 
+used to translate them 
+into operating or 
+engineering goals
+電子化企業實驗室
+
+===== p45 =====
+陽明交通大學工業工程與管理學系
+Features for smartphones
+CRs
+Customer
+requirements
+TAs
+Technical attributes
+Ideal 
+scale
+R1
+Photo quality
+A1
+Image sensor
+↑
+R2
+Screen visualization
+A2
+Photo quality (back camera)
+↑
+R3
+Portability
+A3
+Wide angle
+↓
+R4
+Durability
+A4
+Screen (diagonal) size
+↑
+R5
+System performance A5
+Screen resolution
+↑
+R6
+Friendly user 
+interface
+A6
+Selfie quality (front camera)
+↑
+A7
+AR/VR 3D display
+Yes/No
+A8
+Weight
+↓
+A9
+Thickness
+↓
+A10
+Water proof
+Yes/No
+A11
+CPU performance
+↑
+A12
+Mobile RAM capacity
+↑
+A13
+Touch sensitivity
+↑
+A14
+Gesture control
+Yes/No
+A15
+Usage hours
+↑
+%↑denotes “the larger the better” while ↓means “the smaller the better”
+電子化企業實驗室
+
+===== p46 =====
+陽明交通大學工業工程與管理學系
+House of Quality- listening to customers
+Positive (complementary) 
+or negative (contradictory)
+correlation in QFD’s roof??
+電子化企業實驗室
+
+===== p47 =====
+陽明交通大學工業工程與管理學系
+Concurrent Engineering
+電子化企業實驗室
+
+===== p48 =====
+陽明交通大學工業工程與管理學系
+The story about Rolls-Royce? Engines? Health?
+電子化企業實驗室
+
+===== p49 =====
+陽明交通大學工業工程與管理學系
+-
+A long video to show you innovative service 
+design in 2005 by NTT DoCoMo
+-
+Using QFD (quality function deployment) to 
+transform VOC (voice of customers) into VOD 
+(voice of designers)?
+-
+How to generate innovative ideas using TRIZ?
+-
+How to capture user perceptions using Kano 
+model?
+-
+Other interesting videos?
+Video 2
+電子化企業實驗室
+
+===== p50 =====
+陽明交通大學工業工程與管理學系
+Using Kano Model to elicit user perceptions
+Functional 
+presence
+Reverse 
+One-dimensional 
+Indifferent
+Delight (satisfaction)
+Disgust (dissatisfaction)
+Dysfunctional 
+absence
+Attractive
+Must-be
+電子化企業實驗室
+
+===== p51 =====
+陽明交通大學工業工程與管理學系
+Brainstorming list of features and functionality
+Determining type of product/ service requirements:
+問卷想了解，屬性存在或不存在時的顧客感受?
+Kano Model Requirements Survey 
+User Survey
+“Functional form” vs. “Dysfunctional Form”
+“How would you feel if the product had feature X?”
+“How would you feel if the product didn’t have feature X?”
+Kano Questionnaire Answers:
+I like it (極喜愛).
+I expect it (有期待).
+I am neutral (沒感覺).
+I can tolerate it (勉強忍受).
+I dislike it (極度厭惡).
+Analyze & Brainstorm
+電子化企業實驗室
+
+===== p52 =====
+陽明交通大學工業工程與管理學系
+Kano問卷設計
+A代表魅力品質；M代表必需品質；R代表反轉品質；O代
+表一元品質；Q代表問題品質；I代表無差異品質。
+電子化企業實驗室
+
+===== p53 =====
+陽明交通大學工業工程與管理學系
+An illustrated Survey
+有屬性
+無屬性
+電子化企業實驗室
+
+===== p54 =====
+陽明交通大學工業工程與管理學系
+Functional vs. Dysfunctional Comparison
+M
+M
+M
+M: must feature
+無屬性
+電子化企業實驗室
+
+===== p55 =====
+陽明交通大學工業工程與管理學系
+Typical airline service attributes
+SAs
+Definitions of service attributes
+A1
+Appearance of crew
+A2
+Courtesy of crew
+A3
+On-board facilities (seat, space, entertainment, etc.)
+A4
+On-board beverage and meal
+A5
+Weight limit of free check-in baggage
+A6
+Diversity of airline shopping
+A7
+Weight limit of free carry-on baggage
+A8
+Fast check-in and boarding process
+A9
+Speed of handling customer requirements
+A10
+Skills of handling flight delays or baggage claims
+A11
+Extended/transferred transportation services
+A12
+Free services for using the VIP room at airports
+A13
+Records of low safety accidents
+A14
+Convenient departure and arrival schedules
+A15
+Early-bird price discount
+A16
+Frequent-flier mileage programs
+電子化企業實驗室
+
+===== p56 =====
+陽明交通大學工業工程與管理學系
+Customer satisfaction based on 
+Kano model
+i
+i
+i
+i
+i
+i
+i
+i
+i
+I
+R
+M
+O
+A
+R
+O
+A
+d
+
+
+
+
+
+
+
+
+i
+i
+i
+i
+i
+i
+i
+i
+i
+I
+R
+M
+O
+A
+R
+M
+O
+d
+
+
+
+
+
+
+
+
+
+Positive delight when 
+attribute i is present 
+Negative disgust when 
+attribute i is absent
+Customer satisfaction with 
+attribute j given performance
+
+
+
+
+
+j
+j
+j
+j
+j
+d
+p
+d
+p
+S
+)
+1(
+電子化企業實驗室
+績效可由分項分數來計算(4/5)=0.8
+
+===== p57 =====
+陽明交通大學工業工程與管理學系
+Converting an attribute’s performance into a 
+quantitative degree of satisfaction
+Performance
+1 
+dj
++
+0
+Satisfaction
+Disgust
+pj
+dj
+-
+Sj
+Delight
+電子化企業實驗室
+
+===== p58 =====
+陽明交通大學工業工程與管理學系
+Aggregated Kano categories (in percentages)
+SAs
+A
+M
+O
+R
+I
+Q
+Delight
+Disgust
+A1
+40%
+10%
+7%
+43%
+0.47
+-0.17
+A2
+9%
+44%
+45%
+2%
+0.54
+-0.89
+A3
+45%
+6%
+25%
+24%
+0.7
+-0.31
+A4
+52%
+10%
+25%
+13%
+0.77
+-0.35
+A5
+15%
+28%
+54%
+3%
+0.69
+-0.82
+A6
+32%
+4%
+64%
+0.36
+-0.04
+A7
+26%
+3%
+4%
+67%
+0.3
+-0.07
+A8
+9%
+31%
+54%
+6%
+0.63
+-0.85
+A9
+11%
+22%
+62%
+5%
+0.73
+-0.84
+A10
+4%
+49%
+40%
+7%
+0.44
+-0.89
+A11
+16%
+27%
+38%
+19%
+0.54
+-0.65
+A12
+61%
+4%
+35%
+0.65
+-0.04
+A13
+10%
+34%
+45%
+11%
+0.55
+-0.79
+A14
+25%
+33%
+29%
+13%
+0.54
+-0.62
+A15
+53%
+3%
+14%
+30%
+0.67
+-0.17
+A16
+69%
+2%
+8%
+21%
+0.77
+-0.1
+電子化企業實驗室
+
+===== p59 =====
+陽明交通大學工業工程與管理學系
+Smart products
+(666) Hapifork, Eat Slowly - Lose Weight - Feel Great - YouTube
+Hapifork 智慧叉
+(666) Zepp Labs | Golf | Swing Analyzer - YouTube
+Zepp 智慧球拍
+(666) Smart Cup "Vessyl" - Automatically Track Everything You Drink - YouTube
+Vessyl 智慧杯
+(666) Bluetooth Enabled Toothbrush Tracks Your Dental Habits - YouTube
+Beam toothbrush 智慧牙刷
+(666) Sensoria Smart Socks, coaching runners - YouTube
+Sensoria socks 智慧襪
+電子化企業實驗室
+
+===== p60 =====
+陽明交通大學工業工程與管理學系
+努力不被PC拖下水宏碁、華碩法人按讚(yahoo.com)
+佳世達顯示器營收比重降至4成，醫療等三大事業營比增
+至33% - Yahoo奇摩時尚美妝
+【法說重點解讀】什麼是3+3 策略？分析鴻海的轉型佈局
+- 富果直送｜白話投資好文(fugle.tw)
+3利多1保守，台積法說重點一次看！台積為何樂觀上調營
+收預期？｜天下雜誌(cw.com.tw)
+(208) Top 5 Best Smart Mirror for Your Home - YouTube
+產品組合管理
+電子化企業實驗室

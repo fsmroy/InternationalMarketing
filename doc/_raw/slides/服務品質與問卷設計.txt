@@ -1,0 +1,506 @@
+
+===== p1 =====
+5 – 1
+交通大學工業工程與管理學系
+Service Quality And 
+Performance
+
+===== p2 =====
+5 – 2
+交通大學工業工程與管理學系
+Costs of Quality
+A failure to satisfy a customer is considered a 
+defect
+Prevention costs
+Appraisal costs
+Internal failure costs
+External failure costs
+Ethics and quality
+
+===== p3 =====
+5 – 3
+交通大學工業工程與管理學系
+Total Quality Management
+Figure 5.1 – TQM Wheel
+Customer 
+satisfaction
+
+===== p4 =====
+5 – 4
+交通大學工業工程與管理學系
+Total Quality Management
+Customer satisfaction
+Conformance to specifications
+Value
+Fitness for use
+Support
+Psychological impressions
+Employee involvement
+Cultural change
+Teams
+Employee empowerment
+
+===== p5 =====
+5 – 5
+交通大學工業工程與管理學系
+Total Quality Management
+Continuous improvement
+Kaizen
+A philosophy
+Not unique to quality
+Problem solving process
+Plan
+Do
+Study/
+check
+Act
+The Deming Wheel
+
+===== p6 =====
+5 – 6
+交通大學工業工程與管理學系
+Cause-and-Effect Diagram 
+(Fishbone Diagram)
+6
+
+===== p7 =====
+5 – 7
+交通大學工業工程與管理學系
+Six Sigma
+X X
+X X
+X
+XX
+X X
+X
+XX
+X
+X X
+XX
+Process average OK;
+too much variation
+Process variability OK;
+process off target
+Process
+on target with
+low variability
+Reduce
+spread
+Center
+process
+X
+X
+X
+X
+X
+X X
+X
+X
+Figure 5.3 – Six-Sigma Approach Focuses on Reducing Spread and Centering the Process
+
+===== p8 =====
+5 – 8
+交通大學工業工程與管理學系
+Sampling Distributions
+2. The range is the difference between the largest observation 
+in a sample and the smallest. The standard deviation is the 
+square root of the variance of a distribution. An estimate of 
+the process standard deviation based on a sample is given 
+by
+where
+s = standard deviation of a sample
+
+
+
+
+1
+or  
+  
+1
+2
+2
+2
+
+
+
+
+
+
+
+
+
+n
+n
+x
+x
+s
+n
+x
+x
+s
+i
+i
+i
+2
+2)
+(
+
+
+s
+E
+
+===== p9 =====
+5 – 9
+交通大學工業工程與管理學系
+Motorola design’s philosophy
+Fraction defective
+Defective parts
+Design limits
+0.3173
+317 per thousand
+0.333
+0.0455
+45 per thousand
+0.667
+0.0027
+2.7 per thousand
+1.0
+0.000063
+63 per million
+1.333
+0.000000574
+574 per billion
+1.667
+0.000000002
+2 per billion
+2.0
+
+===== p10 =====
+5 – 10
+交通大學工業工程與管理學系
+Concept of Kano Model in service design
+Functional 
+presence
+Reverse 
+One-dimensional 
+Indifferent
+Delight (satisfaction)
+Disgust (dissatisfaction)
+Dysfunctional 
+absence
+Attractive
+Must-be
+
+===== p11 =====
+5 – 11
+交通大學工業工程與管理學系
+Brainstorming list of features and functionality
+Determining type of product/ service requirements:
+問卷想了解，屬性存在或不存在時的顧客感受?
+Kano Model Requirements Survey 
+User Survey
+“Functional form” vs. “Dysfunctional Form”
+“How would you feel if the product had feature X?”
+“How would you feel if the product didn’t have feature 
+X?”
+Kano Questionnaire Answers:
+I like it (喜愛).
+I expect it (期待).
+I am neutral (沒感覺).
+I can tolerate it (勉強).
+I dislike it (厭惡).
+Analyze & Brainstorm
+
+===== p12 =====
+5 – 12
+交通大學工業工程與管理學系
+Kano問卷設計
+A代表魅力品質；M代表必需品質；R代表反轉品質；O代
+表一元品質；Q代表問題品質；I代表無差異品質。
+
+===== p13 =====
+5 – 13
+交通大學工業工程與管理學系
+An illustrated Survey
+有屬性
+無屬性
+
+===== p14 =====
+5 – 14
+交通大學工業工程與管理學系
+Functional vs. Dysfunctional 
+Comparison
+M
+M
+M
+M: must feature
+無屬性
+
+===== p15 =====
+5 – 15
+交通大學工業工程與管理學系
+Typical airline service attributes
+Definitions of service attributes
+SAs
+Appearance of crew
+A1
+Courtesy of crew
+A2
+On-board facilities (seat, space, entertainment, etc.)
+A3
+On-board beverage and meal
+A4
+Weight limit of free check-in baggage
+A5
+Diversity of airline shopping
+A6
+Weight limit of free carry-on baggage
+A7
+Fast check-in and boarding process
+A8
+Speed of handling customer requirements
+A9
+Skills of handling flight delays or baggage claims
+A10
+Extended/transferred transportation services
+A11
+Free services for using the VIP room at airports
+A12
+Records of low safety accidents
+A13
+Convenient departure and arrival schedules
+A14
+Early-bird price discount
+A15
+Frequent-flier mileage programs
+A16
+
+===== p16 =====
+5 – 16
+交通大學工業工程與管理學系
+Customer satisfaction based on 
+Kano model
+i
+i
+i
+i
+i
+i
+i
+i
+i
+I
+R
+M
+O
+A
+R
+O
+A
+d
+
+
+
+
+
+
+
+
+i
+i
+i
+i
+i
+i
+i
+i
+i
+I
+R
+M
+O
+A
+R
+M
+O
+d
+
+
+
+
+
+
+
+
+
+Positive delight when 
+attribute i is present 
+Negative disgust when 
+attribute i is absent
+Customer satisfaction with 
+attribute j given performance
+
+
+
+
+
+j
+j
+j
+j
+j
+d
+p
+d
+p
+S
+)
+1(
+績效可由分項分數來計算(4/5)=0.8
+
+===== p17 =====
+5 – 17
+交通大學工業工程與管理學系
+Aggregated Kano categories (in percentages)
+Disgust
+Delight
+Q
+I
+R
+O
+M
+A
+SAs
+-0.17
+0.47
+43%
+7%
+10%
+40%
+A1
+-0.89
+0.54
+2%
+45%
+44%
+9%
+A2
+-0.31
+0.7
+24%
+25%
+6%
+45%
+A3
+-0.35
+0.77
+13%
+25%
+10%
+52%
+A4
+-0.82
+0.69
+3%
+54%
+28%
+15%
+A5
+-0.04
+0.36
+64%
+4%
+32%
+A6
+-0.07
+0.3
+67%
+4%
+3%
+26%
+A7
+-0.85
+0.63
+6%
+54%
+31%
+9%
+A8
+-0.84
+0.73
+5%
+62%
+22%
+11%
+A9
+-0.89
+0.44
+7%
+40%
+49%
+4%
+A10
+-0.65
+0.54
+19%
+38%
+27%
+16%
+A11
+-0.04
+0.65
+35%
+4%
+61%
+A12
+-0.79
+0.55
+11%
+45%
+34%
+10%
+A13
+-0.62
+0.54
+13%
+29%
+33%
+25%
+A14
+-0.17
+0.67
+30%
+14%
+3%
+53%
+A15
+-0.1
+0.77
+21%
+8%
+2%
+69%
+A16
+
+===== p18 =====
+5 – 18
+交通大學工業工程與管理學系
+Converting an attribute’s performance into 
+a quantitative degree of satisfaction
+Performance
+1 
+dj
++
+0
+Satisfaction
+Disgust
+pj
+dj
+-
+Sj
+Delight
+
+===== p19 =====
+5 – 19
+交通大學工業工程與管理學系
+Importance-Performance Analysis

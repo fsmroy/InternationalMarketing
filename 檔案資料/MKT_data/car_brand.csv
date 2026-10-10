@@ -1,0 +1,11 @@
+Brand,A1 brand,A2 price,A3 performance,A4 safety,A5 energy,A6 reliability,A7 transmission,A8 interior,A9 electronic,A10 repair,label
+BENZ,5,1,5,4,2,3,3,4,4,2,1
+BMW,5,1,5,4,2,3,3,4,4,2,2
+LEXUS,5,2,3,3,4,5,4,5,3,3,3
+VOLVO,5,2,5,5,2,4,4,5,4,3,4
+FORD,3,5,4,4,3,3,3,4,4,4,5
+TOYOTA,4,3,2,3,5,4,3,3,3,4,6
+HONDA,4,3,3,3,5,4,3,3,3,4,7
+VW,3,3,3,3,3,3,4,4,4,3,8
+HYUNDAI,3,4,4,4,2,3,4,4,4,4,9
+TESLA,5,2,5,4,5,5,4,5,5,3,10

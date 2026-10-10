@@ -1,0 +1,607 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>國際行銷 HW2 — RStudio 完全新手指南</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#fff; --ink:#1f2430; --muted:#6b7280;
+    --line:#e5e7eb; --brand:#2563eb; --brand-soft:#eff4ff;
+    --ok:#059669; --ok-soft:#ecfdf5; --warn:#b45309; --warn-soft:#fffbeb;
+    --code-bg:#1e2230; --code-ink:#e6e9f0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","Microsoft JhengHei","PingFang TC",system-ui,sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  header{
+    background:linear-gradient(135deg,#1e3a8a,#2563eb 60%,#3b82f6);
+    color:#fff; padding:48px 24px 40px;
+  }
+  header .wrap{max-width:960px;margin:0 auto}
+  header h1{margin:0 0 8px;font-size:2rem;letter-spacing:.5px}
+  header p{margin:4px 0;opacity:.92}
+  .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+    padding:2px 10px;border-radius:999px;font-size:.8rem;margin-right:8px}
+
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  main{max-width:960px;margin:0 auto;padding:32px 24px 80px}
+
+  nav.toc{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 20px;margin:-28px auto 32px;max-width:912px;
+    box-shadow:0 6px 20px rgba(15,23,42,.06);position:relative;z-index:2;
+  }
+  nav.toc h2{margin:0 0 10px;font-size:1rem;color:var(--muted);font-weight:600}
+  nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:28px}
+  nav.toc a{color:var(--brand);text-decoration:none}
+  nav.toc a:hover{text-decoration:underline}
+  @media(max-width:640px){nav.toc ol{columns:1}}
+
+  section{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:24px 28px;margin-bottom:24px;box-shadow:0 2px 8px rgba(15,23,42,.04);
+  }
+  h2.sec{font-size:1.4rem;margin:0 0 6px;padding-bottom:10px;border-bottom:2px solid var(--brand-soft)}
+  h3{font-size:1.1rem;margin:26px 0 8px;color:#111827}
+  h4{font-size:1rem;margin:20px 0 6px;color:#374151}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0;padding-left:22px}
+  li{margin:4px 0}
+  code.inline{background:#eef2ff;color:#3730a3;padding:1px 6px;border-radius:5px;font-size:.9em;
+    font-family:Consolas,"Courier New",monospace}
+  pre{
+    background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+    overflow-x:auto;font-family:Consolas,"Courier New",monospace;font-size:.88rem;line-height:1.6;
+    position:relative;
+  }
+  pre code{white-space:pre}
+  .step{border-left:4px solid var(--brand);padding-left:16px;margin:18px 0}
+  .step .n{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;
+    font-size:.85rem;font-weight:700;margin-right:8px;vertical-align:middle;
+  }
+  .note,.warn,.ok{border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem}
+  .note{background:var(--brand-soft);border-left:4px solid var(--brand)}
+  .warn{background:var(--warn-soft);border-left:4px solid var(--warn)}
+  .ok{background:var(--ok-soft);border-left:4px solid var(--ok)}
+  .note b,.warn b,.ok b{display:block;margin-bottom:2px}
+  .orig{background:#f8fafc;border:1px solid var(--line);border-left:4px solid #64748b;
+    border-radius:10px;padding:14px 18px;margin:12px 0;font-size:.94rem;
+    font-family:Georgia,"Times New Roman",serif;color:#334155;line-height:1.85;font-style:italic}
+  .orig b{font-style:normal;color:#0f172a}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f3f4f6;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfc}
+  .filetree{
+    background:#0f172a;border-radius:10px;padding:16px 18px;
+    font-family:Consolas,"Courier New",monospace;font-size:.86rem;line-height:1.7;
+    display:grid;grid-template-columns:max-content 1fr;gap:0 20px;overflow-x:auto;
+  }
+  .filetree .ftpath{color:#cbd5e1;white-space:pre}
+  .filetree .ftcmt{color:#64748b}
+  .filetree .hi{color:#7dd3fc;font-weight:700}
+  .filetree .dir{color:#fbbf24}
+  .filetree .warnfile{color:#fca5a5;font-weight:700}
+  .qtag{display:inline-block;background:#111827;color:#fff;font-size:.75rem;font-weight:700;
+    padding:3px 10px;border-radius:6px;margin-right:8px;vertical-align:middle}
+  .pill{display:inline-block;background:#eef2ff;color:#3730a3;font-size:.78rem;
+    padding:2px 9px;border-radius:999px;margin:2px 4px 2px 0;border:1px solid #c7d2fe}
+  details{background:#fafbfc;border:1px solid var(--line);border-radius:10px;padding:10px 16px;margin:10px 0}
+  summary{cursor:pointer;font-weight:600;color:#374151}
+  details[open] summary{margin-bottom:10px}
+  .kbd{background:#fff;border:1px solid #cbd5e1;border-bottom-width:2px;border-radius:6px;
+    padding:1px 7px;font-size:.85em;font-family:Consolas,monospace;white-space:nowrap}
+  footer{text-align:center;color:var(--muted);font-size:.85rem;padding:24px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="badge">國際行銷</span><span class="badge">Homework 2</span><span class="badge">新手適用</span>
+    <h1>2026-MKT-HW2 · RStudio 完全新手指南</h1>
+    <p>從零開始：開啟檔案 → 執行程式 → 讀懂結果 → 寫出報告</p>
+    <p style="font-size:.9rem;opacity:.8">本文件含題目說明、逐步操作、每一段程式碼的作用與預期結果</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <h2>目錄</h2>
+  <ol>
+    <li><a href="#prep">開始前：環境準備</a></li>
+    <li><a href="#files">要開啟哪些檔案？</a></li>
+    <li><a href="#howto">RStudio 基本操作（超新手）</a></li>
+    <li><a href="#q1">題目一：市場區隔統計檢定</a></li>
+    <li><a href="#q2">題目二：關聯規則（bank）</a></li>
+    <li><a href="#q3">題目三：關聯規則（pima）</a></li>
+    <li><a href="#q4">題目四：MDS 產品定位</a></li>
+    <li><a href="#report">報告架構範例</a></li>
+    <li><a href="#trouble">常見錯誤排除</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============ 0. 環境準備 ============ -->
+<section id="prep">
+  <h2 class="sec">1. 開始前：環境準備</h2>
+  <p>你只需要兩件事：<b>已經安裝好的 RStudio</b>，以及<b>這份作業的資料夾</b>。以下是檢查清單。</p>
+
+  <h3>1-1 確認 RStudio 可以開啟</h3>
+  <ol>
+    <li>在 Windows 開始功能表搜尋 <code class="inline">RStudio</code>，點開。</li>
+    <li>看到左邊有一個叫 <b>Console</b> 的黑色文字區塊，且最後一行是 <code class="inline">&gt;</code> 符號，代表正常。</li>
+  </ol>
+
+  <h3>1-2 安裝套件（只有題目二、三需要）</h3>
+  <p>題目二、三使用 <code class="inline">arules</code> 套件。這台電腦<b>已經裝好了</b>，通常可以跳過。若 Console 出現
+     <code class="inline">there is no package called 'arules'</code>，才需要在 Console 貼上這行執行：</p>
+<pre><code>install.packages("arules", method = "wininet")</code></pre>
+  <div class="warn">
+    <b>公司網路提醒</b>
+    因為需走系統 Proxy，請務必加 <code class="inline">method = "wininet"</code>，否則會下載失敗。
+  </div>
+  <p>題目一、題目四<b>不需要任何額外套件</b>，用 R 內建函式即可。</p>
+</section>
+
+<!-- ============ 1. 檔案清單 ============ -->
+<section id="files">
+  <h2 class="sec">2. 要開啟哪些檔案？</h2>
+  <p>所有檔案都在這個資料夾底下：</p>
+  <p><code class="inline">D:\OneDrive\OneDrive - PEGATRON CORPORATION\交大\國際行銷\H2\作業\</code></p>
+
+  <div class="filetree">
+    <span class="ftpath"><span class="dir">作業/</span></span>
+    <span class="ftcmt">← 你的「工作目錄」，所有相對路徑都以此為起點</span>
+
+    <span class="ftpath">├── <span class="dir">R/</span></span>
+    <span class="ftcmt">← 要開啟的程式檔都在這</span>
+
+    <span class="ftpath">│   ├── <span class="hi">hw2_q1.R</span></span>
+    <span class="ftcmt">題目一：卡方 + F/T 檢定</span>
+
+    <span class="ftpath">│   ├── <span class="hi">hw2_q2.R</span></span>
+    <span class="ftcmt">題目二：關聯規則（bank）</span>
+
+    <span class="ftpath">│   ├── <span class="hi">hw2_q3.R</span></span>
+    <span class="ftcmt">題目三：關聯規則（pima）</span>
+
+    <span class="ftpath">│   └── <span class="hi">hw2_q4.R</span></span>
+    <span class="ftcmt">題目四：MDS 產品定位</span>
+
+    <span class="ftpath">├── <span class="dir">MKT_data/</span></span>
+    <span class="ftcmt">← 資料集（資料來源）</span>
+
+    <span class="ftpath">│   ├── <span class="hi">bank.csv</span></span>
+    <span class="ftcmt">題目一、二使用（注意：分隔符是分號 ;）</span>
+
+    <span class="ftpath">│   └── <span class="hi">Pima.csv</span></span>
+    <span class="ftcmt">題目三備用</span>
+
+    <span class="ftpath">├── <span class="dir">data/</span></span>
+    <span class="ftcmt"></span>
+
+    <span class="ftpath">│   └── <span class="hi">Pima.csv</span></span>
+    <span class="ftcmt">題目三使用</span>
+
+    <span class="ftpath">├── <span class="warnfile">phone_scores.csv</span></span>
+    <span class="ftcmt">⚠ 題目四需要，目前還沒有，需你們自己填</span>
+
+    <span class="ftpath">├── 2026-MKT-HW2.md</span>
+    <span class="ftcmt">題目原文與翻譯</span>
+
+    <span class="ftpath">└── <span class="hi">2026-MKT-HW2-操作手冊.html</span></span>
+    <span class="ftcmt">就是本文件</span>
+  </div>
+
+  <h3>一張表看懂：哪一題要開哪個檔</h3>
+  <table>
+    <thead>
+      <tr><th>題目</th><th>要開啟的 R 檔</th><th>它會自動讀取的資料</th><th>要裝套件嗎</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="qtag">Q1</span>市場區隔</td><td><code class="inline">R/hw2_q1.R</code></td><td><code class="inline">MKT_data/bank.csv</code></td><td>不用</td></tr>
+      <tr><td><span class="qtag">Q2</span>關聯規則</td><td><code class="inline">R/hw2_q2.R</code></td><td><code class="inline">MKT_data/bank.csv</code></td><td>arules</td></tr>
+      <tr><td><span class="qtag">Q3</span>醫療洞察</td><td><code class="inline">R/hw2_q3.R</code></td><td><code class="inline">data/Pima.csv</code></td><td>arules</td></tr>
+      <tr><td><span class="qtag">Q4</span>產品定位</td><td><code class="inline">R/hw2_q4.R</code></td><td><code class="inline">phone_scores.csv</code>（需自建）</td><td>不用</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ok">
+    <b>好消息</b>
+    每個 R 檔的第一段都寫好了 <code class="inline">setwd(...)</code>，會自動把工作目錄切到「作業」資料夾。
+    所以你<b>不需要手動設定工作目錄</b>，只要照順序執行就好。
+  </div>
+</section>
+
+<!-- ============ 2. RStudio 操作 ============ -->
+<section id="howto">
+  <h2 class="sec">3. RStudio 基本操作（超新手版）</h2>
+  <p>RStudio 畫面分四格，你只要認識其中兩格就夠了：</p>
+  <table>
+    <thead><tr><th>區塊</th><th>位置</th><th>用途</th></tr></thead>
+    <tbody>
+      <tr><td><b>Source（編輯器）</b></td><td>左上</td><td>開啟 <code class="inline">.R</code> 檔後，程式碼會出現在這裡，可以編輯</td></tr>
+      <tr><td><b>Console（主控台）</b></td><td>左下</td><td>執行結果、錯誤訊息都印在這裡。<b>看結果就看這格</b></td></tr>
+      <tr><td>Environment</td><td>右上</td><td>顯示目前有哪些資料（例如 <code class="inline">bank</code>）</td></tr>
+      <tr><td>Files / Plots</td><td>右下</td><td>圖表會出現在 Plots 分頁</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3-1 開啟 R 檔（三種方法，任選一種）</h3>
+  <ol>
+    <li><b>方法 A（推薦）</b>：在檔案總管找到 <code class="inline">作業\R\hw2_q1.R</code> → 右鍵 →「Open with」→ RStudio。</li>
+    <li><b>方法 B</b>：RStudio 選單 <code class="inline">File → Open File...</code> → 貼上路徑 → 選檔。</li>
+    <li><b>方法 C</b>：RStudio 右下 <b>Files</b> 分頁 → 導覽到 <code class="inline">H2/作業/R</code> → 點檔名。</li>
+  </ol>
+
+  <h3>3-2 執行程式碼的四種方式</h3>
+  <table>
+    <thead><tr><th>想做的事</th><th>操作</th></tr></thead>
+    <tbody>
+      <tr><td>執行<b>游標所在那一行</b></td><td>把游標放在該行 → 按 <span class="kbd">Ctrl</span> + <span class="kbd">Enter</span></td></tr>
+      <tr><td>執行<b>選取的一段</b></td><td>用滑鼠選取多行 → 按 <span class="kbd">Ctrl</span> + <span class="kbd">Enter</span></td></tr>
+      <tr><td>執行<b>整份檔案</b></td><td>按 <span class="kbd">Ctrl</span> + <span class="kbd">Shift</span> + <span class="kbd">Enter</span></td></tr>
+      <tr><td>直接打一行指令</td><td>在 Console 那個 <code class="inline">&gt;</code> 後面打字 → <span class="kbd">Enter</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>核心觀念</b>
+    RStudio 是「<b>由上往下、一段一段</b>」執行。每個 R 檔都已經用 <code class="inline"># --- 1. ... ---</code> 這種註解切成好幾段。
+    你的標準流程就是：<b>從第 1 段開始，選取一段 → Ctrl+Enter → 看 Console 有沒有錯 → 再跑下一段</b>。
+  </div>
+
+  <div class="warn">
+    <b>初學者最常犯的錯</b>
+    <ul style="margin:6px 0 0">
+      <li>沒有<b>按順序</b>跑。例如跳過第 1 段讀資料，直接跑第 2 段，就會出現 <code class="inline">object 'bank' not found</code>。</li>
+      <li>只看 Console 最下面一行。錯誤訊息通常有紅色字，要整段看。</li>
+      <li>改了程式碼卻沒重新執行。改了要<b>再按一次</b> Ctrl+Enter 才會生效。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ Q1 ============ -->
+<section id="q1">
+  <h2 class="sec"><span class="qtag">題目一</span>市場區隔 — 統計檢定</h2>
+
+  <h3>&#128196; 作業原文（English Original）</h3>
+  <div class="orig">
+    Based on bank dataset, remove the following columns: job, contact, pdays, poutcome, month, and day.
+    Then, conduct market segmentation using statistical tests with regard to the response "y"
+    (participating in promotion plan or not). For categorical features, apply Chi-square tests.
+    For numerical features, please apply F test first to justify equal variance or not
+    (between two groups, participating vs. non-participating) and then apply T tests to justify
+    equal mean or not. Suppose you are marketing manager, indicate that what features are suitable
+    to conduct market segmentation? Then, address managerial insights for the above-mentioned results.
+  </div>
+
+  <h3>&#128203; 題目說明</h3>
+  <p>以 <b>bank 資料集</b>為基礎，先移除以下 6 個欄位：<span class="pill">job</span><span class="pill">contact</span><span class="pill">pdays</span><span class="pill">poutcome</span><span class="pill">month</span><span class="pill">day</span>。</p>
+  <p>接著針對反應變數「<b>y</b>」（是否參與促銷方案）做市場區隔的統計檢定：</p>
+  <ul>
+    <li><b>類別型特徵</b> → 用<b>卡方檢定（Chi-square test）</b>，檢定該特徵與 y 是否獨立。</li>
+    <li><b>數值型特徵</b> → 先做 <b>F 檢定</b>判斷「參與 vs 未參與」兩組的<b>變異數</b>是否相等，再依結果選對應的 <b>T 檢定</b>判斷兩組<b>平均數</b>是否相等。</li>
+  </ul>
+  <p>最後以行銷經理的角度回答：<b>哪些特徵適合作為市場區隔的依據？並提出管理意涵。</b></p>
+
+  <h3>🖱️ 操作步驟</h3>
+  <div class="step"><span class="n">1</span>開啟 <code class="inline">R/hw2_q1.R</code>。</div>
+  <div class="step"><span class="n">2</span>選取 <b>第 0 段 ~ 第 1 段</b>（<code class="inline">setwd</code> + <code class="inline">read.csv</code> + <code class="inline">str</code> + <code class="inline">head</code>）→ <span class="kbd">Ctrl</span>+<span class="kbd">Enter</span>。</div>
+  <div class="step"><span class="n">3</span>依序往下，每段執行一次：第 2 段移除欄位 → 第 3 段欄位分類 → 第 4 段卡方 → 第 5 段 F/T 檢定。</div>
+  <div class="step"><span class="n">4</span>Console 最後會印出兩張表：<code class="inline">chi_table</code> 與 <code class="inline">num_table</code>，這就是報告要的結果。</div>
+
+  <h3>💻 程式碼在做什麼</h3>
+<pre><code># 讀檔（注意分隔符是「分號」不是逗號！）
+bank &lt;- read.csv("MKT_data/bank.csv", sep = ";")
+
+# 移除 6 個欄位
+drop_cols &lt;- c("job","contact","pdays","poutcome","month","day")
+bank2 &lt;- bank[, setdiff(names(bank), drop_cols)]
+
+# 類別型：卡方檢定（p &lt; 0.05 → 與 y 顯著相關）
+chisq.test(table(bank2$marital, bank2$y))
+
+# 數值型：先 F 檢定，再 T 檢定
+ft &lt;- var.test(bank2$age ~ bank2$y)                      # 步驟1：變異數是否相等
+tt &lt;- t.test(bank2$age ~ bank2$y, var.equal = ft$p.value &gt;= 0.05)  # 步驟2：平均數是否相等</code></pre>
+
+  <h3>🔍 怎麼看結果</h3>
+  <table>
+    <thead><tr><th>欄位</th><th>意義</th><th>判斷標準</th></tr></thead>
+    <tbody>
+      <tr><td><code class="inline">chi_table$p.value</code></td><td>卡方檢定的 p 值</td><td><b>p &lt; 0.05</b> → 該類別特徵與 y 顯著相關 → <b>適合區隔</b></td></tr>
+      <tr><td><code class="inline">num_table$F.p.value</code></td><td>變異數是否相等的 p 值</td><td>p &ge; 0.05 → 變異數相等（Used <code class="inline">var.equal = TRUE</code>）</td></tr>
+      <tr><td><code class="inline">num_table$t.p.value</code></td><td>平均數是否相等的 p 值</td><td><b>p &lt; 0.05</b> → 兩組平均顯著不同 → <b>適合區隔</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>報告要寫什麼</b>
+    ① 列出「卡方 p&lt;0.05」與「t 檢定 p&lt;0.05」的特徵清單 → 這些就是適合區隔的特徵。<br>
+    ② 管理意涵：針對顯著特徵刻畫目標客群輪廓（例：哪種婚姻狀態、教育程度、平均餘額較高的人更願意參加），把行銷資源優先投入這群人。
+  </div>
+</section>
+
+<!-- ============ Q2 ============ -->
+<section id="q2">
+  <h2 class="sec"><span class="qtag">題目二</span>關聯規則 — 中位數離散化（bank）</h2>
+
+  <h3>&#128196; 作業原文（English Original）</h3>
+  <div class="orig">
+    Based on bank dataset, remove the following columns: job, contact, pdays, poutcome, month, and day.
+    For the column "age", discretize the age into three levels (young &lt;= 35, adult 35~55, old &gt; 55).
+    For the remaining numeric features, using "median" to cut the attributes into two levels: low and high,
+    and treat "y" as the RHS. (a) Identify the significant rules with respect to the RHS ("y-yes" or "y-no").
+    (b) Count the frequency for each feature shown in the LHS and prioritize the features with respect to
+    the RHS ("y-yes" or "y-no"). (c) Specify managerial insights for the results.
+  </div>
+
+  <h3>&#128203; 題目說明</h3>
+  <p>同樣用 bank 資料集、同樣移除那 6 個欄位，然後：</p>
+  <ul>
+    <li><b>age（年齡）</b>離散化為三級：<span class="pill">young &le; 35</span><span class="pill">adult 35~55</span><span class="pill">old &gt; 55</span></li>
+    <li><b>其餘數值特徵</b>：用<b>中位數（median）</b>切成兩級 <span class="pill">low</span><span class="pill">high</span></li>
+    <li>把「<b>y</b>」當作規則右側（RHS）</li>
+  </ul>
+  <p>任務：<b>(a)</b> 找出對應 y-yes / y-no 的顯著規則 → <b>(b)</b> 統計各特徵出現在 LHS 的頻率並排出優先順序 → <b>(c)</b> 提出管理意涵。</p>
+
+  <h3>🖱️ 操作步驟</h3>
+  <div class="step"><span class="n">1</span>開啟 <code class="inline">R/hw2_q2.R</code>。</div>
+  <div class="step"><span class="n">2</span>先單獨執行 <code class="inline">library(arules)</code> 那一行，確認沒有紅字錯誤。</div>
+  <div class="step"><span class="n">3</span>依序執行第 1 段（讀取清理）→ 第 2 段（離散化）→ 第 3 段（轉 transactions）。</div>
+  <div class="step"><span class="n">4</span>執行「(a) 顯著規則」段，Console 會印出 <code class="inline">rules_yes</code> / <code class="inline">rules_no</code> 各自前 10 名規則。</div>
+  <div class="step"><span class="n">5</span>執行頻率統計段，得到 <code class="inline">freq_yes</code> / <code class="inline">freq_no</code>（特徵優先順序）。</div>
+
+  <h3>💻 程式碼在做什麼</h3>
+<pre><code># age 切三級
+bank$age &lt;- cut(bank$age, breaks = c(-Inf, 35, 55, Inf),
+                labels = c("young", "adult", "old"))
+
+# 其餘數值 → 中位數切 low/high
+med &lt;- median(bank$balance)
+bank$balance &lt;- ifelse(bank$balance &lt;= med, "low", "high")
+
+# 轉成關聯規則用的 transactions
+bank[] &lt;- lapply(bank, factor)     # 全部轉 factor
+trans &lt;- as(bank, "transactions")  # item 會自動命名成「欄位=水準」，如 y=yes
+
+# 限定 RHS = y=yes 來找規則
+rules_yes &lt;- apriori(trans, parameter = list(supp = 0.02, conf = 0.35),
+                     appearance = list(rhs = "y=yes", default = "lhs"))</code></pre>
+
+  <div class="warn">
+    <b>門檻值（supp / conf）為什麼怪怪的？</b>
+    因為「會參加促銷」的樣本只占約 11%，門檻設太高會<b>一條規則都找不到</b>。
+    腳本裡 y=yes 用 <code class="inline">supp=0.02, conf=0.35</code>、y=no 用 <code class="inline">supp=0.03, conf=0.6</code>，是實測後能跑出規則的值。
+    若你跑出來是「0 條規則」，就把 <code class="inline">supp</code> 再調低（例如 0.01）。
+  </div>
+
+  <h3>🔍 怎麼看結果</h3>
+  <ul>
+    <li><code class="inline">inspect(...)</code> 印出的表：<code class="inline">support</code>（出現比例）、<code class="inline">confidence</code>（可信度）、<code class="inline">lift</code>（提升度，&gt;1 才有意義）。</li>
+    <li><code class="inline">freq_yes</code> 由高到低就是「會參加的客群，關鍵特徵的優先順序」。</li>
+  </ul>
+
+  <div class="note">
+    <b>報告要寫什麼</b>
+    (a) 摘錄 2~3 條最強規則；(b) 給出 y=yes / y=no 各自的特徵優先順序表；
+    (c) 管理意涵：<b>freq_yes 高的特徵</b>＝會參加的客群，資源優先投入；<b>freq_no 高</b>＝不參加的輪廓，可用來排除或改溝通策略。
+  </div>
+</section>
+
+<!-- ============ Q3 ============ -->
+<section id="q3">
+  <h2 class="sec"><span class="qtag">題目三</span>關聯規則 — 醫療洞察（pima）</h2>
+
+  <h3>&#128196; 作業原文（English Original）</h3>
+  <div class="orig">
+    Based on pima dataset, remove samples with zeros in the following columns: Glucose, BloodPressure,
+    SkinThickness, Insulin, and BMI. Then, use Q1 and Q3 to cut the attributes into three levels:
+    low, medium, or high. Apply association rule mining to gain medical insights by observing the LHS
+    coupled with the specific "RHS=Yes" or "RHS=No". Use frequency count to indicate the top key
+    indicators with the specific setting, "RHS=Yes" or "RHS=No", respectively (i.e. what features and
+    corresponding levels are most commonly shown in the LHS for conditions, such as "RHS=Yes" or "RHS=No").
+  </div>
+
+  <h3>&#128203; 題目說明</h3>
+  <p>以 <b>pima（糖尿病）</b>資料集為基礎，先移除以下欄位中數值為 0 的樣本（視為缺失值）：
+     <span class="pill">Glucose</span><span class="pill">BloodPressure</span><span class="pill">SkinThickness</span><span class="pill">Insulin</span><span class="pill">BMI</span>。</p>
+  <p>接著用 <b>Q1 與 Q3</b>（第一、第三四分位數）把各屬性切成三級：<span class="pill">low</span><span class="pill">medium</span><span class="pill">high</span>。</p>
+  <p>套用關聯規則探勘，分別在 <b>RHS=Yes</b> 與 <b>RHS=No</b> 兩種設定下，用<b>頻率統計</b>找出最關鍵的指標
+     （哪些特徵＋等級最常出現在 LHS）。</p>
+
+  <h3>🖱️ 操作步驟</h3>
+  <div class="step"><span class="n">1</span>開啟 <code class="inline">R/hw2_q3.R</code>。</div>
+  <div class="step"><span class="n">2</span>執行 <code class="inline">library(arules)</code>，再執行第 1 段讀取 <code class="inline">data/Pima.csv</code>。</div>
+  <div class="step"><span class="n">3</span>依序跑：第 2 段（移除 0 值樣本）→ 第 3 段（Q1/Q3 切三級）→ 第 4 段（轉 transactions + 產規則）。</div>
+  <div class="step"><span class="n">4</span>最後跑頻率統計段，會得到 <code class="inline">freq_yes</code> / <code class="inline">freq_no</code>，以及「特徵+等級」的組合頻率 <code class="inline">item_freq_yes</code> / <code class="inline">item_freq_no</code>。</div>
+
+  <h3>💻 程式碼在做什麼</h3>
+<pre><code># 移除指定欄位中有 0 的樣本
+zero_cols &lt;- c("Glucose","BloodPressure","SkinThickness","Insulin","BMI")
+keep    &lt;- apply(pima[, zero_cols], 1, function(r) all(r != 0))
+pima2   &lt;- pima[keep, ]
+
+# Q1 / Q3 切三級
+q &lt;- quantile(pima2$Glucose, c(0.25, 0.75))
+pima2$Glucose &lt;- cut(pima2$Glucose, breaks = c(-Inf, q[1], q[2], Inf),
+                     labels = c("low","medium","high"))
+
+# Outcome 轉成 Yes / No 當 RHS
+pima2$Outcome &lt;- factor(ifelse(pima2$Outcome == 1, "Yes", "No"))</code></pre>
+
+  <h3>🔍 怎麼看結果</h3>
+  <ul>
+    <li><code class="inline">inspect(head(sort(rules_yes, by="lift"), 10))</code>：RHS=Yes 最強的 10 條規則（lift 越高越強）。</li>
+    <li><code class="inline">freq_yes</code>：只看「特徵名」的出現次數排序。</li>
+    <li><code class="inline">item_freq_yes</code>：看「<b>特徵＋等級</b>」的組合，例如 <code class="inline">Glucose=high</code> 出現幾次 —— 這是題目要的「關鍵指標」。</li>
+  </ul>
+
+  <div class="note">
+    <b>報告要寫什麼</b>
+    分別針對 RHS=Yes（罹病）與 RHS=No（未罹病），列出最常出現的特徵與等級，
+    並以醫療角度解讀（例：血糖 high、BMI high 最常伴隨罹病 → 篩檢與衛教重點）。
+  </div>
+</section>
+
+<!-- ============ Q4 ============ -->
+<section id="q4">
+  <h2 class="sec"><span class="qtag">題目四</span>多維度尺度分析 MDS — 產品定位</h2>
+
+  <h3>&#128196; 作業原文（English Original）</h3>
+  <div class="orig">
+    Regarding smartphone product series (iPhone Pro, iPhone Pro Max, Samsung S series, Samsung A series,
+    Xiaomi, Redmi, Oppo X series, Oppo A series), apply multi-dimensional scaling (MDS) to conduct
+    product positioning. Considering the following attributes (A1 - brand awareness, A2 - affordable price,
+    A3 - photo quality, A4 - touch screen, A5 - battery health, A6 - ecosystem, A7 - water proof,
+    A8 - interface, A9 - system performance, A10 - video recording), all the team members need to assess
+    the seven product series based on the above-mentioned attributes using a five-point Likert scale.
+    Then, calculating the average assessment and input for MDS. Draw a 2D plot to show product positioning
+    and address managerial insights in a short report. (You may not use all the product series. In this case,
+    please read product review reports to find experts' comments.)
+  </div>
+
+  <h3>&#128203; 題目說明</h3>
+  <p>針對智慧型手機產品系列：<span class="pill">iPhone Pro</span><span class="pill">iPhone Pro Max</span><span class="pill">Samsung S</span><span class="pill">Samsung A</span><span class="pill">Xiaomi</span><span class="pill">Redmi</span><span class="pill">Oppo X</span><span class="pill">Oppo A</span>，
+     套用 <b>MDS</b> 做產品定位。</p>
+  <p>評估屬性共 10 項：</p>
+  <table>
+    <thead><tr><th>代號</th><th>屬性</th><th>中文</th><th>代號</th><th>屬性</th><th>中文</th></tr></thead>
+    <tbody>
+      <tr><td>A1</td><td>Brand awareness</td><td>品牌知名度</td><td>A6</td><td>Ecosystem</td><td>生態系統</td></tr>
+      <tr><td>A2</td><td>Affordable price</td><td>價格親民度</td><td>A7</td><td>Water proof</td><td>防水</td></tr>
+      <tr><td>A3</td><td>Photo quality</td><td>拍照品質</td><td>A8</td><td>Interface</td><td>介面</td></tr>
+      <tr><td>A4</td><td>Touch screen</td><td>觸控螢幕</td><td>A9</td><td>System performance</td><td>系統效能</td></tr>
+      <tr><td>A5</td><td>Battery health</td><td>電池健康度</td><td>A10</td><td>Video recording</td><td>錄影</td></tr>
+    </tbody>
+  </table>
+  <p>全體組員用<b>五點李克特量表（1~5 分）</b>評估，計算平均後輸入 MDS，畫出 2D 定位圖並寫短報告。</p>
+  <div class="warn">
+    <b>原文小瑕疵</b>
+    題目寫「seven（七個）product series」但實際列了 8 個。建議擇 7 個或全部 8 個並在報告註明，或先跟老師／助教確認。
+  </div>
+
+  <h3>⚠️ 前置作業：先建立評分檔</h3>
+  <p>這題目前<b>缺資料</b>，要先請組員評分，再建立 <code class="inline">phone_scores.csv</code> 放在「作業」資料夾（跟 <code class="inline">R/</code> 同一層）。</p>
+
+  <h4>步驟 A：組員各自評分</h4>
+  <p>每位組員針對 8 個產品 × 10 個屬性打分（1~5），例如用表格或 Google Sheet 收集。</p>
+
+  <h4>步驟 B：建立 phone_scores.csv</h4>
+  <p>用 Excel 貼成下面格式（<b>第一列是欄位名，一列 = 一位組員評一個產品</b>），存成 CSV（逗號分隔）：</p>
+<pre><code>member,product,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10
+Roy,iPhone Pro,4,3,5,4,4,5,4,4,5,4
+Roy,iPhone Pro Max,4,2,5,4,4,5,4,4,5,4
+Amy,iPhone Pro,5,3,5,5,4,5,4,4,5,5
+Amy,iPhone Pro Max,5,2,5,5,4,5,4,4,5,5
+...（每位組員 × 每個產品，共「人數 × 8」列，分數填 1~5）</code></pre>
+  <div class="note">
+    <b>Excel 存檔小技巧</b>
+    「檔案 → 另存新檔 → 存成 <code class="inline">CSV (逗號分隔) (*.csv)</code>」，
+    然後檔名取 <code class="inline">phone_scores.csv</code>，存到「作業」資料夾。<b>不要</b>存成 <code class="inline">.xlsx</code>。
+  </div>
+
+  <h4>步驟 C：執行 <code class="inline">R/hw2_q4.R</code></h4>
+  <ol>
+    <li>全部跑完後，右下 <b>Plots</b> 分頁會出現 2D 定位圖。</li>
+    <li>要存圖：Plots 分頁 → <b>Export</b> → Save as Image / PDF。</li>
+  </ol>
+
+  <h3>💻 程式碼在做什麼（三個關鍵動作）</h3>
+<pre><code># 1. 各產品、各屬性的平均分數
+agg &lt;- aggregate(cbind(A1,...,A10) ~ product, data = scores_raw, FUN = mean)
+
+# 2. 產品之間的距離 + 古典 MDS 降到 2 維
+d   &lt;- dist(avg)
+mds &lt;- cmdscale(d, k = 2, eig = TRUE)   # stats 內建，免安裝
+
+# 3. 畫 2D 定位圖
+plot(mds$points[,1], mds$points[,2], type = "n", ...)
+text(mds$points[,1], mds$points[,2], labels = rownames(avg))</code></pre>
+
+  <h3>🔍 怎麼看結果 / 報告要寫什麼</h3>
+  <ul>
+    <li><b>解讀軸的意義</b>：看 Dim1 兩端各是哪種產品，對照平均屬性分數推斷（例：Dim1 = 高階旗艦 ↔ 平價；Dim2 = 生態系完整度）。</li>
+    <li><b>找市場空白區</b>：圖上沒有產品佔據的象限 = 產品機會點。</li>
+    <li>若未用全部產品系列，需<b>引用產品評測報告</b>的專家評論來佐證定位。</li>
+    <li><code class="inline">mds$eig[1:2]</code> 可看兩個維度的解釋量，數字越大代表降維後保留的資訊越多。</li>
+  </ul>
+</section>
+
+<!-- ============ 報告架構 ============ -->
+<section id="report">
+  <h2 class="sec">8. 報告架構範例</h2>
+  <p>四題合起來可以寫成一份短報告，建議結構：</p>
+  <ol>
+    <li><b>題目一</b>：卡方檢定結果表 + F/T 檢定結果表 → 適合區隔的特徵清單 → 管理意涵（1 段）。</li>
+    <li><b>題目二</b>：y=yes / y=no 各 2~3 條顯著規則 + 特徵優先順序表 → 管理意涵。</li>
+    <li><b>題目三</b>：RHS=Yes / RHS=No 的關鍵指標（特徵+等級）→ 醫療洞察。</li>
+    <li><b>題目四</b>：MDS 2D 定位圖 + 軸向解讀 + 市場空白區 + 產品機會點。</li>
+    <li><b>附錄</b>：R 程式碼（可直接附 <code class="inline">R/</code> 四個檔案）與原始輸出。</li>
+  </ol>
+  <div class="ok">
+    <b>寫報告的偷吃步</b>
+    R 的輸出（<code class="inline">chi_table</code>、<code class="inline">num_table</code>、<code class="inline">inspect(...)</code>）可以整段複製貼上報告，
+    不用自己重新打字，也避免抄錯數字。
+  </div>
+</section>
+
+<!-- ============ 疑難排解 ============ -->
+<section id="trouble">
+  <h2 class="sec">9. 常見錯誤排除</h2>
+
+  <details>
+    <summary><code class="inline">cannot open file 'MKT_data/bank.csv'</code></summary>
+    <p>工作目錄不對。確認你有跑每個檔最前面的 <code class="inline">setwd("...H2/作業")</code>。
+       可在 Console 打 <code class="inline">getwd()</code> 檢查目前位置，應該顯示到 <code class="inline">...H2/作業</code>。
+       若顯示到 <code class="inline">...H2</code>（少了「作業」），就是 setwd 沒跑到。</p>
+  </details>
+
+  <details>
+    <summary><code class="inline">there is no package called 'arules'</code></summary>
+    <p>在 Console 執行：<code class="inline">install.packages("arules", method = "wininet")</code>，裝好後再 <code class="inline">library(arules)</code>。</p>
+  </details>
+
+  <details>
+    <summary><code class="inline">object 'bank' not found</code></summary>
+    <p>你跳段執行了。請<b>從第 1 段重新依序跑</b>到出錯的那段為止（資料要先讀進來，後面的段落才能用）。</p>
+  </details>
+
+  <details>
+    <summary>題目二規則跑出 0 條</summary>
+    <p>門檻太嚴。把 <code class="inline">supp</code> 調低（例如 y=yes 從 0.02 → 0.01）、或 <code class="inline">conf</code> 調低（0.35 → 0.3），再重跑 apriori。</p>
+  </details>
+
+  <details>
+    <summary><code class="inline">cannot open file 'phone_scores.csv'</code></summary>
+    <p>題目四的評分檔還沒建立。請照「題目四 → 前置作業」建立 CSV，並確認檔案放在「作業」資料夾、檔名與大小寫完全一致。</p>
+  </details>
+
+  <details>
+    <summary>bank.csv 讀進來只有 1 欄 / 欄位黏在一起</summary>
+    <p>bank.csv 的分隔符是<b>分號 <code class="inline">;</code></b> 不是逗號。讀檔一定要加 <code class="inline">sep = ";"</code>，腳本裡已經加好了。</p>
+  </details>
+
+  <details>
+    <summary>圖（MDS plot）沒出現</summary>
+    <p>看 RStudio 右下角切到 <b>Plots</b> 分頁；若畫面太小可點 <b>Zoom</b> 放大。</p>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  國際行銷 HW2（2026-MKT-HW2）· RStudio 新手指南 · 產生於 2026-10-10
+</footer>
+
+</body>
+</html>

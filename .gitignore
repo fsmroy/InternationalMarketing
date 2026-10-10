@@ -1,0 +1,9 @@
+# 大型檔案：超過 GitHub 建議/限制，不納入版控
+
+# 資料集 (CSV)
+**/creditcard.csv
+
+# 壓縮檔
+檔案資料/data.zip
+檔案資料/MKT_data.zip
+檔案資料/Rcode-20261006.zip

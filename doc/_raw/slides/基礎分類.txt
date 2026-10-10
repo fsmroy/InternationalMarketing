@@ -1,0 +1,1461 @@
+
+===== p1 =====
+基礎分類器
+Basic Classifier
+By
+Prof. Chih-Hsuan Wang ( 王志軒)
+陽明交通大學工業工程與管理學系 電子化企業實驗室
+
+===== p2 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+甚麼是分類模型
+給定一組資料, 分類器就是針對
+X(predictors) 、Y(class- dependent variable) 變數建立預
+測模型
+– 通常使用訓練集建立模型、測試集驗證模型
+– 包容性高的分類器能同時接受數值型與區間型的X
+– 功能完善的分類器還能告訴你不同X 變數的重要性
+實務應用：
+– 機台診斷與預測性維修
+– 顧客保留與流失預測
+– 疾病分類與良性惡性預測
+– 電商平台的推薦系統設計
+– 製程異常與瑕疵圖像分類
+
+===== p3 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Illustrating Classification
+
+===== p4 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Classification as prediction
+Tid
+Refund
+Marital
+Status
+Taxable
+Income
+Cheat
+1
+Yes
+Single
+125K
+No
+2
+No
+Married
+100K
+No
+3
+No
+Single
+70K
+No
+4
+Yes
+Married
+120K
+No
+5
+No
+Divorced
+95K
+Yes
+6
+No
+Married
+60K
+No
+7
+Yes
+Divorced
+220K
+No
+8
+No
+Single
+85K
+Yes
+9
+No
+Married
+75K
+No
+10
+No
+Single
+90K
+Yes
+10
+categorical
+categorical
+continuous
+class
+Refund
+Marital
+Status
+Taxable
+Income
+Cheat
+No
+Single
+75K
+?
+Yes
+Married
+50K
+?
+No
+Married
+150K
+?
+Yes
+Divorced
+90K
+?
+No
+Single
+40K
+?
+No
+Married
+80K
+?
+10
+Testing
+Set
+Training 
+Set
+Model
+Learn 
+Classifier
+
+===== p5 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+分類器最怕過度學習
+Overfitting
+訓練集與測試集的績效都
+很差，表示模型過於簡單
+訓練集與測試
+集的績效差距
+過大，表示模
+型過於複雜，
+致使泛化能力
+極差
+Underfitting
+
+===== p6 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Common Methods of Estimation
+Holdout
+– Reserve 2/3 for training and 1/3 for testing 
+Cross validation ( 交叉驗證)
+– Partition data into k disjoint subsets
+– k-fold: train on k-1 partitions, test on the remaining one
+– 若有1000 筆資料(k=10 等分) ，選擇900 筆建模，100 筆
+驗證；因100 筆可以輪替10 回，最後將10 次績效取平均
+當作最終結果
+Stratified sampling ( 分層抽樣)
+– oversampling vs. undersampling
+Bootstrap ( 抽出又放回抽樣)
+– Sampling with replacement
+
+===== p7 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+績效評估
+Focus on the predictive capability of a model
+– Rather than how fast it takes to classify or build 
+models, scalability, etc.
+Confusion Matrix ( 混淆矩陣):
+PREDICTED CLASS
+ACTUAL
+CLASS
+Class=Yes
+Class=No
+Class=Yes
+a ( 正陽)
+b ( 偽陰)
+Class=No
+c ( 偽陽)
+d ( 正陰)
+a: TP (true positive)
+b: FN (false negative)
+c: FP (false positive)
+d: TN (true negative)
+
+===== p8 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Metrics for Performance Evaluation
+Recall ( 有問題的樣本確實被揪出來的比例): a/(a+b), 
+Precision ( 判定有問題的樣本中真正瑕疵的比例): a/
+(a+c)
+F measure: 2*Recall*Precision/(Recall + Precision)
+PREDICTED CLASS
+ACTUAL
+CLASS
+Class=Yes
+Class=No
+Class=Yes
+a
+(TP)
+b
+(FN)
+Class=No
+c
+(FP)
+d
+(TN)
+FN
+FP
+TN
+TP
+TN
+TP
+d
+c
+b
+a
+d
+a
+
+
+
+
+
+
+
+
+
+
+Accuracy
+
+===== p9 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Limitation of Accuracy ( 正確率不是唯一)
+Consider a 2-class problem
+– Number of Class 0 examples = 9990
+– Number of Class 1 examples = 10
+If model predicts everything to be class 0, accuracy is 
+9990/10000 = 99.9 %
+– Accuracy is misleading because model does not 
+detect any class 1 example
+全部猜class 0 ，正確率超過99% ，是不是很荒
+謬？
+
+===== p10 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+加入成本矩陣
+      PREDICTED CLASS
+ACTUAL
+CLASS
+C(i|j)
+Class=Yes
+Class=No
+Class=Yes
+C(Yes|Yes)
+C(No|Yes)
+Class=No
+C(Yes|No)
+C(No|No)
+C(i|j): Cost of misclassifying class j example as class i
+
+===== p11 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Cost vs. Accuracy
+Cost 
+Matrix
+PREDICTED CLASS
+ACTUAL
+CLASS
+C(i|j)
++
+-
++
+-1
+100
+-
+1
+0
+Model M1
+PREDICTED CLASS
+ACTUAL
+CLASS
++
+-
++
+150
+40
+-
+60
+250
+Model M2
+PREDICTED CLASS
+ACTUAL
+CLASS
++
+-
++
+250
+45
+-
+5
+200
+Accuracy = 80%
+Cost = 3910
+Accuracy = 90%
+Cost = 4255
+
+===== p12 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+最近鄰居法 (K Nearest Neighbor)
+Examples:
+– Rote-learner ( 以最近K 個鄰居的類別來預測)
+ Memorizes entire training data and performs 
+classification only if attributes of record match one of the 
+training examples exactly
+– K-Nearest neighbor ( 近朱者赤、近墨者黑)
+ Uses k “closest” points (nearest neighbors) for 
+performing classification
+
+===== p13 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Nearest Neighbor Classifiers
+Basic idea:
+– If it walks like a duck, quacks like a duck, then it’s 
+probably a duck
+Training 
+Records
+Test 
+Record
+Compute 
+Distance
+Choose k of the 
+“nearest” records
+
+===== p14 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Definition of Nearest Neighbor
+X
+X
+X
+(a) 1-nearest neighbor
+(b) 2-nearest neighbor
+(c) 3-nearest neighbor
+    K-nearest neighbors of a record x are data points 
+that have the k smallest distance to x
+
+===== p15 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Nearest-Neighbor Classifiers
+
+Requires three things
+– The set of stored records
+– Distance Metric to compute 
+distance between records
+– The value of k, the number of 
+nearest neighbors to retrieve
+
+To classify an unknown record:
+– Compute distance to other 
+training records
+– Identify k nearest neighbors 
+– Use class labels of nearest 
+neighbors to determine the 
+class label of unknown record 
+(e.g., by taking majority vote)
+
+===== p16 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+KNN (K=1 的邊界就是垂直平分線)
+Voronoi Diagram
+
+===== p17 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Nearest Neighbor Classification
+Compute distance between two points:
+– Euclidean distance ( 兩樣本點間的歐式距離) 
+Determine the class from nearest neighbor list
+– Take majority vote of class labels among the k-
+nearest neighbors ( 樣本的Y ，如性別、花種、故障
+型態等，由附近多數鄰居的Y 是甚麼類別來決定)
+– Weigh the vote according to distance
+ weight factor, w = 1/d2
+
+
+
+i
+i
+i
+q
+p
+q
+p
+d
+2)
+(
+)
+,
+(
+
+===== p18 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Nearest Neighbor Classification…
+Choosing the value of k:
+– If k is too small, sensitive to noise points ( 對雜訊太敏感)
+– If k is too large, neighborhood may include points from 
+other classes (K 很大那還能稱為鄰居嗎)
+
+===== p19 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+KNN for Iris dataset
+Setosa
+Versicolor
+Virginica
+Setosa
+20
+Versicolor
+19
+1
+Virginica
+20
+Accuracy= (20+19+20)/60=98.3%, so what?
+
+===== p20 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+最近鄰居法總結 
+KNN classifiers are called lazy learners ( 懶惰學習
+器)
+– It does NOT build models explicitly
+– 原理簡單，但效果不差
+– KNN 需計算歐式距離，所以X 變數需為數值型
+– 不同單位的X 變數，先進行正規化( (X-Xmin)/ 
+(Xmax-Xmin) ) ，避免單位對分類造成困擾
+– KNN 無法指出哪個X 變數對分類較重要
+– KNN 不是只有分類，還能進行迴歸，原理是取
+最近K 個鄰居的Y 值平均後當作預測值
+
+===== p21 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Naïve Bayes Classifier (NBC: 天真貝氏法)
+源自於大名鼎鼎的貝氏定理
+Conditional Probability: 
+   A 表血便、C 表大腸癌
+ Bayes theorem ：看到一個血便的人，其患有大腸癌的
+機率(C given A) 可從得到大腸癌會產生血便的可能性
+(A given C) 乘上大腸癌的機率(P(C)) 來估計
+   
+)
+(
+)
+(
+)
+|
+(
+)
+|
+(
+A
+P
+C
+P
+C
+A
+P
+A
+C
+P
+
+)
+(
+)
+,
+(
+)
+|
+(
+)
+(
+)
+,
+(
+)
+|
+(
+C
+P
+C
+A
+P
+C
+A
+P
+A
+P
+C
+A
+P
+A
+C
+P
+
+
+
+===== p22 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+貝氏定理 (Bayes Theorem)
+Given: 
+– A doctor knows that meningitis causes stiff neck 50% of the time
+– Prior probability of any patient having meningitis is 1/50,000
+– Prior probability of any patient having stiff neck is 1/20
+ If a patient has stiff neck- 頸部痠痛 (S), what’s the 
+probability he/she has meningitis- 腦膜炎 (M): from 
+0.00002 to 0.0002 ，機率整整提升了10 倍?
+0002
+.0
+20
+/
+1
+50000
+/
+1
+5.0
+)
+(
+)
+(
+)
+|
+(
+)
+|
+(
+
+
+
+
+S
+P
+M
+P
+M
+S
+P
+S
+M
+P
+
+===== p23 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+貝氏分類器 (Bayesian Classifiers)
+Given a record with attributes (A1, A2,…,An) 
+– Goal is to predict class C ( 如由身高、體重、腰圍
+來預測性別)
+Can we estimate P(C| A1, A2,…,An ) directly from data?
+– Choose value of C ( 男性或女性) that maximizes 
+ P(C | A1, A2, …, An)
+– Equivalent to choosing value of C that maximizes
+P(A1, A2, …, An|C) P(C)- 到底是男生還是女生容易出現
+如此的身高、體重、腰圍的組合?
+)
+(
+)
+(
+)
+|
+(
+)
+|
+(
+2
+1
+2
+1
+2
+1
+n
+n
+n
+A
+A
+A
+P
+C
+P
+C
+A
+A
+A
+P
+A
+A
+A
+C
+P
+
+
+
+
+
+===== p24 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Naïve Bayes 假設所有的屬性彼此獨立
+Assume independence among attributes Ai when class is given:  
+  
+– P(A1, A2, …, An |C) = P(A1| Cj) P(A2| Cj)… P(An| Cj)
+ 
+– Can estimate P(Ai| Cj) for all Ai and Cj.
+– New point is classified to Cj if  P(Cj)  P(Ai| Cj)  is 
+maximal ( P(Ai| Cj) =P(A1| Cj) P(A2| Cj)… P(An| Cj)).
+
+===== p25 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+當屬性是離散型
+Class:  P(C) = Nc/N
+– e.g.,  P(No) = 7/10, 
+       P(Yes) = 3/10
+For discrete attributes:
+  
+     P(Ai | Ck) = |Aik|/ Nck   
+    where |Aik| is number of 
+instances having attribute Ai 
+and belongs to class Ck
+– Examples:
+P(Status=Married|No) = 4/7
+P(Refund=Yes|Yes)=0/3
+
+===== p26 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+當屬性是數值型
+Normal distribution:
+– One for each (Ai,ci) pair
+For (Income, Class=No):
+– If Class=No
+ sample mean = 110
+ sample variance = 2975
+2
+2
+2
+)
+(
+2
+2
+1
+)
+|
+(
+ij
+ij
+iA
+ij
+j
+i
+e
+c
+A
+P
+
+
+
+
+
+
+0072
+.0
+)
+54
+.
+54
+(
+2
+1
+)
+|
+120
+(
+)
+2975
+(
+2
+)
+110
+120
+(
+2
+
+
+
+
+e
+No
+Income
+P
+
+
+===== p27 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+120K)
+Income
+Married,
+No,
+Refund
+(
+
+
+
+X
+P(X|Class=No) = P(Refund=No| Class=No)
+  P(Married| Class=No)
+  P(Income=120K| Class=No)
+              = 4/7  4/7  0.0072 = 0.0024
+P(X|Class=Yes) = P(Refund=No| Class=Yes)
+   
+                   P(Married| Class=Yes)
+   
+                   P(Income=120K| lass=Yes)
+               = 1  0  1.2  10-9 = 0
+Since P(X|No)P(No) > P(X|Yes)P(Yes)
+Therefore P(No|X) > P(Yes|X)
+      => Class = No ( 判定Y 為不會逃稅)
+給定一筆資料進行預
+測
+
+===== p28 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Naïve Bayes 物種分類
+Name
+Give Birth
+Can Fly
+Live in Water
+Have Legs
+Class
+human
+yes
+no
+no
+yes
+mammals
+python
+no
+no
+no
+no
+non-mammals
+salmon
+no
+no
+yes
+no
+non-mammals
+whale
+yes
+no
+yes
+no
+mammals
+frog
+no
+no
+sometimes yes
+non-mammals
+komodo
+no
+no
+no
+yes
+non-mammals
+bat
+yes
+yes
+no
+yes
+mammals
+pigeon
+no
+yes
+no
+yes
+non-mammals
+cat
+yes
+no
+no
+yes
+mammals
+leopard shark
+yes
+no
+yes
+no
+non-mammals
+turtle
+no
+no
+sometimes yes
+non-mammals
+penguin
+no
+no
+sometimes yes
+non-mammals
+porcupine
+yes
+no
+no
+yes
+mammals
+eel
+no
+no
+yes
+no
+non-mammals
+salamander
+no
+no
+sometimes yes
+non-mammals
+gila monster
+no
+no
+no
+yes
+non-mammals
+platypus
+no
+no
+no
+yes
+mammals
+owl
+no
+yes
+no
+yes
+non-mammals
+dolphin
+yes
+no
+yes
+no
+mammals
+eagle
+no
+yes
+no
+yes
+non-mammals
+Give Birth
+Can Fly
+Live in Water
+Have Legs
+Class
+yes
+no
+yes
+no
+?
+0027
+.0
+20
+13
+004
+.0
+)
+(
+)
+|
+(
+021
+.0
+20
+7
+06
+.0
+)
+(
+)
+|
+(
+0042
+.0
+13
+4
+13
+3
+13
+10
+13
+1
+)
+|
+(
+06
+.0
+7
+2
+7
+2
+7
+6
+7
+6
+)
+|
+(
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+N
+P
+N
+A
+P
+M
+P
+M
+A
+P
+N
+A
+P
+M
+A
+P
+A: attributes
+M: mammals
+N: non-mammals
+P(A|M)P(M) > P(A|N)P(N)
+=> Mammals ( 哺乳類)
+
+===== p29 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Naïve Bayes Classifier ( 總結)
+對雜訊與不相干的屬性不敏感( 較不易受干擾)
+能夠同時接受數值型或間斷型的X 變數
+只能進行分類(Y 類別) ，無法進行迴歸(Y 數值)
+依舊無法告訴使用者哪個X 變數重要
+假設所有X 變數彼此獨立，若要放寬限制，需改
+用 Bayesian Belief Networks ( 貝氏信賴網路)
+
+===== p30 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+NBC for Iris ( 機率輸出是其特色)
+Setosa
+Versicolor
+Virginica
+Setosa
+20
+Versicolor
+20
+0
+Virginica
+2
+18
+Setosa
+Versicolor
+Virginica
+Sample 1
+1
+1.18x10^-16
+1.18x10^-22
+Sample 51
+10^-50
+0.999
+1.61x10-5
+Sample 101
+3.74x10^-135
+0.102
+0.877
+透露Versicolor 與Virginica 容易混淆
+Accuracy= 
+(20+20+18)/60=96.7%
+
+===== p31 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+NBC for Titanic ( 類別/ 數值X 變數)
+Discrete
+Female
+Male
+Class 1
+Class 2
+Class3
+No
+0.179
+0.821
+0.139
+0.199
+0.621
+Yes
+0.65
+0.35
+0.416
+0.23
+0.354
+Numerical
+Age
+Fare
+No
+29.63
+13.5
+22.99
+34.18
+Yes
+28.89
+14.22
+50.45
+69.71
+以X: Gender, Class, Age, Fare 來預測Y: survival (No/Yes)
+
+===== p32 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+羅吉斯迴歸 (Logistic Regression)
+Logistic 迴歸是以迴歸模式來建立一個依變數Y 與
+一個或多個預測變數X 之間的分類關係，Logistic
+迴歸所探討結果的依變數是離散型，特別是其分類
+只有二元 ( 如“正常與異常”、“良性與惡性”、
+“存活與死亡” ) 或少數幾類時( 多元羅吉斯) 。 
+Logistic 迴歸的目的是在於建立一個最精簡和最能配
+適(fit) 的分析結果，Logistic 迴歸不需要假設分配
+類型，在Logistic 分配中，自變數(X) 對於依變數
+(Y) 之影響方式是以指數的方式來變動，即y=ef(x)。
+
+===== p33 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Logistic
+Logistic 迴歸曲線
+迴歸曲線
+a
+b
+0.5
+0.5
+成功
+成功
+(1)
+(1)
+失敗
+失敗
+(0)
+(0)
+c
+成
+功
+與
+否
+（
+Ｙ
+）
+成
+功
+與
+否
+（
+Ｙ
+）
+溫度（壓力）（Ｘ）
+溫度（壓力）（Ｘ）
+實際觀察值
+實際觀察值
+….…..…..…….………  …  .   .  .  .   .      .    .     .
+.…..…..…….………  …  .   .  .  .   .      .    .     .
+.      .   .       .   .       .  .     …    .  .  …. …………….……
+.      .   .       .   .       .  .     …    .  .  …. …………….……
+Logistic 概念的圖示
+
+===== p34 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Logistic 迴歸模式
+令p 表示某種事件成功的機率，它受因素X 的影響，即p 與
+x 之關係如下：
+P/(1-P): odds ratio ( 成功機率除以失敗機率謂之勝算比)
+•
+在Logistic 迴歸分析中，依變數必須為類別變數，而自變數
+可以是類別變數( 需使用dummy variable 技巧) ，也可以是
+數值變數；如地區變數以(1,0,0) 表示北區、(0,1,0) 表示中
+區、(0,0,1) 表示南區、 (0,0,0) 表示東區。
+
+===== p35 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Logistic 迴歸分析的評估( 單變數)
+下表是收集125 位年齡從21 歲到69 歲成年人的資料，研究年齡Ｘ與是否患
+心臟病(Y=0 表未患心臟病，Y=1 表患心臟病) 的關係；並依下表繪出Ｙ
+對Ｘ的散佈情形，如下圖 所示。
+X      Y
+X      Y
+X      Y
+X      Y
+X      Y
+X      Y
+X      Y
+X      Y
+X      Y
+ X      Y
+21     0
+21     0
+22     0
+22     0
+22     0
+23     0
+24     0
+24     1
+25     0
+25     0
+26     0
+26     0
+26    0
+27    0
+27    1
+28    0
+28    0
+29    1
+30    0
+30    0
+30    0
+31    0
+31    0
+31    1
+32    0
+33    0
+33    0
+33    0
+34    0
+34    1
+34    1
+34    0
+35    0
+35    0
+35    0
+36    0
+36    1
+36    0
+36    0
+37    1
+37    0
+38    1
+39    0
+39    1
+39    0
+40    0
+40    1
+40    0
+41    1
+42    0
+42    0
+42    1
+43    0
+43    1
+43    0
+43    1
+44    0
+44    0
+44    1
+45    0
+45    0
+45    0
+46    0
+47    0
+47    1
+47    0
+47    0
+48    1
+48    1
+48    0
+48    1
+49    1
+54    0
+54    1
+54    0
+55    1
+56    0
+56    0
+56    1
+57    0
+57    1
+57    1
+57    0
+57    1
+57    1
+58    0
+58    0
+58    1
+58    1
+59    1
+59    0
+60    0
+60    0
+60    1
+60    1
+61    1
+61     1
+62     0
+62     0
+62     1
+63     1 
+64     1
+64     1
+65     1
+65     1
+65     0
+66     1
+66     1
+67     1 
+67     1
+68     1
+68     1 
+69     1
+年齡 (X) 與罹患心臟病 (Y) 之關係表
+
+===== p36 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Ｙ與Ｘ的相關係數為0.4641 。   ( 使用直線廻歸模
+式)
+Ｙ對Ｘ的簡單迴歸式為：Y ＝ -0.268 + 0.01524 X
+Ｒ2 ＝0.168 
+Logistic 迴歸分析的圖示
+由於上述屬於0 、1 之資料類別，所以由R2 僅達0.168 可看出，本
+範例不適合使用線性廻歸模式
+
+===== p37 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+當以Logistic 迴歸作為考量，則設年齡X 與患
+心臟病機率的關係式為：
+經過Logistic 轉換：
+則此時與X 呈線性關係，即可進行Logistic 迴
+歸分析。最後，數據得到以下的方程式：
+X
+b
+b
+X
+b
+b
+e
+e
+x
+P
+1
+0
+1
+0
+1
+)
+(
+
+
+
+
+
+X
+b
+b
+x
+x
+x
+g
+1
+0
+)
+(
+1
+)
+(
+ln
+)
+(
+
+
+
+
+
+
+Logistic 迴歸分析的評估
+ln
+( )
+3.6064
+0.0712
+1
+p
+f x
+X
+p 
+
+
+
+
+===== p38 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+在Logistic 迴歸式，假設病患的年齡為31 歲，以X=31 代入
+Logistic 迴歸式中，可得知其患有心臟病的機率為19.79%:
+Logistic 迴歸的應用
+0.36064 0.0712*
+0.36064 0.0712*
+0.36064 0.0712*
+0.36064 0.0712*
+0.36064 0.0712*
+(
+)
+0.5
+1
+0.5*(1
+)
+1
+0.360
+50.
+64
+0.0712*
+>0
+65
+X
+X
+X
+X
+X
+e
+X
+e
+e
+e
+X
+e
+X
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+兩邊同取ln後可得
+如果想要知道年齡要超過多少歲，心臟病的機率會大於50% 。
+則可使用下列式子獲得年齡要超過50.65 歲:
+
+===== p39 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Logistic Regression ( 總結)
+對雜訊與不相干的屬性較敏感而易受干擾
+能夠同時接受數值型或間斷型的X 變數
+只能進行分類(Y 類別) ，無法進行迴歸(Y 數值)
+可以告訴使用者哪個X 變數重要( 迴歸係數顯著)
+最大的優點是呈現不同預測類別的相對機率 ( 如
+計算healthy, risky, sick 三類的相對機率)
+
+===== p40 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Logit for gender ( 除了預測機率，還指出顯著變
+數)
+Estimate
+Std. Error
+P value<0.05
+Intercept
+-137.448
+45.559
+0.00124
+Height
+0.422
+0.157
+0.00717
+Weight
+-0.095
+0.109
+0.38152
+Waist
+2.268
+0.725
+0.0045
+為什麼體重
+在預測性別
+時不顯著??
+Female
+Male
+Female
+51
+3
+Male
+4
+83
+Logit 最棒之處在於算出類別機
+率，假設身高、體重、腰圍資
+料如下來預測性別(female, 
+male) ：
+(175, 69, 31.5)  (5%, 95%)
+(165, 50, 29)  (83%, 17%)
+
+===== p41 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+ROC (Receiver Operating Characteristic)
+Developed in signal detection theory to analyze noisy 
+signals and characterize the trade-off between positive 
+hits ( 精準度) and false alarms ( 靈敏度)
+如何評估分類器績效: ROC curve plots TP (on the y-
+axis) against FP (on the x-axis)
+統計學上的型一錯誤(false alarm- 沒病誤判成有
+病) 與型二錯誤(miss alarm- 有病誤判成沒病), 哪
+種情況嚴重?
+
+===== p42 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+ROC Curve
+At threshold t ( 臨界值):
+TP=0.5, FN=0.5, FP=0.12, TN=0.88
+- 1-dimensional data set containing 2 classes (positive and negative)
+- any points located at x > t is classified as positive
+
+===== p43 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+ROC Curve
+(TP,FP):
+(0,0): declare everything
+          to be negative class
+(1,1): declare everything
+         to be positive class
+(1,0): ideal ( 理想點)
+Diagonal line:
+– Random guessing
+– Below diagonal line:
+ prediction is opposite of 
+   the true class
+Random guessing
+
+===== p44 =====
+陽明交通大學工業工程與管理學系 電子化企業實驗室 
+Using ROC for Model Comparison
+No model consistently 
+outperform the other
+M1 is better for small 
+FPR
+M2 is better for large 
+FPR
+Area Under the ROC curve 
+( 面積越大越好)
+Ideal: ( 正方形面積)
+ Area = 1
+Random guess:
+ Area = 0.5 ( 三角形面積)

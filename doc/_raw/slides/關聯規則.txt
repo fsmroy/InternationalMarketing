@@ -1,0 +1,1520 @@
+
+===== p1 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+關聯規則
+Association Rule
+by
+Prof. Chih-Hsuan Wang (王志軒)
+
+===== p2 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Association Rule Discovery: Shelf Management
+Marketing and Sales Promotion:
+– Let the rule discovered be
+{Bagels, … } --> {Potato Chips}
+– Potato Chips as consequent => Can be used to determine 
+what should be done to boost its sales.
+– Bagels in the antecedent => Can be used to see which 
+products would be affected if the store discontinues selling 
+bagels.
+– Bagels in antecedent and Potato chips in consequent => 
+Can be used to see what products should be sold with 
+Bagels to promote sale of Potato chips!
+– If a customer buys diaper and milk, then he is very likely 
+to buy beer.
+
+===== p3 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+關聯規則Association Rule
+Given a set of transactions, find rules that will predict the 
+occurrence of an item based on the occurrences of other items 
+in the transaction
+TID 
+Items 
+1 
+Bread, Milk 
+2 
+Bread, Diaper, Beer, Eggs 
+3 
+Milk, Diaper, Beer, Coke  
+4 
+Bread, Milk, Diaper, Beer 
+5 
+Bread, Milk, Diaper, Coke  
+ 
+Example of Association Rules
+{Diaper} {Beer},
+{Milk, Bread} {Eggs,Coke},
+{Beer, Bread} {Milk},
+Implication means co-occurrence, 
+not causality!
+Market-Basket transactions
+(購物籃分析)
+
+===== p4 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Definition: Frequent Itemset
+Itemset
+– A collection of one or more items
+Example: {Milk, Bread, Diaper}
+– k-itemset
+An itemset that contains k items
+Support count ()
+– Frequency of occurrence of an itemset
+– E.g.   ({Milk, Bread, Diaper}) = 2 
+Support
+– Fraction of transactions that contain an 
+itemset
+– E.g.   s({Milk, Bread, Diaper}) = 2/5
+Frequent Itemset
+– An itemset whose support is greater than 
+or equal to a minsup threshold
+TID 
+Items 
+1 
+Bread, Milk 
+2 
+Bread, Diaper, Beer, Eggs 
+3 
+Milk, Diaper, Beer, Coke  
+4 
+Bread, Milk, Diaper, Beer 
+5 
+Bread, Milk, Diaper, Coke
+
+===== p5 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Definition: Association Rule
+Example:
+Beer
+}
+Diaper
+,
+Milk
+{
+
+4.0
+5
+2
+|
+T
+|
+)
+Beer
+Diaper,
+,
+Milk
+(
+=
+=
+= 
+s
+67
+.0
+3
+2
+)
+Diaper
+,
+Milk
+(
+)
+Beer
+Diaper,
+Milk,
+(
+=
+=
+=
+
+
+c
+Association Rule (LHS RHS)
+– An implication expression of the 
+form X Y, where X and Y are 
+itemsets
+– Example:
+{Milk, Diaper} {Beer}
+Rule Evaluation Metrics
+– Support (s)
+Fraction (probability) of 
+transactions that contain both X 
+and Y
+– Confidence (c)
+Measures (conditional probability) 
+how often items in Y appear in 
+transactions that contain X
+TID 
+Items 
+1 
+Bread, Milk 
+2 
+Bread, Diaper, Beer, Eggs 
+3 
+Milk, Diaper, Beer, Coke  
+4 
+Bread, Milk, Diaper, Beer 
+5 
+Bread, Milk, Diaper, Coke
+
+===== p6 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Association Rule Mining Task
+Given a set of transactions T, the goal of association 
+rule mining is to find all rules having 
+– support ≥ minsup threshold
+– confidence ≥ minconf threshold
+Brute-force approach:
+– List all possible association rules
+– Compute the support and confidence for each rule
+– Prune rules that fail the minsup and minconf thresholds
+Computationally prohibitive!
+
+===== p7 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Mining Association Rules
+Example of Rules:
+{Milk,Diaper} {Beer} (s=0.4, c=0.67)
+{Milk,Beer} {Diaper} (s=0.4, c=1.0)
+{Diaper,Beer} {Milk} (s=0.4, c=0.67)
+{Beer} {Milk,Diaper} (s=0.4, c=0.67) 
+{Diaper} {Milk,Beer} (s=0.4, c=0.5) 
+{Milk} {Diaper,Beer} (s=0.4, c=0.5)
+TID 
+Items 
+1 
+Bread, Milk 
+2 
+Bread, Diaper, Beer, Eggs 
+3 
+Milk, Diaper, Beer, Coke  
+4 
+Bread, Milk, Diaper, Beer 
+5 
+Bread, Milk, Diaper, Coke  
+ 
+Observations:
+• All the above rules are binary partitions of the same itemset: 
+{Milk, Diaper, Beer}
+• Rules originating from the same itemset have identical support but
+can have different confidence
+• Thus, we may decouple the support and confidence requirements
+
+===== p8 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Mining Association Rules
+
+Two-step approach: 
+1. Frequent Itemset Generation
+–
+Generate all itemsets whose support minsup
+2. Rule Generation
+–
+Generate high confidence rules from each frequent itemset, where 
+each rule is a binary partitioning of a frequent itemset
+
+Frequent itemset generation is still computationally 
+expensive
+
+===== p9 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Frequent Itemset Generation
+null
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+A
+B
+C
+D
+E
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+ABCD
+ABCE
+ABDE
+ACDE
+BCDE
+ABCDE
+Given d items, there are 
+2d possible candidate 
+itemsets
+
+===== p10 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Computational Complexity (二項式定理)
+Given d unique items:
+– Total number of itemsets = 2d
+– Total number of possible association rules: 
+1
+2
+3
+1
+1
+1
+1
++
+−
+=
+
+
+
+
+
+
+
+
+
+
+−
+
+
+
+
+
+
+
+=
++
+−
+=
+−
+=
+
+
+d
+d
+d
+k
+k
+d
+j
+j
+k
+d
+k
+d
+R
+If d=6 items,  R = 602 rules
+
+===== p11 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Frequent Itemset Generation Strategies
+Reduce the number of candidates (M)
+– Complete search: M=2d
+– Use pruning techniques to reduce M
+Reduce the number of transactions (N)
+– Reduce size of N as the size of itemset increases
+– Used by DHP and vertical-based mining algorithms
+Reduce the number of comparisons (NM)
+– Use efficient data structures to store the candidates or 
+transactions
+– No need to match every candidate against every transaction
+
+===== p12 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Reducing Number of Candidates
+Apriori principle:
+– If an itemset is frequent, then all of its subsets must also be 
+frequent
+Apriori principle holds due to the following property of 
+the support measure:
+– Support of an itemset never exceeds the support of its subsets
+– This is known as the anti-monotone property of support
+)
+(
+)
+(
+)
+(:
+,
+Y
+s
+X
+s
+Y
+X
+Y
+X
+
+
+
+
+
+===== p13 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Found to be 
+Infrequent
+null
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+A
+B
+C
+D
+E
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+ABCD
+ABCE
+ABDE
+ACDE
+BCDE
+ABCDE
+Illustrating Apriori Principle
+null
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+A
+B
+C
+D
+E
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+ABCD
+ABCE
+ABDE
+ACDE
+BCDE
+ABCDE
+Pruned 
+supersets
+
+===== p14 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Computing Interestingness Measure
+Given a rule X Y, information needed to compute rule 
+interestingness can be obtained from a contingency table
+Y
+Y 
+X
+f11
+f10
+f1+
+X 
+f01
+f00
+fo+
+f+1
+f+0
+|T|
+Contingency table for X Y
+f11: support of X and Y
+f10: support of X and Y
+f01: support of X and Y
+f00: support of X and Y
+Used to define various measures
+support, confidence, lift, Gini,
+J-measure, etc.
+
+===== p15 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Drawback of Confidence
+Coffee
+Coffee
+Tea
+15
+5
+20
+Tea
+75
+5
+80
+90
+10
+100
+Association Rule: Tea Coffee
+Confidence= P(Coffee|Tea) = 0.75 (15/20)
+but P(Coffee) = 0.9 (90/100)
+Although confidence is high, rule is misleading
+P(Coffee|Tea) = 0.9375 (75/80)
+
+===== p16 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Statistical Independence
+Population of 1000 students
+– 600 students know how to swim (S)
+– 700 students know how to bike (B)
+– 420 students know how to swim and bike (S,B)
+– P(SB) = 420/1000 = 0.42
+– P(S) P(B) = 0.6 0.7 = 0.42
+– P(SB) = P(S) P(B) => Statistically independent
+– P(SB) > P(S) P(B) => Positively correlated
+– P(SB) < P(S) P(B) => Negatively correlated
+
+===== p17 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Statistical-based Measures
+Measures that take into account statistical dependence
+)]
+(
+1
+)[
+(
+)]
+(
+1
+)[
+(
+)
+(
+)
+(
+)
+,
+(
+)
+(
+)
+(
+)
+,
+(
+)
+(
+)
+(
+)
+,
+(
+)
+(
+)
+|
+(
+Y
+P
+Y
+P
+X
+P
+X
+P
+Y
+P
+X
+P
+Y
+X
+P
+t
+coefficien
+Y
+P
+X
+P
+Y
+X
+P
+PS
+Y
+P
+X
+P
+Y
+X
+P
+Interest
+Y
+P
+X
+Y
+P
+Lift
+−
+−
+−
+=
+−
+−
+=
+=
+=
+
+Lift is equal to interest
+Support: LHS & RHS同時發生的機率
+Confidence: LHS發生的前提下，RHS也發
+生的條件機率
+Lift: LHS & RHS同時發生的機率除以LHS
+& RHS個別發生的機率
+
+===== p18 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Example: Lift/Interest
+Coffee
+Coffee
+Tea
+15
+5
+20
+Tea
+75
+5
+80
+90
+10
+100
+Association Rule: Tea Coffee
+Confidence= P(Coffee|Tea) = 0.75
+but P(Coffee) = 0.9
+Lift = 0.75/0.9=0.15/(0.2*0.9)= 0.8333 (< 1, therefore is negatively 
+associated)
+
+===== p19 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Drawback of Lift & Interest
+Y
+Y
+X
+10
+0
+10
+X
+0
+90
+90
+10
+90
+100
+Y
+Y
+X
+90
+0
+90
+X
+0
+10
+10
+90
+10
+100
+10
+)1.0
+)(
+1.0
+(
+1.0
+=
+=
+Lift
+11
+.1
+)
+9.0
+)(
+9.0
+(
+9.0
+=
+=
+Lift
+Statistical independence: If P(X,Y)=P(X)P(Y)  => Lift = 1
+PS= P(X,Y)-P(X)P(Y) = 0.09 (左右皆成立)
+
+===== p20 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Illustrating Apriori Principle
+Item
+Count
+Bread
+4
+Coke
+2
+Milk
+4
+Beer
+3
+Diaper
+4
+Eggs
+1
+Itemset
+Count
+{Bread,Milk}
+3
+{Bread,Beer}
+2
+{Bread,Diaper}
+3
+{Milk,Beer}
+2
+{Milk,Diaper}
+3
+{Beer,Diaper}
+3
+Itemset 
+Count 
+{Bread,Milk,Diaper} 
+3 
+ 
+Items (1-itemsets)
+Pairs (2-itemsets)
+(No need to generate
+candidates involving Coke
+or Eggs)
+Triplets (3-itemsets)
+Minimum Support = 3
+If every subset is considered, 
+6C1 + 6C2 + 6C3 = 41
+With support-based pruning,
+6C1 + 4C2 + 3C3 = 13
+
+===== p21 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Apriori Algorithm
+Method: 
+– Let k=1
+– Generate frequent itemsets of length (size) 1
+– Repeat until no new frequent itemsets are identified
+Generate length (k+1) candidate itemsets from length k frequent 
+itemsets
+Prune candidate itemsets (k+1) containing subsets of length k that 
+are infrequent
+Count the support of each candidate by scanning the DB
+Eliminate candidates that are infrequent, leaving only those that are 
+frequent
+
+===== p22 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Illustration of Apriori algorithm
+Apriori algorithm：join + prune
+1
+1
+−
+−
+=
+k
+k
+k
+L
+L
+C
+
+===== p23 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+(1)
+Threshold=2
+Apriori Step 1
+
+===== p24 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+1
+1
+2
+L
+L
+C
+
+=
+(2)
+Apriori Step 2
+
+===== p25 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+(3)
+2
+2
+3
+L
+L
+C
+
+=
+…
+…
+No L4
+Apriori Step 3
+
+===== p26 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+(4)Conclusion：How to seek significant association rules
+ex：subset of P={P1},{P2}, {P5},{P1,P2}, 
+{P1,P5},{P2,P5}
+%
+3
+3
+2/6
+Con
+ :
+P5
+P2
+6.P1
+%
+9
+2
+2/7
+Con
+ :
+P5
+P1
+5.P2
+100%
+2/2
+Con
+ :
+P2
+P1
+4.P5
+100%
+2/2
+Con
+ :
+P1
+P5
+3.P2
+100%
+2/2
+Con
+ :
+P2
+P5
+2.P1
+50%
+2/4
+)
+2
+)/P(P1
+5
+P2
+P(P1
+Con
+ :
+P5
+P2
+1.P1
+=
+=
+→
+=
+=
+→
+=
+=
+→
+=
+=
+→
+=
+=
+→
+=
+=
+=
+→
+
+
+
+
+
+
+
+
+
+P
+P
+　
+X
+X
+X
+V
+V
+V
+Threshold=70%
+Apriori Step 4
+
+===== p27 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Reducing Number of Comparisons
+Candidate counting:
+– Scan the database of transactions to determine the support 
+of each candidate itemset
+– To reduce the number of comparisons, store the candidates 
+in a hash structure
+Instead of matching each transaction against every candidate, match 
+it against candidates contained in the hashed buckets
+TID Items 
+1 
+Bread, Milk 
+2 
+Bread, Diaper, Beer, Eggs 
+3 
+Milk, Diaper, Beer, Coke 
+4 
+Bread, Milk, Diaper, Beer 
+5 
+Bread, Milk, Diaper, Coke 
+ 
+N
+Transactions
+Hash Structure
+k
+Buckets
+
+===== p28 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+FP-growth Algorithm
+A compressed representation of the database by using 
+an FP-tree (more efficient than Apriori algorithm)
+Once an FP-tree has been constructed, it uses a 
+recursive divide-and-conquer approach to mine the 
+frequent itemsets
+
+===== p29 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Rule Generation
+Given a large itemset L, find all non-empty subsets f 
+L such that f (L – f) satisfies the minimum 
+confidence requirement
+– If {A,B,C,D} is a frequent itemset, candidate rules:
+ABC D, 
+ABD C, 
+ACD B, 
+BCD A, 
+A BCD,
+B ACD,
+C ABD, 
+D ABC
+AB CD,
+AC BD, 
+AD BC, 
+BC AD, 
+BD AC, 
+CD AB,
+If |L| = k, then there are 2k – 2 candidate association 
+rules (ignoring L and L)
+
+===== p30 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Rule Generation
+How to efficiently generate rules from frequent 
+itemsets?
+– In general, confidence does not have an anti-monotone 
+property
+c(ABC D) can be larger or smaller than c(AB D)
+– But confidence of rules generated from the same itemset 
+has an anti-monotone property
+– e.g., L = {A,B,C,D}:
+c(ABC D) c(AB CD) c(A BCD)
+Confidence is anti-monotone w.r.t. number of items on the RHS of 
+the rule
+
+===== p31 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Rule Generation for Apriori Algorithm
+ABCD=>{ }
+BCD=>A
+ACD=>B
+ABD=>C
+ABC=>D
+BC=>AD
+BD=>AC
+CD=>AB
+AD=>BC
+AC=>BD
+AB=>CD
+D=>ABC
+C=>ABD
+B=>ACD
+A=>BCD
+Lattice of rules
+ABCD=>{ }
+BCD=>A
+ACD=>B
+ABD=>C
+ABC=>D
+BC=>AD
+BD=>AC
+CD=>AB
+AD=>BC
+AC=>BD
+AB=>CD
+D=>ABC
+C=>ABD
+B=>ACD
+A=>BCD
+Pruned 
+Rules
+Low 
+Confidence 
+Rule
+
+===== p32 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Rule Generation for Apriori Algorithm
+Candidate rule is generated by merging two rules that 
+share the same prefix
+in the rule consequent
+Join(CD=>AB, BD=>AC)
+would produce the candidate
+rule D => ABC
+Prune rule D=>ABC if its
+subset CD=>AB or BD=>AC does not have
+high confidence
+BD=>AC
+CD=>AB
+D=>ABC
+
+===== p33 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Maximal Frequent Itemset
+null
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+A
+B
+C
+D
+E
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+ABCD
+ABCE
+ABDE
+ACDE
+BCDE
+ABCD
+E
+Border
+Infrequent 
+Itemsets
+Maximal 
+Itemsets
+An itemset is maximal frequent if none of its immediate supersets 
+is frequent
+
+===== p34 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Closed Itemset
+An itemset is closed if none of its immediate supersets has the 
+same support as the itemset
+TID
+Items
+1
+{A,B}
+2
+{B,C,D}
+3
+{A,B,C,D}
+4
+{A,B,D}
+5
+{A,B,C,D}
+Itemset
+Support
+{A}
+4
+{B}
+5
+{C}
+3
+{D}
+4
+{A,B}
+4
+{A,C}
+2
+{A,D}
+3
+{B,C}
+3
+{B,D}
+4
+{C,D}
+3
+Itemset
+Support
+{A,B,C}
+2
+{A,B,D}
+3
+{A,C,D}
+2
+{B,C,D}
+3
+{A,B,C,D}
+2
+
+===== p35 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Maximal vs Closed Itemsets
+TID
+Items
+1
+ABC
+2
+ABCD
+3
+BCE
+4
+ACDE
+5
+DE
+null
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+A
+B
+C
+D
+E
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+ABCD
+ABCE
+ABDE
+ACDE
+BCDE
+ABCDE
+124
+123
+1234
+245
+345
+12
+124
+24
+4
+123
+2
+3
+24
+34
+45
+12
+2
+24
+4
+4
+2
+3
+4
+2
+4
+Transaction Ids
+Not supported by 
+any transactions
+
+===== p36 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Maximal vs Closed Frequent Itemsets
+null
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+A
+B
+C
+D
+E
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+ABCD
+ABCE
+ABDE
+ACDE
+BCDE
+ABCDE
+124
+123
+1234
+245
+345
+12
+124
+24
+4
+123
+2
+3
+24
+34
+45
+12
+2
+24
+4
+4
+2
+3
+4
+2
+4
+Minimum support = 2
+# Closed = 9
+# Maximal = 4
+Closed and 
+maximal
+Closed but 
+not maximal
+
+===== p37 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Maximal vs Closed Itemsets
+Frequent
+Itemsets
+Closed
+Frequent
+Itemsets
+Maximal
+Frequent
+Itemsets
+
+===== p38 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Effect of Support Distribution
+How to set the appropriate minsup threshold?
+– If minsup is set too high, we could miss itemsets involving 
+interesting rare items (e.g., expensive products)
+– If minsup is set too low, it is computationally expensive and 
+the number of itemsets is very large
+Using a single minimum support threshold may not be 
+effective
+
+===== p39 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multiple Minimum Support
+How to apply multiple minimum supports?
+– MS(i): minimum support for item i 
+– e.g.:     MS(Milk)=5%,   
+MS(Coke) = 3%,
+MS(Broccoli)=0.1%,
+MS(Salmon)=0.5%
+– MS({Milk, Broccoli}) = min (MS(Milk), MS(Broccoli))
+= 0.1%
+– Challenge: Support is no longer anti-monotone
+Suppose: 
+Support(Milk, Coke) = 1.5% and
+Support(Milk, Coke, Broccoli) = 0.5%
+{Milk,Coke} is infrequent but {Milk,Coke,Broccoli} is frequent
+
+===== p40 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multiple Minimum Support
+A
+Item
+MS(I)
+Sup(I)
+A
+0.10% 0.25%
+B
+0.20% 0.26%
+C
+0.30% 0.29%
+D
+0.50% 0.05%
+E
+3%
+4.20%
+B
+C
+D
+E
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+
+===== p41 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multiple Minimum Support
+A
+B
+C
+D
+E
+AB
+AC
+AD
+AE
+BC
+BD
+BE
+CD
+CE
+DE
+ABC
+ABD
+ABE
+ACD
+ACE
+ADE
+BCD
+BCE
+BDE
+CDE
+Item
+MS(I)
+Sup(I)
+A
+0.10% 0.25%
+B
+0.20% 0.26%
+C
+0.30% 0.29%
+D
+0.50% 0.05%
+E
+3%
+4.20%
+
+===== p42 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multiple Minimum Support (Liu 1999)
+Order the items according to their minimum support 
+(in ascending order)
+– e.g.:     MS(Milk)=5%,   
+MS(Coke) = 3%,
+MS(Broccoli)=0.1%,     MS(Salmon)=0.5%
+– Ordering:  Broccoli, Salmon, Coke, Milk
+Need to modify Apriori such that:
+– L1 : set of frequent items
+– F1 : set of items whose support is MS(1)
+where MS(1) is mini( MS(i) )
+– C2 : candidate itemsets of size 2 is generated from F1
+instead of L1
+
+===== p43 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multiple Minimum Support (Liu 1999)
+Modifications to Apriori:
+– In traditional Apriori, 
+A candidate (k+1)-itemset is generated by merging two
+frequent itemsets of size k
+The candidate is pruned if it contains any infrequent subsets
+of size k
+– Pruning step has to be modified:
+Prune only if subset contains the first item
+e.g.:  Candidate={Broccoli, Coke, Milk}   (ordered according to
+minimum support)
+{Broccoli, Coke} and {Broccoli, Milk} are frequent but 
+{Coke, Milk} is infrequent
+– Candidate is not pruned because {Coke, Milk} does not contain
+the first item, i.e., Broccoli.
+
+===== p44 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multi-level Association Rule
+PC
+Desktop
+Laptop
+Home
+Business Notebook
+Tabelet
+HP
+Acer Dell
+HP Toshiba
+Acer Asus
+Ipad
+Level I：product
+Level II：type
+Level III：function
+Level IV：brand
+*Min support for different levels  
+I=4, II=3, III=2, IV=2
+
+===== p45 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multi-level Association Rules
+Food
+Bread
+Milk
+Skim
+2%
+Electronics
+Computers
+Home
+Desktop
+Laptop
+Wheat
+White
+Foremost
+Kemps
+DVD
+TV
+Printer
+Scanner
+Accessory
+
+===== p46 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multi-level Association Rules
+Why should we incorporate concept hierarchy?
+– Rules at lower levels may not have enough support to 
+appear in any frequent itemsets
+– Rules at lower levels of the hierarchy are overly specific 
+e.g., skim milk white bread, 2% milk wheat bread,
+skim milk wheat bread, etc.
+are indicative of association between milk and bread
+
+===== p47 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multi-level Association Rules
+How do support and confidence vary as we traverse 
+the concept hierarchy?
+– If X is the parent item for both X1 and X2, then 
+(X) ≤ (X1) + (X2)
+– If     
+(X1 Y1) ≥ minsup, 
+and 
+X is parent of X1, Y is parent of Y1 
+then
+(X Y1) ≥ minsup, (X1 Y) ≥ minsup
+(X Y) ≥ minsup 
+– If 
+conf(X1 Y1) ≥ minconf,
+then
+conf(X1 Y) ≥ minconf
+
+===== p48 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multi-level Association Rules
+Approach 1:
+– Extend current association rule formulation by augmenting each 
+transaction with higher level items
+Original Transaction: {skim milk, wheat bread} 
+Augmented Transaction:
+{skim milk, wheat bread, milk, bread, food}
+Issues:
+– Items that reside at higher levels have much higher support counts 
+if support threshold is low, too many frequent patterns involving items from 
+the higher levels
+– Increased dimensionality of the data
+
+===== p49 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+Multi-level Association Rules
+Approach 2:
+– Generate frequent patterns at highest level first 
+– Then, generate frequent patterns at the next highest level, 
+and so on
+Issues:
+– I/O requirements will increase dramatically because we 
+need to perform more passes over the data
+– May miss some potentially interesting cross-level 
+association patterns
+
+===== p50 =====
+國立陽明交通大學工業工程與管理學系電子化企業實驗室
+關聯規則評論
+Support, confidence的門檻值依業務需求來訂定，
+lift大於1表示LHS與RHS正相關
+關聯規則的結果適合用來作為Cross-Selling或Up-
+Selling的依據
+關聯規則僅是尋找資料庫中頻繁出現且隱含條件
+相關的交易品項，完全談不上任何的因果關係
+Sequential rule運算較為耗時，且須搭配業界實務
+來定義間隔時間的長度
+關聯規則不是因果分類，但能透過鎖定RHS，找
+到最佳LHS的組合以發現管理意涵
