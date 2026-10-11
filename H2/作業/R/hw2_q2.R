@@ -11,75 +11,117 @@ library(arules)
 # 2) RStudio 開啟本檔按 Ctrl+Enter：用 rstudioapi 取得本檔路徑
 # 3) 保險：若目前不在含 MKT_data 的資料夾，自動往上找一層
 local({
+  # 建立空字串 p，稍後用來存放「本檔案的路徑」
   p <- ""
+  # 從命令列參數找 --file= 開頭者（用 Rscript 執行時會有，例如 --file=hw2_q2.R）
   a <- grep("^--file=", commandArgs(FALSE), value = TRUE)
+  # 若有抓到，去掉 "--file=" 前綴，存成乾淨的檔案路徑
   if (length(a)) p <- sub("^--file=", "", a[1])
+  # 若還拿不到路徑，且 rstudioapi 可用 → 向 RStudio 問「目前編輯器開的是哪個檔」
   if (!nzchar(p) && requireNamespace("rstudioapi", quietly = TRUE) &&
       isTRUE(rstudioapi::isAvailable())) {
+    # 取目前來源編輯器資訊；任何錯誤都回 NULL（避免中斷整個流程）
     ctx <- tryCatch(rstudioapi::getSourceEditorContext(), error = function(e) NULL)
+    # 若成功取得且有路徑，就採用該檔路徑
     if (!is.null(ctx) && nzchar(ctx$path)) p <- ctx$path
   }
+  # 有路徑時，往上兩層（R/ → 作業）並設為工作目錄（dirname 取上一層）
   if (nzchar(p)) setwd(dirname(dirname(normalizePath(p))))   # R/ 的上一層 = 作業
+  # 若工作目錄沒有 MKT_data，就一層一層往上找含 MKT_data 的資料夾
   if (!dir.exists("MKT_data")) {                            # 保險：往上找作業資料夾
+    # 從目前工作目錄開始找
     d <- getwd()
+    # 重複往上，直到找到或到根目錄為止
     repeat {
+      # 取上一層目錄路徑
       up <- dirname(d)
+      # 若已到根目錄（無法再上）→ 跳出迴圈
       if (identical(up, d)) break
+      # 移到上一層
       d <- up
+      # 若該層含 MKT_data，就設為工作目錄並停止
       if (dir.exists(file.path(d, "MKT_data"))) { setwd(d); break }
     }
   }
+  # 找一輪後仍找不到 → 直接停止並提示（不讓它靜默失敗）
   if (!dir.exists("MKT_data"))
     stop("無法自動定位作業資料夾（找不到 MKT_data）：請確認本檔位於 H2/作業/R/ 且結構未變動。")
 })
+# 印出最終決定的工作目錄，方便確認是否正確
 cat("工作目錄:", getwd(), "\n")
 
 # --- 1. 讀取與清理 ---
+# 讀入 bank.csv（分號分隔）
 bank <- read.csv("MKT_data/bank.csv", sep = ";")
+# 欲刪除的欄位名稱
 drop_cols <- c("job", "contact", "pdays", "poutcome", "month", "day")
+# 只保留其餘欄位（結果覆蓋寫回 bank）
 bank <- bank[, setdiff(names(bank), drop_cols)]
 
 # --- 2. 離散化 ---
 # age → 三等級：young<=35、adult 35~55、old>55
+# cut()：依 breaks 切點把連續數值切成類別（-Inf~35、35~55、55~Inf），並給標籤
 bank$age <- cut(bank$age, breaks = c(-Inf, 35, 55, Inf),
                 labels = c("young", "adult", "old"))
 
 # 其餘數值欄位 → 中位數切 low / high
+# 要離散化的數值欄位
 num_cols <- c("balance", "duration", "campaign", "previous")
+# 逐一處理每個欄位
 for (v in num_cols) {
+  # 計算該欄的中位數
   med <- median(bank[[v]])
+  # 小於等於中位數 → "low"，否則 → "high"
   bank[[v]] <- ifelse(bank[[v]] <= med, "low", "high")
 }
 
 # --- 3. 轉 transactions ---
 # 注意：as(data.frame, "transactions") 會自動把 item 命名為「欄位名=水準」
 # （例如 y=yes、duration=high），不需要（也不能）自己再加前綴，否則會變成雙重前綴
+# 把每個欄位都轉成 factor（apriori 需要類別型資料）
 bank[] <- lapply(bank, factor)   # 確保所有欄位都是 factor
+# 把整個 data.frame 轉成關聯規則用的 transactions 物件
+# （會自動把每格變成一條「欄位=值」的交易項目）
 trans <- as(bank, "transactions")
+# 檢視交易資料摘要（交易筆數、項目數、密度等）
 summary(trans)
 
 # (a) 顯著規則：RHS 分別為 y=yes / y=no
 # y=yes 樣本僅約 11%，門檻需較寬才找得到規則（實測 supp=0.03/conf=0.6 時為 0 條）
+# 找 RHS 固定為 y=yes 的規則：supp(支持度)=0.02、conf(信賴度)=0.35
 rules_yes <- apriori(trans, parameter = list(supp = 0.02, conf = 0.35),
                      appearance = list(rhs = "y=yes", default = "lhs"))
+# 同理找 RHS 為 y=no 的規則（條件較嚴：supp=0.03、conf=0.6）
 rules_no  <- apriori(trans, parameter = list(supp = 0.03, conf = 0.6),
                      appearance = list(rhs = "y=no",  default = "lhs"))
 
+# 依 lift（增益）由高到低排序：lift 越高代表規則越有價值
 rules_yes <- sort(rules_yes, by = "lift")
 rules_no  <- sort(rules_no,  by = "lift")
+# 檢視 y=yes 的前 10 名規則
 inspect(head(rules_yes, 10))   # y=yes 的前 10 名規則
+# 檢視 y=no 的前 10 名規則
 inspect(head(rules_no, 10))    # y=no  的前 10 名規則
 
 # --- 5. (b) LHS 特徵頻率統計 → 特徵優先順序 ---
+# 定義函式：統計一組規則「左邊(LHS)」各特徵出現的次數
 lhs_feature_freq <- function(rules) {
+  # 若該組沒有規則，回傳提示字串（避免後續計算出錯）
   if (length(rules) == 0) return("（此 RHS 設定下無規則，請調降 supp/conf）")
+  # LIST(lhs(rules))：把每條規則左邊的項目攤平；unlist 合併成單一字串向量
   items <- unlist(LIST(lhs(rules)))
+  # 用 "=" 切開字串，取前半段（欄位名，即去掉 "=水準"）
   feats <- sapply(strsplit(items, "="), `[`, 1)
+  # 統計各特徵出現次數，並由多到少排序
   sort(table(feats), decreasing = TRUE)
 }
+# 對 y=yes 的規則統計特徵頻率
 freq_yes <- lhs_feature_freq(rules_yes)
+# 對 y=no 的規則統計特徵頻率
 freq_no  <- lhs_feature_freq(rules_no)
+# 印出 y=yes 的特徵頻率
 freq_yes   # y=yes 規則中，各特徵在 LHS 出現次數（由高到低 = 優先順序）
+# 印出 y=no 的特徵頻率
 freq_no    # y=no 同理
 
 # --- 6. (c) 管理意涵方向 ---
