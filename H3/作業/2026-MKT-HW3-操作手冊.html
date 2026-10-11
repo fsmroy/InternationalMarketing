@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>國際行銷 HW3 — RStudio 完全新手指南</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#fff; --ink:#1f2430; --muted:#6b7280;
+    --line:#e5e7eb; --brand:#2563eb; --brand-soft:#eff4ff;
+    --ok:#059669; --ok-soft:#ecfdf5; --warn:#b45309; --warn-soft:#fffbeb;
+    --code-bg:#1e2230; --code-ink:#e6e9f0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","Microsoft JhengHei","PingFang TC",system-ui,sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  header{
+    background:linear-gradient(135deg,#1e3a8a,#2563eb 60%,#3b82f6);
+    color:#fff; padding:48px 24px 40px;
+  }
+  header .wrap{max-width:960px;margin:0 auto}
+  header h1{margin:0 0 8px;font-size:2rem;letter-spacing:.5px}
+  header p{margin:4px 0;opacity:.92}
+  .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+    padding:2px 10px;border-radius:999px;font-size:.8rem;margin-right:8px}
+
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  main{max-width:960px;margin:0 auto;padding:32px 24px 80px}
+
+  nav.toc{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 20px;margin:-28px auto 32px;max-width:912px;
+    box-shadow:0 6px 20px rgba(15,23,42,.06);position:relative;z-index:2;
+  }
+  nav.toc h2{margin:0 0 10px;font-size:1rem;color:var(--muted);font-weight:600}
+  nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:28px}
+  nav.toc a{color:var(--brand);text-decoration:none}
+  nav.toc a:hover{text-decoration:underline}
+  @media(max-width:640px){nav.toc ol{columns:1}}
+
+  section{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:24px 28px;margin-bottom:24px;box-shadow:0 2px 8px rgba(15,23,42,.04);
+  }
+  h2.sec{font-size:1.4rem;margin:0 0 6px;padding-bottom:10px;border-bottom:2px solid var(--brand-soft)}
+  h3{font-size:1.1rem;margin:26px 0 8px;color:#111827}
+  h4{font-size:1rem;margin:20px 0 6px;color:#374151}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0;padding-left:22px}
+  li{margin:4px 0}
+  code.inline{background:#eef2ff;color:#3730a3;padding:1px 6px;border-radius:5px;font-size:.9em;
+    font-family:Consolas,"Courier New",monospace}
+  pre{
+    background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+    overflow-x:auto;font-family:Consolas,"Courier New",monospace;font-size:.88rem;line-height:1.6;
+    position:relative;
+  }
+  pre code{white-space:pre}
+  .step{border-left:4px solid var(--brand);padding-left:16px;margin:18px 0}
+  .step .n{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;
+    font-size:.85rem;font-weight:700;margin-right:8px;vertical-align:middle;
+  }
+  .note,.warn,.ok{border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem}
+  .note{background:var(--brand-soft);border-left:4px solid var(--brand)}
+  .warn{background:var(--warn-soft);border-left:4px solid var(--warn)}
+  .ok{background:var(--ok-soft);border-left:4px solid var(--ok)}
+  .note b,.warn b,.ok b{display:block;margin-bottom:2px}
+  .orig{background:#f8fafc;border:1px solid var(--line);border-left:4px solid #64748b;
+    border-radius:10px;padding:14px 18px;margin:12px 0;font-size:.94rem;
+    font-family:Georgia,"Times New Roman",serif;color:#334155;line-height:1.85;font-style:italic}
+  .orig b{font-style:normal;color:#0f172a}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  th{background:#f3f4f6;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfc}
+  .filetree{
+    background:#0f172a;border-radius:10px;padding:16px 18px;
+    font-family:Consolas,"Courier New",monospace;font-size:.86rem;line-height:1.7;
+    display:grid;grid-template-columns:max-content 1fr;gap:0 20px;overflow-x:auto;
+  }
+  .filetree .ftpath{color:#cbd5e1;white-space:pre}
+  .filetree .ftcmt{color:#64748b}
+  .filetree .hi{color:#7dd3fc;font-weight:700}
+  .filetree .dir{color:#fbbf24}
+  .filetree .warnfile{color:#fca5a5;font-weight:700}
+  .qtag{display:inline-block;background:#111827;color:#fff;font-size:.75rem;font-weight:700;
+    padding:3px 10px;border-radius:6px;margin-right:8px;vertical-align:middle}
+  .pill{display:inline-block;background:#eef2ff;color:#3730a3;font-size:.78rem;
+    padding:2px 9px;border-radius:999px;margin:2px 4px 2px 0;border:1px solid #c7d2fe}
+  details{background:#fafbfc;border:1px solid var(--line);border-radius:10px;padding:10px 16px;margin:10px 0}
+  summary{cursor:pointer;font-weight:600;color:#374151}
+  details[open] summary{margin-bottom:10px}
+  .kbd{background:#fff;border:1px solid #cbd5e1;border-bottom-width:2px;border-radius:6px;
+    padding:1px 7px;font-size:.85em;font-family:Consolas,monospace;white-space:nowrap}
+  .kid{background:#fff7ed;border:1px dashed #fdba74;border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem}
+  .kid b{color:#c2410c}
+  .formula{background:#f1f5f9;border:1px solid var(--line);border-radius:8px;padding:10px 16px;margin:10px 0;
+    font-family:Consolas,"Courier New",monospace;font-size:.92rem;color:#0f172a;overflow-x:auto}
+  footer{text-align:center;color:var(--muted);font-size:.85rem;padding:24px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="badge">國際行銷</span><span class="badge">Homework 3</span><span class="badge">新手適用</span>
+    <h1>2026-MKT-HW3 · RStudio 完全新手指南</h1>
+    <p>從零開始：看懂題目 → 開啟檔案 → 執行程式 → 讀懂結果 → 寫出報告</p>
+    <p style="font-size:.9rem;opacity:.8">本文件含作業原文、小學生版解釋、逐步操作、每段程式碼的作用與預期結果</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <h2>目錄</h2>
+  <ol>
+    <li><a href="#prep">開始前：環境準備</a></li>
+    <li><a href="#files">要開啟哪些檔案？</a></li>
+    <li><a href="#howto">R 怎麼執行（超新手）</a></li>
+    <li><a href="#p1">Problem 1：AHP 二階層評估</a></li>
+    <li><a href="#p2">Problem 2：TOPSIS</a></li>
+    <li><a href="#p3">Problem 3：Kano 模型</a></li>
+    <li><a href="#p4">Problem 4：二元整數規劃 BIP</a></li>
+    <li><a href="#report">報告架構範例</a></li>
+    <li><a href="#todo">作答前必改清單</a></li>
+    <li><a href="#trouble">常見錯誤排除</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============ 1. 環境準備 ============ -->
+<section id="prep">
+  <h2 class="sec">1. 開始前：環境準備</h2>
+  <p>這份作業<b>比 HW2 簡單</b>：四題全部只用 R 內建功能，<b>不需要安裝任何額外套件</b>。你只需要：</p>
+  <ol>
+    <li><b>已經安裝好的 R</b> 或 <b>RStudio</b>。</li>
+    <li>這份作業的資料夾（程式已經寫好放在裡面）。</li>
+  </ol>
+  <div class="ok">
+    <b>好消息</b>
+    不用 <code class="inline">install.packages(...)</code>、不用連網路、不會被公司 Proxy 擋。打開就能跑。
+  </div>
+</section>
+
+<!-- ============ 2. 檔案清單 ============ -->
+<section id="files">
+  <h2 class="sec">2. 要開啟哪些檔案？</h2>
+  <p>所有檔案都在這個資料夾底下：</p>
+  <p><code class="inline">D:\OneDrive\OneDrive - PEGATRON CORPORATION\交大\國際行銷\H3\作業\</code></p>
+
+  <div class="filetree">
+    <span class="ftpath"><span class="dir">作業/</span></span>
+    <span class="ftcmt">← 你的「工作目錄」</span>
+
+    <span class="ftpath">├── <span class="dir">R-code/</span></span>
+    <span class="ftcmt">← 要執行的程式都在這，也是工作目錄</span>
+
+    <span class="ftpath">│   ├── <span class="hi">run_all.R</span></span>
+    <span class="ftcmt">一鍵依序跑完 P1→P2→P3→P4（建議先跑這個）</span>
+
+    <span class="ftpath">│   ├── <span class="hi">P1_AHP.R</span></span>
+    <span class="ftcmt">Problem 1：AHP 二階層評估</span>
+
+    <span class="ftpath">│   ├── <span class="hi">P2_TOPSIS.R</span></span>
+    <span class="ftcmt">Problem 2：TOPSIS 評估</span>
+
+    <span class="ftpath">│   ├── <span class="hi">P3_Kano.R</span></span>
+    <span class="ftcmt">Problem 3：Kano delight / disgust</span>
+
+    <span class="ftpath">│   └── <span class="hi">P4_BIP.R</span></span>
+    <span class="ftcmt">Problem 4：二元整數規劃分群</span>
+
+    <span class="ftpath">├── P1_AHP_hierarchy.png</span>
+    <span class="ftcmt">P1 產出的階層圖（跑完才會有）</span>
+
+    <span class="ftpath">├── P2_TOPSIS_scores.png</span>
+    <span class="ftcmt">P2 產出的貼近度圖</span>
+
+    <span class="ftpath">├── P3_Kano_plot.png</span>
+    <span class="ftcmt">P3 產出的散布圖</span>
+
+    <span class="ftpath">├── P4_BIP_config.png</span>
+    <span class="ftcmt">P4 產出的配置圖</span>
+
+    <span class="ftpath">├── <span class="warnfile">P3_kano_result.rds</span></span>
+    <span class="ftcmt">⚠ P3 的計算結果，P4 會自動讀它（所以 P3 要先跑）</span>
+
+    <span class="ftpath">├── 2026-MKT-HW3.md</span>
+    <span class="ftcmt">題目原文整理</span>
+
+    <span class="ftpath">├── 2026-MKT-HW3.html</span>
+    <span class="ftcmt">作業解析（方法、公式、參考檔案）</span>
+
+    <span class="ftpath">└── <span class="hi">2026-MKT-HW3-操作手冊.html</span></span>
+    <span class="ftcmt">就是本文件</span>
+  </div>
+
+  <h3>一張表看懂：哪一題要跑哪個檔</h3>
+  <table>
+    <thead>
+      <tr><th>題目</th><th>要跑的 R 檔</th><th>會產生什麼</th><th>要裝套件嗎</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="qtag">P1</span>AHP</td><td><code class="inline">P1_AHP.R</code></td><td>準則權重、CR、城市加權分數、<code class="inline">P1_AHP_hierarchy.png</code></td><td>不用</td></tr>
+      <tr><td><span class="qtag">P2</span>TOPSIS</td><td><code class="inline">P2_TOPSIS.R</code></td><td>D+ / D− / CC 貼近度與排名、<code class="inline">P2_TOPSIS_scores.png</code></td><td>不用</td></tr>
+      <tr><td><span class="qtag">P3</span>Kano</td><td><code class="inline">P3_Kano.R</code></td><td>delight / disgust 表、<code class="inline">P3_Kano_plot.png</code>、<code class="inline">P3_kano_result.rds</code></td><td>不用</td></tr>
+      <tr><td><span class="qtag">P4</span>BIP</td><td><code class="inline">P4_BIP.R</code></td><td>三價位最佳配置、敏感度分析、<code class="inline">P4_BIP_config.png</code></td><td>不用</td></tr>
+    </tbody>
+  </table>
+  <div class="warn">
+    <b>順序很重要</b>
+    P4 會去讀 P3 產生的 <code class="inline">P3_kano_result.rds</code>。所以<b>一定要先跑 P3 再跑 P4</b>。<code class="inline">run_all.R</code> 已經幫你排好順序，直接跑它就對了。
+  </div>
+</section>
+
+<!-- ============ 3. 如何執行 ============ -->
+<section id="howto">
+  <h2 class="sec">3. R 怎麼執行（超新手）</h2>
+
+  <h3>3-1 兩種執行方式</h3>
+  <h4>方式 A：用 RStudio（推薦給新手）</h4>
+  <ol>
+    <li>RStudio → <code class="inline">File → Open File...</code> → 開 <code class="inline">R-code\run_all.R</code>。</li>
+    <li>右上角按 <b>Source</b>（或把游標放在檔案裡按 <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">Enter</span>）→ 一次跑完四題。</li>
+    <li>想看單題：改成開 <code class="inline">P1_AHP.R</code> 等單檔，逐段選取後按 <span class="kbd">Ctrl</span>+<span class="kbd">Enter</span>。</li>
+  </ol>
+
+  <h4>方式 B：用終端機（PowerShell）</h4>
+  <p>工作目錄切到 <code class="inline">R-code</code> 後執行：</p>
+<pre><code>Rscript run_all.R</code></pre>
+
+  <h3>3-2 執行程式碼的常用操作（RStudio）</h3>
+  <table>
+    <thead><tr><th>想做的事</th><th>操作</th></tr></thead>
+    <tbody>
+      <tr><td>執行<b>游標所在那一行</b></td><td>游標放該行 → <span class="kbd">Ctrl</span>+<span class="kbd">Enter</span></td></tr>
+      <tr><td>執行<b>選取的一段</b></td><td>選取多行 → <span class="kbd">Ctrl</span>+<span class="kbd">Enter</span></td></tr>
+      <tr><td>執行<b>整份檔案</b></td><td><span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">Enter</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>核心觀念</b>
+    每個 R 檔都用 <code class="inline">## ---------- N. ... ----------</code> 切成好幾段。標準流程是
+    <b>從第 1 段開始，一段一段往下跑</b>；每跑一段就看一下 Console 有沒有紅字。
+  </div>
+
+  <div class="warn">
+    <b>初學者最常犯的錯</b>
+    <ul style="margin:6px 0 0">
+      <li>跳過前面的設定段，直接跑後面的段 → 出現 <code class="inline">object 'xxx' not found</code>。</li>
+      <li>先跑 P4 才跑 P3 → 找不到 <code class="inline">P3_kano_result.rds</code>。</li>
+      <li>工作目錄不在 <code class="inline">R-code</code> → 圖檔存到別的地方，或讀不到 rds。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ P1 ============ -->
+<section id="p1">
+  <h2 class="sec"><span class="qtag">Problem 1</span>AHP 二階層評估</h2>
+
+  <h3>&#128196; 作業原文（English Original）</h3>
+  <div class="orig">
+    Using AHP to conduct a two-level assessment for three harbors in the world, Kaohsiung, Busan, and Tokyo.
+    The criteria includes living cost, natural environment, city tourism, food, transportation, and courtesy.
+    Please draw a plot to visualize the process of assessment. Then, calculate the average weights of the
+    <b>four</b> criteria based on your team members. Third, conduct assessment for three cities with respect
+    to all criteria. Finally, calculate the weighted score for three cities.
+  </div>
+
+  <h3>&#128203; 題目說明（小學生版）</h3>
+  <div class="kid">
+    <b>想像你在選「畢業旅行去哪裡」。</b><br>
+    有三個候選城市：高雄、釜山、東京。要選哪一個，不能只憑「我喜歡」，要把理由拆開來看，
+    例如：<b>生活費便宜嗎？風景美嗎？好玩嗎？東西好吃嗎？交通方便嗎？人親切嗎？</b>——這六個理由就叫「<b>準則</b>」。
+  </div>
+
+  <p><b>AHP 在做什麼？</b>就是「把模糊的喜好，變成一串數字分數」。做法是<b>一次只比兩個</b>：</p>
+  <ul>
+    <li><b>比準則</b>：「生活費」跟「風景」哪個比較重要？重要多少？（用 1～9 分打分，1 = 一樣重要、9 = 超級重要）。</li>
+    <li><b>比城市</b>：在「風景」這一項，高雄跟東京誰比較美？</li>
+  </ul>
+  <p>每一組兩兩比較累積起來，用數學算出<b>每個準則的權重</b>（重要度），再算出<b>每個城市的加權總分</b>，就排名了。</p>
+
+  <table>
+    <thead><tr><th>名詞</th><th>小學生翻譯</th></tr></thead>
+    <tbody>
+      <tr><td><b>二階層（two-level）</b></td><td>兩層樓：樓上是「準則」，樓下是「城市」。</td></tr>
+      <tr><td><b>成對比較</b></td><td>一次只比兩個，像「我和你的身高誰高」，不全部一起比。</td></tr>
+      <tr><td><b>權重 w</b></td><td>這個理由有多重要（加起來 = 1）。</td></tr>
+      <tr><td><b>一致性 CR</b></td><td>檢查你的答案有沒有「自相矛盾」（例如說 A 比 B 好、B 比 C 好，卻又說 C 比 A 好）。CR &lt; 0.1 才算邏輯通順。</td></tr>
+    </tbody>
+  </table>
+
+  <h4>公式</h4>
+  <div class="formula">
+    逐欄正規化：a[i][j] = a[i][j] / (該欄總和)　→　權重 w[i] = 每列平均
+    <br>一致性：λmax（最大特徵值）、CI = (λmax − n) / (n − 1)、CR = CI / RI
+    <br>RI 表：n=3→0.58、4→0.90、5→1.12、6→1.24、7→1.32、8→1.41、9→1.45、10→1.49
+    <br>城市加權總分：Score = Σ（城市在某準則的得分 × 該準則權重）
+  </div>
+
+  <h3>🖱️ 操作步驟</h3>
+  <div class="step"><span class="n">1</span>開啟 <code class="inline">R-code/P1_AHP.R</code>。</div>
+  <div class="step"><span class="n">2</span>找到標有 <b>▶</b> 的示範資料區塊，換成<b>你們團隊的實際數字</b>：
+     <code class="inline">w_crit_demo</code>（六項準則權重）與 <code class="inline">w_city_demo</code>（三城市得分）。</div>
+  <div class="step"><span class="n">3</span>逐段執行（或整檔 Source）。Console 會依序印出：準則權重、CR、城市×準則得分矩陣、加權總分與排名。</div>
+  <div class="step"><span class="n">4</span>資料夾會出現 <code class="inline">P1_AHP_hierarchy.png</code>（含階層圖與分數），報告要用這張圖。</div>
+
+  <h3>💻 程式碼在做什麼</h3>
+<pre><code># 由權重反推成對比較矩陣（a_ij = w_i / w_j），再走 AHP 求解
+A     &lt;- pairwise_from_weights(w_crit_demo)    # 6x6 準則比較矩陣
+res_A &lt;- ahp_weights(A)                        # 特徵向量法求權重 + CR
+
+# 每項準則下，三城市的相對得分（3 x 6 矩陣）
+score_by_criteria &lt;- sapply(criteria, function(cr) {
+  w &lt;- setNames(w_city_demo[, cr], cities)
+  ahp_weights(pairwise_from_weights(w))$weights
+})
+
+# 城市加權總分 ＝ 城市得分矩陣 × 準則權重
+total_score &lt;- as.vector(score_by_criteria %*% w_mean)</code></pre>
+  <p class="pill">提示：若你是「手填上三角的 1~9 整數」，程式裡已附 <code class="inline">pairwise_from_upper(...)</code>，把註解那行打開即可。</p>
+
+  <h3>🔍 怎麼看結果</h3>
+  <table>
+    <thead><tr><th>輸出</th><th>意義</th><th>判斷標準</th></tr></thead>
+    <tbody>
+      <tr><td>準則權重 <code class="inline">w_mean</code></td><td>六個準則各有多重要</td><td>數字最大者 = 團隊認為最重要的準則</td></tr>
+      <tr><td><code class="inline">CR</code></td><td>一致性比率</td><td><b>&lt; 0.1</b> → 通過（邏輯一致）</td></tr>
+      <tr><td>加權總分 <code class="inline">out</code></td><td>三城市最終分數與名次</td><td>分數最高 = 最佳港口</td></tr>
+      <tr><td><code class="inline">P1_AHP_hierarchy.png</code></td><td>階層圖</td><td>題目要求的「視覺化評估流程」</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>報告要寫什麼</b>
+    ① 六項準則的權重表（附一句「哪些準則最被重視」）② CR 值並註明通過一致性
+    ③ 三城市加權總分排名 + 結論（哪個港口最好）④ 附上階層圖。
+  </div>
+</section>
+
+<!-- ============ P2 ============ -->
+<section id="p2">
+  <h2 class="sec"><span class="qtag">Problem 2</span>TOPSIS 評估</h2>
+
+  <h3>&#128196; 作業原文（English Original）</h3>
+  <div class="orig">
+    Following Problem 1, replace level-two assessment using AHP by using TOPSIS. Based on a five-point
+    Likert scale, PIS and NIS are respectively (5,5,5,5,5,5) and (1,1,1,1,1,1). Reserve the weights of the
+    criteria obtained in Problem 1 and calculate the weighted TOPSIS score to conduct assessment for the
+    three cities. Discuss the differences of results between Problem 1 and Problem 2.
+  </div>
+
+  <h3>&#128203; 題目說明（小學生版）</h3>
+  <div class="kid">
+    <b>TOPSIS 就是「跟模範生比」。</b><br>
+    想像班上有兩個虛擬同學：<b>「完美模範生」</b>（每科都考 5 分）和<b>「最差同學」</b>（每科都考 1 分）。
+    我們看每個城市離誰比較近：<b>越靠近模範生、越遠離最差同學 → 就越好。</b>
+  </div>
+
+  <ul>
+    <li><b>PIS（正理想解）</b> = 每項都 5 分的完美城市。</li>
+    <li><b>NIS（負理想解）</b> = 每項都 1 分的最爛城市。</li>
+    <li><b>D+</b> = 離完美城市多遠（越小越好）；<b>D−</b> = 離最爛城市多遠（越大越好）。</li>
+    <li><b>CC（貼近度）</b> = D− ÷ (D+ + D−)，介於 0～1，<b>越大越棒</b>。</li>
+  </ul>
+  <p>這題跟 P1 差在：<b>P1 是用 AHP 比城市</b>，<b>P2 改用 TOPSIS 比城市</b>，但<b>準則權重沿用 P1 算出來的</b>。</p>
+
+  <div class="formula">
+    D+ = √( Σ w&#7522; × (x&#7522; − PIS&#7522;)² )　　D− = √( Σ w&#7522; × (x&#7522; − NIS&#7522;)² )
+    <br>CC = D− / (D+ + D−)　（0～1，越大越好）
+  </div>
+
+  <h3>🖱️ 操作步驟</h3>
+  <div class="step"><span class="n">1</span>開啟 <code class="inline">R-code/P2_TOPSIS.R</code>。</div>
+  <div class="step"><span class="n">2</span>把 <b>▶</b> 示範值換成你們的資料：<code class="inline">w</code>（沿用 P1 權重）、<code class="inline">X</code>（三城市 × 六準則的 1～5 分評分）。</div>
+  <div class="step"><span class="n">3</span>執行，Console 會印出 D+、D−、CC、排名，以及 P1 vs P2 的比較表。</div>
+  <div class="step"><span class="n">4</span>資料夾出現 <code class="inline">P2_TOPSIS_scores.png</code>。</div>
+
+  <h3>💻 程式碼在做什麼</h3>
+<pre><code># 題目直接指定 PIS=5、NIS=1，用權重 w 算加權歐氏距離
+d_plus  &lt;- sqrt(rowSums(sweep(X, 2, PIS, "-")^2 * w_mat))   # 離完美城市
+d_minus &lt;- sqrt(rowSums(sweep(X, 2, NIS, "-")^2 * w_mat))   # 離最爛城市
+cc      &lt;- d_minus / (d_plus + d_minus)                     # 貼近度 0~1
+
+# 與 P1 (AHP) 排名比較
+cmp &lt;- data.frame(City=cities, P1_Rank=p1_rank, P2_Rank=rank(-cc),
+                  RankChanged = p1_rank != rank(-cc))</code></pre>
+
+  <h3>🔍 怎麼看結果 / 報告要寫什麼</h3>
+  <ul>
+    <li><code class="inline">CC</code> 最大 = 最好；<code class="inline">TopsisRank</code> 就是名次。</li>
+    <li>看 <code class="inline">cmp</code> 表：P1 與 P2 的排名有沒有變？<b>重點是討論「為什麼變／為什麼不變」</b>。</li>
+    <li>小提示：TOPSIS 是「跟理想解比距離」的補償式方法；AHP 是「兩兩相對比較」。評分基準不同，排名可能就不同。</li>
+  </ul>
+  <div class="note">
+    <b>報告要寫什麼</b>
+    ① CC 表與排名 ② 一句話結論（哪個城市最好）③ <b>P1 vs P2 差異討論</b>（這題的分數重點）④ 附 <code class="inline">P2_TOPSIS_scores.png</code>。
+  </div>
+</section>
+
+<!-- ============ P3 ============ -->
+<section id="p3">
+  <h2 class="sec"><span class="qtag">Problem 3</span>Kano 模型（手機功能）</h2>
+
+  <h3>&#128196; 作業原文（English Original）</h3>
+  <div class="orig">
+    Apply Kano model to do evaluation for smartphones considering the features: water proof, optical zoom for
+    cameras, wireless charging, and foldable screen. Derive the delight and the disgust based on the Kano
+    percentages of your team members.
+  </div>
+
+  <h3>&#128203; 題目說明（小學生版）</h3>
+  <div class="kid">
+    <b>Kano 就是問「有這個功能，你開心嗎？沒有，你生氣嗎？」</b><br>
+    對每個功能（防水、光學變焦、無線充電、摺疊螢幕）都問兩個問題：<br>
+    ①「如果手機<b>有</b>防水，你覺得怎樣？」②「如果手機<b>沒有</b>防水，你覺得怎樣？」<br>
+    根據這兩題的答案組合，就能判斷這個功能屬於哪一類。
+  </div>
+
+  <table>
+    <thead><tr><th>代號</th><th>類型</th><th>小學生翻譯</th></tr></thead>
+    <tbody>
+      <tr><td><b>A</b></td><td>魅力 Attractive</td><td>有會超驚喜，沒有也不會生氣 → <b>加分的亮點</b></td></tr>
+      <tr><td><b>M</b></td><td>必要 Must-be</td><td>有是理所當然，沒有會大怒 → <b>沒做好就完蛋的基本盤</b></td></tr>
+      <tr><td><b>O</b></td><td>一維 One-dimensional</td><td>有越多越滿意，沒有就越不爽 → <b>越多越好的加分項</b></td></tr>
+      <tr><td><b>I</b></td><td>無差異 Indifferent</td><td>有沒有都無感 → <b>加了也沒差</b></td></tr>
+      <tr><td><b>R</b></td><td>反向 Reverse</td><td>有反而討厭 → <b>加了會扣分</b></td></tr>
+      <tr><td><b>Q</b></td><td>可疑 Questionable</td><td>答案自相矛盾 → 通常不列入計算</td></tr>
+    </tbody>
+  </table>
+
+  <p>把團隊成員的答案統計成各類<b>百分比</b>後，算出兩個指標：</p>
+  <ul>
+    <li><b>delight（滿意度）</b>：有這個功能，平均多開心。</li>
+    <li><b>disgust（不滿意度）</b>：沒有這個功能，平均多不爽（負值）。</li>
+  </ul>
+
+  <div class="formula">
+    課程範本版（本程式採用）：
+    <br>delight = (A + O − I) / N　　disgust = −(M + O − R) / N
+    <br>其中 N = A + M + O + R + I（不含 Q）
+    <br><br>講義 p.16 標準版：delight = (A + O)/N　 disgust = −(O + M)/N
+  </div>
+  <div class="warn">
+    <b>兩種公式結果不同！</b>
+    本程式用<b>課程範本 Excel</b>（<code class="inline">多準則決策.xlsx</code> 的 <code class="inline">Kano</code> 工作表）版本。
+    若老師要求用講義版本，請自行替換公式。交作業前確認要用哪一版。
+  </div>
+
+  <h3>🖱️ 操作步驟</h3>
+  <div class="step"><span class="n">1</span>開啟 <code class="inline">R-code/P3_Kano.R</code>。</div>
+  <div class="step"><span class="n">2</span>把 <b>▶</b> 示範值 <code class="inline">kano_pct</code>（四功能 × A/M/O/R/I/Q 百分比）換成<b>團隊問卷統計結果</b>（每列加總 = 1）。</div>
+  <div class="step"><span class="n">3</span>執行。Console 會印出每個功能的分類、delight、disgust、熵權重。</div>
+  <div class="step"><span class="n">4</span>產出 <code class="inline">P3_Kano_plot.png</code> 與 <code class="inline">P3_kano_result.rds</code>（給 P4 用）。</div>
+
+  <h3>💻 程式碼在做什麼</h3>
+<pre><code># delight / disgust（範本版公式）
+AMO     &lt;- kano_pct[,"A"] + kano_pct[,"M"] + kano_pct[,"O"] + kano_pct[,"R"] + kano_pct[,"I"]
+delight &lt;- (kano_pct[,"A"] + kano_pct[,"O"] - kano_pct[,"I"]) / AMO
+disgust &lt;- -(kano_pct[,"M"] + kano_pct[,"O"] - kano_pct[,"R"]) / AMO
+
+# 熵權重：反應差異越大的功能，權重越高
+H &lt;- -rowSums(kano_pct * log(kano_pct)) / log(5)
+w_entropy &lt;- (1 - H) / sum(1 - H)
+
+# 輸出 rds 給 Problem 4 讀取
+saveRDS(list(delight = delight, disgust = disgust, weight = w_entropy,
+             features = features, category = cat_of),
+        "P3_kano_result.rds")</code></pre>
+
+  <h3>🔍 怎麼看結果 / 報告要寫什麼</h3>
+  <ul>
+    <li>看 <code class="inline">Category</code> 欄：每個功能是 A / M / O / I / R 哪一類。</li>
+    <li>看 <code class="inline">Delight</code>（越大越能增加滿意）與 <code class="inline">Disgust</code>（越負代表沒有時越不爽）。</li>
+    <li>散布圖 <code class="inline">P3_Kano_plot.png</code>：橫軸 delight、縱軸 disgust，一眼看出哪些是亮點、哪些是基本盤。</li>
+    <li><b>管理意涵舉例</b>：M 類（如防水）→ 一定要做好；A 類（如摺疊）→ 用來製造驚喜的差異化賣點。</li>
+  </ul>
+</section>
+
+<!-- ============ P4 ============ -->
+<section id="p4">
+  <h2 class="sec"><span class="qtag">Problem 4</span>二元整數規劃 BIP（價格分群）</h2>
+
+  <h3>&#128196; 作業原文（English Original）</h3>
+  <div class="orig">
+    Following Problem 3, apply binary integer programming to conduct price based customer segmentation.
+    Given the base cost for a smart phone is TWD$10000, the extra costs inclusive for water proof, optical
+    zoom for cameras, wireless charging, and foldable screen are respectively 2500, 3500, 1500, 155000. The
+    goal is to maximize delight or minimize disgust. Derive their optimal product configuration for three
+    segments: high (30000), medium (22000), and low (15000).
+  </div>
+
+  <h3>&#128203; 題目說明（小學生版）</h3>
+  <div class="kid">
+    <b>像在自助餐店配菜。</b>你有 3 種價位預算（高 30000、中 22000、低 15000）。
+    手機本體 10000 元，每加一個功能要加錢。你要在<b>預算以內</b>，挑一組功能，讓客人最開心（delight 最大）。
+  </div>
+  <p><b>「二元整數規劃」是什麼？</b>每個功能只有兩種選擇：<b>加（1）或 不加（0）</b>，「二元」就是指這個 0 / 1。
+     四個功能共 2⁴ = <b>16 種組合</b>，程式把它們<b>全部列出來</b>，檢查哪一組分數最高又沒超預算。</p>
+
+  <table>
+    <thead><tr><th>項目</th><th>金額</th></tr></thead>
+    <tbody>
+      <tr><td>手機基礎成本</td><td>10,000</td></tr>
+      <tr><td>＋ water proof 防水</td><td>2,500</td></tr>
+      <tr><td>＋ optical zoom 光學變焦</td><td>3,500</td></tr>
+      <tr><td>＋ wireless charging 無線充電</td><td>1,500</td></tr>
+      <tr><td>＋ foldable screen 摺疊螢幕</td><td><b>155,000</b>（疑為筆誤，見下方警示）</td></tr>
+      <tr><td>三個價位上限</td><td>high 30,000 ／ medium 22,000 ／ low 15,000</td></tr>
+    </tbody>
+  </table>
+
+  <div class="formula">
+    決策變數：y&#7503; ∈ {0, 1}（要不要加功能 f）
+    <br>目標：max Σ w&#7503; × delight&#7503; × y&#7503;　（或 min Σ ... disgust ...）
+    <br>限制：10000 + Σ cost&#7503; × y&#7503; ≤ 價位上限
+  </div>
+
+  <div class="warn">
+    <b>原文疑義：foldable 成本 155000</b>
+    這個數字遠大於其他功能，甚至超過所有價位上限，幾乎不可能加得進去，<b>極可能是 5000 或 15000 的筆誤</b>。
+    程式中已附<b>敏感度分析</b>：分別用 155000 / 15000 / 5000 各跑一次給你看差別。<b>建議先跟老師／助教確認正確數值。</b>
+  </div>
+
+  <h3>🖱️ 操作步驟</h3>
+  <div class="step"><span class="n">1</span>先確認 <code class="inline">P3_kano_result.rds</code> 存在（P3 已跑過）；沒有它，P4 會改用內建示範值。</div>
+  <div class="step"><span class="n">2</span>開啟 <code class="inline">R-code/P4_BIP.R</code>。成本 / 預算通常不用改。</div>
+  <div class="step"><span class="n">3</span>執行。Console 會印出「最大化 delight」與「最小化 disgust」兩種目標下，三個價位的最佳配置。</div>
+  <div class="step"><span class="n">4</span>再看<b>敏感度分析</b>輸出（foldable 成本不同時的差異），最後產出 <code class="inline">P4_BIP_config.png</code>。</div>
+
+  <h3>💻 程式碼在做什麼</h3>
+<pre><code># 4 個功能 → 2^4 = 16 種 0/1 組合，全部列出
+grid &lt;- expand.grid(rep(list(c(0,1)), 4))
+grid$TotalCost &lt;- 10000 + as.vector(Y %*% cost)     # 每組總成本
+grid$Delight   &lt;- as.vector(Y %*% delight)          # 每組 delight
+grid$Disgust   &lt;- as.vector(Y %*% disgust)          # 每組 disgust
+
+# 在預算內找最佳解（窮舉）
+feas &lt;- grid[grid$TotalCost &lt;= budget, ]            # 只留沒超預算的
+best &lt;- feas[which.max(feas$Delight), ]             # 取 delight 最大的那組</code></pre>
+
+  <h3>🔍 怎麼看結果 / 報告要寫什麼</h3>
+  <ul>
+    <li><code class="inline">Configuration</code>：該價位建議搭載哪些功能（用 <code class="inline">+</code> 連接）。</li>
+    <li><code class="inline">TotalCost</code>：這組配置的總成本（必須 ≤ 價位上限）。</li>
+    <li>高 / 中 / 低三個價位各有一組最佳配置 → 這就是「價格基礎的顧客分群」。</li>
+    <li><b>報告要寫什麼</b>：三價位配置表 + 敏感度分析結論 + 一個建議（例如：若 foldable 成本改為 X，高階機才可能搭載）。</li>
+  </ul>
+</section>
+
+<!-- ============ 報告架構 ============ -->
+<section id="report">
+  <h2 class="sec">8. 報告架構範例</h2>
+  <p>四題合起來可以寫成一份報告，建議結構：</p>
+  <ol>
+    <li><b>Problem 1</b>：準則權重表 + CR（通過一致性）+ 三城市加權分數排名 + 階層圖。</li>
+    <li><b>Problem 2</b>：TOPSIS 的 CC 表與排名 + <b>P1 vs P2 差異討論</b>。</li>
+    <li><b>Problem 3</b>：四功能 Kano 分類 + delight / disgust 表 + 管理意涵。</li>
+    <li><b>Problem 4</b>：三價位最佳配置表 + 敏感度分析 + 建議。</li>
+    <li><b>附錄</b>：四張圖（<code class="inline">P1_AHP_hierarchy.png</code> 等）與 R 程式碼。</li>
+  </ol>
+  <div class="ok">
+    <b>寫報告的偷吃步</b>
+    Console 印出的表格（準則權重、CC、delight 表、配置表）都可以整段複製貼上報告，不用重打、也不會抄錯數字。
+  </div>
+</section>
+
+<!-- ============ 作答前必改 ============ -->
+<section id="todo">
+  <h2 class="sec">9. 作答前必改清單</h2>
+  <p>程式裡標有 <b>▶</b> 的都是「示範值」，正式作答前<b>務必換成你們團隊的資料</b>：</p>
+  <table>
+    <thead><tr><th>檔案</th><th>要替換的變數</th><th>意思</th></tr></thead>
+    <tbody>
+      <tr><td><code class="inline">P1_AHP.R</code></td><td><code class="inline">w_crit_demo</code>、<code class="inline">w_city_demo</code></td><td>六準則權重、三城市在六準則的得分</td></tr>
+      <tr><td><code class="inline">P2_TOPSIS.R</code></td><td><code class="inline">w</code>、<code class="inline">X</code></td><td>沿用 P1 的權重、三城市六準則的 1~5 評分</td></tr>
+      <tr><td><code class="inline">P3_Kano.R</code></td><td><code class="inline">kano_pct</code></td><td>四功能的 A/M/O/R/I/Q 百分比（每列加總 = 1）</td></tr>
+      <tr><td><code class="inline">P4_BIP.R</code></td><td>通常不用改</td><td>成本與預算依題目數值</td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <b>多人資料怎麼平均？</b>
+    每位組員各算出自己的權重，再取平均即可。程式註解有範例：
+    <code class="inline">w_mean &lt;- colMeans(rbind(w_m1, w_m2, w_m3))</code>。
+  </div>
+</section>
+
+<!-- ============ 疑難排解 ============ -->
+<section id="trouble">
+  <h2 class="sec">10. 常見錯誤排除</h2>
+
+  <details>
+    <summary><code class="inline">cannot open file 'P3_kano_result.rds'</code> 或 P4 用「內建示範值」</summary>
+    <p>P4 依賴 P3 的輸出。請<b>先完整執行 P3</b>（會產生 <code class="inline">P3_kano_result.rds</code>），再跑 P4。
+       或直接用 <code class="inline">run_all.R</code> 一鍵按順序跑完。</p>
+  </details>
+
+  <details>
+    <summary><code class="inline">object 'xxx' not found</code></summary>
+    <p>你跳過了前面的段。R 是「由上往下」執行，請<b>從第 1 段依序跑</b>，不要跳段。</p>
+  </details>
+
+  <details>
+    <summary>找不到輸出圖檔 / 圖跑到別的地方</summary>
+    <p>圖是用<b>相對路徑</b>存檔，會存在你目前的<b>工作目錄</b>。請把工作目錄設在 <code class="inline">R-code</code>
+       （在該資料夾開檔、或用終端機 <code class="inline">cd</code> 到那再 <code class="inline">Rscript run_all.R</code>），
+       圖就會出現在同一資料夾。</p>
+  </details>
+
+  <details>
+    <summary>圖上的中文變成一堆方框</summary>
+    <p>這是字型問題。Windows 的 R 通常可直接顯示中文；若真的變方框，改用 RStudio 開啟、並在 Console 執行
+       <code class="inline">windowsFonts()</code> 檢查字型，或把圖表文字改成英文再截圖。</p>
+  </details>
+
+  <details>
+    <summary>結果數字跟範本 Excel 不一樣</summary>
+    <p>多半是你改的示範值 / 公式版本不同。最常見是 <b>Kano 公式</b>（範本版含 <code class="inline">−I / −R</code>、講義版沒有）
+       與 <b>TOPSIS 正規化</b>（本程式用題目指定的 PIS=5 / NIS=1 錨定法）。請與老師確認要用哪一版。</p>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  本手冊由作業文件 <code>2026-MKT-HW3.docx / .md</code> 與 <code>R-code/</code> 四題程式彙整而成。<br>
+  相關文件：<code>作業\2026-MKT-HW3.html</code>（方法解析）、<code>作業\R-code\README.md</code>（程式說明）。
+</footer>
+</body>
+</html>
