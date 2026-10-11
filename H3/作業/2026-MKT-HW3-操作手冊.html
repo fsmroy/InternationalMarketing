@@ -344,6 +344,57 @@ total_score &lt;- as.vector(score_by_criteria %*% w_mean)</code></pre>
     ① 六項準則的權重表（附一句「哪些準則最被重視」）② CR 值並註明通過一致性
     ③ 三城市加權總分排名 + 結論（哪個港口最好）④ 附上階層圖。
   </div>
+
+  <h3>📊 程式跑完的分析結果</h3>
+  <div class="warn">
+    <b>示範資料</b>
+    以下數字由程式內建示範權重與評分跑出（<code class="inline">w_crit_demo</code> / <code class="inline">w_city_demo</code>）。
+    正式繳交前請換成你們團隊的實際比較結果後重跑。因矩陣由權重反推，<b>CR 必為 0</b>（完全一致）；
+    若你們手填 1~9 上三角，CR 才會是可觀察的一致性檢定值。
+  </div>
+
+  <h4>(1) 六項準則權重與一致性</h4>
+  <table>
+    <thead><tr><th>準則</th><th>權重 w</th><th>排名</th></tr></thead>
+    <tbody>
+      <tr><td>LivingCost 生活成本</td><td><b>0.2200</b></td><td>1</td></tr>
+      <tr><td>NatEnvironment 自然環境</td><td>0.1800</td><td>2</td></tr>
+      <tr><td>CityTourism 城市旅遊</td><td>0.1600</td><td>3（並列）</td></tr>
+      <tr><td>Food 食物</td><td>0.1600</td><td>3（並列）</td></tr>
+      <tr><td>Transportation 交通</td><td>0.1500</td><td>5</td></tr>
+      <tr><td>Courtesy 人情／親切</td><td>0.1300</td><td>6</td></tr>
+    </tbody>
+  </table>
+  <p>一致性：<code class="inline">lambda_max = 6.0000</code>、<code class="inline">CR = 0.0000 &lt; 0.1</code> → <b>通過一致性檢定</b>。</p>
+
+  <h4>(2) 城市 × 準則得分矩陣</h4>
+  <table>
+    <thead><tr><th>城市</th><th>生活成本</th><th>自然環境</th><th>城市旅遊</th><th>食物</th><th>交通</th><th>親切</th></tr></thead>
+    <tbody>
+      <tr><td>Kaohsiung</td><td><b>0.40</b></td><td>0.34</td><td>0.30</td><td><b>0.36</b></td><td>0.33</td><td><b>0.37</b></td></tr>
+      <tr><td>Busan</td><td>0.34</td><td>0.34</td><td>0.34</td><td>0.34</td><td>0.34</td><td>0.34</td></tr>
+      <tr><td>Tokyo</td><td>0.26</td><td>0.32</td><td><b>0.36</b></td><td>0.30</td><td>0.33</td><td>0.29</td></tr>
+    </tbody>
+  </table>
+
+  <h4>(3) 加權總分與排名</h4>
+  <table>
+    <thead><tr><th>排名</th><th>城市</th><th>加權總分</th></tr></thead>
+    <tbody>
+      <tr><td>🥇 1</td><td>Kaohsiung 高雄</td><td><b>0.3524</b></td></tr>
+      <tr><td>🥈 2</td><td>Busan 釜山</td><td>0.3400</td></tr>
+      <tr><td>🥉 3</td><td>Tokyo 東京</td><td>0.3076</td></tr>
+    </tbody>
+  </table>
+
+  <h3>💡 管理意涵（港市評估）</h3>
+  <ol>
+    <li><b>生活成本是決定性準則（22%）</b>：長住型訪客（商務、移居、留學）最在意開銷，其次才是自然環境（18%）。行銷時應把「生活費可負擔」當主打訊息。</li>
+    <li><b>高雄勝出的關鍵是「全面均衡偏強」</b>：在生活成本(0.40)、食物(0.36)、親切度(0.37) 三項拿第一，雖在旅遊(0.30) 與東京有落差，但該準則權重較低，<b>沒有致命短板</b>。</li>
+    <li><b>東京的強項與弱項都很極端</b>：城市旅遊(0.36)、自然環境(0.32)領先，但生活成本只有 0.26（遠低於高雄 0.40）被最重準則拖累 → 適合定位「<b>短天數觀光</b>」而非長住。</li>
+    <li><b>釜山是「安全牌」</b>：各項皆 0.34，名次穩定第 2，屬「不會踩雷但也無亮點」的選擇，可作為備選定位。</li>
+    <li><b>策略建議</b>：若目標客群是長住／商務 → 高雄；純觀光 → 東京；要平衡預算與體驗 → 釜山。決策前務必確認「準則權重」是否符合你們團隊的真正偏好，因為權重一動、排名就可能翻轉。</li>
+  </ol>
 </section>
 
 <!-- ============ P2 ============ -->
@@ -404,6 +455,55 @@ cmp &lt;- data.frame(City=cities, P1_Rank=p1_rank, P2_Rank=rank(-cc),
     <b>報告要寫什麼</b>
     ① CC 表與排名 ② 一句話結論（哪個城市最好）③ <b>P1 vs P2 差異討論</b>（這題的分數重點）④ 附 <code class="inline">P2_TOPSIS_scores.png</code>。
   </div>
+
+  <h3>📊 程式跑完的分析結果</h3>
+  <div class="warn">
+    <b>示範資料</b>
+    以下數字用內建示範評分矩陣 <code class="inline">X</code>（1~5 分）與 P1 權重跑出，請換成你們團隊評分後重跑。
+  </div>
+
+  <h4>(1) 各城市評分矩陣（1~5 分）</h4>
+  <table>
+    <thead><tr><th>城市</th><th>生活成本</th><th>自然環境</th><th>城市旅遊</th><th>食物</th><th>交通</th><th>親切</th></tr></thead>
+    <tbody>
+      <tr><td>Kaohsiung</td><td><b>5</b></td><td>4</td><td>3</td><td>4</td><td>4</td><td>4</td></tr>
+      <tr><td>Busan</td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td></tr>
+      <tr><td>Tokyo</td><td>3</td><td>4</td><td><b>5</b></td><td>3</td><td>4</td><td>3</td></tr>
+    </tbody>
+  </table>
+
+  <h4>(2) TOPSIS 距離與貼近度</h4>
+  <table>
+    <thead><tr><th>城市</th><th>D+（離完美）</th><th>D−（離最爛）</th><th>CC 貼近度</th><th>排名</th></tr></thead>
+    <tbody>
+      <tr><td>Busan 釜山</td><td><b>1.0000</b></td><td>3.0000</td><td><b>0.7500</b></td><td>🥇 1</td></tr>
+      <tr><td>Kaohsiung 高雄</td><td>1.1225</td><td>3.1209</td><td>0.7355</td><td>🥈 2</td></tr>
+      <tr><td>Tokyo 東京</td><td>1.5395</td><td>2.7514</td><td>0.6412</td><td>🥉 3</td></tr>
+    </tbody>
+  </table>
+
+  <h4>(3) P1 vs P2 排名比較</h4>
+  <table>
+    <thead><tr><th>城市</th><th>P1 AHP 分數</th><th>P1 排名</th><th>P2 CC</th><th>P2 排名</th><th>排名變動</th></tr></thead>
+    <tbody>
+      <tr><td>Kaohsiung</td><td>0.3524</td><td>1</td><td>0.7355</td><td>2</td><td><b>變動 ↓</b></td></tr>
+      <tr><td>Busan</td><td>0.3400</td><td>2</td><td>0.7500</td><td>1</td><td><b>變動 ↑</b></td></tr>
+      <tr><td>Tokyo</td><td>0.3076</td><td>3</td><td>0.6412</td><td>3</td><td>不變</td></tr>
+    </tbody>
+  </table>
+  <div class="ok">
+    <b>結論</b> 排名<b>改變了</b>：P1 AHP 是「高雄第一」，P2 TOPSIS 變成「釜山第一」，前兩名互換。
+  </div>
+
+  <h3>💡 管理意涵（方法差異的洞察）</h3>
+  <ol>
+    <li><b>兩方法結論不同，正是這題要討論的重點</b>：AHP「高雄勝」、TOPSIS「釜山勝」。差異來自方法本質，不是資料錯。</li>
+    <li><b>AHP 用「兩兩相對比較」→ 會放大最重準則的優勢</b>：高雄在權重最高的「生活成本」拿滿分(5)，相對優勢被 AHP 放大，因此奪冠。</li>
+    <li><b>TOPSIS 用「與理想解(5,5,5,5,5,5)的絕對距離」→ 偏好均衡型</b>：釜山六項全 4 分，離完美解的平均距離最小（D+ 僅 1.0）；高雄雖生活成本 5 分，但旅遊只有 3 分，<b>離散度高導致 D+ 較大</b>，被反超。</li>
+    <li><b>Tokyo 兩方法都是第 3</b>：因生活成本(3)與食物(3)偏低，弱項明確，任一種方法都難以翻身 → 結論穩健。</li>
+    <li><b>決策啟示</b>：若偏好「單一強項突出」（如超低生活費）→ 用 AHP；若重視「整體不偏科」→ 用 TOPSIS。<b>方法選擇本身就是策略選擇</b>，因此報告應說明「你們認為哪種評分方式更符合真實旅客的感受」。</li>
+    <li><b>穩健性建議</b>：兩法都進前三的 Tokyo 一定墊底、高雄與釜山互有領先 → 可視為「第一梯隊由高雄、釜山競爭」。若要選唯一推薦，建議再補問卷確認權重。</li>
+  </ol>
 </section>
 
 <!-- ============ P3 ============ -->
@@ -483,6 +583,43 @@ saveRDS(list(delight = delight, disgust = disgust, weight = w_entropy,
     <li>散布圖 <code class="inline">P3_Kano_plot.png</code>：橫軸 delight、縱軸 disgust，一眼看出哪些是亮點、哪些是基本盤。</li>
     <li><b>管理意涵舉例</b>：M 類（如防水）→ 一定要做好；A 類（如摺疊）→ 用來製造驚喜的差異化賣點。</li>
   </ul>
+
+  <h3>📊 程式跑完的分析結果</h3>
+  <div class="warn">
+    <b>示範資料</b>
+    以下數字用內建示範百分比 <code class="inline">kano_pct</code> 跑出，請換成你們團隊問卷統計後重跑，並確認要用<b>範本版</b>還是<b>講義版</b>公式。
+  </div>
+
+  <h4>(1) Kano 分類百分比</h4>
+  <table>
+    <thead><tr><th>功能</th><th>A 魅力</th><th>M 必要</th><th>O 一維</th><th>R 反向</th><th>I 無差異</th></tr></thead>
+    <tbody>
+      <tr><td>WaterProof 防水</td><td>0.15</td><td><b>0.45</b></td><td>0.35</td><td>0.00</td><td>0.05</td></tr>
+      <tr><td>OpticalZoom 光學變焦</td><td>0.40</td><td>0.10</td><td><b>0.42</b></td><td>0.00</td><td>0.08</td></tr>
+      <tr><td>WirelessCharging 無線充電</td><td>0.38</td><td>0.12</td><td><b>0.40</b></td><td>0.00</td><td>0.10</td></tr>
+      <tr><td>FoldableScreen 摺疊螢幕</td><td><b>0.30</b></td><td>0.08</td><td>0.20</td><td>0.25</td><td>0.17</td></tr>
+    </tbody>
+  </table>
+
+  <h4>(2) delight / disgust / 權重</h4>
+  <table>
+    <thead><tr><th>功能</th><th>類別</th><th>Delight</th><th>Disgust</th><th>熵權重</th></tr></thead>
+    <tbody>
+      <tr><td>WaterProof 防水</td><td><b>Must-be 必要</b></td><td>0.45</td><td><b>-0.80</b></td><td>0.3293</td></tr>
+      <tr><td>OpticalZoom 光學變焦</td><td><b>One-dimensional 一維</b></td><td><b>0.74</b></td><td>-0.52</td><td>0.3277</td></tr>
+      <tr><td>WirelessCharging 無線充電</td><td><b>One-dimensional 一維</b></td><td>0.68</td><td>-0.52</td><td>0.2868</td></tr>
+      <tr><td>FoldableScreen 摺疊螢幕</td><td><b>Attractive 魅力</b></td><td>0.33</td><td>-0.03</td><td><b>0.0562</b></td></tr>
+    </tbody>
+  </table>
+
+  <h3>💡 管理意涵（產品功能策略）</h3>
+  <ol>
+    <li><b>防水 = 必要功能（Must-be），絕對不能缺</b>：M 類 45%，disgust 高達 -0.80（沒有會大怒）。這是<b>基本盤、入場門檻</b>，不做會直接流失客戶，但做了也不會特別加分。</li>
+    <li><b>光學變焦 = 第一優化重點</b>：一維類、delight 最高(0.74)。屬「越多越滿意」的線性加分項，投報率最高，<b>資源優先投這裡</b>。</li>
+    <li><b>無線充電 = 第二優化重點</b>：一維類、delight 0.68、熵權重 0.287，是另一個高 CP 值的升級點。</li>
+    <li><b>摺疊螢幕 = 差異化「驚喜」但風險高</b>：魅力(A)類代表有會驚喜，但同時有 <b>25% 反向(R)</b>——有人反而討厭，導致 disgust 僅 -0.03、權重最低(0.056)。<b>適合當旗艦機的行銷亮點，不宜下放到主流機種</b>。</li>
+    <li><b>資源分配結論</b>：防水（守基本盤）→ 光學變焦＋無線充電（加滿意度）→ 摺疊螢幕（高階機才放，製造話題）。這正好對應 P4 的 BIP 配置結果。</li>
+  </ol>
 </section>
 
 <!-- ============ P4 ============ -->
@@ -554,6 +691,56 @@ best &lt;- feas[which.max(feas$Delight), ]             # 取 delight 最大的�
     <li>高 / 中 / 低三個價位各有一組最佳配置 → 這就是「價格基礎的顧客分群」。</li>
     <li><b>報告要寫什麼</b>：三價位配置表 + 敏感度分析結論 + 一個建議（例如：若 foldable 成本改為 X，高階機才可能搭載）。</li>
   </ul>
+
+  <h3>📊 程式跑完的分析結果</h3>
+  <div class="warn">
+    <b>示範資料</b>
+    delight / disgust 由 P3 的 <code class="inline">P3_kano_result.rds</code> 帶入，成本與預算依題目設定。
+  </div>
+
+  <h4>(1) 目標：最大化 delight</h4>
+  <table>
+    <thead><tr><th>分群</th><th>預算</th><th>最佳配置</th><th>總成本</th><th>Delight</th></tr></thead>
+    <tbody>
+      <tr><td>high 高階</td><td>30000</td><td>WaterProof + OpticalZoom + WirelessCharging</td><td>17500</td><td><b>1.87</b></td></tr>
+      <tr><td>medium 中階</td><td>22000</td><td>WaterProof + OpticalZoom + WirelessCharging</td><td>17500</td><td><b>1.87</b></td></tr>
+      <tr><td>low 低階</td><td>15000</td><td>OpticalZoom + WirelessCharging</td><td>15000</td><td>1.42</td></tr>
+    </tbody>
+  </table>
+
+  <h4>(2) 目標：最小化 disgust</h4>
+  <table>
+    <thead><tr><th>分群</th><th>預算</th><th>最佳配置</th><th>總成本</th><th>Disgust</th></tr></thead>
+    <tbody>
+      <tr><td>high 高階</td><td>30000</td><td>WaterProof + OpticalZoom + WirelessCharging</td><td>17500</td><td><b>-1.84</b></td></tr>
+      <tr><td>medium 中階</td><td>22000</td><td>WaterProof + OpticalZoom + WirelessCharging</td><td>17500</td><td><b>-1.84</b></td></tr>
+      <tr><td>low 低階</td><td>15000</td><td>WaterProof + WirelessCharging</td><td>14000</td><td>-1.32</td></tr>
+    </tbody>
+  </table>
+  <p class="pill">注意 low 段：兩個目標選出<b>不同配置</b>——max delight 選「變焦+無線充」(delight 相加最大)，min disgust 選「防水+無線充」(防水 disgust 最負)。</p>
+
+  <h4>(3) 敏感度分析（foldable 成本不同）</h4>
+  <table>
+    <thead><tr><th>foldable 成本</th><th>high</th><th>medium</th><th>low</th></tr></thead>
+    <tbody>
+      <tr><td>155000（原文）</td><td>防水+變焦+無線充</td><td>防水+變焦+無線充</td><td>變焦+無線充</td></tr>
+      <tr><td>15000（假設）</td><td>防水+變焦+無線充</td><td>防水+變焦+無線充</td><td>變焦+無線充</td></tr>
+      <tr><td>5000（假設）</td><td><b>防水+變焦+無線充+摺疊</b></td><td>防水+變焦+無線充</td><td>變焦+無線充</td></tr>
+    </tbody>
+  </table>
+  <div class="ok">
+    <b>關鍵發現</b> 只有當 foldable 成本降到 <b>5000</b>，高階機(high)才可能搭載摺疊螢幕（總成本 22500 ≤ 30000）。原文 155000 時，光摺疊一項就 165000，超過所有預算 → <b>實務上永遠不會被選中</b>。
+  </div>
+
+  <h3>💡 管理意涵（價格分群與產品線）</h3>
+  <ol>
+    <li><b>高階與中階最佳配置完全相同</b>（都是防水+變焦+無線充，成本 17500）：因為兩者預算都足以容納這三個功能，<b>BIP 無法把高低階區隔開</b>。實務上高階機必須靠<b>第四個（成本更高的）功能</b>或材質／服務來做出差異，否則沒有升級動機。</li>
+    <li><b>foldable 成本 155000 幾乎確定是筆誤</b>：它比手機本體貴 15 倍、超過最高預算 5 倍以上，模型永遠不會選它 → 不是「不值得選」而是「數學上不可能」。<b>務必先向老師／助教確認正確金額</b>。</li>
+    <li><b>修正為 5000 時，高階機才出現差異化</b>：高階自動升級成「四功能全上」(22500)，中階維持三功能，低階兩功能 → <b>產品線才拉得開層次</b>，這也才是合理的「價格分群」。</li>
+    <li><b>低階機的取捨要看目標</b>：預算 15000 只能放兩個功能。若要「客人最爽」→ 變焦+無線充；若要「少踩雷不捱罵」→ 防水+無線充（因防水的 disgust 最負）。<b>這正是 max delight 與 min disgust 兩目標的實務差異</b>。</li>
+    <li><b>策略建議</b>：高階（全功能＋摺疊）、中階（防水＋變焦＋無線充）、低階（防水＋無線充，守住基本盤）。行銷訊息分別主打「旗艦科技」、「均衡全能」、「實用安心」。</li>
+    <li><b>方法論提醒</b>：BIP 是硬性預算限制下的最佳化，<b>成本的準確性直接決定配置結果</b>；本題也示範了「一個數字錯，整條產品線策略就變」的風險，報告中值得點出。</li>
+  </ol>
 </section>
 
 <!-- ============ 報告架構 ============ -->
