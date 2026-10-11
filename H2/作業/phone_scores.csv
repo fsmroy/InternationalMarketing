@@ -1,0 +1,33 @@
+member,product,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10
+GSMArena,iPhone Pro,5,2,5,5,4,5,5,5,5,5
+GSMArena,iPhone Pro Max,5,2,5,5,5,5,5,5,5,5
+GSMArena,Samsung S,4,3,5,5,4,4,5,4,5,5
+GSMArena,Samsung A,4,4,3,4,4,3,3,4,3,3
+GSMArena,Xiaomi,4,5,4,4,4,3,4,4,4,4
+GSMArena,Redmi,3,5,3,4,4,3,3,4,3,3
+GSMArena,Oppo X,4,3,5,4,4,3,4,4,4,4
+GSMArena,Oppo A,3,4,3,4,4,3,3,4,3,3
+DXOMARK,iPhone Pro,4,2,5,5,4,5,4,5,5,4
+DXOMARK,iPhone Pro Max,5,2,5,5,5,5,4,5,5,5
+DXOMARK,Samsung S,4,3,4,5,4,4,5,4,5,4
+DXOMARK,Samsung A,4,4,3,4,4,3,3,4,3,3
+DXOMARK,Xiaomi,4,5,4,4,4,3,4,4,4,4
+DXOMARK,Redmi,3,5,3,4,4,3,3,4,3,3
+DXOMARK,Oppo X,4,3,4,4,4,3,4,4,4,4
+DXOMARK,Oppo A,3,4,3,4,4,3,3,4,3,3
+PhoneArena,iPhone Pro,5,2,4,5,4,5,5,5,4,5
+PhoneArena,iPhone Pro Max,5,2,5,5,5,5,5,5,5,5
+PhoneArena,Samsung S,4,3,5,4,4,4,4,4,4,5
+PhoneArena,Samsung A,4,4,3,4,3,3,3,4,3,3
+PhoneArena,Xiaomi,4,5,4,4,4,3,4,4,4,4
+PhoneArena,Redmi,3,5,3,4,4,3,3,4,3,3
+PhoneArena,Oppo X,4,3,5,4,4,3,4,4,4,4
+PhoneArena,Oppo A,3,4,3,4,4,3,3,4,3,3
+ConsumerReports,iPhone Pro,4,3,5,5,4,5,5,5,5,5
+ConsumerReports,iPhone Pro Max,5,3,5,5,5,5,5,5,5,5
+ConsumerReports,Samsung S,4,3,5,5,4,4,5,4,5,5
+ConsumerReports,Samsung A,4,4,3,4,4,3,3,4,3,3
+ConsumerReports,Xiaomi,4,5,4,4,4,3,4,4,4,4
+ConsumerReports,Redmi,3,5,3,4,4,3,3,4,3,3
+ConsumerReports,Oppo X,4,3,5,4,4,3,4,4,4,4
+ConsumerReports,Oppo A,3,4,3,4,4,3,3,4,3,3
