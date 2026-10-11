@@ -3,7 +3,33 @@
 # ⚠ 需先準備組員評分資料 phone_scores.csv，資料齊了才能執行
 # ============================================================
 
-setwd("D:/OneDrive/OneDrive - PEGATRON CORPORATION/交大/國際行銷/H2/作業")
+# --- 0. 環境設定：自動定位「作業」資料夾（不寫死絕對路徑） ---
+# 1) Rscript / source()：讀命令列 --file= 參數
+# 2) RStudio 開啟本檔按 Ctrl+Enter：用 rstudioapi 取得本檔路徑
+# 3) 保險：若目前不在含 MKT_data 的資料夾，自動往上找一層
+local({
+  p <- ""
+  a <- grep("^--file=", commandArgs(FALSE), value = TRUE)
+  if (length(a)) p <- sub("^--file=", "", a[1])
+  if (!nzchar(p) && requireNamespace("rstudioapi", quietly = TRUE) &&
+      isTRUE(rstudioapi::isAvailable())) {
+    ctx <- tryCatch(rstudioapi::getSourceEditorContext(), error = function(e) NULL)
+    if (!is.null(ctx) && nzchar(ctx$path)) p <- ctx$path
+  }
+  if (nzchar(p)) setwd(dirname(dirname(normalizePath(p))))   # R/ 的上一層 = 作業
+  if (!dir.exists("MKT_data")) {                            # 保險：往上找作業資料夾
+    d <- getwd()
+    repeat {
+      up <- dirname(d)
+      if (identical(up, d)) break
+      d <- up
+      if (dir.exists(file.path(d, "MKT_data"))) { setwd(d); break }
+    }
+  }
+  if (!dir.exists("MKT_data"))
+    stop("無法自動定位作業資料夾（找不到 MKT_data）：請確認本檔位於 H2/作業/R/ 且結構未變動。")
+})
+cat("工作目錄:", getwd(), "\n")
 
 # --- 1. 準備評分資料 ---
 # 請將組員評分整理成 phone_scores.csv 放在作業資料夾，格式：

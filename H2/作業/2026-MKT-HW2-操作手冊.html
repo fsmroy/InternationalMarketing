@@ -216,8 +216,8 @@
 
   <div class="ok">
     <b>好消息</b>
-    每個 R 檔的第一段都寫好了 <code class="inline">setwd(...)</code>，會自動把工作目錄切到「作業」資料夾。
-    所以你<b>不需要手動設定工作目錄</b>，只要照順序執行就好。
+    每個 R 檔的第一段都會<b>自動把工作目錄切到「作業」資料夾</b>（依檔案實際位置自動判斷）。
+    所以你<b>不需要手動設定工作目錄</b>，也不怕 OneDrive 路徑跟別人不一樣，只要照順序執行就好。
   </div>
 </section>
 
@@ -561,9 +561,9 @@ text(mds$points[,1], mds$points[,2], labels = rownames(avg))</code></pre>
 
   <details>
     <summary><code class="inline">cannot open file 'MKT_data/bank.csv'</code></summary>
-    <p>工作目錄不對。確認你有跑每個檔最前面的 <code class="inline">setwd("...H2/作業")</code>。
+    <p>工作目錄不對。確認你有跑每個檔最前面的環境設定那段（會自動切換工作目錄）。
        可在 Console 打 <code class="inline">getwd()</code> 檢查目前位置，應該顯示到 <code class="inline">...H2/作業</code>。
-       若顯示到 <code class="inline">...H2</code>（少了「作業」），就是 setwd 沒跑到。</p>
+       若顯示到 <code class="inline">...H2</code>（少了「作業」），就是那段還沒跑到。</p>
   </details>
 
   <details>
