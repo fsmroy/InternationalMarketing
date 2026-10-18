@@ -1,0 +1,87 @@
+P | International Marketing HW2
+P | 
+P | Based on bank dataset, remove the following columns, job, contact, pdays, poutcome, month, and day. Then, conduct market segmentation using statistical tests with regard to the response “y” (participating in promotion plan or not). For categorical features, apply Chi-square tests. For numerical features, please apply F test first to justify equal variance or not (between two groups, participating vs.nonparticipating) and then apply T tests to justify equal mean or not. Suppose you are marketing manager, indicate that what features are suitable to conduct market segmentation? Then, address managerial insights for the above-mentioned results.
+P | (一) 假設與資料處理
+P | 用的是 bank.csv（分號分隔），總共 4,521 筆。其中 y=no 有 4,000 筆、y=yes 有 521 筆，也就是只有 11.5% 的人參加促銷方案。照題目要求先刪掉 job、contact、pdays、poutcome、month、day 這六欄，剩下 age、marital、education、default、balance、housing、loan、duration、campaign、previous、y 共 11 欄。
+P | 類別欄位就用卡方檢定，數值欄位先跑 F 檢定確認兩組變異數是否相等，再依結果選對應的 t 檢定。
+P | (二) 程式跑完的結果
+P | 1. 類別欄位卡方檢定（H0：與是否參加促銷無關）
+TBL | 欄位 / χ² 值 / 自由度 / p 值 / 是否相關 || marital / 19.03 / 2 / 7.374e-05 / 是 || education / 15.24 / 3 / 1.625e-03 / 是 || default / 0.00 / 1 / 1.000 / 否 || housing / 48.88 / 1 / 2.715e-12 / 是（最強） || loan / 21.87 / 1 / 2.915e-06 / 是
+P | 
+P | 各組的參加率：沒有房貸 15.3%、有房貸 8.6%；沒有信貸 12.5%、有信貸 6.2%；離婚 14.6%、單身 14.0%、已婚 9.9%；高等教育 14.3%、中等 10.6%、不詳 10.2%、小學 9.4%。
+P | 2. 數值欄位 F 檢定 → t 檢定（H0：兩組平均數相等）
+TBL | 欄位 / F 檢定 p 值 / 變異數 / t 值 / t 檢定 p 值 / 是否相關 || age / 2.682e-16 / 不相等 / -2.50 / 1.260e-02 / 是 || balance / 5.734e-11 / 不相等 / -1.43 / 1.518e-01 / 否 || duration / 7.364e-106 / 不相等 / -18.74 / 3.606e-61 / 是（最強） || campaign / 0.000 / 不相等 / 5.68 / 1.807e-08 / 是 || previous / 4.938e-14 / 不相等 / -6.61 / 8.458e-11 / 是
+P | 
+P | 兩組平均數：duration 參加 552.7 秒、不參加 226.3 秒（差了 2.44 倍）；previous 參加 1.1 次、不參加 0.5 次（2.31 倍）；age 參加 42.5 歲、不參加 41.0 歲；campaign 參加 2.3 次、不參加 2.9 次；balance 參加 1,572、不參加 1,403。
+P | (三) 判斷方式
+P | 每一個檢定的 H0 都是「無關／平均數相等」，只要 p 值小於 0.05 就拒絕 H0，代表這個欄位跟有沒有參加促銷有關係。F 檢定的部分，如果 p 值小於 0.05 表示兩組變異數不相等，t 檢定就要用 var.equal=FALSE（Welch 檢定），不能用預設的合併變異數版本，不然自由度算錯、p 值會失真。這次五個數值欄位的 F 檢定全部小於 0.05，所以通通走 Welch。
+P | 另外要回頭看方向跟差距大小，才知道怎麼用。例如 duration 的 t 值是負的，代表參加組的通話時間真的比較長；campaign 的 t 值是正的，代表參加組被聯絡的次數反而比較少。
+P | (四) 管理意涵
+P | 適合拿來切分市場的變數有：marital、education、housing、loan 四個類別欄，以及 age、duration、campaign、previous 四個數值欄。不適合的是 default（p 值等於 1.000，兩組完全沒差）和 balance（p 值 0.152，平均數差異不顯著），這兩個欄位丟進去只會讓模型變雜。
+P | 實務上最該抓的是通話時間（duration）跟過去接觸次數（previous）。通話時間長代表客戶願意聽、有興趣，這是最強的訊號；過去被接觸過的人再打一次，成功率也明顯高。房貸／信貸狀態也很關鍵，沒有房貸的人參加率 15.3%，有房貸的只剩 8.6%，差不多砍半。已婚族群的參加率 9.9% 明顯低於單身 14.0% 和離婚 14.6%，行銷上已婚族要換一套說法或改成綁家庭需求的方案。
+P | 反過來，default 這欄可以直接不列入名單篩選條件，因為不管有沒有違約，參加率幾乎一樣。整體來看，名單應該優先鎖定「沒有房貸、沒有信貸、而且是年輕或離婚／單身」的人，再把通話時間長、過去接觸過的名單往前排。
+P | Based on bank dataset, remove the following columns, job, contact, pdays, poutcome, month, and day. For the column, age, discretize the age into three levels (young<=35, adult 35~55, old>55). For the remaining numeric features, using “median” to cut the attributes into two levels: low and high and treat “y” as the RHS. (a) identify the significant rules with respect to the RHS (“y-yes” or “y-no”), (b) Count the frequency for each feature shown in the LHS and prioritize the features with respect to the RHS (“y-yes” or “y-no”). (c) Specify managerial insights for the results.
+P | (一) 假設與資料處理
+P | 資料一樣是 bank.csv，4,521 筆，先刪掉 job、contact、pdays、poutcome、month、day 六欄。age 用題目給的切點分成三級：young（小於等於 35 歲）有 1,652 筆、adult（35~55 歲）有 2,374 筆、old（大於 55 歲）有 495 筆。
+P | 剩下的數值欄位用中位數切兩級，比中位數小或等於的算 low、大於的算 high。各欄中位數：balance = 444、duration = 185、campaign = 2、previous = 0。全部轉成 factor 後做成 transactions，一共 4,521 筆交易、26 個項目，y=yes 佔 11.5%、y=no 佔 88.5%。
+P | 跑 apriori 時 RHS 分別鎖定 y=yes 跟 y=no：y=yes 用 support 0.02、confidence 0.35；y=no 用 support 0.03、confidence 0.6。
+P | (二) 程式跑完的結果
+P | 1. RHS = y=yes，條件 support≥0.02、confidence≥0.35，共產出 14 條規則。依 lift 排序前幾名：
+TBL | LHS / support / confidence / lift || balance=high, loan=no, duration=high, previous=high / 0.0228 / 0.417 / 3.62 || balance=high, duration=high, previous=high / 0.0239 / 0.391 / 3.40 || housing=no, loan=no, previous=high / 0.0234 / 0.381 / 3.31
+P | 
+P | 2. RHS = y=no，條件 support≥0.03、confidence≥0.6，共產出 7,137 條規則。lift 最高的三條 confidence 都是 1.00，但 lift 只有 1.13：
+TBL | LHS / support / confidence / lift || age=adult, education=primary, duration=low / 0.0471 / 1.00 / 1.13 || education=primary, housing=yes, duration=low / 0.0420 / 1.00 / 1.13 || housing=yes, loan=yes, duration=low / 0.0447 / 1.00 / 1.13
+P | 
+P | 3. LHS 各欄位出現次數（用來看哪個特徵最有影響力）
+TBL | 排序 / RHS=y=yes 時的欄位 / 次數 / RHS=y=no 時的欄位 / 次數 || 1 / previous / 14 / default / 3534 || 2 / duration / 10 / balance / 3436 || 3 / loan / 8 / housing / 3436 || 4 / default / 7 / campaign / 3433 || 5 / balance / 4 / duration / 3410 || 6 / housing / 4 / previous / 3369 || 7 / campaign / 2 / loan / 3348
+P | 
+P | 其中最常出現的「等級」：y=yes 這邊是 previous=high 出現 14 次、duration=high 10 次、loan=no 8 次、default=no 7 次、balance=high 4 次、housing=no 4 次、campaign=low 2 次。
+P | (三) 判斷方式
+P | 三個指標要一起看：support 是這組合在全部資料裡出現的比例，代表覆蓋率；confidence 是在 LHS 成立的前提下 RHS 也成立的比例；lift 是「有了 LHS 之後 RHS 的機率」相對「RHS 原本的機率」的倍數。lift 大於 1 才代表 LHS 真的有加分，等於 1 就是沒幫助。
+P | 這裡最重要的判斷點是 y=no 那一邊。因為不參加的人本來就佔 88.5%，所以在條件夠多的情況下，confidence 很容易做到 1.00，看起來很漂亮，但 lift 只有 1.13。也就是說「不參加」這件事幾乎不需要靠這些條件去預測，光看母體比例就猜得差不多了。真正有價值的是 lift 高的規則，所以判斷時要以 lift 為主、confidence 為輔，不能只看 confidence。
+P | (四) 管理意涵
+P | 要挖「會參加」的客群，關鍵條件是 previous=high（過去被接觸多次）、duration=high（通話時間長）、loan=no（沒有信貸）、housing=no（沒有房貸），這幾條的 lift 都超過 3 倍，代表符合這些條件的人參加機率是平均值的 3 倍以上，可以直接當成優先接觸名單。
+P | 反過來，duration=low（通話時間短）再加上教育程度低、有房貸或信貸的人，幾乎百分之百不參加，這類名單可以事先排除，不用浪費電話人力。以欄位出現次數來看，previous 和 duration 是最有影響力的兩個特徵，行銷主管在設計名單時應該優先保留「曾被接觸過」和「上次通話時間長」的客戶。
+P | 另外要注意規則數量差很多（14 條 vs 7,137 條），這不是因為不參加的人比較好預測，而是因為 y=no 佔比太高，任何組合加進去都容易過門檻。真正該拿去做決策的，是 y=yes 這 14 條高 lift 的規則。
+P | Based on pima dataset, remove samples with zeros in the following columns, Glucose, BloodPressure, SkinThickness, Insulin, and BMI. Then, use Q1 and Q3 to cut the attributes into three levels: low, medium, or high. Apply association rule mining to gain medical insights by observing the LHS coupled with the specific “RHS=Yes” or “RHS=No”. Use frequency count to indicate the top key indicators with the specific setting, “RHS=Yes” or “RHS=No”, respectively (i.e. What features and corresponding levels are most commonly shown in the LHS for conditions, such as “RHS=Yes” or “RHS=No”).
+P | (一) 假設與資料處理
+P | 用 Pima.csv，原始 768 筆。Glucose、BloodPressure、SkinThickness、Insulin、BMI 這五欄的 0 在醫學上不合理（代表漏值或未測），所以把任何一欄有 0 的樣本整列刪掉，剩下 392 筆。刪完之後 Outcome=No 有 262 筆（66.8%）、Outcome=Yes 有 130 筆（33.2%）。
+P | 八個屬性各自用 Q1 和 Q3 切成 low / medium / high 三級。各欄切點（Q1 / Q3）：Pregnancies 1 / 5、Glucose 99 / 143、BloodPressure 62 / 78、SkinThickness 21 / 37、Insulin 76.75 / 190、BMI 28.4 / 37.1、DiabetesPedigreeFunction 0.27 / 0.69、Age 23 / 36。Outcome 的 1 改成 Yes、0 改成 No，做成 transactions 後跑 apriori，條件設 support 0.05、confidence 0.6。
+P | (二) 程式跑完的結果
+P | 1. RHS = Outcome=Yes，共產出 30 條規則。依 lift 排序前幾名：
+TBL | LHS / support / confidence / lift || Glucose=high, DiabetesPedigreeFunction=high / 0.061 / 0.800 / 2.41 || Pregnancies=high, Glucose=high, Age=high / 0.056 / 0.759 / 2.29 || Glucose=high, SkinThickness=medium, DiabetesPedigreeFunction=medium / 0.056 / 0.759 / 2.29 || Pregnancies=high, Glucose=high / 0.066 / 0.743 / 2.24 || Insulin=high, Age=high / 0.059 / 0.742 / 2.24
+P | 
+P | 2. RHS = Outcome=No，共產出 367 條規則。lift 最高的是這三條：
+TBL | LHS / support / confidence / lift || Glucose=low, Insulin=low, BMI=low / 0.071 / 1.00 / 1.50 || Glucose=low, SkinThickness=low, Insulin=low / 0.071 / 1.00 / 1.50 || Glucose=low, Insulin=low, Age=low / 0.071 / 1.00 / 1.50
+P | 
+P | 3. LHS 各欄位出現次數
+TBL | 排序 / RHS=Yes 時的欄位 / 次數 / RHS=No 時的欄位 / 次數 || 1 / Glucose / 24 / Glucose / 143 || 2 / Age / 9 / Pregnancies / 126 || 3 / SkinThickness / 9 / Age / 124 || 4 / Insulin / 8 / SkinThickness / 124 || 5 / BMI / 7 / DiabetesPedigreeFunction / 119 || 6 / BloodPressure / 5 / BMI / 118 || 7 / Pregnancies / 5 / BloodPressure / 114 || 8 / DiabetesPedigreeFunction / 3 / Insulin / 113
+P | 
+P | 最常出現的「等級」：RHS=Yes 是 Glucose=high 出現 24 次、Insulin=high 7 次、SkinThickness=medium 7 次、Age=high 6 次、BMI=medium 6 次；RHS=No 是 DiabetesPedigreeFunction=medium 98 次、Glucose=medium 89 次、BloodPressure=medium 76 次、SkinThickness=medium 72 次、Age=medium 70 次。
+P | (三) 判斷方式
+P | 一樣看 support、confidence、lift 三個數字。support 代表這組合在 392 筆裡出現的比例，confidence 是在 LHS 成立的人裡面真的得糖尿病的比例，lift 是相對於全體 33.2% 的倍數。Outcome=Yes 只佔三分之一，所以 lift 大於 2 就代表這個組合明顯把風險拉高；lift 接近 1 就表示沒什麼用。
+P | Outcome=No 那邊要特別小心，因為不生病的人本來就是多數（66.8%），confidence 很容易做到 1.00，但 lift 只有 1.50，看 confidence 會誤判成「超準」，實際上價值有限。所以判斷規則好壞要以 lift 為主。另外這些都是組合規則，單一變數沒辦法保證結果，要看一整組條件的搭配。
+P | (四) 管理意涵
+P | 血糖（Glucose）是最關鍵的指標。它在 RHS=Yes 的規則裡出現 24 次，而且 Glucose=high 幾乎壟斷了高風險規則；Glucose=high 再搭配 DiabetesPedigreeFunction=high（家族史），confidence 到 0.8、lift 2.41，是全部規則裡最強的一條，這種人應該列為第一優先追蹤。
+P | 除了血糖之外，Insulin、Age、BMI、SkinThickness 也都有貢獻，這幾個一起看其實就是代謝症候群的整組訊號。Pregnancies=high、Glucose=high、Age=high 這條（lift 2.29）也符合臨床上高齡產婦風險較高的認知。
+P | 另一邊，Glucose=low 搭配 Insulin=low、BMI=low 的人 confidence 是 1.00，等於幾乎可以完全排除糖尿病，這群人不需要安排進一步篩檢，可以把醫療資源省下來，集中到高風險族群身上。實務上就是用這種組合規則做風險分層，比單看一個指標可靠得多。
+P | Regarding smartphone product series (iPhone Pro, iPhone ProMax, Samsung S series, Samsung A series, Xiaomi, Redmi, Oppo X series, Oppo A series), apply multi-dimensional scaling (MDS) to conduct product positioning. Considering the following attributes (A1- brand awareness, A2- affordable price, A3- photo quality, A4- touch screen, A5- battery health, A6- ecosystem, A7- water proof, A8- interface, A9- system performance, A10- video recording), all the team members need to assess the seven product series based on the above-mentioned attributes using a five-point Likert scale. Then, calculating the average assessment and input for MDS. Draw a 2D plot to show product positioning and address managerial insights in a short report (You may not use all the product series. In this case, please read product review reports to find experts’ comments).
+P | (一) 假設與資料處理
+P | 自己蒐集了 phone_scores.csv，把 4 個評測來源（GSMArena、DXOMARK、PhoneArena、Consumer Reports）對 8 個產品在 A1~A10 十個屬性的評分取平均，總共 32 筆資料（4 個來源 × 8 個產品）。評分用的是五點李克特量表。
+P | 十個屬性是 A1 品牌、A3 拍照品質、A4 觸控螢幕、A5 電池健康、A6 生態系、A7 防水、A9 系統效能、A10 錄影。先用歐氏距離算出 8 個產品兩兩之間的距離矩陣，再用 cmdscale 做二維 MDS，把相似度壓到平面上。
+P | (二) 程式跑完的結果
+P | 1. MDS 二維座標
+TBL | 產品 / Dim 1 / Dim 2 || iPhone Pro Max / -3.137 / -0.373 || iPhone Pro / -2.627 / -0.554 || Samsung S / -1.587 / 0.577 || Oppo X / -0.259 / 0.410 || Xiaomi / 0.893 / 1.234 || Samsung A / 1.937 / -0.596 || Oppo A / 2.172 / -0.628 || Redmi / 2.608 / -0.071
+P | 
+P | 2. 特徵值與解釋比例
+TBL | 軸 / 特徵值 / 解釋比例 || Dim 1 / 35.397 / 83.7% || Dim 2 / 3.226 / 7.6% || Dim 3 / 1.915 /  || Dim 4 / 0.984 /  || Dim 5 / 0.546 /  || Dim 6 / 0.194 / 
+P | 
+P | 前兩軸合計解釋 91.3% 的變異。跟原始屬性做相關來命名軸：A9 系統效能、A10 錄影、A7 防水、A3 拍照在 Dim 1 上的相關是 -0.97 到 -0.93，A2 在 Dim 2 上是 0.34。
+P | 由座標可以看出：Dim 1 從左到右是「高階旗艦 → 平價入門」，Dim 2 由下到上是「介面體驗整合 → 規格 CP 值」。左邊擠了 iPhone Pro Max、iPhone Pro、Samsung S；右邊是 Samsung A、Oppo A、Redmi；Xiaomi 和 Oppo X 落在中間。
+P | (三) 判斷方式
+P | MDS 的概念是把 8 個產品在 10 個屬性上的相似程度，壓縮成平面上的點，距離越近代表兩個產品越像、越容易被消費者當成替代品。要保留幾個維度，看特徵值的解釋比例，通常累積到八成以上就夠。這次前兩軸就到 91.3%，所以用二維來畫定位圖是合理的。
+P | 軸的意義不能只看座標，要回頭算各軸跟原始屬性的相關，哪個屬性的相關絕對值大，那條軸就往那個方向命名。像 Dim 1 跟系統效能、錄影、防水、拍照都高度負相關，所以就解讀成「規格等級」軸。
+P | (四) 管理意涵
+P | 整個市場明顯切成兩塊。左邊是 iPhone 兩款加上 Samsung S，屬於高階、規格強、價格高的旗艦機；右邊是 Samsung A、Oppo A、Redmi，屬於入門、價格便宜的機種；Xiaomi 和 Oppo X 卡在中間，不上不下。
+P | Samsung A、Oppo A、Redmi 三個點幾乎黏在一起，代表它們的定位高度重疊，消費者眼中就是同一種選擇，彼此是直接競爭關係，價格戰會很激烈。iPhone Pro 和 Pro Max 也很靠近，差別主要在大螢幕而不是產品定位不同。
+P | 最值得注意的是左上角是空的——有高階規格但價格又親民的產品目前沒有，這是一個明顯的市場缺口，如果品牌資源夠，可以往這個方向推新機種。另外 Xiaomi 落在中間偏上，代表它同時被拿來跟左右的產品比較，定位不夠清楚，需要的話應該把它往某一個方向推、強化辨識度。
