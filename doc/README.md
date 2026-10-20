@@ -11,7 +11,7 @@
 | `檔案資料/` | 教學用資料集 `data/`（86 檔）、`MKT_data/`（100 檔）＋ Excel 案例＋ R 環境測試 |
 | `H1/作業/` | 作業一（Excel 實作） |
 | `H2/作業/` | 作業二（R：統計檢定 / 關聯規則 / MDS） |
-| `H3/作業/` | 作業三（R：AHP / TOPSIS / Kano / BIP） |
+| `H3/作業/` | 作業三（R：AHP / TOPSIS / Kano / BIP，含 3 個資料 CSV，已驗證可重跑） |
 
 ## doc 目錄導覽
 

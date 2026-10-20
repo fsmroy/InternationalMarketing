@@ -159,9 +159,10 @@
     $$\text{Delight}_i=\frac{A_i+O_i}{A_i+M_i+O_i+I_i}\qquad(\text{正值}\ 0\sim1)$$
     $$\text{Disgust}_i=-\,\frac{O_i+M_i}{A_i+M_i+O_i+I_i}\qquad(\text{負值}\ -1\sim0)$$
   </div>
-  <div class="warn"><strong>重要：</strong>拆解出的課程範本 Excel（<code>多準則決策.xlsx</code> 之 <code>Kano</code> 工作表）實際公式含有 <code>-I</code> 項：
-    <code>Delight=(A+O−I)/N</code>、<code>Disgust=−(O+M−I)/N</code>。
-    這與講義 p.16 的標準式不同。<strong>交作業前務必釐清要用哪一版</strong>（講義版本較常見）。</div>
+  <div class="warn"><strong>重要：</strong>拆解出的課程範本 Excel（<code>多準則決策.xlsx</code> 之 <code>Kano</code> 工作表）實際公式為：
+    <code>Delight=(A+O−I)/N</code>、<code>Disgust=−(M+O−R)/N</code>（分母 N 不含 Q）。
+    這與講義 p.16 的標準式不同（講義版分母僅 A+M+O+I，且無 −I/−R 項）。
+    <strong>交作業前務必釐清要用哪一版</strong>（本作業的 R 程式採範本 Excel 版）。</div>
 
   <h3>Problem 4 — 二元整數規劃做價格基礎分群</h3>
   <p><strong>任務：</strong>承接 Problem 3，用 <strong>BIP（Binary Integer Programming）</strong>做價格基礎顧客分群，目標為「最大化 delight」或「最小化 disgust」，對 high / medium / low 三個價格分群找出最佳產品配置。</p>
@@ -226,7 +227,7 @@
     <tr><td><code>P3_Kano.R</code></td><td>Problem 3</td><td>delight / disgust / entropy 權重、分類、<code>P3_Kano_plot.png</code>、輸出 <code>P3_kano_result.rds</code></td></tr>
     <tr><td><code>P4_BIP.R</code></td><td>Problem 4</td><td>三段價格最佳配置（max delight / min disgust）、敏感度分析、<code>P4_BIP_config.png</code></td></tr>
   </table>
-  <div class="warn">執行前請把程式內標有 <code>▶</code> 的區塊換成你們團隊的實際資料。詳見 <code>作業\R-code\README.md</code>。</div>
+  <div class="note">要換資料：直接改作業資料夾的 <code>ahp_weights.csv</code>、<code>city_scores.csv</code>、<code>kano_survey.csv</code>，存檔後重跑即可。詳見 <code>作業\R-code\README.md</code>。</div>
 
   <h3>3.1 課程 R 程式位置（僅供延伸參考）</h3>
   <pre>H3\MKT_Rcode.zip            ← 需解壓縮
@@ -300,9 +301,9 @@ print(round(w,4)); print(round(CR,4)) # CR 需 < 0.1</pre>
     <div class="step"><strong>討論差異</strong>：AHP 為相對比較、逐準則兩兩比較；TOPSIS 為與理想解距離之妥協解。比較排名是否一致，並說明原因（權重保留、評分基礎不同）。</div>
   </div>
   <pre># TOPSIS 核心（節錄；完整可執行版見 作業\R-code\P2_TOPSIS.R）
-X   <- rbind(Kaohsiung=c(5,3,3,3,4,4),
-             Busan    =c(4,4,4,5,5,4),
-             Tokyo    =c(2,5,5,4,5,5))
+X   <- rbind(Kaohsiung=c(5,4,3,4,4,4),
+             Busan    =c(4,4,4,4,4,4),
+             Tokyo    =c(3,4,5,3,4,3))
 PIS <- rep(5, ncol(X)); NIS <- rep(1, ncol(X))
 Dp  <- sqrt(rowSums(sweep((X-PIS)^2, 2, w, "*")))
 Dn  <- sqrt(rowSums(sweep((X-NIS)^2, 2, w, "*")))
@@ -312,7 +313,9 @@ print(round(sort(ratio, decreasing=TRUE),4))   # 貼近度越高越佳</pre>
   <h3>4.3 Problem 3 步驟（Kano）</h3>
   <div class="steps">
     <div class="step">發放 Kano 問卷（每功能一組正向/反向題），統計每位／全體的 A、M、O、R、I、Q 比例。</div>
-    <div class="step">計算每個功能的 <strong>Delight = (A+O)/N</strong>、<strong>Disgust = −(O+M)/N</strong>，$N=A+M+O+I$（R、Q 通常不計）。</div>
+    <div class="step">計算每個功能的 <strong>Delight = (A+O−I)/N</strong>、<strong>Disgust = −(M+O−R)/N</strong>，$N=A+M+O+R+I$（不含 Q）。
+      本作業 R 程式採範本 Excel 版；講義 p.16 版為 <code>(A+O)/N</code>、<code>−(O+M)/N</code>（$N=A+M+O+I$，不計 R），
+      <strong>交作業前務必確認用哪一版</strong>。</div>
     <div class="step">（可選）以<strong>熵權重</strong>求各功能權重，供 Problem 4 使用——範本用 <code>K = -Σ p·ln p / ln 5</code>、<code>Weight = (1-K)/Σ(1-K)</code>。</div>
     <div class="step">判讀各功能屬性：A 為魅力、M 為必備、O 為一維。</div>
   </div>

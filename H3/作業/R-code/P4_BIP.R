@@ -11,14 +11,41 @@
 # 環境：純 base R (窮舉 2^4=16 種組合)。附 lpSolve 寫法於檔尾註解。
 ############################################################
 
-## ---------- 0. 基本設定 ------------------------------------------------
+## ---------- 0. 環境設定：自動定位「作業」資料夾（同 P1） ----------------
+local({
+  p <- ""
+  a <- grep("^--file=", commandArgs(FALSE), value = TRUE)
+  if (length(a)) p <- sub("^--file=", "", a[1])
+  if (!nzchar(p) && requireNamespace("rstudioapi", quietly = TRUE) &&
+      isTRUE(rstudioapi::isAvailable()))
+    tryCatch({ ctx <- rstudioapi::getSourceEditorContext()
+               if (!is.null(ctx) && nzchar(ctx$path)) p <- ctx$path },
+             error = function(e) NULL)
+  if (nzchar(p)) {
+    p2 <- suppressWarnings(tryCatch(normalizePath(p), error = function(e) ""))
+    if (nzchar(p2) && file.exists(p2)) setwd(dirname(dirname(p2)))  # R-code -> 作業
+  }
+  if (!file.exists("kano_survey.csv")) {
+    d <- getwd()
+    repeat {
+      up <- dirname(d); if (identical(up, d)) break
+      d <- up
+      if (file.exists(file.path(d, "kano_survey.csv"))) { setwd(d); break }
+    }
+  }
+  if (!file.exists("kano_survey.csv"))
+    stop("無法自動定位作業資料夾（找不到 kano_survey.csv）：請確認本檔位於 H3/作業/R-code/ 且結構未變動。")
+})
+cat("工作目錄:", getwd(), "\n")
+
+## ---------- 1. 基本設定 ------------------------------------------------
 features <- c("WaterProof", "OpticalZoom", "WirelessCharging", "FoldableScreen")
 cost <- c(WaterProof = 2500, OpticalZoom = 3500,
           WirelessCharging = 1500, FoldableScreen = 155000)   # 原文數值
 base_cost <- 10000
 budget <- c(high = 30000, medium = 22000, low = 15000)
 
-## ---------- 1. 讀取 Problem 3 的 delight / disgust ----------------------
+## ---------- 2. 讀取 Problem 3 的 delight / disgust ----------------------
 ## P3_Kano.R 會輸出 P3_kano_result.rds；存在就讀，否則用內建示範值。
 if (file.exists("P3_kano_result.rds")) {
   k <- readRDS("P3_kano_result.rds")
@@ -34,7 +61,7 @@ if (file.exists("P3_kano_result.rds")) {
   message("[info] 找不到 P3_kano_result.rds，改用內建示範值")
 }
 
-## ---------- 2. 窮舉所有產品組合 ----------------------------------------
+## ---------- 3. 窮舉所有產品組合 ----------------------------------------
 ## 每一組 y = (y1..y4) 的 0/1 向量；共 2^4 = 16 組
 grid <- expand.grid(rep(list(c(0, 1)), length(features)))
 colnames(grid) <- features
@@ -44,7 +71,7 @@ grid$TotalCost <- base_cost + as.vector(Y %*% cost)
 grid$Delight   <- as.vector(Y %*% delight)     # 最大化目標
 grid$Disgust   <- as.vector(Y %*% disgust)     # 最小化目標 (值越負越好)
 
-## ---------- 3. 對每個價格分群求解 BIP ----------------------------------
+## ---------- 4. 對每個價格分群求解 BIP ----------------------------------
 solve_segment <- function(bud, obj = c("delight", "disgust")) {
   obj <- match.arg(obj)
   feas <- grid[grid$TotalCost <= bud, , drop = FALSE]        # 成本限制式
@@ -85,7 +112,7 @@ print(data.frame(feature = features, cost = as.vector(cost),
 rep_delight <- report("delight")
 rep_disgust <- report("disgust")
 
-## ---------- 4. 敏感度分析：把 foldable 成本改成 5000 / 15000 -----------
+## ---------- 5. 敏感度分析：把 foldable 成本改成 5000 / 15000 -----------
 ## 說明題目 155000 是否為筆誤，並觀察最佳解是否改變。
 sens <- function(foldable_cost) {
   cost2 <- cost; cost2["FoldableScreen"] <- foldable_cost
@@ -106,7 +133,7 @@ cat("foldable = 155000 (原文):", paste(sens(155000), collapse = " | "), "\n")
 cat("foldable =  15000 (假設):", paste(sens(15000),  collapse = " | "), "\n")
 cat("foldable =   5000 (假設):", paste(sens(5000),   collapse = " | "), "\n")
 
-## ---------- 5. 繪圖：各分群最佳配置 ------------------------------------
+## ---------- 6. 繪圖：各分群最佳配置 ------------------------------------
 png("P4_BIP_config.png", width = 1100, height = 600, res = 120)
 par(mfrow = c(1, 2), mar = c(6, 4, 3, 1))
 draw <- function(rep, title) {

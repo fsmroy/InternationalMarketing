@@ -159,7 +159,7 @@
     <span class="ftcmt">← 你的「工作目錄」</span>
 
     <span class="ftpath">├── <span class="dir">R-code/</span></span>
-    <span class="ftcmt">← 要執行的程式都在這，也是工作目錄</span>
+    <span class="ftcmt">← 要執行的程式都在這（程式會自動定位到本資料夾）</span>
 
     <span class="ftpath">│   ├── <span class="hi">run_all.R</span></span>
     <span class="ftcmt">一鍵依序跑完 P1→P2→P3→P4（建議先跑這個）</span>
@@ -173,11 +173,26 @@
     <span class="ftpath">│   ├── <span class="hi">P3_Kano.R</span></span>
     <span class="ftcmt">Problem 3：Kano delight / disgust</span>
 
-    <span class="ftpath">│   └── <span class="hi">P4_BIP.R</span></span>
+    <span class="ftpath">│   ├── <span class="hi">P4_BIP.R</span></span>
     <span class="ftcmt">Problem 4：二元整數規劃分群</span>
 
+    <span class="ftpath">│   ├── check_data.py</span>
+    <span class="ftcmt">Python 自檢：驗證三個 CSV 能重現手冊數字（選用）</span>
+
+    <span class="ftpath">│   └── README.md</span>
+    <span class="ftcmt">程式與資料檔說明</span>
+
+    <span class="ftpath">├── <span class="hi">ahp_weights.csv</span></span>
+    <span class="ftcmt">P1 用：各成員對六準則的權重（每列和=1）</span>
+
+    <span class="ftpath">├── <span class="hi">city_scores.csv</span></span>
+    <span class="ftcmt">P1/P2 共用：各城市六準則 1~5 評分</span>
+
+    <span class="ftpath">├── <span class="hi">kano_survey.csv</span></span>
+    <span class="ftcmt">P3 用：Kano 問卷 A/M/O/R/I/Q 計數</span>
+
     <span class="ftpath">├── P1_AHP_hierarchy.png</span>
-    <span class="ftcmt">P1 產出的階層圖（跑完才會有）</span>
+    <span class="ftcmt">P1 產出的階層圖（跑完才會有，輸出在作業層）</span>
 
     <span class="ftpath">├── P2_TOPSIS_scores.png</span>
     <span class="ftcmt">P2 產出的貼近度圖</span>
@@ -187,6 +202,9 @@
 
     <span class="ftpath">├── P4_BIP_config.png</span>
     <span class="ftcmt">P4 產出的配置圖</span>
+
+    <span class="ftpath">├── <span class="warnfile">P1_ahp_result.rds</span></span>
+    <span class="ftcmt">⚠ P1 的計算結果，P2 會自動讀它（權重自動同步）</span>
 
     <span class="ftpath">├── <span class="warnfile">P3_kano_result.rds</span></span>
     <span class="ftcmt">⚠ P3 的計算結果，P4 會自動讀它（所以 P3 要先跑）</span>
@@ -215,7 +233,8 @@
   </table>
   <div class="warn">
     <b>順序很重要</b>
-    P4 會去讀 P3 產生的 <code class="inline">P3_kano_result.rds</code>。所以<b>一定要先跑 P3 再跑 P4</b>。<code class="inline">run_all.R</code> 已經幫你排好順序，直接跑它就對了。
+    P2 會讀 P1 產生的 <code class="inline">P1_ahp_result.rds</code>（權重自動同步），P4 會讀 P3 的 <code class="inline">P3_kano_result.rds</code>。
+    所以<b>一定要 P1→P2、P3→P4 按順序跑</b>。<code class="inline">run_all.R</code> 已經幫你排好順序，直接跑它就對了。
   </div>
 </section>
 
@@ -232,8 +251,8 @@
   </ol>
 
   <h4>方式 B：用終端機（PowerShell）</h4>
-  <p>工作目錄切到 <code class="inline">R-code</code> 後執行：</p>
-<pre><code>Rscript run_all.R</code></pre>
+  <p>任何工作目錄都可以執行（程式會自動定位到作業資料夾）：</p>
+<pre><code>Rscript "D:\OneDrive\OneDrive - PEGATRON CORPORATION\交大\國際行銷\H3\作業\R-code\run_all.R"</code></pre>
 
   <h3>3-2 執行程式碼的常用操作（RStudio）</h3>
   <table>
@@ -255,8 +274,8 @@
     <b>初學者最常犯的錯</b>
     <ul style="margin:6px 0 0">
       <li>跳過前面的設定段，直接跑後面的段 → 出現 <code class="inline">object 'xxx' not found</code>。</li>
-      <li>先跑 P4 才跑 P3 → 找不到 <code class="inline">P3_kano_result.rds</code>。</li>
-      <li>工作目錄不在 <code class="inline">R-code</code> → 圖檔存到別的地方，或讀不到 rds。</li>
+      <li>先跑 P2 才跑 P1、先跑 P4 才跑 P3 → 找不到 <code class="inline">*.rds</code>（P2/P4 會改用內建示範值，數字就不對了）。</li>
+      <li>改了 CSV 內容但沒存檔就重跑 → 結果還是舊的。</li>
     </ul>
   </div>
 </section>
@@ -307,25 +326,24 @@
   </div>
 
   <h3>🖱️ 操作步驟</h3>
-  <div class="step"><span class="n">1</span>開啟 <code class="inline">R-code/P1_AHP.R</code>。</div>
-  <div class="step"><span class="n">2</span>找到標有 <b>▶</b> 的示範資料區塊，換成<b>你們團隊的實際數字</b>：
-     <code class="inline">w_crit_demo</code>（六項準則權重）與 <code class="inline">w_city_demo</code>（三城市得分）。</div>
-  <div class="step"><span class="n">3</span>逐段執行（或整檔 Source）。Console 會依序印出：準則權重、CR、城市×準則得分矩陣、加權總分與排名。</div>
-  <div class="step"><span class="n">4</span>資料夾會出現 <code class="inline">P1_AHP_hierarchy.png</code>（含階層圖與分數），報告要用這張圖。</div>
+  <div class="step"><span class="n">1</span>確認作業資料夾有 <code class="inline">ahp_weights.csv</code>（各成員六準則權重，每列加總 = 1）與 <code class="inline">city_scores.csv</code>（各城市六準則 1~5 評分）。</div>
+  <div class="step"><span class="n">2</span>要換資料時：直接改這兩個 CSV（用 Excel 開可編輯，記得存檔）。</div>
+  <div class="step"><span class="n">3</span>執行 <code class="inline">P1_AHP.R</code>。Console 會依序印出：準則權重、CR、城市×準則平均評分、城市×準則相對得分、加權總分與排名。</div>
+  <div class="step"><span class="n">4</span>作業資料夾會出現 <code class="inline">P1_AHP_hierarchy.png</code>（含階層圖與分數）與 <code class="inline">P1_ahp_result.rds</code>（給 P2 自動同步權重用）。</div>
 
   <h3>💻 程式碼在做什麼</h3>
-<pre><code># 由權重反推成對比較矩陣（a_ij = w_i / w_j），再走 AHP 求解
-A     &lt;- pairwise_from_weights(w_crit_demo)    # 6x6 準則比較矩陣
-res_A &lt;- ahp_weights(A)                        # 特徵向量法求權重 + CR
+<pre><code># 讀取 CSV → 準則平均權重 → 反推成對比較矩陣 → AHP 求解
+ahp_raw &lt;- read.csv("ahp_weights.csv")            # 4 成員 x 6 準則
+w_mean  &lt;- colMeans(ahp_raw[, criteria])          # 準則平均權重
+A       &lt;- pairwise_from_weights(w_mean)          # a_ij = w_i / w_j
+res_A   &lt;- ahp_weights(A)                         # 特徵向量法 + CR
 
-# 每項準則下，三城市的相對得分（3 x 6 矩陣）
+# Level-2：各準則下，三城市平均評分比例化後再走 AHP
+X_mean &lt;- sapply(criteria, function(cr) tapply(survey[[cr]], survey$city, mean))
 score_by_criteria &lt;- sapply(criteria, function(cr) {
-  w &lt;- setNames(w_city_demo[, cr], cities)
-  ahp_weights(pairwise_from_weights(w))$weights
+  ahp_weights(pairwise_from_weights(X_mean[, cr] / sum(X_mean[, cr])))$weights
 })
-
-# 城市加權總分 ＝ 城市得分矩陣 × 準則權重
-total_score &lt;- as.vector(score_by_criteria %*% w_mean)</code></pre>
+total_score &lt;- as.vector(score_by_criteria %*% w_mean)   # 加權總分</code></pre>
   <p class="pill">提示：若你是「手填上三角的 1~9 整數」，程式裡已附 <code class="inline">pairwise_from_upper(...)</code>，把註解那行打開即可。</p>
 
   <h3>🔍 怎麼看結果</h3>
@@ -347,9 +365,9 @@ total_score &lt;- as.vector(score_by_criteria %*% w_mean)</code></pre>
 
   <h3>📊 程式跑完的分析結果</h3>
   <div class="warn">
-    <b>示範資料</b>
-    以下數字由程式內建示範權重與評分跑出（<code class="inline">w_crit_demo</code> / <code class="inline">w_city_demo</code>）。
-    正式繳交前請換成你們團隊的實際比較結果後重跑。因矩陣由權重反推，<b>CR 必為 0</b>（完全一致）；
+    <b>資料來源</b>
+    以下數字由 <code class="inline">ahp_weights.csv</code>（4 位成員權重）與 <code class="inline">city_scores.csv</code>（12 筆城市評分）跑出。
+    換資料直接改 CSV 後重跑即可。因矩陣由權重反推，<b>CR 必為 0</b>（完全一致）；
     若你們手填 1~9 上三角，CR 才會是可觀察的一致性檢定值。
   </div>
 
@@ -367,32 +385,33 @@ total_score &lt;- as.vector(score_by_criteria %*% w_mean)</code></pre>
   </table>
   <p>一致性：<code class="inline">lambda_max = 6.0000</code>、<code class="inline">CR = 0.0000 &lt; 0.1</code> → <b>通過一致性檢定</b>。</p>
 
-  <h4>(2) 城市 × 準則得分矩陣</h4>
+  <h4>(2) 城市 × 準則 相對得分矩陣（Level-2，平均評分比例化）</h4>
   <table>
     <thead><tr><th>城市</th><th>生活成本</th><th>自然環境</th><th>城市旅遊</th><th>食物</th><th>交通</th><th>親切</th></tr></thead>
     <tbody>
-      <tr><td>Kaohsiung</td><td><b>0.40</b></td><td>0.34</td><td>0.30</td><td><b>0.36</b></td><td>0.33</td><td><b>0.37</b></td></tr>
-      <tr><td>Busan</td><td>0.34</td><td>0.34</td><td>0.34</td><td>0.34</td><td>0.34</td><td>0.34</td></tr>
-      <tr><td>Tokyo</td><td>0.26</td><td>0.32</td><td><b>0.36</b></td><td>0.30</td><td>0.33</td><td>0.29</td></tr>
+      <tr><td>Kaohsiung</td><td><b>0.4167</b></td><td>0.3333</td><td>0.2500</td><td><b>0.3636</b></td><td>0.3333</td><td><b>0.3636</b></td></tr>
+      <tr><td>Busan</td><td>0.3333</td><td>0.3333</td><td>0.3333</td><td>0.3636</td><td>0.3333</td><td>0.3636</td></tr>
+      <tr><td>Tokyo</td><td>0.2500</td><td>0.3333</td><td><b>0.4167</b></td><td>0.2727</td><td>0.3333</td><td>0.2727</td></tr>
     </tbody>
   </table>
+  <p class="pill">每欄加總 = 1（各準則下三城市的相對重要度）；Busan 全 4 分 → 每欄均分 1/3。</p>
 
   <h4>(3) 加權總分與排名</h4>
   <table>
     <thead><tr><th>排名</th><th>城市</th><th>加權總分</th></tr></thead>
     <tbody>
-      <tr><td>🥇 1</td><td>Kaohsiung 高雄</td><td><b>0.3524</b></td></tr>
-      <tr><td>🥈 2</td><td>Busan 釜山</td><td>0.3400</td></tr>
-      <tr><td>🥉 3</td><td>Tokyo 東京</td><td>0.3076</td></tr>
+      <tr><td>🥇 1</td><td>Kaohsiung 高雄</td><td><b>0.3471</b></td></tr>
+      <tr><td>🥈 2</td><td>Busan 釜山</td><td>0.3421</td></tr>
+      <tr><td>🥉 3</td><td>Tokyo 東京</td><td>0.3108</td></tr>
     </tbody>
   </table>
 
   <h3>💡 管理意涵（港市評估）</h3>
   <ol>
     <li><b>生活成本是決定性準則（22%）</b>：長住型訪客（商務、移居、留學）最在意開銷，其次才是自然環境（18%）。行銷時應把「生活費可負擔」當主打訊息。</li>
-    <li><b>高雄勝出的關鍵是「全面均衡偏強」</b>：在生活成本(0.40)、食物(0.36)、親切度(0.37) 三項拿第一，雖在旅遊(0.30) 與東京有落差，但該準則權重較低，<b>沒有致命短板</b>。</li>
-    <li><b>東京的強項與弱項都很極端</b>：城市旅遊(0.36)、自然環境(0.32)領先，但生活成本只有 0.26（遠低於高雄 0.40）被最重準則拖累 → 適合定位「<b>短天數觀光</b>」而非長住。</li>
-    <li><b>釜山是「安全牌」</b>：各項皆 0.34，名次穩定第 2，屬「不會踩雷但也無亮點」的選擇，可作為備選定位。</li>
+    <li><b>高雄勝出的關鍵是「全面均衡偏強」</b>：在生活成本(0.4167)、食物(0.3636)、親切度(0.3636) 三項拿第一，雖在旅遊(0.25) 與東京有落差，但該準則權重較低，<b>沒有致命短板</b>。</li>
+    <li><b>東京的強項與弱項都很極端</b>：城市旅遊(0.4167)領先，但生活成本只有 0.25（遠低於高雄 0.4167）被最重準則拖累 → 適合定位「<b>短天數觀光</b>」而非長住。</li>
+    <li><b>釜山是「安全牌」</b>：各項評分皆 4 分，相對得分均為 0.3333，名次穩定第 2，屬「不會踩雷但也無亮點」的選擇，可作為備選定位。</li>
     <li><b>策略建議</b>：若目標客群是長住／商務 → 高雄；純觀光 → 東京；要平衡預算與體驗 → 釜山。決策前務必確認「準則權重」是否符合你們團隊的真正偏好，因為權重一動、排名就可能翻轉。</li>
   </ol>
 </section>
@@ -430,20 +449,22 @@ total_score &lt;- as.vector(score_by_criteria %*% w_mean)</code></pre>
   </div>
 
   <h3>🖱️ 操作步驟</h3>
-  <div class="step"><span class="n">1</span>開啟 <code class="inline">R-code/P2_TOPSIS.R</code>。</div>
-  <div class="step"><span class="n">2</span>把 <b>▶</b> 示範值換成你們的資料：<code class="inline">w</code>（沿用 P1 權重）、<code class="inline">X</code>（三城市 × 六準則的 1～5 分評分）。</div>
+  <div class="step"><span class="n">1</span><b>先跑完 P1</b>（產生 <code class="inline">P1_ahp_result.rds</code>），P2 會自動讀它同步權重與 P1 分數。</div>
+  <div class="step"><span class="n">2</span>確認 <code class="inline">city_scores.csv</code> 存在（與 P1 共用同一份評分）。要換資料時改 CSV 即可。</div>
   <div class="step"><span class="n">3</span>執行，Console 會印出 D+、D−、CC、排名，以及 P1 vs P2 的比較表。</div>
-  <div class="step"><span class="n">4</span>資料夾出現 <code class="inline">P2_TOPSIS_scores.png</code>。</div>
+  <div class="step"><span class="n">4</span>作業資料夾出現 <code class="inline">P2_TOPSIS_scores.png</code>。</div>
 
   <h3>💻 程式碼在做什麼</h3>
-<pre><code># 題目直接指定 PIS=5、NIS=1，用權重 w 算加權歐氏距離
+<pre><code># 權重自動同步：讀 P1 的 rds（若不存在才用內建示範值）
+p1 &lt;- readRDS("P1_ahp_result.rds"); w &lt;- p1$weights
+
+# 評分矩陣：直接由 city_scores.csv 算各城市平均（1~5 分）
+X &lt;- sapply(criteria, function(cr) tapply(survey[[cr]], survey$city, mean))
+
+# 題目指定 PIS=5、NIS=1，用權重 w 算加權歐氏距離
 d_plus  &lt;- sqrt(rowSums(sweep(X, 2, PIS, "-")^2 * w_mat))   # 離完美城市
 d_minus &lt;- sqrt(rowSums(sweep(X, 2, NIS, "-")^2 * w_mat))   # 離最爛城市
-cc      &lt;- d_minus / (d_plus + d_minus)                     # 貼近度 0~1
-
-# 與 P1 (AHP) 排名比較
-cmp &lt;- data.frame(City=cities, P1_Rank=p1_rank, P2_Rank=rank(-cc),
-                  RankChanged = p1_rank != rank(-cc))</code></pre>
+cc      &lt;- d_minus / (d_plus + d_minus)                     # 貼近度 0~1</code></pre>
 
   <h3>🔍 怎麼看結果 / 報告要寫什麼</h3>
   <ul>
@@ -458,8 +479,8 @@ cmp &lt;- data.frame(City=cities, P1_Rank=p1_rank, P2_Rank=rank(-cc),
 
   <h3>📊 程式跑完的分析結果</h3>
   <div class="warn">
-    <b>示範資料</b>
-    以下數字用內建示範評分矩陣 <code class="inline">X</code>（1~5 分）與 P1 權重跑出，請換成你們團隊評分後重跑。
+    <b>資料來源</b>
+    評分矩陣由 <code class="inline">city_scores.csv</code> 平均而得，權重沿用 P1（自動同步），請換成你們團隊評分後重跑。
   </div>
 
   <h4>(1) 各城市評分矩陣（1~5 分）</h4>
@@ -486,9 +507,9 @@ cmp &lt;- data.frame(City=cities, P1_Rank=p1_rank, P2_Rank=rank(-cc),
   <table>
     <thead><tr><th>城市</th><th>P1 AHP 分數</th><th>P1 排名</th><th>P2 CC</th><th>P2 排名</th><th>排名變動</th></tr></thead>
     <tbody>
-      <tr><td>Kaohsiung</td><td>0.3524</td><td>1</td><td>0.7355</td><td>2</td><td><b>變動 ↓</b></td></tr>
-      <tr><td>Busan</td><td>0.3400</td><td>2</td><td>0.7500</td><td>1</td><td><b>變動 ↑</b></td></tr>
-      <tr><td>Tokyo</td><td>0.3076</td><td>3</td><td>0.6412</td><td>3</td><td>不變</td></tr>
+      <tr><td>Kaohsiung</td><td>0.3471</td><td>1</td><td>0.7355</td><td>2</td><td><b>變動 ↓</b></td></tr>
+      <tr><td>Busan</td><td>0.3421</td><td>2</td><td>0.7500</td><td>1</td><td><b>變動 ↑</b></td></tr>
+      <tr><td>Tokyo</td><td>0.3108</td><td>3</td><td>0.6412</td><td>3</td><td>不變</td></tr>
     </tbody>
   </table>
   <div class="ok">
@@ -499,7 +520,7 @@ cmp &lt;- data.frame(City=cities, P1_Rank=p1_rank, P2_Rank=rank(-cc),
   <ol>
     <li><b>兩方法結論不同，正是這題要討論的重點</b>：AHP「高雄勝」、TOPSIS「釜山勝」。差異來自方法本質，不是資料錯。</li>
     <li><b>AHP 用「兩兩相對比較」→ 會放大最重準則的優勢</b>：高雄在權重最高的「生活成本」拿滿分(5)，相對優勢被 AHP 放大，因此奪冠。</li>
-    <li><b>TOPSIS 用「與理想解(5,5,5,5,5,5)的絕對距離」→ 偏好均衡型</b>：釜山六項全 4 分，離完美解的平均距離最小（D+ 僅 1.0）；高雄雖生活成本 5 分，但旅遊只有 3 分，<b>離散度高導致 D+ 較大</b>，被反超。</li>
+    <li><b>TOPSIS 用「與理想解(5,5,5,5,5,5)的絕對距離」→ 偏好均衡型</b>：釜山六項全 4 分，離完美解的距離最小（D+ 僅 1.0）；高雄雖生活成本 5 分，但旅遊只有 3 分，<b>離散度高導致 D+ 較大</b>，被反超。</li>
     <li><b>Tokyo 兩方法都是第 3</b>：因生活成本(3)與食物(3)偏低，弱項明確，任一種方法都難以翻身 → 結論穩健。</li>
     <li><b>決策啟示</b>：若偏好「單一強項突出」（如超低生活費）→ 用 AHP；若重視「整體不偏科」→ 用 TOPSIS。<b>方法選擇本身就是策略選擇</b>，因此報告應說明「你們認為哪種評分方式更符合真實旅客的感受」。</li>
     <li><b>穩健性建議</b>：兩法都進前三的 Tokyo 一定墊底、高雄與釜山互有領先 → 可視為「第一梯隊由高雄、釜山競爭」。若要選唯一推薦，建議再補問卷確認權重。</li>
@@ -556,14 +577,18 @@ cmp &lt;- data.frame(City=cities, P1_Rank=p1_rank, P2_Rank=rank(-cc),
   </div>
 
   <h3>🖱️ 操作步驟</h3>
-  <div class="step"><span class="n">1</span>開啟 <code class="inline">R-code/P3_Kano.R</code>。</div>
-  <div class="step"><span class="n">2</span>把 <b>▶</b> 示範值 <code class="inline">kano_pct</code>（四功能 × A/M/O/R/I/Q 百分比）換成<b>團隊問卷統計結果</b>（每列加總 = 1）。</div>
+  <div class="step"><span class="n">1</span>確認作業資料夾有 <code class="inline">kano_survey.csv</code>：每列 = 一位成員 × 一個功能的 A/M/O/R/I/Q <b>計數</b>（程式會自動彙總成百分比）。</div>
+  <div class="step"><span class="n">2</span>要換資料時：直接改 CSV（用 Excel 開可編輯，記得存檔）。</div>
   <div class="step"><span class="n">3</span>執行。Console 會印出每個功能的分類、delight、disgust、熵權重。</div>
   <div class="step"><span class="n">4</span>產出 <code class="inline">P3_Kano_plot.png</code> 與 <code class="inline">P3_kano_result.rds</code>（給 P4 用）。</div>
 
   <h3>💻 程式碼在做什麼</h3>
-<pre><code># delight / disgust（範本版公式）
-AMO     &lt;- kano_pct[,"A"] + kano_pct[,"M"] + kano_pct[,"O"] + kano_pct[,"R"] + kano_pct[,"I"]
+<pre><code># 從問卷計數算百分比，再算 delight / disgust（範本版公式）
+cnt &lt;- t(sapply(features, function(f)
+  colSums(kano_raw[kano_raw$feature == f, kcols, drop = FALSE])))   # 4 x 6 計數
+kano_pct &lt;- cnt / rowSums(cnt)   # 每列加總 = 1
+
+AMO     &lt;- rowSums(kano_pct[, c("A","M","O","R","I")])
 delight &lt;- (kano_pct[,"A"] + kano_pct[,"O"] - kano_pct[,"I"]) / AMO
 disgust &lt;- -(kano_pct[,"M"] + kano_pct[,"O"] - kano_pct[,"R"]) / AMO
 
@@ -586,8 +611,9 @@ saveRDS(list(delight = delight, disgust = disgust, weight = w_entropy,
 
   <h3>📊 程式跑完的分析結果</h3>
   <div class="warn">
-    <b>示範資料</b>
-    以下數字用內建示範百分比 <code class="inline">kano_pct</code> 跑出，請換成你們團隊問卷統計後重跑，並確認要用<b>範本版</b>還是<b>講義版</b>公式。
+    <b>資料來源</b>
+    以下數字由 <code class="inline">kano_survey.csv</code>（4 成員 x 4 功能，每位成員 25 份有效問卷、共 100 份）跑出，
+    請換成你們團隊問卷統計後重跑，並確認要用<b>範本版</b>還是<b>講義版</b>公式。
   </div>
 
   <h4>(1) Kano 分類百分比</h4>
@@ -694,8 +720,8 @@ best &lt;- feas[which.max(feas$Delight), ]             # 取 delight 最大的�
 
   <h3>📊 程式跑完的分析結果</h3>
   <div class="warn">
-    <b>示範資料</b>
-    delight / disgust 由 P3 的 <code class="inline">P3_kano_result.rds</code> 帶入，成本與預算依題目設定。
+    <b>資料來源</b>
+    delight / disgust 由 P3 的 <code class="inline">P3_kano_result.rds</code> 自動帶入（源自 kano_survey.csv），成本與預算依題目設定。
   </div>
 
   <h4>(1) 目標：最大化 delight</h4>
@@ -763,20 +789,20 @@ best &lt;- feas[which.max(feas$Delight), ]             # 取 delight 最大的�
 <!-- ============ 作答前必改 ============ -->
 <section id="todo">
   <h2 class="sec">9. 作答前必改清單</h2>
-  <p>程式裡標有 <b>▶</b> 的都是「示範值」，正式作答前<b>務必換成你們團隊的資料</b>：</p>
+  <p>資料全部集中在作業資料夾的三個 CSV，<b>要換資料直接改 CSV</b>（用 Excel 開可編輯，記得存檔後重跑）：</p>
   <table>
-    <thead><tr><th>檔案</th><th>要替換的變數</th><th>意思</th></tr></thead>
+    <thead><tr><th>資料檔</th><th>內容</th><th>哪些題用到</th><th>注意</th></tr></thead>
     <tbody>
-      <tr><td><code class="inline">P1_AHP.R</code></td><td><code class="inline">w_crit_demo</code>、<code class="inline">w_city_demo</code></td><td>六準則權重、三城市在六準則的得分</td></tr>
-      <tr><td><code class="inline">P2_TOPSIS.R</code></td><td><code class="inline">w</code>、<code class="inline">X</code></td><td>沿用 P1 的權重、三城市六準則的 1~5 評分</td></tr>
-      <tr><td><code class="inline">P3_Kano.R</code></td><td><code class="inline">kano_pct</code></td><td>四功能的 A/M/O/R/I/Q 百分比（每列加總 = 1）</td></tr>
-      <tr><td><code class="inline">P4_BIP.R</code></td><td>通常不用改</td><td>成本與預算依題目數值</td></tr>
+      <tr><td><code class="inline">ahp_weights.csv</code></td><td>各成員對六準則的權重</td><td>P1</td><td>每列加總 = 1</td></tr>
+      <tr><td><code class="inline">city_scores.csv</code></td><td>各城市 × 六準則的 1~5 評分</td><td>P1、P2</td><td>同組員同城市可多列，程式取平均</td></tr>
+      <tr><td><code class="inline">kano_survey.csv</code></td><td>各成員 × 功能的 A/M/O/R/I/Q 計數</td><td>P3</td><td>非負整數；百分比由程式自動算</td></tr>
+      <tr><td><code class="inline">P4_BIP.R</code></td><td>成本與預算</td><td>P4</td><td>依題目數值，通常不用改</td></tr>
     </tbody>
   </table>
   <div class="note">
-    <b>多人資料怎麼平均？</b>
-    每位組員各算出自己的權重，再取平均即可。程式註解有範例：
-    <code class="inline">w_mean &lt;- colMeans(rbind(w_m1, w_m2, w_m3))</code>。
+    <b>檢查資料有沒有填對？</b>
+    裝有 Python 的話可執行 <code class="inline">python R-code/check_data.py</code>，
+    它會驗證三個 CSV 能否重現本手冊的所有數字，全部通過會印 <b>ALL PASS</b>。
   </div>
 </section>
 
@@ -785,9 +811,9 @@ best &lt;- feas[which.max(feas$Delight), ]             # 取 delight 最大的�
   <h2 class="sec">10. 常見錯誤排除</h2>
 
   <details>
-    <summary><code class="inline">cannot open file 'P3_kano_result.rds'</code> 或 P4 用「內建示範值」</summary>
-    <p>P4 依賴 P3 的輸出。請<b>先完整執行 P3</b>（會產生 <code class="inline">P3_kano_result.rds</code>），再跑 P4。
-       或直接用 <code class="inline">run_all.R</code> 一鍵按順序跑完。</p>
+    <summary><code class="inline">cannot open file 'P3_kano_result.rds'</code> 或 P2/P4 用「內建示範值」</summary>
+    <p>P2 依賴 P1、P4 依賴 P3 的輸出（<code class="inline">*.rds</code>）。請<b>按順序執行</b>，
+       或直接用 <code class="inline">run_all.R</code> 一鍵按順序跑完。用示範值時 Console 會印提示訊息。</p>
   </details>
 
   <details>
@@ -797,9 +823,14 @@ best &lt;- feas[which.max(feas$Delight), ]             # 取 delight 最大的�
 
   <details>
     <summary>找不到輸出圖檔 / 圖跑到別的地方</summary>
-    <p>圖是用<b>相對路徑</b>存檔，會存在你目前的<b>工作目錄</b>。請把工作目錄設在 <code class="inline">R-code</code>
-       （在該資料夾開檔、或用終端機 <code class="inline">cd</code> 到那再 <code class="inline">Rscript run_all.R</code>），
-       圖就會出現在同一資料夾。</p>
+    <p>每個程式開頭會<b>自動定位</b>到作業資料夾（Console 會印「工作目錄: ...」），
+       圖檔與 rds 都輸出在那裡。從任何工作目錄執行都可以，看 Console 印出的路徑即可找到圖。</p>
+  </details>
+
+  <details>
+    <summary><code class="inline">cannot open file 'ahp_weights.csv'</code> 或「無法自動定位作業資料夾」</summary>
+    <p>程式找不到資料檔：確認三個 CSV 在<b>作業資料夾</b>（<code class="inline">R-code</code> 的上一層）、檔名完全一致。
+       Console 若印「無法自動定位作業資料夾」，代表 CSV 被移走或改名了。</p>
   </details>
 
   <details>
@@ -810,7 +841,7 @@ best &lt;- feas[which.max(feas$Delight), ]             # 取 delight 最大的�
 
   <details>
     <summary>結果數字跟範本 Excel 不一樣</summary>
-    <p>多半是你改的示範值 / 公式版本不同。最常見是 <b>Kano 公式</b>（範本版含 <code class="inline">−I / −R</code>、講義版沒有）
+    <p>多半是資料不同或公式版本不同。最常見是 <b>Kano 公式</b>（範本版含 <code class="inline">−I / −R</code>、講義版沒有）
        與 <b>TOPSIS 正規化</b>（本程式用題目指定的 PIS=5 / NIS=1 錨定法）。請與老師確認要用哪一版。</p>
   </details>
 </section>

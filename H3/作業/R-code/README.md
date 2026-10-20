@@ -12,31 +12,34 @@
 | `P3_Kano.R` | Problem 3 | Kano：delight / disgust / entropy 權重、分類、散布圖，並輸出 `.rds` |
 | `P4_BIP.R` | Problem 4 | 二元整數規劃：最大化 delight / 最小化 disgust、三段價格最佳配置、敏感度分析 |
 | `run_all.R` | 全部 | 依序執行四題 |
+| `check_data.py` | 驗證 | 檢查三個 CSV 能否重現手冊上的所有數字（全部通過印 `ALL PASS`） |
+
+## 資料檔（在作業資料夾，R-code 的上一層）
+
+| 檔案 | 內容 | 哪些題用到 |
+| --- | --- | --- |
+| `ahp_weights.csv` | 各成員對六準則的權重（每列加總 = 1） | P1 |
+| `city_scores.csv` | 各城市 × 六準則的 1~5 評分（同組員同城市可多列，程式取平均） | P1、P2 |
+| `kano_survey.csv` | 各成員 × 功能的 A/M/O/R/I/Q 計數（非負整數） | P3 |
+
+**要換資料直接改 CSV**（用 Excel 開可編輯，記得存檔後重跑）；程式會自動算平均與百分比。
 
 ## 執行方式
 
-在終端機（工作目錄設為本資料夾）：
+程式開頭會**自動定位**到作業資料夾（Console 印「工作目錄: ...」），
+因此**從任何工作目錄執行都可以**，圖與 rds 都輸出在作業資料夾：
 
 ```
-Rscript run_all.R
+Rscript "...\H3\作業\R-code\run_all.R"
 ```
 
 或在 RStudio 開啟 `run_all.R` → Source。
 
-## 產出
+## 產出（都在作業資料夾，不是 R-code 裡）
 
 - 圖檔：`P1_AHP_hierarchy.png`、`P2_TOPSIS_scores.png`、`P3_Kano_plot.png`、`P4_BIP_config.png`
-- 中介資料：`P3_kano_result.rds`（P4 會自動讀取）
-
-## 重要提醒（作答前務必替換示範資料）
-
-程式中標有 `▶` 的區塊為**示範值**，請換成你們團隊的實際資料：
-
-1. **P1**：`w_crit_demo`（六項準則權重）與 `w_city_demo`（三城市相對得分）。
-   若你有成員的成對比較矩陣，改用 `pairwise_from_upper()`；多人時把各成員權重取 `colMeans` 即為平均權重。
-2. **P2**：`w`（沿用 P1 結果）與 `X`（三城市六準則的 1~5 李克特評分）。
-3. **P3**：`kano_pct`（四功能的 A/M/O/R/I/Q 百分比）。
-4. **P4**：`cost`、`base_cost`、`budget`（通常不變）；功能成本沿用題目數值。
+- 中介資料：`P1_ahp_result.rds`（P2 讀取）、`P3_kano_result.rds`（P4 讀取）
+  - rds 不存在時，P2/P4 會改用內建示範值並印提示訊息，**請按 P1→P2→P3→P4 順序執行**。
 
 ## 已知原文疑義（程式中已處理）
 
@@ -45,4 +48,4 @@ Rscript run_all.R
 - **Problem 1**：題目寫 "the average weights of the four criteria"，但全文列 **六項** 準則，
   程式一律以六項準則處理。
 - **Kano 公式**：本程式採課程範本 `多準則決策.xlsx` 的版本
-  `delight=(A+O−I)/N`、`disgust=−(M+O−R)/N`；若講義版本不同請自行替換。
+  `delight=(A+O−I)/N`、`disgust=−(M+O−R)/N`（分母 N 不含 Q）；若講義版本不同請自行替換。

@@ -1,0 +1,13 @@
+member,city,LivingCost,NatEnvironment,CityTourism,Food,Transportation,Courtesy
+Roy,Kaohsiung,5,3,3,4,4,4
+Roy,Busan,4,4,4,4,4,4
+Roy,Tokyo,3,4,5,3,4,3
+Amy,Kaohsiung,5,5,3,4,4,4
+Amy,Busan,4,4,4,4,4,4
+Amy,Tokyo,3,4,5,3,4,3
+Jack,Kaohsiung,5,4,3,4,4,4
+Jack,Busan,4,4,4,4,4,4
+Jack,Tokyo,3,4,5,3,4,3
+May,Kaohsiung,5,4,3,4,4,4
+May,Busan,4,4,4,4,4,4
+May,Tokyo,3,4,5,3,4,3
