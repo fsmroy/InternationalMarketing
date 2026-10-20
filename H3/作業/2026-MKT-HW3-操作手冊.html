@@ -151,8 +151,8 @@
 <!-- ============ 2. 檔案清單 ============ -->
 <section id="files">
   <h2 class="sec">2. 要開啟哪些檔案？</h2>
-  <p>所有檔案都在這個資料夾底下：</p>
-  <p><code class="inline">D:\OneDrive\OneDrive - PEGATRON CORPORATION\交大\國際行銷\H3\作業\</code></p>
+  <p>所有檔案都在這個資料夾底下（以下路徑均相對於「作業」資料夾）：</p>
+  <p><code class="inline">…\H3\作業\</code></p>
 
   <div class="filetree">
     <span class="ftpath"><span class="dir">作業/</span></span>
@@ -252,7 +252,8 @@
 
   <h4>方式 B：用終端機（PowerShell）</h4>
   <p>任何工作目錄都可以執行（程式會自動定位到作業資料夾）：</p>
-<pre><code>Rscript "D:\OneDrive\OneDrive - PEGATRON CORPORATION\交大\國際行銷\H3\作業\R-code\run_all.R"</code></pre>
+<pre><code>Rscript "&lt;你的作業路徑&gt;\H3\作業\R-code\run_all.R"
+# 例如放在桌面： Rscript "C:\Users\你的名稱\Desktop\H3\作業\R-code\run_all.R"</code></pre>
 
   <h3>3-2 執行程式碼的常用操作（RStudio）</h3>
   <table>

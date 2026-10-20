@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
-"""HW3 資料檔自檢：三個 CSV 是否能重現原始 demo 數值。"""
-import csv, sys
-from collections import defaultdict
+"""HW3 資料檔自檢：三個 CSV 是否能重現原始 demo 數值。
 
-ROOT = r"d:\OneDrive\OneDrive - PEGATRON CORPORATION\交大\國際行銷\H3\作業"
+用法（任何工作目錄皆可）：python R-code/check_data.py
+CSV 位置：自動定位到本檔的上一層（作業資料夾）。
+"""
+import csv, os, sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def rows(name):
-    with open(f"{ROOT}\\{name}", encoding="utf-8-sig") as f:
+    with open(os.path.join(ROOT, name), encoding="utf-8-sig") as f:
         r = list(csv.DictReader(f))
     return r
 
