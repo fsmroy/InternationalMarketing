@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>國際行銷期中考前總複習｜2026/10/20 考情 × 全學期重點對照</title>
+<style>
+  :root{
+    --ink:#1f2933; --muted:#52606d; --line:#e4e7eb;
+    --brand:#1e3a5f; --brand-soft:#eef3f9;
+    --accent:#b45309; --accent-soft:#fff7e6;
+    --ok:#047857; --ok-soft:#ecfdf5;
+    --warn:#b91c1c; --warn-soft:#fef2f2;
+    --card:#ffffff; --bg:#f5f7fa;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",system-ui,sans-serif;
+    font-size:16px; line-height:1.75;
+  }
+  .wrap{max-width:1000px; margin:0 auto; padding:24px 20px 80px}
+
+  /* ── Header ─────────────────────────── */
+  header.hero{
+    background:linear-gradient(135deg,var(--brand) 0%,#2c5282 100%);
+    color:#fff; border-radius:16px; padding:36px 32px; margin-bottom:20px;
+  }
+  header.hero h1{margin:0 0 8px; font-size:30px; letter-spacing:.5px}
+  header.hero .sub{opacity:.92; font-size:15px}
+  .badges{margin-top:16px; display:flex; flex-wrap:wrap; gap:8px}
+  .badge{
+    background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35);
+    border-radius:999px; padding:4px 14px; font-size:13.5px;
+  }
+
+  /* ── Nav ────────────────────────────── */
+  nav.toc{
+    position:sticky; top:0; z-index:50;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:10px 14px; margin-bottom:24px;
+    box-shadow:0 2px 8px rgba(31,41,51,.06);
+  }
+  nav.toc .toc-title{font-weight:700; font-size:13px; color:var(--muted); margin-bottom:6px}
+  nav.toc a{
+    display:inline-block; margin:3px 4px; padding:4px 12px;
+    border-radius:8px; text-decoration:none; font-size:13.5px;
+    color:var(--brand); background:var(--brand-soft);
+  }
+  nav.toc a:hover{background:var(--brand); color:#fff}
+
+  /* ── Sections ───────────────────────── */
+  section.card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:26px 28px; margin-bottom:26px;
+  }
+  section.card>h2{
+    margin:0 0 4px; font-size:22px; color:var(--brand);
+    border-left:6px solid var(--brand); padding-left:12px;
+  }
+  section.card>.sec-sub{color:var(--muted); font-size:14px; margin:0 0 18px; padding-left:18px}
+  h3{font-size:17.5px; margin:26px 0 10px; color:var(--ink)}
+  h3 .no{color:var(--accent); margin-right:6px}
+  p{margin:8px 0}
+  ul,ol{padding-left:26px; margin:8px 0}
+  li{margin:5px 0}
+  b,strong{color:#111827}
+  .hl{background:linear-gradient(transparent 62%, #fde68a 62%); font-weight:700}
+  code{
+    background:#eef1f5; border:1px solid var(--line); border-radius:5px;
+    padding:1px 6px; font-family:Consolas,Menlo,monospace; font-size:14px;
+  }
+  sup,sub{font-size:.75em}
+  .formula{
+    background:#f8fafc; border:1px dashed #cbd5e1; border-radius:10px;
+    padding:10px 16px; margin:10px 0; font-size:16px;
+    font-family:"Cambria Math",Cambria,serif;
+  }
+
+  /* ── Tables ─────────────────────────── */
+  table{width:100%; border-collapse:collapse; margin:12px 0; font-size:14.5px; background:#fff}
+  th,td{border:1px solid var(--line); padding:9px 12px; text-align:left; vertical-align:top}
+  th{background:var(--brand-soft); color:var(--brand); font-weight:700; white-space:nowrap}
+  tbody tr:nth-child(even){background:#fafbfc}
+  .tbl-note{font-size:13px; color:var(--muted); margin-top:-6px}
+
+  /* ── Callout boxes ──────────────────── */
+  .quote{
+    background:var(--accent-soft); border-left:5px solid var(--accent);
+    border-radius:0 10px 10px 0; padding:14px 18px; margin:16px 0;
+  }
+  .quote .q-label{font-weight:800; color:var(--accent); font-size:13.5px; letter-spacing:1px}
+  .quote p{margin:6px 0 0; font-style:normal}
+  .quote .src{display:block; margin-top:6px; font-size:12.5px; color:#92400e; font-style:italic}
+
+  .exam-tip{
+    background:var(--warn-soft); border-left:5px solid var(--warn);
+    border-radius:0 10px 10px 0; padding:13px 18px; margin:16px 0;
+  }
+  .exam-tip .t-label{font-weight:800; color:var(--warn); font-size:13.5px; letter-spacing:1px}
+  .exam-tip ul{margin:6px 0 0}
+
+  .memo{
+    background:var(--ok-soft); border-left:5px solid var(--ok);
+    border-radius:0 10px 10px 0; padding:13px 18px; margin:16px 0;
+  }
+  .memo .m-label{font-weight:800; color:var(--ok); font-size:13.5px; letter-spacing:1px}
+
+  details.src-note{
+    margin:12px 0; border:1px solid var(--line); border-radius:10px; background:#fafbfc;
+  }
+  details.src-note>summary{
+    cursor:pointer; padding:10px 16px; font-weight:700; font-size:14px; color:var(--brand);
+  }
+  details.src-note .body{padding:0 18px 14px; font-size:14px}
+
+  /* ── Cheat sheet ────────────────────── */
+  .cheat td:first-child{font-weight:700; white-space:nowrap}
+
+  /* ── Kano tags ──────────────────────── */
+  .kano-tag{
+    display:inline-block; border-radius:6px; padding:1px 10px; font-weight:700; font-size:13.5px;
+  }
+  .kt-O{background:#dbeafe; color:#1d4ed8}
+  .kt-A{background:#fce7f3; color:#be185d}
+  .kt-M{background:#dcfce7; color:#15803d}
+  .kt-R{background:#fee2e2; color:#b91c1c}
+  .kt-I{background:#f1f5f9; color:#64748b}
+
+  /* ── Metric cards ───────────────────── */
+  .metric-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin:14px 0}
+  .metric{
+    border:1px solid var(--line); border-radius:12px; padding:14px 16px; background:#fafbfc;
+  }
+  .metric .big{font-size:22px; font-weight:800; color:var(--brand)}
+  .metric .cap{font-size:13px; color:var(--muted)}
+
+  footer{color:var(--muted); font-size:13px; text-align:center; margin-top:36px}
+
+  @media print{
+    body{background:#fff}
+    nav.toc{display:none}
+    section.card{break-inside:avoid; border:none; padding:10px 0}
+    details.src-note{display:none}
+    header.hero{border-radius:0}
+  }
+  @media (max-width:640px){
+    section.card{padding:20px 16px}
+    header.hero{padding:26px 20px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<header class="hero">
+  <h1>📊 國際行銷期中考前總複習</h1>
+  <div class="sub">依 2026/10/20 最後一堂課「老師口述考情」為命題藍本，對標 09/08 – 10/20 全部課堂內容逐項整理</div>
+  <div class="badges">
+    <span class="badge">⏰ 下週實體考試，約 6:40 PM 開始</span>
+    <span class="badge">🕒 時長約 2 小時（時間充裕）</span>
+    <span class="badge">📝 全卷選擇題＋複選題</span>
+    <span class="badge">✅ 複選題 ≥ 25%＋2 題送分題</span>
+  </div>
+</header>
+
+<!-- ══════════════════ TOC ══════════════════ -->
+<nav class="toc">
+  <div class="toc-title">快速跳轉</div>
+  <a href="#s0">考情總覽</a>
+  <a href="#s1">① 統計檢定</a>
+  <a href="#s2">② 預測模型</a>
+  <a href="#s3">③ AHP／TOPSIS</a>
+  <a href="#s4">④ Kano／Solver</a>
+  <a href="#s5">⑤ 異常值／K-Means</a>
+  <a href="#s6">⑥ 關聯規則</a>
+  <a href="#s7">⑦ 定位／聯合分析</a>
+  <a href="#s8">數字速查表</a>
+  <a href="#s9">考前快閃清單</a>
+</nav>
+
+<!-- ══════════════════ S0 考情總覽 ══════════════════ -->
+<section class="card" id="s0">
+  <h2>考情總覽：考什麼、不考什麼</h2>
+  <p class="sec-sub">來源：10/20 最後一堂課口述（<code>1020最後一段</code>錄音逐字稿）</p>
+
+  <h3><span class="no">A.</span>三大「不考」原則</h3>
+  <ul>
+    <li>❌ <b>不考公式死背與推導</b> —— 「我們考試當然不是考你公式，公式要幹嘛？都不會考。」</li>
+    <li>❌ <b>不考 Code 指令與細節、不上機</b> —— 「也不會考什麼 code 指令，你放心，都沒有，也沒有考上機。」</li>
+    <li>❌ <b>不考操作步驟的機械記憶</b>（Excel/R 按了哪些鈕）。</li>
+  </ul>
+
+  <h3><span class="no">B.</span>考核核心</h3>
+  <div class="quote">
+    <span class="q-label">🎙️ 老師口語</span>
+    <p>「就是考這些東西的<b>應用</b>，不管是在 Marketing 在各方面，那你對這個方面<b>應用邏輯動作清楚</b>就行，所以沒有公式，然後也不會考 code 的細節。」</p>
+    <span class="src">— 10/20 課堂逐字稿</span>
+  </div>
+  <p>換句話說，每個方法你要能回答四件事：<span class="hl">① 它處理什麼資料／問題 ② 什麼時機用它 ③ 指標代表什麼行銷意涵 ④ 結果如何影響決策</span>。</p>
+
+  <h3><span class="no">C.</span>題型結構</h3>
+  <table>
+    <thead><tr><th>項目</th><th>內容</th><th>備註</th></tr></thead>
+    <tbody>
+      <tr><td>題型</td><td>選擇題＋複選題（全卷）</td><td>複選題占 <b>至少 25%</b> 以上</td></tr>
+      <tr><td>送分題</td><td><b>2 題送分題</b></td><td>老師原話：「我想說大概再喊個集體的送分題把它放在裡面去，出個兩題送分題。」</td></tr>
+      <tr><td>複選題命題方式</td><td>不考背誦、考<b>觀念理解與邏輯判斷</b></td><td>「不是讓你背嘛，可是你不了解你（答）得還不錯（才怪）……這個你要回去去複習。」</td></tr>
+      <tr><td>時間</td><td>約 6:40 PM 開始，約 2 小時</td><td>「一般來講大概兩個小時一念就寫完，測試過很多次，不會有太大問題。」</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="no">D.</span>老師親口點名的八大考區</h3>
+  <table>
+    <thead><tr><th>#</th><th>考區</th><th>老師口述必考點（關鍵字）</th><th>本檔章節</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>統計檢定</td><td>F／T／卡方三檢定的<b>行銷應用</b>；卡方＝類別變數、T＝數字變數</td><td><a href="#s1">①</a></td></tr>
+      <tr><td>2</td><td>時間序列預測</td><td>移動平均、指數平滑（<b>α 大小與誤差</b>）、線性迴歸（<b>R² vs 調整後 R²</b>）</td><td><a href="#s2">②</a></td></tr>
+      <tr><td>3</td><td>AHP</td><td><b>1–9 尺度</b>、倒數特性、成對比較、<b>行總和→標準化→列平均</b>、<b>CR&lt;0.1</b></td><td><a href="#s3">③</a></td></tr>
+      <tr><td>4</td><td>TOPSIS</td><td>正／負理想解距離排序；<b>結合 AHP 權重 → 排名翻轉</b></td><td><a href="#s3">③</a></td></tr>
+      <tr><td>5</td><td>Kano 模型</td><td><b>看圖判斷</b>魅力／必要／一維／反向屬性；<b>D⁺／D⁻ 計算邏輯</b></td><td><a href="#s4">④</a></td></tr>
+      <tr><td>6</td><td>Excel Solver</td><td>搭配預算區間做<b>二元規劃（0/1）</b>特徵選配，最大喜悅／最小厭惡</td><td><a href="#s4">④</a></td></tr>
+      <tr><td>7</td><td>異常值＋K-Means</td><td>盒鬚圖、<b>馬氏距離</b>、盜刷／資安應用；K-Means 步驟、<b>簡化原則選 K</b></td><td><a href="#s5">⑤</a></td></tr>
+      <tr><td>8</td><td>關聯規則＋定位＋聯合分析</td><td>Support／Confidence／<b>Lift</b>；MDS（Stress）、CA（Biplot）；<b>效用 vs 重要性</b></td><td><a href="#s6">⑥</a> <a href="#s7">⑦</a></td></tr>
+    </tbody>
+  </table>
+  <div class="exam-tip">
+    <span class="t-label">⚠️ 老師原話定錨</span>
+    <ul>
+      <li>「這些細節跟這些邏輯的過程基本上都<b>在我們命題範圍</b>。」（聯合分析段落收尾）</li>
+      <li>「考試主要在這個地方，大概出過了大概最少大概有 <b>25% 是複選題</b>。」</li>
+      <li>Kano：「裡面的計算你要懂<b>之後才會去回答那個複選題的邏輯</b>。」</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════ S1 統計檢定 ══════════════════ -->
+<section class="card" id="s1">
+  <h2>① 統計檢定：卡方 / T / F 三兄弟</h2>
+  <p class="sec-sub">授課：09/15（金融市場檢定、卡方市場區隔）、09/22（Pima 清洗後 KPI 篩選）｜投影片：統計與多變量分析 p14–26</p>
+
+  <div class="quote">
+    <span class="q-label">🎙️ 老師口語（10/20 點名必考）</span>
+    <p>「你要知道 <b>F 檢定、T 檢定跟卡方檢定</b>，他們三個呢，然後在行銷上怎麼應用的，這個你要知道。<b>卡方檢定處理是類別變數，T 檢定處理的是數字變數</b>……」</p>
+    <span class="src">— 10/20 課堂逐字稿</span>
+  </div>
+
+  <h3><span class="no">1.1</span>三大檢定對照表（本區最重要的一張表）</h3>
+  <table>
+    <thead><tr><th>檢定</th><th>資料型態</th><th>檢定對象（H₀）</th><th>行銷應用場景</th><th>關鍵輸出</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>卡方檢定<br>Chi-Square</b></td>
+        <td><b>類別 × 類別</b>（婚姻狀況、有無房貸、性別、車型）</td>
+        <td>兩類別變數<b>獨立</b>（無關）</td>
+        <td><b>市場區隔</b>：檢定婚姻狀況／有無房貸是否影響產品購買</td>
+        <td>χ² 值越大 → p&lt;0.05 → 該變數是<b>有效區隔變數</b></td>
+      </tr>
+      <tr>
+        <td><b>T 檢定</b></td>
+        <td><b>數字（連續）× 類別</b>（兩群比較）</td>
+        <td>兩群<b>平均值相等</b>（μ₁=μ₂）</td>
+        <td>篩選具<b>鑑別力的 KPI</b>：糖尿病患 vs 健康者的血糖／皮膚厚度；會／不會參加銀行促銷者的<b>帳戶餘額</b></td>
+        <td>p&lt;0.05 → 該變數有鑑別力 → 可當<b>預測 KPI</b></td>
+      </tr>
+      <tr>
+        <td><b>F 檢定</b></td>
+        <td><b>數字 × 數字（兩群波動）</b></td>
+        <td>兩群<b>變異數相等</b>（σ₁²=σ₂²）</td>
+        <td>比較台股 vs 外國股市的<b>年化波動度／風險</b>；<b>T 檢定前必須先做</b></td>
+        <td>p≥0.05 變異數相等 → 選「假設變異數相等之 T 檢定」，反之亦然</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3><span class="no">1.2</span>實作順序與觀念（邏輯題最愛考）</h3>
+  <ol>
+    <li><b>先 F 後 T</b>：F 檢定確認變異數同質性 → 依結果選擇正確版本的 T 檔定（var.equal）。</li>
+    <li>卡方期望值：$E=\dfrac{\text{列總和}\times\text{行總和}}{\text{總樣本數}}$，統計量 $\chi^2=\sum\frac{(O-E)^2}{E}$。</li>
+    <li>變數是<b>數值型</b>（年齡、帳戶餘額）但想看「會不會買」→ 先依結果分兩群 → <b>改用 T 檢定</b>（不是卡方）。</li>
+    <li>Pima 案例：血壓、血糖、皮膚厚度等出現 0 值是<b>不合理缺失值</b>（Walking Dead Data），先清洗（768 → 392 筆）再 T 檢定，顯著者（血糖、皮膚厚度）當 KPI。</li>
+  </ol>
+
+  <div class="exam-tip">
+    <span class="t-label">⚠️ 複選題命題邏輯</span>
+    <ul>
+      <li>「下列哪些組合的檢定方法正確？」→ 抓<b>資料型態配對</b>：類別×類別＝卡方；連續×二分群＝T；先 F 後 T。</li>
+      <li>「p&lt;0.05 代表什麼？」→ 在 95% 信心水準下<b>拒絕 H₀</b>（兩變數相關／兩群平均顯著不同），不是「證明因果」。</li>
+      <li>KPI 語意：T 檢定顯著＝該變數「能區分兩群」＝有鑑別力 → 可作 KPI。</li>
+    </ul>
+  </div>
+
+  <div class="memo">
+    <span class="m-label">💡 記憶錨點</span>
+    <p>「<b>類別配卡方、數字配 T、做 T 之前先 F</b>」——老師上課反覆唸的口訣就是答案本身。</p>
+  </div>
+</section>
+
+<!-- ══════════════════ S2 預測模型 ══════════════════ -->
+<section class="card" id="s2">
+  <h2>② 時間序列與預測模型：SMA / EMA / 線性迴歸</h2>
+  <p class="sec-sub">授課：09/08（SMA、EMA、MLR 導論）、09/15（Train/Test Split、Adjusted R²）｜投影片：迴歸預測 p6–19</p>
+
+  <div class="quote">
+    <span class="q-label">🎙️ 老師口語（10/20 點名必考）</span>
+    <p>「移動平均法、指數平滑法，還有所謂的線性迴歸……<b>到底是平滑常數越大誤差會越小還是越大，這個也要注意一下</b>。那所謂的線性迴歸，要知道就是 <b>R² 跟調整後的 R² 有什麼差別</b>。」</p>
+    <span class="src">— 10/20 課堂逐字稿</span>
+  </div>
+
+  <h3><span class="no">2.1</span>SMA 簡單移動平均</h3>
+  <ul>
+    <li>以過去固定 $n$ 期算術平均當下期預測：$F_t=\frac{A_{t-1}+\dots+A_{t-n}}{n}$，<b>各期等權重</b>。</li>
+    <li><b>n 大</b>（20 日月線、60 日季線）→ 平滑效果強、反應遲鈍；<b>n 小</b>（5 日週線）→ 對最新價格<b>反應敏感</b>。</li>
+    <li>實務：台股加權指數、台積電個股的 5／10／20 日線。</li>
+  </ul>
+
+  <h3><span class="no">2.2</span>EMA 指數平滑（α 是必考點）</h3>
+  <div class="formula">F<sub>t</sub> = F<sub>t−1</sub> + α(A<sub>t−1</sub> − F<sub>t−1</sub>) = αA<sub>t−1</sub> + (1−α)F<sub>t−1</sub>，α ∈ [0, 1]</div>
+  <table>
+    <thead><tr><th>平滑常數 α</th><th>行為</th><th>適用情境</th><th>誤差表現</th></tr></thead>
+    <tbody>
+      <tr><td><b>α 大（0.4–0.5）</b></td><td>最新實際值權重高 → 對最新波動<b>反應迅速</b></td><td>動態劇烈變動的環境</td><td>在劇烈變動環境中誤差<b>較小</b></td></tr>
+      <tr><td><b>α 小（0.15–0.2）</b></td><td>保留歷史經驗多 → <b>穩定</b>、過濾雜訊</td><td>穩定環境、要濾掉異常波動</td><td>在穩定環境中表現好</td></tr>
+      <tr><td><b>α = 1</b></td><td>退化成<b>天真預測</b>（F<sub>t</sub>=A<sub>t−1</sub>）</td><td>僅作基準比較</td><td>風險過高，實務不宜</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="no">2.3</span>三大誤差指標與「為何 MAPE 優先」</h3>
+  <ul>
+    <li><b>MSE</b>：平方 → 對大誤差<b>懲罰更重</b>；<b>MAE/MAD</b>：平均偏離的單位大小。</li>
+    <li><span class="hl">MAPE 以百分比呈現相對誤差，能消除公司規模與數據單位（Scale Effect）</span>，方便不同量體產品／公司間比對 → 老師欽點的優先指標。</li>
+  </ul>
+
+  <h3><span class="no">2.4</span>多元線性迴歸 MLR 與 R² 之辨</h3>
+  <ul>
+    <li>概念：不是純看時間，而是引入外部因子 X（如台積電五大客戶——蘋果、輝達、超微、高通、聯發科——的營收）預測 Y（營收、EPS）。</li>
+    <li><b>R²</b>：隨自變數增加<b>只升不降</b> → 容易「虛胖」。</li>
+    <li><b>Adjusted R²</b>：加入自變數數量 k 與樣本數 T 的懲罰項；塞入無效變數（Garbage X）會<b>下降</b> → 評估多元迴歸<b>以調整後 R² 為準</b>。</li>
+    <li>係數 p&lt;0.05 → 該自變數在 95% 信心下具獨立預測力。</li>
+  </ul>
+
+  <h3><span class="no">2.5</span>訓練集／測試集切分（09/15 重點）</h3>
+  <ul>
+    <li>目的：防止<b>過度配適 Overfitting</b>——全量資料擬合度高 ≠ 對未來有預測力。</li>
+    <li><b>訓練集 2011–2022</b>：切在 2022 年底，因 2022 走完完整空頭（升息、通膨、晶片供過於求），模型學過完整多空循環。</li>
+    <li><b>測試集 2023–2025</b>：不參與建模，專驗證<b>跨期泛化能力</b>；用 SUMPRODUCT 套迴歸式算預測值，再比 RMSE／MAE／MAPE。</li>
+  </ul>
+
+  <div class="exam-tip">
+    <span class="t-label">⚠️ 複選題命題邏輯</span>
+    <ul>
+      <li>「α 越大，對最新波動越敏感」對；「α 越大誤差一定越小」<b>錯</b>——要看環境是否劇烈變動。</li>
+      <li>「加一個變數 R² 一定不變或上升、Adjusted R² 可能下降」→ 標準考句。</li>
+      <li>「為何用 MAPE 不用 MSE？」→ 答消除 Scale 影響，可跨規模比較。</li>
+    </ul>
+  </div>
+
+  <div class="memo">
+    <span class="m-label">💡 記憶錨點</span>
+    <p><b>n/α 大＝靈敏、小＝遲鈍</b>；「虛胖」的是 R²，減肥懲罰的是 Adjusted R²。</p>
+  </div>
+</section>
+
+<!-- ══════════════════ S3 AHP / TOPSIS ══════════════════ -->
+<section class="card" id="s3">
+  <h2>③ 多準則決策：AHP 與 TOPSIS</h2>
+  <p class="sec-sub">授課：10/06、10/09（含複習）｜投影片：通路管理 p31–65（AHP 藍牙喇叭案例、TOPSIS Hwang &amp; Yoon 1981）</p>
+
+  <div class="quote">
+    <span class="q-label">🎙️ 老師口語（10/20 點名必考）</span>
+    <p>「AHP 的量它是會介於 <b>1 到 9</b>……那 TOPSIS 幹嘛，就是<b>幫你做排序</b>……當你在計算距離的時候，如果你把所算出來的權重含進來，會發現<b>沒有整合 AHP 得到的排名跟整合 AHP 的排名是差蠻多的</b>……」</p>
+    <span class="src">— 10/20 課堂逐字稿</span>
+  </div>
+
+  <h3><span class="no">3.1</span>AHP 層級分析法</h3>
+  <ul>
+    <li><b>應用情境</b>：NPD 方案評選、供應商評選（品質、交期、成本、永續四準則）、通路位置評選、可攜式藍牙喇叭選購。</li>
+    <li><b>尺度</b>：1–9 相對偏好（優為 1~9、不優為其倒數 1/1~1/9），矩陣對角線 a<sub>ii</sub>=1，具<b>倒數（Reciprocal）特性</b> a<sub>ji</sub>=1/a<sub>ij</sub>；<span class="hl">不是李克特量表</span>。</li>
+    <li><b>Saaty 認知極限</b>：人腦 $7\pm2$ → 評估準則建議 <b>5～7 個以內</b>，避免遞移律矛盾（A&gt;B、B&gt;C 卻填 A&lt;C）。</li>
+  </ul>
+  <p><b>近似法求權重三步驟</b>（老師口述原順序）：</p>
+  <div class="formula">行總和 → 標準化 → 列平均（各準則權重加總必為 100%）</div>
+  <p><b>一致性檢定</b>：</p>
+  <div class="formula">λ<sub>max</sub> = (1/n)Σ(AW)<sub>i</sub>/W<sub>i</sub>　→　CI = (λ<sub>max</sub>−n)/(n−1)　→　CR = CI / RI</div>
+  <ul><li>門檻：<span class="hl">CR &lt; 0.1 才算通過</span>（問卷品質合格）。</li></ul>
+
+  <h3><span class="no">3.2</span>TOPSIS 逼近理想解排序法</h3>
+  <ul>
+    <li>流程：決策矩陣 → 向量正規化 → 乘 AHP 權重 → 找<b>正理想解</b>（效益型取最大／成本型取最小，老師比喻「<b>高富帥／白富美</b>」）與<b>負理想解</b> → 算各方案歐氏距離。</li>
+    <li>貼近度：$C_i=\dfrac{D_i^-}{D_i^+ + D_i^-}\in[0,1]$，越接近 1 越優。</li>
+    <li><b>排名翻轉 Rank Reversal（必考）</b>：無權重版 vs 結合 AHP 權重版（如<b>交期權重占 47.7%</b>）排名差很多——交期滿分的供應商<b>逆轉奪冠</b>。老師：「整合 AHP 得到的排名跟沒整合的是差蠻多的。」</li>
+  </ul>
+
+  <div class="exam-tip">
+    <span class="t-label">⚠️ 複選題命題邏輯</span>
+    <ul>
+      <li>AHP 尺度描述題：選「1–9＋倒數、成對比較」，排除「0–10 評分」「李克特 5 點量表」。</li>
+      <li>步驟順序題：行總和→標準化→列平均（不可顛倒）。</li>
+      <li>CR 門檻：&lt;0.1 通過；CI、RI 的角色（CR=CI/RI）。</li>
+      <li>TOPSIS 題：C_i 是「離負理想解遠、離正理想解近」的度量；結合 AHP 權重<b>可能改變排名</b>。</li>
+    </ul>
+  </div>
+
+  <div class="memo">
+    <span class="m-label">💡 記憶錨點</span>
+    <p>AHP＝<b>算權重</b>（1–9 成對比較）；TOPSIS＝<b>算排序</b>（理想解距離）；兩者合體會<b>翻盤</b>。</p>
+  </div>
+</section>
+
+<!-- ══════════════════ S4 Kano / Solver ══════════════════ -->
+<section class="card" id="s4">
+  <h2>④ Kano 模型與 Excel Solver 規劃求解</h2>
+  <p class="sec-sub">授課：10/06、10/09｜投影片：產品策略 p50–60、服務品質與問卷設計 p10–17（問卷 A/M/O/I/R 分類）</p>
+
+  <div class="quote">
+    <span class="q-label">🎙️ 老師口語（10/20 點名必考）</span>
+    <p>「Kano 這個也會考，就是有個圖，<b>到底哪些特徵是魅力、哪些是必要</b>……裡面的計算你要懂之後才會去回答那個複選題的邏輯……然後最後怎麼搭配，就是搭配我們的整個<b>數學規劃（Solver）</b>去運算。」</p>
+    <span class="src">— 10/20 課堂逐字稿</span>
+  </div>
+
+  <h3><span class="no">4.1</span>四大屬性 × 老師的感情比喻（看圖判斷的鑰匙）</h3>
+  <table>
+    <thead><tr><th>屬性</th><th>曲線行為</th><th>老師的比喻</th><th>記憶點</th></tr></thead>
+    <tbody>
+      <tr><td><span class="kano-tag kt-O">一維 O</span></td><td>做了開心、不做不開心（線性）</td><td><b>熱戀男女</b>：付出多一分、甜蜜多一分</td><td>成正比</td></tr>
+      <tr><td><span class="kano-tag kt-A">魅力 A</span></td><td>有→極致驚喜；沒有→可接受（不失望）</td><td><b>小三</b>：出現很驚喜，不出現日子照過</td><td>有會哇、沒有還好</td></tr>
+      <tr><td><span class="kano-tag kt-M">必要 M</span></td><td>有→理所當然；沒有→極度沮喪</td><td><b>老夫老妻／家人</b>：像少了半顆心</td><td>基本盤，缺了爆炸</td></tr>
+      <tr><td><span class="kano-tag kt-R">反向 R</span></td><td>有→不滿；沒有→反而輕鬆</td><td><b>怨偶</b>：在一起痛苦，分開解脫</td><td>多多益「善」的反面</td></tr>
+      <tr><td><span class="kano-tag kt-I">無差異 I</span></td><td>有沒有都沒感覺</td><td>（對照組，補充）</td><td>不加分不減分</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="no">4.2</span>量化公式（複選題計算邏輯）</h3>
+  <div class="formula">喜悅度 D⁺ = A + O − R　｜　厭惡度 D⁻ = O + M − R　｜　綜合效用 = P·D⁺ + (1−P)·D⁻</div>
+  <ul>
+    <li>問卷判定：以「<b>功能存在／不存在</b>」兩題交叉分類（我喜愛／我期待／沒感覺／勉強／厭惡五級反應），矛盾回答記 Q（Questionable，無效）。</li>
+    <li>看懂公式邏輯：O 同時貢獻喜悅與厭惡；A 只加喜悅；M 只加厭惡；R 兩邊都扣。</li>
+  </ul>
+
+  <h3><span class="no">4.3</span>Excel Solver 產品規格最佳化</h3>
+  <ul>
+    <li>決策變數：各產品特徵 <b>X<sub>j</sub> ∈ {0,1}</b>（二元規劃）。</li>
+    <li>限制式：預算／成本上限（如總成本 ≤ 5,000 元），且搭配<b>低階／中階／高階價格帶</b>區間。</li>
+    <li>目標式：<b>Max 喜悅度 D⁺</b> 或 <b>Min 厭惡度 D⁻</b> → 自動解出最佳特徵組合。</li>
+  </ul>
+
+  <div class="exam-tip">
+    <span class="t-label">⚠️ 複選題命題邏輯</span>
+    <ul>
+      <li>給一張 Kano 曲線圖問「哪個點是魅力屬性」→ 用比喻反推：驚喜型＝A、線性型＝O、底線型＝M、負向型＝R。</li>
+      <li>計算題：給 A/O/M/R 分數 → 代 D⁺、D⁻ 公式比大小。</li>
+      <li>Solver 三要素題：決策變數（0/1）、限制式（預算）、目標（Max D⁺／Min D⁻）。</li>
+    </ul>
+  </div>
+
+  <div class="memo">
+    <span class="m-label">💡 記憶錨點</span>
+    <p><b>熱戀＝O、小三＝A、老夫老妻＝M、怨偶＝R</b>——老師上課的比喻就是答題鑰匙。D⁺ 看歡喜（A+O−R）、D⁻ 看抓狂（O+M−R）。</p>
+  </div>
+</section>
+
+<!-- ══════════════════ S5 異常值 / K-Means ══════════════════ -->
+<section class="card" id="s5">
+  <h2>⑤ 異常值檢測與 K-Means 分群</h2>
+  <p class="sec-sub">授課：10/09 第三講（10/20 課上完整講解，老師：「考試大概就講到 K-Means 這樣子」）｜資料集：iris.csv、creditcard.csv</p>
+
+  <div class="quote">
+    <span class="q-label">🎙️ 老師口語（10/20）</span>
+    <p>「我們待會第三節就直接講個方法，叫做 K-Means，怎麼做分群就講的很簡單，<b>考試大概就講到 K-Means 這樣子</b>。」</p>
+    <span class="src">— 10/20 課堂逐字稿</span>
+  </div>
+
+  <h3><span class="no">5.1</span>異常值檢測 Outlier Detection</h3>
+  <table>
+    <thead><tr><th>情境</th><th>工具</th><th>特點</th></tr></thead>
+    <tbody>
+      <tr><td><b>單一特徵</b>（一個指標）</td><td><b>盒鬚圖 Boxplot</b></td><td>以四分位距劃出上下界，界外即異常個案</td></tr>
+      <tr><td><b>多特徵</b>（引入共變數）</td><td><b>馬氏距離 Mahalanobis Distance</b></td><td>同時考量多特徵間的<b>相關性與變異數</b>（結合卡方檢定概念），距離異常大者標為 Outlier</td></tr>
+    </tbody>
+  </table>
+  <p><b>兩大實務應用（老師欽點案例）：</b></p>
+  <ul>
+    <li><b>信用卡盜刷</b>：選特徵——刷卡<b>金額</b>、刷卡<b>頻率</b>、<b>貨幣別 Currency</b>——計算馬氏距離，異常即標註盜刷。</li>
+    <li><b>資安駭客入侵</b>：監控系統<b>網路流量 Traffic Load</b>，出現爆發性異常＝遭流量攻擊或癱瘓。</li>
+  </ul>
+
+  <h3><span class="no">5.2</span>K-Means 分群演算法</h3>
+  <ul>
+    <li><b>性質</b>：<b>非監督式學習</b>，市場切分沒有標準答案，由管理者依商業需求決定。</li>
+    <li><b>目標</b>：<span class="hl">群內距離最小化、群間距離最大化</span>。</li>
+  </ul>
+  <p><b>迭代五步驟</b>：</p>
+  <ol>
+    <li>隨機指定 $K$ 個初始中心點（Initial Centroids）。</li>
+    <li>計算每個資料點到各中心的距離，分配給最近者。</li>
+    <li>重新計算各群的<b>平均中心點</b>（Mean Centroids）。</li>
+    <li>資料點依新中心重新歸派。</li>
+    <li>重複迭代直到中心點移動極微小 → <b>收斂／停止條件 Stop Criterion</b>。</li>
+  </ol>
+  <p><b>Iris 花卉 K=3 vs K=2（課堂實例）</b>：</p>
+  <ul>
+    <li><b>Setosa 山鳶尾</b>：特徵極鮮明，<b>獨立穩成一群</b>。</li>
+    <li><b>Versicolor 與 Virginica</b>：特徵高度重疊；K=2 時兩者<b>幾乎完全合併</b>，證明其極相似。</li>
+  </ul>
+  <p><b>24 種評估指標與簡化原則（複選題拉鋸情境）</b>：</p>
+  <ul>
+    <li>分群套件提供 24 種指標（DB Index、Hubert-Arabie 等），分「群間差異（越大越好）」與「群內差異（越小越好）」兩派。</li>
+    <li><span class="hl">11 個指標建議 K=2、11 個建議 K=3 拉鋸時 → 依「簡化原則 Parsimony」選結構更精簡的 K=2</span>。</li>
+  </ul>
+
+  <div class="exam-tip">
+    <span class="t-label">⚠️ 複選題命題邏輯</span>
+    <ul>
+      <li>步驟順序題：初始中心 → 指派 → 新中心 → 重新指派 → 收斂停止。</li>
+      <li>觀念題：K-Means 是<b>非監督式</b>、無標準答案；目標是群內小、群間大。</li>
+      <li>情境題：指標拉鋸 → Parsimony 選小的 K；單特徵 → Boxplot、多特徵 → 馬氏距離；盜刷看金額／頻率／貨幣別、資安看流量。</li>
+    </ul>
+  </div>
+
+  <div class="memo">
+    <span class="m-label">💡 記憶錨點</span>
+    <p>「<b>11 比 11 拉鋸 → 聽 Parsimony 的，選 K=2</b>」；「盜刷三寶：<b>金額、頻率、貨幣別</b>」。</p>
+  </div>
+</section>
+
+<!-- ══════════════════ S6 關聯規則 ══════════════════ -->
+<section class="card" id="s6">
+  <h2>⑥ 關聯規則：Support / Confidence / Lift</h2>
+  <p class="sec-sub">授課：09/22（三大指標、Titanic 實作）、09/29（Apriori 剪枝）｜投影片：關聯規則.pdf 全份、促銷策略 p17–30</p>
+
+  <div class="quote">
+    <span class="q-label">🎙️ 老師口語（10/20 點名必考）</span>
+    <p>「關聯規則……你至少知道那個有三個特徵，記得喔：<b>Support、Confidence、Lift</b>，他們是代表什麼……我基本上考複選題嘛，就是不是讓你背嘛，可是你<b>不了解（就答不出）</b>，所以這個你要回去去複習。」</p>
+    <span class="src">— 10/20 課堂逐字稿</span>
+  </div>
+
+  <h3><span class="no">6.1</span>三大指標與行銷意義</h3>
+  <table>
+    <thead><tr><th>指標</th><th>公式</th><th>白話</th><th>行銷意義</th></tr></thead>
+    <tbody>
+      <tr><td><b>Support 支援度</b></td><td>$P(A\cap B)$＝同時包含 A、B 的交易數 / 總交易數</td><td>A、B 同時出現的<b>普遍性</b></td><td>規則夠不夠「量」，值太小沒有商業價值</td></tr>
+      <tr><td><b>Confidence 信賴度</b></td><td>$P(B|A)$＝Support / P(A)</td><td>買 A 的人當中，也買 B 的<b>條件機率</b></td><td>搭售／貨架陳列的直接依據</td></tr>
+      <tr><td><b>Lift 增益比</b></td><td>Confidence / P(B)</td><td>相對「本來就會買 B」的<b>增益倍數</b></td><td>&gt;1 正相關適合搭售；=1 獨立；&lt;1 負相關互斥</td></tr>
+    </tbody>
+  </table>
+
+  <h3><span class="no">6.2</span>兩個老師欽點案例</h3>
+  <ul>
+    <li><b>啤酒與尿布</b>：經典共現案例 → <b>聯合促銷</b>、貨架陳列（Shelf Management）。關聯規則是<b>共現、不是因果</b>。</li>
+    <li><b>茶與咖啡反常案例（複選題陷阱）</b>：Confidence 高達 <b>75%</b>，但 <b>Lift &lt; 1</b> → 搭茶反而<b>抑制</b>咖啡消費（負相關）。<span class="hl">信心度高 ≠ 有用，一定要看 Lift</span>。</li>
+  </ul>
+
+  <h3><span class="no">6.3</span>組合爆炸與 Apriori 剪枝</h3>
+  <ul>
+    <li>d 個商品可產生 $3^d-2^{d+1}+1$ 條規則；<b>100 個商品 → 約 $5.15\times10^{47}$ 條</b>規則，暴力法不可行。</li>
+    <li><b>Apriori 先驗原理</b>：若項集不頻繁（Support 未達門檻），其所有<b>超集必不頻繁</b> → 由下而上逐層搜尋、<b>剪枝 Pruning</b>。</li>
+    <li>兩步驟：① 產生頻繁項目集（≥minsup）② 由頻繁項目集產生高信心規則（≥minconf）。</li>
+  </ul>
+
+  <h3><span class="no">6.4</span>Titanic 實作洞察（09/22）</h3>
+  <ul>
+    <li>連續變數離散化（年齡切 Young/Adult/Elder、票價切 Cheap/Medium/Expensive）、<code>na.omit()</code> 去缺失，RHS 設 <code>Survived=Yes/No</code>。</li>
+    <li>高獲救規則：<b>Class=1st ＋ Sex=Female</b>（頭等艙女性）；高死亡規則：<b>Class=3rd ＋ Sex=Male</b>（三等艙男性）。</li>
+    <li>延伸警惕：盲目<b>等寬切分</b>會因離群值導致規則自相矛盾（同一區間同時出現在正反 KPI），應配合領域知識切區間。</li>
+  </ul>
+
+  <div class="exam-tip">
+    <span class="t-label">⚠️ 複選題命題邏輯</span>
+    <ul>
+      <li>三指標定義配對題（機率式 vs 條件式 vs 比值）。</li>
+      <li>「Confidence 75%、Lift&lt;1 該怎麼解讀？」→ 負相關、不應搭售——這是老師上課特別演的數字。</li>
+      <li>Apriori 剪枝原理（不頻繁子集的超集必不頻繁）與組合爆炸量級。</li>
+    </ul>
+  </div>
+
+  <div class="memo">
+    <span class="m-label">💡 記憶錨點</span>
+    <p>Support 看量、Confidence 看條件、<b>Lift 看真相</b>；「Lift&lt;1，搭了反而賣更差」。</p>
+  </div>
+</section>
+
+<!-- ══════════════════ S7 定位 / 聯合分析 ══════════════════ -->
+<section class="card" id="s7">
+  <h2>⑦ 品牌定位（MDS / CA）與聯合分析</h2>
+  <p class="sec-sub">授課：09/29（MDS）、10/09（Conjoint、CA/MCA）｜投影片：品牌定位.pdf p36–51、產品策略 p33–42（Kansei）</p>
+
+  <div class="quote">
+    <span class="q-label">🎙️ 老師口語（10/20 點名必考）</span>
+    <p>「聯合分析……這裡最頭痛就是你要去排序……哪一個特徵在消費者心目中它是最 care 的，這個叫<b>重要性</b>……<b>效用值跟重要性是不一樣的</b>……這些細節跟這些邏輯的過程基本上都在我們命題範圍。」</p>
+    <span class="src">— 10/20 課堂逐字稿</span>
+  </div>
+
+  <h3><span class="no">7.1</span>MDS 多維尺度分析</h3>
+  <ul>
+    <li>定位：<b>PCA 的無母數版本</b>（免常態分配假設），把高維屬性／評分矩陣降到 2D/3D <b>知覺圖 Perceptual Map</b>。</li>
+    <li>品質指標：<span class="hl">壓力係數 Stress Value &lt; 0.05</span> 才算有效投射（越小越好）。</li>
+    <li>案例：10 個汽車屬性（馬力、內裝、價格、科技感…）降維成 2 維，看 <b>Toyota/Honda（日系）vs 雙 B（德系）</b>、Tesla 的競爭空間與親疏。</li>
+  </ul>
+
+  <h3><span class="no">7.2</span>CA 對應分析</h3>
+  <ul>
+    <li>基於<b>交叉表（列聯表）</b>的類別資料分析 → 產出<b>雙標圖 Biplot</b>：品牌與市場區隔（High/Medium/Low）同時投影在同一張圖。</li>
+    <li>案例：咖啡品牌（星巴克、路易莎、85度C、單堤、HWC）× 消費階層（Low/Medium/High）的對應空間，直觀看出品牌–客群親和度。</li>
+  </ul>
+
+  <h3><span class="no">7.3</span>聯合分析 Conjoint Analysis</h3>
+  <ul>
+    <li>目的：量化消費者對各<b>屬性（Attributes）×水準（Levels）</b>的偏好效用（Part-worth Utility），用 dummy variable 迴歸估出。</li>
+    <li><b>正交陣列 Orthogonal Array</b>：全因子組合過多（如 $2\times3^5=96$ 組）→ 部分因子設計縮成 <b>16 組正交代表性卡片</b>。</li>
+    <li><b>排序三階段技巧（16 組 Profile）</b>：<span class="hl">最喜歡 5–6 個 → 最討厭 5–6 個 → 中間 4–5 個</span>，降低受訪者認知負擔。</li>
+    <li>偏好分數轉換：<b>Preference Score = 17 − Rank</b>。</li>
+  </ul>
+  <p><b>效用 vs 重要性（老師點名「最頭痛」的觀念）：</b></p>
+  <table>
+    <thead><tr><th>概念</th><th>定義</th><th>關鍵性質</th></tr></thead>
+    <tbody>
+      <tr><td><b>效用 Utility</b></td><td>各屬性各水準的偏好分數</td><td><b>同一屬性內各水準效用相加必為 0</b></td></tr>
+      <tr><td><b>重要性 Importance</b></td><td>各屬性效用<b>全幅 Range</b>（max−min）占全部屬性全幅總和的百分比</td><td><span class="hl">Range 越大 → 該屬性在消費者心中越重要</span>（與重要性成正比）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="exam-tip">
+    <span class="t-label">⚠️ 複選題命題邏輯</span>
+    <ul>
+      <li>「效用值高」與「屬性重要」是兩件事——重要看 <b>Range</b>，不是單一水準效用。</li>
+      <li>數字記憶題：Stress&lt;0.05、96→16 卡片、排序三階段 5-6/5-6/4-5、Preference=17−Rank、同屬性效用和=0。</li>
+      <li>MDS vs CA 差異：MDS 用相似度/評分降維（無母數、看 Stress）；CA 用交叉表類別資料、產 Biplot。</li>
+    </ul>
+  </div>
+
+  <div class="memo">
+    <span class="m-label">💡 記憶錨點</span>
+    <p>「<b>Range 大＝心之所向（重要）；效用和＝0</b>」；MDS 看 <b>Stress</b>、CA 看 <b>Biplot</b>。</p>
+  </div>
+</section>
+
+<!-- ══════════════════ S8 數字速查 ══════════════════ -->
+<section class="card" id="s8">
+  <h2>📌 全卷數字速查表（複選題陷阱的數字都在這）</h2>
+  <table class="cheat">
+    <thead><tr><th>數字 / 門檻</th><th>所屬主題</th><th>意義</th></tr></thead>
+    <tbody>
+      <tr><td>≥ 25%</td><td>題型</td><td>複選題占分下限，另有 2 題送分題</td></tr>
+      <tr><td>2 小時</td><td>考試時長</td><td>6:40 PM 開始，時間充裕</td></tr>
+      <tr><td>p &lt; 0.05</td><td>卡方／T 檢定／迴歸係數</td><td>95% 信心下拒絕 H₀；顯著 → 區隔變數／KPI／有效自變數</td></tr>
+      <tr><td>1 ~ 9（＋倒數）</td><td>AHP</td><td>成對比較尺度；非李克特量表</td></tr>
+      <tr><td>5 ~ 7 個</td><td>AHP</td><td>評估準則數上限（Saaty 7±2 認知極限）</td></tr>
+      <tr><td>CR &lt; 0.1</td><td>AHP 一致性</td><td>CR=CI/RI，通過才算問卷品質合格</td></tr>
+      <tr><td>α 越大越敏感</td><td>指數平滑</td><td>α 大→追波動；α 小→重穩定；α=1→天真預測</td></tr>
+      <tr><td>MAPE（%）</td><td>預測誤差</td><td>消除 Scale 影響，跨規模比較首選</td></tr>
+      <tr><td>Lift &gt;1 / =1 / &lt;1</td><td>關聯規則</td><td>正相關搭售 / 獨立 / 負相關互斥（茶咖啡：Confidence 75% 但 Lift&lt;1）</td></tr>
+      <tr><td>5.15×10⁴⁷</td><td>關聯規則</td><td>100 商品暴力法規則數 → 需要 Apriori 剪枝</td></tr>
+      <tr><td>K=2 vs K=3（11:11）</td><td>K-Means</td><td>指標拉鋸 → Parsimony 選 K=2</td></tr>
+      <tr><td>24 種指標</td><td>K-Means</td><td>分群品質評估指標總數（群間大好、群內小好）</td></tr>
+      <tr><td>Stress &lt; 0.05</td><td>MDS</td><td>知覺圖投射品質門檻</td></tr>
+      <tr><td>96 → 16 組</td><td>聯合分析</td><td>正交陣列把全因子組合縮成代表性卡片</td></tr>
+      <tr><td>5-6 / 5-6 / 4-5</td><td>聯合分析</td><td>16 卡片三階段排序（最愛/最恨/中間）</td></tr>
+      <tr><td>效用和 = 0</td><td>聯合分析</td><td>同一屬性內各水準效用相加必為 0</td></tr>
+      <tr><td>Range ∝ 重要性</td><td>聯合分析</td><td>效用全幅越大，屬性越重要</td></tr>
+      <tr><td>Preference = 17 − Rank</td><td>聯合分析</td><td>排序轉偏好分數</td></tr>
+      <tr><td>768 → 392 筆</td><td>資料清洗（Pima）</td><td>剔除 0 值不合理缺失後的有效樣本</td></tr>
+      <tr><td>≤ 5,000 元</td><td>Solver</td><td>產品特徵選配的預算限制式（示意值）</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════════════ S9 快閃清單 ══════════════════ -->
+<section class="card" id="s9">
+  <h2>⚡ 考前 30 分鐘快閃清單</h2>
+  <p class="sec-sub">蓋上左邊，看右邊自問自答；答不出來才翻回對應章節</p>
+  <table class="cheat">
+    <thead><tr><th>自問</th><th>秒答</th></tr></thead>
+    <tbody>
+      <tr><td>考試考什麼、不考什麼？</td><td>考<b>應用與邏輯</b>；不考公式、不考 code、不上機</td></tr>
+      <tr><td>卡方／T／F 各配什麼資料？</td><td>卡方＝類別×類別；T＝數字（兩群平均）；F＝變異數同質性（T 前置）</td></tr>
+      <tr><td>T 檢定怎麼挑 KPI？</td><td>p&lt;0.05 → 兩群平均顯著不同 → 該變數有鑑別力 → KPI（血糖、皮膚厚度、帳戶餘額）</td></tr>
+      <tr><td>SMA 的 n、EMA 的 α 效果？</td><td>大＝平滑反差異：n 大平滑強；α 大追波動敏感；α=1 天真預測</td></tr>
+      <tr><td>為何用 MAPE？</td><td>百分比相對誤差，消除規模與單位（Scale）影響</td></tr>
+      <tr><td>R² vs Adjusted R²？</td><td>R² 只升不降會虛胖；Adjusted 有變數懲罰，塞垃圾 X 會下降 → 以它為準</td></tr>
+      <tr><td>Train/Test 怎麼切？</td><td>2011–2022 訓練（涵蓋完整空頭循環）、2023–2025 測試，防 Overfitting</td></tr>
+      <tr><td>AHP 三步驟＋門檻？</td><td>行總和→標準化→列平均；CR=CI/RI&lt;0.1；尺度 1–9＋倒數；準則 ≤5–7 個</td></tr>
+      <tr><td>TOPSIS + AHP 會發生什麼？</td><td>排名翻轉 Rank Reversal（交期權重 47.7% 案例，交期滿分者逆轉奪冠）</td></tr>
+      <tr><td>Kano 四屬性比喻？</td><td>熱戀＝一維 O、小三＝魅力 A、老夫老妻＝必要 M、怨偶＝反向 R</td></tr>
+      <tr><td>D⁺ 與 D⁻ 公式？</td><td>D⁺=A+O−R（喜悅）；D⁻=O+M−R（厭惡）</td></tr>
+      <tr><td>Solver 怎麼用？</td><td>特徵 0/1 二元規劃＋預算限制（低/中/高階價格帶）→ Max D⁺ 或 Min D⁻</td></tr>
+      <tr><td>異常值偵測工具？</td><td>單特徵→盒鬚圖；多特徵→馬氏距離（含共變數）；盜刷：金額/頻率/貨幣別；資安：Traffic Load</td></tr>
+      <tr><td>K-Means 五步驟？</td><td>隨機 K 中心→算距離歸派→重算中心→重新歸派→收斂停止（中心移動極微小）</td></tr>
+      <tr><td>K 拉鋸怎麼選？</td><td>11 指標說 K=2、11 說 K=3 → 簡化原則 Parsimony → K=2</td></tr>
+      <tr><td>關聯規則三指標？</td><td>Support=P(A∩B)；Confidence=P(B|A)；Lift=Confidence/P(B)（&gt;1 搭售、&lt;1 互斥）</td></tr>
+      <tr><td>Confidence 75% 但 Lift&lt;1？</td><td>茶與咖啡案例：負相關，搭售反而抑制銷售</td></tr>
+      <tr><td>Apriori 為何可行？</td><td>先驗原理：不頻繁子集的超集必不頻繁 → 剪枝，避免 5.15×10⁴⁷ 暴力法</td></tr>
+      <tr><td>MDS 品質指標？定位？</td><td>Stress&lt;0.05；PCA 的無母數版本，畫 2D 知覺圖</td></tr>
+      <tr><td>CA 產出什麼？</td><td>交叉表 → Biplot 雙標圖（品牌 × 區隔對應）</td></tr>
+      <tr><td>聯合分析排序技巧？</td><td>16 卡片三階段：最愛 5-6、最恨 5-6、中間 4-5</td></tr>
+      <tr><td>效用與重要性關係？</td><td>同屬性效用和=0；Range 越大 → 屬性越重要（效用≠重要性）</td></tr>
+      <tr><td>96 組怎麼變 16 組？</td><td>正交陣列（部分因子設計）取代表性組合</td></tr>
+      <tr><td>Titanic 規則洞察？</td><td>頭等艙＋女性＝高獲救；三等艙＋男性＝高死亡（規則是共現非因果）</td></tr>
+    </tbody>
+  </table>
+
+  <details class="src-note">
+    <summary>📁 考點 ↔ 課堂 ↔ 投影片 對照索引（想回原文時用）</summary>
+    <div class="body">
+      <table>
+        <thead><tr><th>考區</th><th>授課日期</th><th>逐字稿檔（每堂課整理重點/）</th><th>投影片（doc/slides/）</th></tr></thead>
+        <tbody>
+          <tr><td>SMA／EMA／誤差指標</td><td>09/08</td><td><code>20260908_01/02</code></td><td><code>迴歸預測.md</code> p6–19</td></tr>
+          <tr><td>Train/Test、Adjusted R²、T/F 檢定、卡方</td><td>09/15</td><td><code>20260915_01/02</code></td><td><code>統計與多變量分析.md</code> p14–26、<code>迴歸預測.md</code></td></tr>
+          <tr><td>資料清洗、關聯規則三指標、Titanic</td><td>09/22</td><td><code>20260922_01/02</code></td><td><code>關聯規則.md</code>、<code>促銷策略.md</code> p17–30</td></tr>
+          <tr><td>Apriori 剪枝、MDS</td><td>09/29</td><td><code>20260929_01/02</code></td><td><code>關聯規則.md</code> p11–19、<code>品牌定位.md</code> p36–39</td></tr>
+          <tr><td>AHP、TOPSIS、Kano、Solver</td><td>10/06</td><td><code>20261006_01/02</code></td><td><code>通路管理.md</code> p31–65、<code>產品策略.md</code> p50–60</td></tr>
+          <tr><td>複習＋Conjoint、CA/MCA、異常值、K-Means</td><td>10/09</td><td><code>20261009_01/02/03</code></td><td><code>品牌定位.md</code> p1–8、40–51、<code>產品策略.md</code> p33–42</td></tr>
+          <tr><td>考情總複習（本檔命題藍本）</td><td>10/20</td><td><code>1020最後一段</code>（見 <code>期中考/1020-exam-must-know.md</code>）</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+</section>
+
+<footer>
+  國際行銷期中考前總複習｜整理自 10/20 老師口述考情與 09/08–10/09 全學期課堂逐字稿、9 份投影片摘要<br>
+  考前提醒：重點是<b>定義、適用時機、指標意涵、決策邏輯</b>——無須死記公式。祝考試順利 🍀
+</footer>
+
+</div>
+</body>
+</html>
