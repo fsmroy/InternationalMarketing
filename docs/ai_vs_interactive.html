@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Plus 策略困境 — AI 浪潮下的生死抉擇</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ──────────────────────────────────── */
+:root {
+  --bg:     #FAF8F4;
+  --bg2:    #F0EBE2;
+  --surf:   #FFFFFF;
+  --ink:    #1A1917;
+  --ink2:   #5A5650;
+  --ink3:   #9A9590;
+  --bdr:    #E2DDD5;
+  --bdr2:   #C8C1B6;
+  --navy:   #1A3050;
+  --amber:  #C07826;
+  --teal:   #1A5A54;
+  --crisis:    #A83224;
+  --crbg:      #FEF3F1;
+  --crbd:      rgba(168,50,36,.22);
+  --turning:   #186840;
+  --trbg:      #EDFAF4;
+  --trbd:      rgba(24,104,64,.22);
+  --challenge: #7A5618;
+  --chbg:      #FEF9EE;
+  --chbd:      rgba(122,86,24,.22);
+  --dilemma:   #5E2A6E;
+  --dibg:      #F8F0FF;
+  --dibd:      rgba(94,42,110,.22);
+  --fd: 'DM Serif Display', Georgia, serif;
+  --fb: 'Inter', -apple-system, sans-serif;
+  --sh-sm: 0 1px 4px rgba(0,0,0,.06);
+  --sh-md: 0 4px 20px rgba(0,0,0,.09);
+  --sh-lg: 0 16px 50px rgba(0,0,0,.12);
+  --r:  10px;
+  --rl: 18px;
+}
+
+/* ── RESET ───────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);
+  line-height:1.7;-webkit-font-smoothing:antialiased;font-size:16px}
+img,svg{display:block;max-width:100%}
+button{cursor:pointer;font-family:var(--fb);border:none;background:none}
+
+/* ── HERO ────────────────────────────────────── */
+.hero{
+  background:var(--bg2);
+  padding:6rem 2rem 5rem;
+  text-align:center;
+  position:relative;
+  border-bottom:1px solid var(--bdr);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--navy) 0%,var(--amber) 50%,var(--teal) 100%);
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(192,120,38,.06),transparent);
+  pointer-events:none;
+}
+.issue-tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:1.8rem;position:relative;z-index:1;
+}
+.issue-tag::before,.issue-tag::after{
+  content:'';display:inline-block;width:24px;height:1px;background:var(--amber);
+}
+.hero h1{
+  font-family:var(--fd);
+  font-size:clamp(2.8rem,6.5vw,5.6rem);
+  line-height:1.06;letter-spacing:-.025em;
+  color:var(--ink);margin-bottom:1.4rem;
+  max-width:920px;margin-inline:auto;position:relative;z-index:1;
+}
+.hero h1 em{font-style:italic;color:var(--amber)}
+.h-rule{
+  width:44px;height:2px;background:var(--amber);
+  margin:1.6rem auto;position:relative;z-index:1;
+}
+.hero-lead{
+  font-size:1.05rem;color:var(--ink2);max-width:580px;
+  margin:0 auto 2.2rem;line-height:1.8;position:relative;z-index:1;
+}
+.hero-meta{
+  font-size:.8rem;color:var(--ink3);letter-spacing:.04em;
+  position:relative;z-index:1;
+}
+.scroll-cue{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  font-size:.7rem;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;
+  animation:cue 2.6s ease-in-out infinite;
+}
+.scroll-cue svg{opacity:.4}
+@keyframes cue{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(7px)}
+}
+
+/* ── STICKY NAV ──────────────────────────────── */
+.snav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(250,248,244,.93);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--bdr);
+  display:flex;justify-content:center;gap:.45rem;flex-wrap:wrap;
+  padding:.65rem 1.5rem;
+}
+.sn{
+  padding:.36rem 1.05rem;border-radius:100px;
+  border:1px solid var(--bdr);background:transparent;
+  color:var(--ink2);font-size:.82rem;font-weight:500;
+  transition:all .18s;white-space:nowrap;
+}
+.sn:hover,.sn.act{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* ── LAYOUT WRAPPER ──────────────────────────── */
+.wrap{max-width:1160px;margin:0 auto;padding:5rem 2rem}
+.sep{height:1px;background:var(--bdr);max-width:1160px;margin:0 auto}
+.sec-label{
+  font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:.65rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.sec-label::before{content:'';display:inline-block;width:18px;height:2px;background:var(--amber);flex-shrink:0}
+.sec-title{
+  font-family:var(--fd);font-size:clamp(1.75rem,3.5vw,2.6rem);
+  letter-spacing:-.022em;margin-bottom:.7rem;line-height:1.18;
+}
+.sec-desc{font-size:.93rem;color:var(--ink2);max-width:520px;margin-bottom:2.8rem;line-height:1.75}
+
+/* ── STATS STRIP ─────────────────────────────── */
+.stats-strip{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r);overflow:hidden;margin-bottom:4rem;
+  box-shadow:var(--sh-sm);
+}
+@media(max-width:760px){.stats-strip{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:480px){.stats-strip{grid-template-columns:repeat(2,1fr)}}
+.stat-cell{
+  padding:1.6rem 1.2rem;text-align:center;
+  border-right:1px solid var(--bdr);
+}
+.stat-cell:last-child{border-right:none}
+.stat-num{
+  font-family:var(--fd);font-size:2.2rem;line-height:1;
+  color:var(--navy);margin-bottom:.3rem;
+}
+.stat-num sup{font-size:.75em;vertical-align:super;font-family:var(--fb);font-weight:600}
+.stat-lbl{font-size:.74rem;color:var(--ink2)}
+
+/* ── CHARACTER MAP ───────────────────────────── */
+.charmap-grid{
+  display:grid;grid-template-columns:1fr 300px;
+  gap:1.4rem;align-items:start;
+}
+@media(max-width:880px){.charmap-grid{grid-template-columns:1fr}}
+
+.map-wrap{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--rl);overflow:hidden;box-shadow:var(--sh-sm);
+}
+#charmap{width:100%;height:auto;display:block}
+
+/* SVG hover cursor */
+.cnode{cursor:pointer}
+.cnode .bg-ring{transition:opacity .15s}
+.cnode:hover .bg-ring{opacity:1!important}
+
+.map-legend{
+  display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;
+  padding:.9rem 1.4rem;border-top:1px solid var(--bdr);background:var(--bg);
+}
+.leg-i{display:flex;align-items:center;gap:.38rem;font-size:.74rem;color:var(--ink2)}
+.leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+.detail-panel{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--rl);padding:1.5rem 1.4rem;
+  box-shadow:var(--sh-sm);position:sticky;top:70px;min-height:320px;
+  display:flex;flex-direction:column;
+}
+.dp-empty{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;color:var(--ink3);
+  font-size:.85rem;line-height:1.8;
+  border:1.5px dashed var(--bdr);border-radius:var(--r);padding:2rem;
+}
+.dp-empty svg{margin:0 auto .8rem;opacity:.35}
+.dp-body{display:none}
+.dp-body.on{display:block;animation:fadeUp .28s ease}
+.dp-avatar{
+  width:46px;height:46px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-family:var(--fd);font-size:1.25rem;
+  font-weight:700;margin-bottom:.9rem;
+}
+.dp-name{font-family:var(--fd);font-size:1.35rem;margin-bottom:.15rem}
+.dp-role{
+  font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:.9rem;
+}
+.dp-desc{font-size:.84rem;color:var(--ink2);line-height:1.72;margin-bottom:1rem}
+.dp-chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.chip{
+  padding:.2rem .58rem;border-radius:100px;font-size:.7rem;font-weight:500;
+  background:var(--bg2);border:1px solid var(--bdr);color:var(--ink2);
+}
+.chip.navy{background:rgba(26,48,80,.08);border-color:rgba(26,48,80,.2);color:var(--navy)}
+.chip.amber{background:rgba(192,120,38,.09);border-color:rgba(192,120,38,.22);color:var(--amber)}
+.chip.teal{background:rgba(26,90,84,.08);border-color:rgba(26,90,84,.2);color:var(--teal)}
+.chip.crisis{background:var(--crbg);border-color:var(--crbd);color:var(--crisis)}
+.chip.gray{background:rgba(154,149,144,.09);border-color:rgba(154,149,144,.25);color:var(--ink2)}
+
+/* ── EVENT TABS ──────────────────────────────── */
+.etab-bar{
+  display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem;
+  padding-bottom:1.2rem;border-bottom:1px solid var(--bdr);
+}
+.etab{
+  display:flex;align-items:center;gap:.55rem;
+  padding:.5rem 1.2rem;border-radius:var(--r);
+  border:1px solid var(--bdr);background:var(--surf);
+  font-size:.86rem;font-weight:500;color:var(--ink2);transition:all .18s;
+}
+.etab-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+[data-t=crisis]    .etab-dot{background:var(--crisis)}
+[data-t=turning]   .etab-dot{background:var(--turning)}
+[data-t=challenge] .etab-dot{background:var(--challenge)}
+[data-t=dilemma]   .etab-dot{background:var(--dilemma)}
+
+[data-t=crisis].on,[data-t=crisis]:hover{background:var(--crbg);border-color:var(--crbd);color:var(--crisis)}
+[data-t=turning].on,[data-t=turning]:hover{background:var(--trbg);border-color:var(--trbd);color:var(--turning)}
+[data-t=challenge].on,[data-t=challenge]:hover{background:var(--chbg);border-color:var(--chbd);color:var(--challenge)}
+[data-t=dilemma].on,[data-t=dilemma]:hover{background:var(--dibg);border-color:var(--dibd);color:var(--dilemma)}
+
+.epanel{display:none}
+.epanel.on{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));
+  gap:1.2rem;animation:fadeUp .32s ease;
+}
+
+/* event cards — top accent, NOT left border */
+.ecard{
+  background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:1.5rem;transition:transform .2s,box-shadow .2s;
+  border-top:3px solid transparent;
+}
+.ecard.cr{border-top-color:var(--crisis)}
+.ecard.tr{border-top-color:var(--turning)}
+.ecard.ch{border-top-color:var(--challenge)}
+.ecard.di{border-top-color:var(--dilemma)}
+.ecard:hover{transform:translateY(-3px);box-shadow:var(--sh-md)}
+
+.ecard-seq{
+  font-size:.66rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:.65rem;
+}
+.ecard-title{
+  font-family:var(--fd);font-size:1.05rem;
+  margin-bottom:.6rem;line-height:1.3;
+}
+.ecard-desc{font-size:.83rem;color:var(--ink2);line-height:1.72}
+.impact{
+  display:flex;align-items:center;gap:.5rem;margin-top:1.2rem;
+  padding-top:.85rem;border-top:1px solid var(--bdr);
+  font-size:.74rem;color:var(--ink3);
+}
+.ibar{flex:1;height:3px;background:var(--bg2);border-radius:2px;overflow:hidden}
+.ifill{height:100%;border-radius:2px;width:0;transition:width 1s cubic-bezier(.4,0,.2,1) .1s}
+.cr .ifill{background:var(--crisis)}
+.tr .ifill{background:var(--turning)}
+.ch .ifill{background:var(--challenge)}
+.di .ifill{background:var(--dilemma)}
+.ilv{font-weight:600}
+.cr .ilv{color:var(--crisis)}.tr .ilv{color:var(--turning)}
+.ch .ilv{color:var(--challenge)}.di .ilv{color:var(--dilemma)}
+
+/* ── EXPERT PANELS ───────────────────────────── */
+.exp-sel{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.8rem}
+@media(max-width:640px){.exp-sel{grid-template-columns:1fr}}
+
+.exp-btn{
+  display:flex;align-items:center;gap:1.1rem;
+  padding:1.1rem 1.3rem;background:var(--surf);
+  border:2px solid var(--bdr);border-radius:var(--r);
+  text-align:left;color:var(--ink);transition:all .18s;
+}
+.exp-btn:hover{border-color:var(--navy);background:rgba(26,48,80,.03)}
+.exp-btn.on{border-color:var(--navy);background:rgba(26,48,80,.04)}
+.exp-av{
+  width:48px;height:48px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-size:1.3rem;
+}
+.exp-av.y{background:rgba(192,120,38,.12);color:var(--amber)}
+.exp-av.c{background:rgba(26,90,84,.12);color:var(--teal)}
+.exp-info h4{font-size:.93rem;font-weight:600;margin-bottom:.12rem}
+.exp-info .org{font-size:.76rem;color:var(--ink2);margin-bottom:.4rem;line-height:1.45}
+.stance{
+  display:inline-block;padding:.2rem .58rem;
+  border-radius:100px;font-size:.68rem;font-weight:600;
+}
+.s-go{background:rgba(192,120,38,.1);color:var(--amber)}
+.s-sel{background:rgba(26,90,84,.1);color:var(--teal)}
+
+.sbpanel{display:none}
+.sbpanel.on{display:block;animation:fadeUp .32s ease}
+
+.sb-intro{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r);padding:1.5rem 1.8rem;
+  margin-bottom:1.5rem;display:flex;gap:1.4rem;align-items:flex-start;
+}
+.sb-glyph{
+  font-size:2.4rem;line-height:1;flex-shrink:0;
+  color:var(--navy);font-family:var(--fd);font-style:italic;
+}
+.sb-intro h3{font-size:.93rem;font-weight:600;margin-bottom:.45rem}
+.sb-intro blockquote{
+  font-style:italic;font-family:var(--fd);font-size:.97rem;
+  color:var(--ink2);border-left:2px solid var(--bdr2);
+  padding-left:1rem;line-height:1.72;
+}
+.sb-chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.85rem}
+
+.frames{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;
+}
+@media(max-width:900px){.frames{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.frames{grid-template-columns:1fr}}
+
+.frame{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--r);overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+}
+.frame:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
+.frame-num{
+  font-size:.65rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);
+  padding:.8rem 1.1rem .25rem;
+}
+.frame-vis{
+  height:108px;display:flex;align-items:center;justify-content:center;
+  font-size:2.6rem;background:var(--bg2);color:var(--navy);
+  font-family:var(--fd);font-style:italic;
+  position:relative;
+}
+.frame-vis::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,rgba(250,248,244,.85));
+}
+.frame-body{padding:.85rem 1.1rem 1.2rem}
+.frame-title{font-family:var(--fd);font-size:.95rem;margin-bottom:.4rem;line-height:1.35}
+.frame-desc{font-size:.79rem;color:var(--ink2);line-height:1.68}
+.frame-badge{
+  display:inline-block;padding:.18rem .5rem;border-radius:100px;
+  font-size:.66rem;font-weight:700;margin-top:.7rem;
+  background:var(--bg2);color:var(--ink2);border:1px solid var(--bdr);
+}
+.fb-navy{background:rgba(26,48,80,.08);border-color:rgba(26,48,80,.2);color:var(--navy)}
+.fb-amber{background:rgba(192,120,38,.09);border-color:rgba(192,120,38,.22);color:var(--amber)}
+.fb-teal{background:rgba(26,90,84,.08);border-color:rgba(26,90,84,.2);color:var(--teal)}
+.fb-crisis{background:var(--crbg);border-color:var(--crbd);color:var(--crisis)}
+
+/* ── DECISION ────────────────────────────────── */
+.decision-box{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:var(--rl);overflow:hidden;box-shadow:var(--sh-sm);
+}
+.decision-head{
+  background:var(--navy);color:#fff;
+  padding:2rem 2.4rem;text-align:center;
+}
+.decision-head h3{font-family:var(--fd);font-size:1.7rem;margin-bottom:.4rem}
+.decision-head p{font-size:.88rem;opacity:.7}
+
+.dc-cols{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:640px){.dc-cols{grid-template-columns:1fr}}
+.dc{padding:2rem 2.2rem;border-right:1px solid var(--bdr)}
+.dc:last-child{border-right:none}
+.dc-head{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.4rem;padding-bottom:1.2rem;border-bottom:1px solid var(--bdr)}
+.dc-glyph{font-family:var(--fd);font-size:2rem;line-height:1;flex-shrink:0;color:var(--navy)}
+.dc-head h3{font-family:var(--fd);font-size:1.15rem;margin-bottom:.2rem}
+.dc-head .sub{font-size:.76rem;color:var(--ink2)}
+.dc-list{list-style:none}
+.dc-list li{
+  font-size:.84rem;color:var(--ink2);padding:.48rem 0;
+  border-bottom:1px solid var(--bg2);
+  display:grid;grid-template-columns:1rem 1fr;gap:.5rem;
+  align-items:start;line-height:1.55;
+}
+.dc-list li:last-child{border-bottom:none}
+.li-dot{margin-top:.45rem;width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.li-pos .li-dot{background:var(--turning)}
+.li-neg .li-dot{background:var(--crisis)}
+
+/* ── ZOOM CONTROLS ──────────────────────────── */
+.map-wrap{position:relative}
+.map-scroll{overflow:auto;position:relative;border-radius:var(--rl) var(--rl) 0 0}
+.map-scroll svg{display:block;transition:width .25s, height .25s}
+.zoom-bar{
+  position:absolute;top:12px;right:12px;z-index:20;
+  display:flex;align-items:center;gap:4px;
+  background:rgba(250,248,244,.92);backdrop-filter:blur(10px);
+  border:1px solid var(--bdr);border-radius:var(--r);
+  padding:4px 8px;box-shadow:var(--sh-sm);
+}
+.zbtn{
+  width:28px;height:28px;border-radius:6px;
+  border:1px solid var(--bdr);background:var(--surf);
+  color:var(--ink);font-size:1rem;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;line-height:1;
+}
+.zbtn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.zlabel{font-size:.7rem;font-weight:600;color:var(--ink2);min-width:38px;text-align:center}
+
+/* ── TIMELINE ────────────────────────────────── */
+.tl-outer{position:relative;padding-left:130px}
+.tl-outer::before{
+  content:'';position:absolute;
+  left:128px;top:20px;bottom:20px;width:2px;
+  background:linear-gradient(to bottom,transparent,var(--bdr) 6%,var(--bdr) 94%,transparent);
+}
+.tl-item{
+  display:grid;grid-template-columns:120px 2px 1fr;
+  gap:0 14px;margin-bottom:1.8rem;position:relative;
+  margin-left:-130px;
+}
+.tl-item:last-child{margin-bottom:0}
+.tl-time{padding-top:.85rem;text-align:right}
+.tl-day{font-size:.66rem;font-weight:700;letter-spacing:.08em;color:var(--ink3);text-transform:uppercase;display:block}
+.tl-clock{font-family:var(--fd);font-size:1.15rem;color:var(--ink);line-height:1.15;display:block}
+.tl-spine{display:flex;flex-direction:column;align-items:center;padding-top:.9rem}
+.tl-dot{
+  width:14px;height:14px;border-radius:50%;
+  border:2.5px solid var(--surf);flex-shrink:0;
+  position:relative;z-index:2;box-shadow:0 0 0 2px var(--bdr);
+}
+.tl-card{
+  background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);
+  padding:1.1rem 1.3rem;cursor:pointer;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+  border-left:3px solid transparent;
+}
+.tl-card:hover{transform:translateX(4px);box-shadow:var(--sh-md)}
+.tl-card.cr{border-left-color:var(--crisis)}.tl-card.cr .tl-dot{background:var(--crisis)}
+.tl-card.am{border-left-color:var(--amber)}.tl-card.am .tl-dot{background:var(--amber)}
+.tl-card.nv{border-left-color:var(--navy)}.tl-card.nv .tl-dot{background:var(--navy)}
+.tl-card.di{border-left-color:var(--dilemma)}.tl-card.di .tl-dot{background:var(--dilemma)}
+.tl-card-top{display:flex;align-items:flex-start;gap:.65rem;margin-bottom:.55rem}
+.tl-badge{
+  flex-shrink:0;padding:.16rem .55rem;border-radius:100px;
+  font-size:.63rem;font-weight:700;white-space:nowrap;margin-top:.18rem;
+}
+.tl-badge.cr{background:var(--crbg);color:var(--crisis)}
+.tl-badge.am{background:rgba(192,120,38,.1);color:var(--amber)}
+.tl-badge.nv{background:rgba(26,48,80,.08);color:var(--navy)}
+.tl-badge.di{background:var(--dibg);color:var(--dilemma)}
+.tl-title{font-family:var(--fd);font-size:1rem;line-height:1.28}
+.tl-desc{font-size:.83rem;color:var(--ink2);line-height:1.72}
+.tl-actors{
+  display:flex;flex-wrap:wrap;gap:.3rem;
+  margin-top:.75rem;padding-top:.65rem;border-top:1px solid var(--bdr);
+}
+.tl-actor{
+  display:flex;align-items:center;gap:.3rem;
+  padding:.15rem .5rem;border-radius:100px;
+  background:var(--bg2);font-size:.7rem;color:var(--ink2);
+  border:1px solid var(--bdr);
+}
+.tl-actor-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.tl-detail{
+  display:none;font-size:.82rem;color:var(--ink2);line-height:1.72;
+  margin-top:.8rem;padding-top:.8rem;border-top:1px dashed var(--bdr);
+}
+.tl-card.open .tl-detail{display:block;animation:fadeUp .25s ease}
+.tl-hint{
+  font-size:.68rem;color:var(--ink3);margin-top:.55rem;
+  text-align:right;transition:color .15s;
+}
+.tl-card.open .tl-hint{color:var(--amber)}
+@media(max-width:640px){
+  .tl-outer{padding-left:0}
+  .tl-outer::before{display:none}
+  .tl-item{grid-template-columns:1fr;margin-left:0}
+  .tl-time{padding-top:0;text-align:left;margin-bottom:.4rem}
+  .tl-spine{display:none}
+}
+
+/* ── FOOTER ──────────────────────────────────── */
+footer{
+  background:var(--bg2);border-top:1px solid var(--bdr);
+  padding:2.5rem 2rem;text-align:center;color:var(--ink3);
+  font-size:.78rem;line-height:2;
+}
+
+/* ── ANIMATIONS ──────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ── ENTRY FADE (IO) ──────────────────────────── */
+.io-fade{
+  opacity:0;transform:translateY(16px) scale(.99);
+  transition:opacity .45s ease,transform .45s ease;
+}
+.io-fade.vis{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ──────────── HERO ──────────── -->
+<header class="hero">
+  <p class="issue-tag">競爭策略 · 哈佛商業評論 · 2026年5月</p>
+  <h1>全面擁抱 <em>AI</em><br>vs. 借力使力選擇性參與</h1>
+  <div class="h-rule"></div>
+  <p class="hero-lead">AI 浪潮下，知識價值產業何去何從？<br>數位媒體代理商 A Plus 面臨轉型 SaaS 平台或深化顧問服務的兩難抉擇。</p>
+  <p class="hero-meta">黃國峯 · 王淑芳 著 &emsp;|&emsp; 嚴國瑞 · 陳柏諭 顧問建議</p>
+  <div class="scroll-cue">
+    探索
+    <svg width="16" height="20" viewBox="0 0 16 20"><path d="M8 1v14M2 10l6 7 6-7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</header>
+
+<!-- ──────────── STICKY NAV ──────────── -->
+<nav class="snav">
+  <button class="sn" onclick="goto('sec-char')">人物關係</button>
+  <button class="sn" onclick="goto('sec-timeline')">故事時間軸</button>
+  <button class="sn" onclick="goto('sec-events')">故事四象限</button>
+  <button class="sn" onclick="goto('sec-expert')">顧問分鏡</button>
+  <button class="sn" onclick="goto('sec-decision')">路徑決策</button>
+</nav>
+
+<!-- ──────────── STATS ──────────── -->
+<div class="wrap" style="padding-bottom:0">
+  <div class="stats-strip io-fade">
+    <div class="stat-cell">
+      <div class="stat-num">億<sup>+</sup></div>
+      <div class="stat-lbl">年度營收規模</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">30<sup>%</sup></div>
+      <div class="stat-lbl">中小客戶正在流失</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">20<sup>%</sup></div>
+      <div class="stat-lbl">客戶要求降價幅度</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">48<sup>hr</sup></div>
+      <div class="stat-lbl">董事會決策倒數</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num" style="font-size:1.7rem">千萬</div>
+      <div class="stat-lbl">最低轉型建設成本</div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────── SECTION 1: CHARACTER MAP ──────────── -->
+<section class="wrap" id="sec-char">
+  <p class="sec-label">Chapter 01</p>
+  <h2 class="sec-title">人物關係圖</h2>
+  <p class="sec-desc">點擊任意角色節點，查看人物背景、立場與關係脈絡。</p>
+
+  <div class="charmap-grid">
+    <div class="map-wrap io-fade">
+      <!-- zoom controls -->
+      <div class="map-scroll" id="map-scroll">
+        <div class="zoom-bar">
+          <button class="zbtn" onclick="zoom(-1)" title="縮小">&#8722;</button>
+          <span class="zlabel" id="zlabel">100%</span>
+          <button class="zbtn" onclick="zoom(1)" title="放大">&#43;</button>
+          <button class="zbtn" onclick="zoom(0)" title="重置" style="font-size:.65rem;width:36px;letter-spacing:-.02em">重置</button>
+        </div>
+      <!-- ── SVG DIAGRAM ── -->
+      <svg id="charmap" viewBox="0 0 820 500" width="820" height="500" xmlns="http://www.w3.org/2000/svg"
+           style="background:#faf8f4;min-width:100%;display:block">
+        <defs>
+          <!-- Arrowhead markers -->
+          <marker id="a-red"    markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,1 L0,7 L7,4 z" fill="#A83224"/></marker>
+          <marker id="a-amber"  markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,1 L0,7 L7,4 z" fill="#C07826"/></marker>
+          <marker id="a-navy"   markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,1 L0,7 L7,4 z" fill="#1A3050" opacity=".75"/></marker>
+          <marker id="a-teal"   markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,1 L0,7 L7,4 z" fill="#1A5A54"/></marker>
+          <marker id="a-gray"   markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,1 L0,7 L7,4 z" fill="#6B7280"/></marker>
+          <marker id="a-purple" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,1 L0,7 L7,4 z" fill="#5E2A6E"/></marker>
+        </defs>
+
+        <!-- Zone backgrounds -->
+        <!-- External Pressure Zone -->
+        <rect x="14" y="14" width="188" height="472" rx="10"
+              fill="rgba(168,50,36,.035)" stroke="rgba(168,50,36,.14)" stroke-width="1"/>
+        <text x="108" y="38" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9.5" font-weight="700" fill="#A83224" letter-spacing="1.8">外部壓力</text>
+
+        <!-- Core Zone -->
+        <rect x="218" y="14" width="384" height="472" rx="10"
+              fill="rgba(26,48,80,.03)" stroke="rgba(26,48,80,.13)" stroke-width="1"/>
+        <text x="410" y="38" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9.5" font-weight="700" fill="#1A3050" letter-spacing="1.8">A Plus 核心</text>
+
+        <!-- External Support / Clients Zone -->
+        <rect x="618" y="14" width="188" height="472" rx="10"
+              fill="rgba(26,90,84,.03)" stroke="rgba(26,90,84,.13)" stroke-width="1"/>
+        <text x="712" y="38" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9.5" font-weight="700" fill="#1A5A54" letter-spacing="1.8">客戶與顧問</text>
+
+        <!-- A Plus company dashed oval -->
+        <ellipse cx="410" cy="290" rx="163" ry="135"
+                 fill="none" stroke="rgba(26,48,80,.16)"
+                 stroke-dasharray="5,4" stroke-width="1.6"/>
+        <text x="410" y="448" text-anchor="middle" font-family="Inter,sans-serif"
+              font-size="9" fill="rgba(26,48,80,.32)" letter-spacing=".8">A Plus 公司</text>
+
+        <!-- ── EDGE PATHS ── -->
+
+        <!-- Lin → Wang: capital pressure (red dashed) -->
+        <path d="M 158,168 Q 270,108 374,172"
+              fill="none" stroke="#A83224" stroke-width="1.6"
+              stroke-dasharray="6,3.5" marker-end="url(#a-red)" opacity=".8"/>
+        <text x="242" y="117" font-family="Inter,sans-serif" font-size="8.5"
+              fill="#A83224" opacity=".9">施壓轉型</text>
+
+        <!-- Yan → Wang: advisor (teal solid) -->
+        <path d="M 158,335 Q 248,248 374,192"
+              fill="none" stroke="#1A5A54" stroke-width="1.4"
+              marker-end="url(#a-teal)" opacity=".75"/>
+        <text x="196" y="268" font-family="Inter,sans-serif" font-size="8.5"
+              fill="#1A5A54" opacity=".9">建議全面轉型</text>
+
+        <!-- Chen → Wang: advisor (teal dashed) -->
+        <path d="M 158,428 Q 244,346 372,204"
+              fill="none" stroke="#1A5A54" stroke-width="1.3"
+              stroke-dasharray="5,3.5" marker-end="url(#a-teal)" opacity=".65"/>
+        <text x="178" y="366" font-family="Inter,sans-serif" font-size="8.5"
+              fill="#1A5A54" opacity=".85">選擇性借力</text>
+
+        <!-- Yasbi → A Plus (amber) -->
+        <path d="M 660,160 Q 580,145 572,196"
+              fill="none" stroke="#C07826" stroke-width="1.5"
+              marker-end="url(#a-amber)" opacity=".75"/>
+        <text x="600" y="142" font-family="Inter,sans-serif" font-size="8.5"
+              fill="#C07826" opacity=".9">要求降價20%</text>
+
+        <!-- Global Finance → Wang (purple) -->
+        <path d="M 658,285 C 580,252 510,220 444,196"
+              fill="none" stroke="#5E2A6E" stroke-width="1.5"
+              marker-end="url(#a-purple)" opacity=".72"/>
+        <text x="558" y="238" font-family="Inter,sans-serif" font-size="8.5"
+              fill="#5E2A6E" opacity=".9">責任賠償附約</text>
+
+        <!-- O Platform → A Plus (gray dashed) -->
+        <path d="M 660,420 Q 584,404 572,365"
+              fill="none" stroke="#6B7280" stroke-width="1.3"
+              stroke-dasharray="5,3.5" marker-end="url(#a-gray)" opacity=".65"/>
+        <text x="594" y="414" font-family="Inter,sans-serif" font-size="8.5"
+              fill="#6B7280" opacity=".85">搶奪中小客戶</text>
+
+        <!-- Su → Wang (navy) -->
+        <path d="M 306,304 L 382,208"
+              fill="none" stroke="#1A3050" stroke-width="1.4"
+              marker-end="url(#a-navy)" opacity=".65"/>
+        <text x="313" y="255" font-family="Inter,sans-serif" font-size="8"
+              fill="#1A3050" opacity=".75">AI化主張</text>
+
+        <!-- Zhou → Wang (navy) -->
+        <path d="M 514,304 L 438,208"
+              fill="none" stroke="#1A3050" stroke-width="1.4"
+              marker-end="url(#a-navy)" opacity=".65"/>
+        <text x="460" y="256" font-family="Inter,sans-serif" font-size="8"
+              fill="#1A3050" opacity=".75">顧問服務主張</text>
+
+        <!-- Li → Wang (navy) -->
+        <path d="M 410,336 L 410,218"
+              fill="none" stroke="#1A3050" stroke-width="1.4"
+              marker-end="url(#a-navy)" opacity=".6"/>
+        <text x="416" y="284" font-family="Inter,sans-serif" font-size="8"
+              fill="#1A3050" opacity=".72">技術警告</text>
+
+        <!-- Su ↔ Zhou conflict arc (red dots) -->
+        <path d="M 336,322 Q 410,355 484,322"
+              fill="none" stroke="#A83224" stroke-width="1.1"
+              stroke-dasharray="3,3" opacity=".45"/>
+        <text x="382" y="366" text-anchor="middle"
+              font-family="Inter,sans-serif" font-size="8"
+              fill="#A83224" opacity=".7">路線衝突</text>
+
+        <!-- ── NODE GROUPS ── -->
+
+        <!-- ▶ Lin Boen (Shareholder) -->
+        <g class="cnode" data-id="lin" onclick="showChar('lin')">
+          <circle class="bg-ring" cx="108" cy="168" r="38" fill="#A83224" opacity=".08"/>
+          <circle cx="108" cy="168" r="28" fill="#A83224"/>
+          <text x="108" y="172" text-anchor="middle"
+                font-family="DM Serif Display,Georgia,serif"
+                font-size="15" fill="white" font-weight="700">林</text>
+          <text x="108" y="211" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="11"
+                font-weight="600" fill="#1A1917">林本恩</text>
+          <text x="108" y="226" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="#9A9590">股東 · 創鼎資本</text>
+        </g>
+
+        <!-- ▶ Yan Guorui (Advisor 1) -->
+        <g class="cnode" data-id="yan" onclick="showChar('yan')">
+          <circle class="bg-ring" cx="108" cy="335" r="34" fill="#1A5A54" opacity=".08"/>
+          <circle cx="108" cy="335" r="25" fill="#1A5A54"/>
+          <text x="108" y="340" text-anchor="middle"
+                font-family="DM Serif Display,Georgia,serif"
+                font-size="14" fill="white" font-weight="700">嚴</text>
+          <text x="108" y="374" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="11"
+                font-weight="600" fill="#1A1917">嚴國瑞</text>
+          <text x="108" y="388" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="#9A9590">外部顧問</text>
+        </g>
+
+        <!-- ▶ Chen Baiyu (Advisor 2) -->
+        <g class="cnode" data-id="chen" onclick="showChar('chen')">
+          <circle class="bg-ring" cx="108" cy="428" r="34" fill="#1A5A54" opacity=".06"/>
+          <circle cx="108" cy="428" r="22" fill="#1A5A54" opacity=".82"/>
+          <text x="108" y="433" text-anchor="middle"
+                font-family="DM Serif Display,Georgia,serif"
+                font-size="13" fill="white" font-weight="700">陳</text>
+          <text x="108" y="464" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="10.5"
+                font-weight="600" fill="#1A1917">陳柏諭</text>
+          <text x="108" y="477" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="#9A9590">外部顧問</text>
+        </g>
+
+        <!-- ▶ Wang Aiwei (CEO — center, largest) -->
+        <g class="cnode" data-id="wang" onclick="showChar('wang')">
+          <circle class="bg-ring" cx="410" cy="188" r="48" fill="#C07826" opacity=".1"/>
+          <circle cx="410" cy="188" r="36" fill="#C07826"/>
+          <text x="410" y="184" text-anchor="middle"
+                font-family="DM Serif Display,Georgia,serif"
+                font-size="13" fill="white" font-weight="700">王愛玫</text>
+          <text x="410" y="200" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="rgba(255,255,255,.88)">CEO 執行長</text>
+          <text x="410" y="241" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="11"
+                font-weight="600" fill="#1A1917">王愛玫</text>
+          <text x="410" y="255" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="#9A9590">A Plus CEO</text>
+        </g>
+
+        <!-- ▶ Su Fei (Media Director) -->
+        <g class="cnode" data-id="su" onclick="showChar('su')">
+          <circle class="bg-ring" cx="305" cy="318" r="34" fill="#1A3050" opacity=".08"/>
+          <circle cx="305" cy="318" r="26" fill="#1A3050"/>
+          <text x="305" y="323" text-anchor="middle"
+                font-family="DM Serif Display,Georgia,serif"
+                font-size="14" fill="white" font-weight="700">蘇</text>
+          <text x="305" y="358" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="11"
+                font-weight="600" fill="#1A1917">蘇霏</text>
+          <text x="305" y="372" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="#9A9590">媒體部總監</text>
+        </g>
+
+        <!-- ▶ Li Lianan (CTO) -->
+        <g class="cnode" data-id="li" onclick="showChar('li')">
+          <circle class="bg-ring" cx="410" cy="350" r="34" fill="#1A3050" opacity=".08"/>
+          <circle cx="410" cy="350" r="26" fill="#1A3050"/>
+          <text x="410" y="355" text-anchor="middle"
+                font-family="DM Serif Display,Georgia,serif"
+                font-size="14" fill="white" font-weight="700">李</text>
+          <text x="410" y="390" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="11"
+                font-weight="600" fill="#1A1917">李廉安</text>
+          <text x="410" y="404" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="#9A9590">CTO 資訊長</text>
+        </g>
+
+        <!-- ▶ Zhou Xueli (Biz Director) -->
+        <g class="cnode" data-id="zhou" onclick="showChar('zhou')">
+          <circle class="bg-ring" cx="515" cy="318" r="34" fill="#1A3050" opacity=".08"/>
+          <circle cx="515" cy="318" r="26" fill="#1A3050"/>
+          <text x="515" y="323" text-anchor="middle"
+                font-family="DM Serif Display,Georgia,serif"
+                font-size="14" fill="white" font-weight="700">周</text>
+          <text x="515" y="358" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="11"
+                font-weight="600" fill="#1A1917">周雪莉</text>
+          <text x="515" y="372" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="#9A9590">業務長</text>
+        </g>
+
+        <!-- ▶ Yasbi (Medium Client) -->
+        <g class="cnode" data-id="yasbi" onclick="showChar('yasbi')">
+          <circle class="bg-ring" cx="712" cy="160" r="34" fill="#C07826" opacity=".08"/>
+          <circle cx="712" cy="160" r="25" fill="#C07826" opacity=".78"/>
+          <text x="712" y="165" text-anchor="middle"
+                font-family="DM Serif Display,Georgia,serif"
+                font-size="12" fill="white" font-weight="700">雅</text>
+          <text x="712" y="199" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="11"
+                font-weight="600" fill="#1A1917">雅斯比</text>
+          <text x="712" y="213" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="#9A9590">中型客戶</text>
+        </g>
+
+        <!-- ▶ Global Finance (Major Client) -->
+        <g class="cnode" data-id="global" onclick="showChar('global')">
+          <circle class="bg-ring" cx="712" cy="290" r="38" fill="#5E2A6E" opacity=".08"/>
+          <circle cx="712" cy="290" r="29" fill="#5E2A6E"/>
+          <text x="712" y="295" text-anchor="middle"
+                font-family="DM Serif Display,Georgia,serif"
+                font-size="12" fill="white" font-weight="700">環球</text>
+          <text x="712" y="334" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="10.5"
+                font-weight="600" fill="#1A1917">環球金控</text>
+          <text x="712" y="348" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="#9A9590">最大金融客戶</text>
+        </g>
+
+        <!-- ▶ O Platform (Competitor) -->
+        <g class="cnode" data-id="oplatform" onclick="showChar('oplatform')">
+          <circle class="bg-ring" cx="712" cy="420" r="34" fill="#6B7280" opacity=".08"/>
+          <circle cx="712" cy="420" r="24" fill="#6B7280"/>
+          <text x="712" y="425" text-anchor="middle"
+                font-family="DM Serif Display,Georgia,serif"
+                font-size="13" fill="white" font-weight="700">O</text>
+          <text x="712" y="458" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="10.5"
+                font-weight="600" fill="#1A1917">O 平台</text>
+          <text x="712" y="471" text-anchor="middle"
+                font-family="Inter,sans-serif" font-size="9"
+                fill="#9A9590">競爭對手</text>
+        </g>
+      </svg>
+      </div><!-- /.map-scroll -->
+
+      <!-- legend bar -->
+      <div class="map-legend">
+        <div class="leg-i"><div class="leg-dot" style="background:#C07826"></div>CEO 主角</div>
+        <div class="leg-i"><div class="leg-dot" style="background:#1A3050"></div>內部主管</div>
+        <div class="leg-i"><div class="leg-dot" style="background:#A83224"></div>股東壓力</div>
+        <div class="leg-i"><div class="leg-dot" style="background:#5E2A6E"></div>大型客戶</div>
+        <div class="leg-i"><div class="leg-dot" style="background:#C07826;opacity:.78"></div>中型客戶</div>
+        <div class="leg-i"><div class="leg-dot" style="background:#1A5A54"></div>外部顧問</div>
+        <div class="leg-i"><div class="leg-dot" style="background:#6B7280"></div>競爭對手</div>
+      </div>
+    </div>
+
+    <!-- Detail Panel -->
+    <div class="detail-panel io-fade">
+      <div class="dp-empty" id="dp-empty">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+        點擊左側角色節點<br>查看人物詳細資訊
+      </div>
+      <div class="dp-body" id="dp-body">
+        <div class="dp-avatar" id="dp-avatar"></div>
+        <div class="dp-name"  id="dp-name"></div>
+        <div class="dp-role"  id="dp-role"></div>
+        <div class="dp-desc"  id="dp-desc"></div>
+        <div class="dp-chips" id="dp-chips"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ──────────── SECTION 1.5: STORY TIMELINE ──────────── -->
+<section class="wrap" id="sec-timeline">
+  <p class="sec-label">Chapter 01.5</p>
+  <h2 class="sec-title">故事時間軸</h2>
+  <p class="sec-desc">從清晨的一封郵件，到週五夜間的十字路口——七個關鍵時刻，構成這場 48 小時決策困局。點擊事件卡片展開完整導讀。</p>
+
+  <div class="tl-outer">
+
+    <!-- Event 1 -->
+    <div class="tl-item io-fade">
+      <div class="tl-time">
+        <span class="tl-day">週一</span>
+        <span class="tl-clock">06:00</span>
+      </div>
+      <div class="tl-spine"><div class="tl-dot" style="background:var(--crisis)"></div></div>
+      <div class="tl-card cr" onclick="this.classList.toggle('open')">
+        <div class="tl-card-top">
+          <span class="tl-badge cr">危機</span>
+          <div class="tl-title">雅斯比降價震撼彈</div>
+        </div>
+        <div class="tl-desc">王愛玫清晨查看手機，發現核心客戶雅斯比要求明年合約服務費調降 20%。一封郵件，引爆整個故事。</div>
+        <div class="tl-detail">「如今，企業內部導入生成式 AI，就能在幾秒內完成基礎媒體操作、文案與視覺 A/B 測試，代理商的專業顧問還有什麼價值？」這不只是一封降價郵件，而是整個知識價值產業生存危機的第一槍——也是 A Plus 這場 48 小時決策倒數的起點。</div>
+        <div class="tl-actors">
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#C07826"></span>王愛玫</span>
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#C07826;opacity:.75"></span>雅斯比</span>
+        </div>
+        <div class="tl-hint">點擊展開 / 收合 ▾</div>
+      </div>
+    </div>
+
+    <!-- Event 2 -->
+    <div class="tl-item io-fade">
+      <div class="tl-time">
+        <span class="tl-day">週一</span>
+        <span class="tl-clock">10:00</span>
+      </div>
+      <div class="tl-spine"><div class="tl-dot" style="background:var(--navy)"></div></div>
+      <div class="tl-card nv" onclick="this.classList.toggle('open')">
+        <div class="tl-card-top">
+          <span class="tl-badge nv">內部衝突</span>
+          <div class="tl-title">核心主管會議 — 路線之爭全面引爆</div>
+        </div>
+        <div class="tl-desc">王愛玫在全體業務會議公開降價訊息。蘇霏主張全面 AI 化，周雪莉力守顧問服務，李廉安以技術現實澆冷水，三方路線激烈交鋒。</div>
+        <div class="tl-detail">「我們必須賣技術與效率，不能再當傳統的人力仲介商了！」——蘇霏 / 「蘇霏，你這是在帶領公司跳入商品化的陷阱！」——周雪莉 / 「寫出一個能用的腳本，跟建立一個企業級可商用 MarTech 平台，完全是兩碼子事。光是第一年基礎建設就要 800–1,000 萬元。」——李廉安。王愛玫宣布先散會，一個答案也沒有。</div>
+        <div class="tl-actors">
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#C07826"></span>王愛玫</span>
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#1A3050"></span>蘇霏</span>
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#1A3050"></span>周雪莉</span>
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#1A3050"></span>李廉安</span>
+        </div>
+        <div class="tl-hint">點擊展開 / 收合 ▾</div>
+      </div>
+    </div>
+
+    <!-- Event 3 -->
+    <div class="tl-item io-fade">
+      <div class="tl-time">
+        <span class="tl-day">週一</span>
+        <span class="tl-clock">下午</span>
+      </div>
+      <div class="tl-spine"><div class="tl-dot" style="background:var(--amber)"></div></div>
+      <div class="tl-card am" onclick="this.classList.toggle('open')">
+        <div class="tl-card-top">
+          <span class="tl-badge am">資本壓力</span>
+          <div class="tl-title">林本恩：「給我一個估值翻倍的計畫」</div>
+        </div>
+        <div class="tl-desc">散會後，最大股東林本恩傳訊：「下週董事會，請給我一個能讓估值翻倍的 AI 轉型計畫。」資本壓力正式登場。</div>
+        <div class="tl-detail">林本恩代表創鼎資本（Apex Capital），一直渴望將 A Plus 包裝成高估值 SaaS 科技公司賣出。在資本市場眼中，依賴人力的代理商估值頂多本益比 8–12 倍；SaaS 平台則可達 30 倍以上，估值是年度經常性收入（ARR）的 7 倍以上。這一則訊息讓王愛玫的壓力在同一天疊加到最高點。</div>
+        <div class="tl-actors">
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#A83224"></span>林本恩</span>
+        </div>
+        <div class="tl-hint">點擊展開 / 收合 ▾</div>
+      </div>
+    </div>
+
+    <!-- Event 4 -->
+    <div class="tl-item io-fade">
+      <div class="tl-time">
+        <span class="tl-day">週三</span>
+        <span class="tl-clock">下午</span>
+      </div>
+      <div class="tl-spine"><div class="tl-dot" style="background:var(--amber)"></div></div>
+      <div class="tl-card am" onclick="this.classList.toggle('open')">
+        <div class="tl-card-top">
+          <span class="tl-badge am">資本施壓</span>
+          <div class="tl-title">私人俱樂部咖啡會 — MarTech 獨角獸估值報告</div>
+        </div>
+        <div class="tl-desc">林本恩在信義區私人俱樂部展示《2026 全球 MarTech 獨角獸估值報告》，並發出最後通牒：若無激進轉型計畫，將考慮啟動退場條款（exit clause）。</div>
+        <div class="tl-detail">「破壞式創新本來就是要敢於捨棄既有的利潤池，去擁抱下一個指數型成長的市場。O 平台現在搶走的只是你們 30% 的中小客戶，明年他們就會升級系統，去搶你們的大客戶了。」林本恩的邏輯：A Plus 擁有大量企業行銷數據，這是 AI 時代訓練模型的「原油」，轉型後估值可瞬間翻三倍，甚至有機會被國外大型軟體集團高價併購。</div>
+        <div class="tl-actors">
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#A83224"></span>林本恩</span>
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#C07826"></span>王愛玫</span>
+        </div>
+        <div class="tl-hint">點擊展開 / 收合 ▾</div>
+      </div>
+    </div>
+
+    <!-- Event 5 -->
+    <div class="tl-item io-fade">
+      <div class="tl-time">
+        <span class="tl-day">週四</span>
+        <span class="tl-clock">早上</span>
+      </div>
+      <div class="tl-spine"><div class="tl-dot" style="background:var(--crisis)"></div></div>
+      <div class="tl-card cr" onclick="this.classList.toggle('open')">
+        <div class="tl-card-top">
+          <span class="tl-badge cr">法律危機</span>
+          <div class="tl-title">環球金控：無限期賠償責任附約登場</div>
+        </div>
+        <div class="tl-desc">周雪莉帶來最大金融客戶環球金控的正式函文——《AI 生成內容查核與無限期賠償責任附約》，任何 AI 幻覺或法規漏字須承擔無上限懲罰性賠償。</div>
+        <div class="tl-detail">合約明文規定：若使用生成式 AI 輔助產出行銷素材，必須建立並留存完整的人類專家審核軌跡。若因 AI 幻覺遺漏金融商品法定警語（如基金風險提示、信用卡循環利率等）導致甲方遭主管機關裁罰，乙方需承擔無上限之懲罰性賠償。且嚴禁將甲方任何專案數據做為乙方自建自動化模型之訓練用途。王愛玫請周雪莉先與法務顧問聯繫。</div>
+        <div class="tl-actors">
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#1A3050"></span>周雪莉</span>
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#5E2A6E"></span>環球金控</span>
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#C07826"></span>王愛玫</span>
+        </div>
+        <div class="tl-hint">點擊展開 / 收合 ▾</div>
+      </div>
+    </div>
+
+    <!-- Event 6 -->
+    <div class="tl-item io-fade">
+      <div class="tl-time">
+        <span class="tl-day">週四</span>
+        <span class="tl-clock">上午</span>
+      </div>
+      <div class="tl-spine"><div class="tl-dot" style="background:var(--navy)"></div></div>
+      <div class="tl-card nv" onclick="this.classList.toggle('open')">
+        <div class="tl-card-top">
+          <span class="tl-badge nv">技術提案</span>
+          <div class="tl-title">蘇霏展示 Vibe Coding 敏捷開發藍圖</div>
+        </div>
+        <div class="tl-desc">蘇霏帶著平板進入辦公室，展示她連夜推演的 SaaS 平台藍圖。但預算試算揭示殘酷現實——一季 API 費用就要 200 萬元起跳，遇到雙 11 還翻倍。</div>
+        <div class="tl-detail">「若我們大膽導入 vibe coding 模式，不到一年就可以打通 Google 與 Meta API 的數據湖泊。」王愛玫看到試算表的 API 變動成本：服務 10 個客戶的 A/B 測試，一季就要燒掉 200 萬元。加上 AI 解決方案架構師、數據品管工程師、AI 創意技師的薪資——這三種稀缺人才，全球科技巨頭正捧著現金搶奪。「妳等於是在要求公司，把固定可控的薪資全部轉換成昂貴且難找的軟體稀缺人才與深不見底的雲端運算費。」</div>
+        <div class="tl-actors">
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#1A3050"></span>蘇霏</span>
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#C07826"></span>王愛玫</span>
+        </div>
+        <div class="tl-hint">點擊展開 / 收合 ▾</div>
+      </div>
+    </div>
+
+    <!-- Event 7 -->
+    <div class="tl-item io-fade">
+      <div class="tl-time">
+        <span class="tl-day">週五</span>
+        <span class="tl-clock">19:00</span>
+      </div>
+      <div class="tl-spine"><div class="tl-dot" style="background:var(--dilemma)"></div></div>
+      <div class="tl-card di" onclick="this.classList.toggle('open')">
+        <div class="tl-card-top">
+          <span class="tl-badge di">決策困局</span>
+          <div class="tl-title">白板前的十字路口 — 48hr 倒數</div>
+        </div>
+        <div class="tl-desc">辦公室空無一人。王愛玫獨自在會議室白板前，一端寫「轉型 SaaS 平台」，另一端寫「深化顧問服務」。距離下週董事會不到 48 小時。</div>
+        <div class="tl-detail">在直線的一頭：全面擁抱 AI，轉型 SaaS 平台——迎合股東、擁抱中小客戶與高估值，但面臨千萬元研發錢坑與失去大客戶的風險。在直線的另一頭：借力使力，深化顧問價值——守住金融大客戶與穩定獲利，但面臨股東撤資威脅與中小客戶持續流失。「她望著窗外閃爍的霓虹燈，感覺很迷惘，她究竟該走向何方？」</div>
+        <div class="tl-actors">
+          <span class="tl-actor"><span class="tl-actor-dot" style="background:#C07826"></span>王愛玫</span>
+          <span class="tl-actor" style="border-color:rgba(94,42,110,.25);background:var(--dibg)"><span class="tl-actor-dot" style="background:var(--dilemma)"></span>董事會 &minus;48hr</span>
+        </div>
+        <div class="tl-hint">點擊展開 / 收合 ▾</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ──────────── SECTION 2: STORY ARC ──────────── -->
+<section class="wrap" id="sec-events">
+  <p class="sec-label">Chapter 02</p>
+  <h2 class="sec-title">故事關鍵節點</h2>
+  <p class="sec-desc">從危機、轉機、挑戰、困惑四個維度，剖析這場知識產業典範轉移的核心脈絡。</p>
+
+  <div class="etab-bar">
+    <button class="etab on" data-t="crisis"    onclick="setTab('crisis')">   <span class="etab-dot"></span>危機</button>
+    <button class="etab"    data-t="turning"   onclick="setTab('turning')">  <span class="etab-dot"></span>轉機</button>
+    <button class="etab"    data-t="challenge" onclick="setTab('challenge')"><span class="etab-dot"></span>挑戰</button>
+    <button class="etab"    data-t="dilemma"   onclick="setTab('dilemma')">  <span class="etab-dot"></span>困惑</button>
+  </div>
+
+  <!-- CRISIS -->
+  <div class="epanel on" id="ep-crisis">
+    <div class="ecard cr io-fade">
+      <div class="ecard-seq">01 · 危機</div>
+      <div class="ecard-title">雅斯比要求降價 20%</div>
+      <div class="ecard-desc">核心客戶以「AI 取代代理商基礎工作」為由，要求明年合約服務費調降兩成。這是整個知識價值產業生存危機的第一槍。</div>
+      <div class="impact"><span>衝擊</span><div class="ibar"><div class="ifill" data-w="72"></div></div><span class="ilv">高</span></div>
+    </div>
+    <div class="ecard cr io-fade">
+      <div class="ecard-seq">02 · 危機</div>
+      <div class="ecard-title">中小客戶快速流失至 O 平台</div>
+      <div class="ecard-desc">占公司 30% 營收的中小企業，轉向每月僅 99 美元的 O 平台。一個月內已流失 3 個客戶，去中介化浪潮正在加速。</div>
+      <div class="impact"><span>衝擊</span><div class="ibar"><div class="ifill" data-w="86"></div></div><span class="ilv">極高</span></div>
+    </div>
+    <div class="ecard cr io-fade">
+      <div class="ecard-seq">03 · 危機</div>
+      <div class="ecard-title">環球金控無限期賠償責任附約</div>
+      <div class="ecard-desc">最大金融客戶要求簽署 AI 生成內容無限期賠償附約，任何 AI 幻覺或法規漏字 A Plus 須承擔無上限懲罰性賠償，且禁止以客戶數據訓練自有模型。</div>
+      <div class="impact"><span>衝擊</span><div class="ibar"><div class="ifill" data-w="96"></div></div><span class="ilv">致命</span></div>
+    </div>
+    <div class="ecard cr io-fade">
+      <div class="ecard-seq">04 · 危機</div>
+      <div class="ecard-title">股東林本恩祭出退場條款</div>
+      <div class="ecard-desc">最大外部股東警告：若董事會看不到激進 AI 轉型計畫，將反對擴張預算，甚至啟動 exit clause。距下週董事會不到 48 小時。</div>
+      <div class="impact"><span>衝擊</span><div class="ibar"><div class="ifill" data-w="90"></div></div><span class="ilv">極高</span></div>
+    </div>
+  </div>
+
+  <!-- TURNING -->
+  <div class="epanel" id="ep-turning">
+    <div class="ecard tr io-fade">
+      <div class="ecard-seq">01 · 轉機</div>
+      <div class="ecard-title">歷史數據是 AI 的「原油」</div>
+      <div class="ecard-desc">A Plus 五年積累的大量企業行銷數據，在 AI 時代是訓練專屬模型的核心原材料。擁有獨家數據即擁有難以複製的壁壘，估值可瞬間翻三倍。</div>
+      <div class="impact"><span>機會</span><div class="ibar"><div class="ifill" data-w="84"></div></div><span class="ilv">高</span></div>
+    </div>
+    <div class="ecard tr io-fade">
+      <div class="ecard-seq">02 · 轉機</div>
+      <div class="ecard-title">Vibe Coding 大幅降低開發門檻</div>
+      <div class="ecard-desc">自然語言程式設計讓非工程師也能快速建立自動化腳本，將 10 年媒體優化隱性知識轉為可執行程式碼。通往 SaaS 平台的技術門檻已大幅下降。</div>
+      <div class="impact"><span>機會</span><div class="ibar"><div class="ifill" data-w="62"></div></div><span class="ilv">中（存爭議）</span></div>
+    </div>
+    <div class="ecard tr io-fade">
+      <div class="ecard-seq">03 · 轉機</div>
+      <div class="ecard-title">SaaS 模式本益比達 30 倍以上</div>
+      <div class="ecard-desc">傳統代理商本益比頂多 8–12 倍，SaaS 平台可達 30 倍乃至百倍。林本恩估算：全面轉型後估值可翻三倍，且有機會被國際軟體集團高價收購。</div>
+      <div class="impact"><span>機會</span><div class="ibar"><div class="ifill" data-w="79"></div></div><span class="ilv">高</span></div>
+    </div>
+    <div class="ecard tr io-fade">
+      <div class="ecard-seq">04 · 轉機</div>
+      <div class="ecard-title">隱性知識可智能化為私有資產</div>
+      <div class="ecard-desc">透過文件向量化與知識圖譜化，將資深企畫的判斷邏輯編碼進模型，成為 A Plus 專屬私有知識資產，構建無法被一般 SaaS 工具複製的核心能力。</div>
+      <div class="impact"><span>機會</span><div class="ibar"><div class="ifill" data-w="74"></div></div><span class="ilv">高</span></div>
+    </div>
+  </div>
+
+  <!-- CHALLENGE -->
+  <div class="epanel" id="ep-challenge">
+    <div class="ecard ch io-fade">
+      <div class="ecard-seq">01 · 挑戰</div>
+      <div class="ecard-title">企業級平台建置成本天文數字</div>
+      <div class="ecard-desc">CTO 估算：GCP 企業級基礎建設、負載平衡、防火牆，第一年底線 800–1,000 萬元；此後每月固定燒掉至少 50 萬元雲端維運費，直接吃掉公司一半現金流。</div>
+      <div class="impact"><span>阻力</span><div class="ibar"><div class="ifill" data-w="90"></div></div><span class="ilv">極高</span></div>
+    </div>
+    <div class="ecard ch io-fade">
+      <div class="ecard-seq">02 · 挑戰</div>
+      <div class="ecard-title">AI 稀缺人才根本招募不到</div>
+      <div class="ecard-desc">AI 解決方案架構師、數據品管工程師、AI 創意技師——全球科技巨頭正捧著現金激烈爭搶。招募期可能長達半年，客戶早在等待期間流失殆盡。</div>
+      <div class="impact"><span>阻力</span><div class="ibar"><div class="ifill" data-w="80"></div></div><span class="ilv">高</span></div>
+    </div>
+    <div class="ecard ch io-fade">
+      <div class="ecard-seq">03 · 挑戰</div>
+      <div class="ecard-title">API 變動成本是不可預測的無底洞</div>
+      <div class="ecard-desc">僅服務 10 個客戶的 A/B 測試，API 呼叫加人事費用一季就燒 200 萬元。遇到雙 11 活動費用翻倍。固定薪資將被轉換為難以預測的雲端算力費用。</div>
+      <div class="impact"><span>阻力</span><div class="ibar"><div class="ifill" data-w="74"></div></div><span class="ilv">高</span></div>
+    </div>
+    <div class="ecard ch io-fade">
+      <div class="ecard-seq">04 · 挑戰</div>
+      <div class="ecard-title">資安合規一旦出事直接破產</div>
+      <div class="ecard-desc">金融客戶數據若混入 AI 訓練池，發生一次資料外洩或合規審查失敗，A Plus 就直接宣告破產。AI 著作權侵權風險也無法完全被程序排除。</div>
+      <div class="impact"><span>阻力</span><div class="ibar"><div class="ifill" data-w="96"></div></div><span class="ilv">致命</span></div>
+    </div>
+  </div>
+
+  <!-- DILEMMA -->
+  <div class="epanel" id="ep-dilemma">
+    <div class="ecard di io-fade">
+      <div class="ecard-seq">01 · 困惑</div>
+      <div class="ecard-title">SaaS 高估值 vs 當前 15% 健康淨利率</div>
+      <div class="ecard-desc">資本市場眼中的「即將貶值的純人工服務」，卻是業界淨利率的資優生。轉型代表放棄確定的獲利，換取不確定但想像空間更大的成長。</div>
+      <div class="impact"><span>困惑</span><div class="ibar"><div class="ifill" data-w="80"></div></div><span class="ilv">高</span></div>
+    </div>
+    <div class="ecard di io-fade">
+      <div class="ecard-seq">02 · 困惑</div>
+      <div class="ecard-title">保住 70% 大客戶 vs 搶回 30% 中小市場</div>
+      <div class="ecard-desc">全面 AI 化可能失去重視資安的金融大客戶（70% 營收）；保守則只能眼睜睜看中小市場流失。兩者都有道理，卻無法同時滿足。</div>
+      <div class="impact"><span>困惑</span><div class="ibar"><div class="ifill" data-w="92"></div></div><span class="ilv">極高</span></div>
+    </div>
+    <div class="ecard di io-fade">
+      <div class="ecard-seq">03 · 困惑</div>
+      <div class="ecard-title">技術效率 vs 人類判斷不可取代</div>
+      <div class="ecard-desc">蘇霏：AI 的規模化效益是人力根本做不到的。周雪莉：客戶買的是我們的腦袋，交給機器就只剩商品化競爭。哪個判斷更接近真相，尚無定論。</div>
+      <div class="impact"><span>困惑</span><div class="ibar"><div class="ifill" data-w="70"></div></div><span class="ilv">中高</span></div>
+    </div>
+    <div class="ecard di io-fade">
+      <div class="ecard-seq">04 · 困惑</div>
+      <div class="ecard-title">48 小時內必須決定公司命運</div>
+      <div class="ecard-desc">王愛玫獨自在空無一人的會議室，白板一端寫著「SaaS 平台」，另一端寫著「顧問服務制」。距董事會不到 48 小時，她望著霓虹燈，感覺很迷惘。</div>
+      <div class="impact"><span>困惑</span><div class="ibar"><div class="ifill" data-w="86"></div></div><span class="ilv">高</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ──────────── SECTION 3: EXPERT STORYBOARD ──────────── -->
+<section class="wrap" id="sec-expert">
+  <p class="sec-label">Chapter 03</p>
+  <h2 class="sec-title">顧問建議分鏡</h2>
+  <p class="sec-desc">兩位業界顧問提出截然不同的建議路徑，點擊選擇觀點深入閱讀。</p>
+
+  <div class="exp-sel">
+    <button class="exp-btn on" id="eb-yan" onclick="setExpert('yan')">
+      <div class="exp-av y">嚴</div>
+      <div class="exp-info">
+        <h4>嚴國瑞</h4>
+        <div class="org">永豐銀行數位金融處處長</div>
+        <span class="stance s-go">全面擁抱 AI — Go Big or Go Home</span>
+      </div>
+    </button>
+    <button class="exp-btn" id="eb-chen" onclick="setExpert('chen')">
+      <div class="exp-av c">陳</div>
+      <div class="exp-info">
+        <h4>陳柏諭</h4>
+        <div class="org">勤業眾信策略、風險與交易服務<br>資深副總經理</div>
+        <span class="stance s-sel">選擇性借力 — Human in the Loop</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- YAN PANEL -->
+  <div class="sbpanel on" id="sb-yan">
+    <div class="sb-intro io-fade">
+      <div class="sb-glyph">&rarr;</div>
+      <div>
+        <h3>嚴國瑞的核心主張</h3>
+        <blockquote>「典範正在移轉。見微知著，能扮演中間人的日子不多了。只聚焦大客戶，缺少新價值，持續淪為比價擔責的選項——況且業務集中的風險更高。<strong>Go big or go home。</strong>」</blockquote>
+        <div class="sb-chips">
+          <span class="chip navy">去中間化浪潮不可逆</span>
+          <span class="chip navy">核心知識智能化</span>
+          <span class="chip navy">虛實整合</span>
+          <span class="chip navy">AI 治理制度化</span>
+        </div>
+      </div>
+    </div>
+    <div class="frames">
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 01 &middot; 診斷</div>
+        <div class="frame-vis">&#10006;</div>
+        <div class="frame-body">
+          <div class="frame-title">保守參與，風險更大</div>
+          <div class="frame-desc">雅斯比降價、環球金控提責任附約，說明大客戶也已踏上 AI 轉型之路。代理商價值正被貶低，純人工服務是即將貶值的負資產。</div>
+          <span class="frame-badge fb-crisis">關鍵診斷</span>
+        </div>
+      </div>
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 02 &middot; 策略一</div>
+        <div class="frame-vis">&#9670;</div>
+        <div class="frame-body">
+          <div class="frame-title">核心知識智能化</div>
+          <div class="frame-desc">探勘歷史資料庫建立模型，內部專家將隱性知識調校內化，成為公司專屬私有知識資產。文件向量化、知識圖譜化，作為高精度 AI 推論的基礎。</div>
+          <span class="frame-badge fb-navy">策略一</span>
+        </div>
+      </div>
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 03 &middot; 策略二</div>
+        <div class="frame-vis">&#8853;</div>
+        <div class="frame-body">
+          <div class="frame-title">虛實整合，大小通吃</div>
+          <div class="frame-desc">訂閱服務分層：小客戶自助輕量工具，大客戶功能完整再加專人服務。依 AI 使用量計費，讓成本與收費合理連動。</div>
+          <span class="frame-badge fb-teal">策略二</span>
+        </div>
+      </div>
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 04 &middot; 策略三</div>
+        <div class="frame-vis">&#9632;</div>
+        <div class="frame-body">
+          <div class="frame-title">AI 治理制度化</div>
+          <div class="frame-desc">依風險等級建立軟體授權管控、企業版模型、內外知識庫柵欄隔離、雲地混合架構，保護公司與客戶的智財、隱私與資安。</div>
+          <span class="frame-badge fb-navy">策略三</span>
+        </div>
+      </div>
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 05 &middot; 號召</div>
+        <div class="frame-vis">&#9650;</div>
+        <div class="frame-body">
+          <div class="frame-title">破釜沉舟，帶領變革</div>
+          <div class="frame-desc">大股東支持甚至期待「激進」轉型，專業經理人更要帶領團隊主動求變，不能墨守陳規坐以待斃。數位產業就算無法引領潮流，也得跟上腳步。</div>
+          <span class="frame-badge fb-amber">最終號召</span>
+        </div>
+      </div>
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 06 &middot; 結論</div>
+        <div class="frame-vis">&rarr;</div>
+        <div class="frame-body">
+          <div class="frame-title">視危機為轉機</div>
+          <div class="frame-desc">AI 掀起全方位知識產業質變，A Plus 難獨善其身。重新審視產業價值鏈，以適合的組織、技術、專業與熱忱，建構核心能力，站穩新策略定位。</div>
+          <span class="frame-badge fb-navy">核心結論</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHEN PANEL -->
+  <div class="sbpanel" id="sb-chen">
+    <div class="sb-intro io-fade">
+      <div class="sb-glyph" style="color:var(--teal)">&#8853;</div>
+      <div>
+        <h3>陳柏諭的核心主張</h3>
+        <blockquote>「AI 可以提升知識處理的效率，卻<strong>無法取代人類在專業判斷、風險辨識與責任承擔上的主體地位</strong>。技術本身不再構成差異，反落入紅海陷阱。」</blockquote>
+        <div class="sb-chips">
+          <span class="chip teal">Human in the Loop</span>
+          <span class="chip teal">避免紅海陷阱</span>
+          <span class="chip teal">責任承擔</span>
+          <span class="chip teal">典範轉移</span>
+        </div>
+      </div>
+    </div>
+    <div class="frames">
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 01 &middot; 診斷</div>
+        <div class="frame-vis">&#9685;</div>
+        <div class="frame-body">
+          <div class="frame-title">AI 投入非一次性技術債</div>
+          <div class="frame-desc">AI 高度依賴持續的 token 消耗，形成難以預測的變動成本曲線；資安、法規、內容偏誤構成複合風險，並非一次性基礎建設可以解決。</div>
+          <span class="frame-badge fb-crisis">關鍵診斷</span>
+        </div>
+      </div>
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 02 &middot; 策略一</div>
+        <div class="frame-vis">&#9737;</div>
+        <div class="frame-body">
+          <div class="frame-title">建立人機協作機制</div>
+          <div class="frame-desc">建立「Human in the Loop」機制，由專家主動識別 AI 的「自信度差距」，對證據不足內容保持警惕，確保最終交付有人為審核與完整軌跡。</div>
+          <span class="frame-badge fb-teal">策略一</span>
+        </div>
+      </div>
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 03 &middot; 警告</div>
+        <div class="frame-vis">&#9868;</div>
+        <div class="frame-body">
+          <div class="frame-title">技術本身不構成差異</div>
+          <div class="frame-desc">當 Vibe Coding 降低開發門檻、AI 工具快速商品化，技術本身將不再是競爭優勢，反而讓企業陷入功能與價格的紅海。</div>
+          <span class="frame-badge fb-crisis">風險警告</span>
+        </div>
+      </div>
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 04 &middot; 策略二</div>
+        <div class="frame-vis">&#9670;</div>
+        <div class="frame-body">
+          <div class="frame-title">提供無法被規格化的顧問價值</div>
+          <div class="frame-desc">針對每位客戶的獨特需求，提供基於產業知識、跨情境判斷力、對客戶組織文化精準理解的「企業契合解決方案」。</div>
+          <span class="frame-badge fb-teal">策略二</span>
+        </div>
+      </div>
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 05 &middot; 轉型路徑</div>
+        <div class="frame-vis">&#8635;</div>
+        <div class="frame-body">
+          <div class="frame-title">從技術供應商到專業顧問</div>
+          <div class="frame-desc">結合責任承擔（accountability），完成知識產業的典範轉移：讓 AI 做效率加速，讓人來做品質把關，以責任承擔建立不可複製的信任壁壘。</div>
+          <span class="frame-badge fb-amber">轉型路徑</span>
+        </div>
+      </div>
+      <div class="frame io-fade">
+        <div class="frame-num">Frame 06 &middot; 結論</div>
+        <div class="frame-vis">&#9679;</div>
+        <div class="frame-body">
+          <div class="frame-title">選擇性借力，守住競爭力</div>
+          <div class="frame-desc">不是拒絕 AI，而是選擇性使用：以 AI 提升效率，以人的判斷保障品質，以責任承擔建立信任。在高監管行業中，這是最難被複製的壁壘。</div>
+          <span class="frame-badge fb-teal">核心結論</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ──────────── SECTION 4: DECISION ──────────── -->
+<section class="wrap" id="sec-decision">
+  <p class="sec-label">Chapter 04</p>
+  <h2 class="sec-title">兩條路徑</h2>
+  <p class="sec-desc">距離董事會不到 48 小時，王愛玫必須在以下兩條路徑中做出決定。</p>
+
+  <div class="decision-box io-fade">
+    <div class="decision-head">
+      <h3>A Plus 應該怎麼走？</h3>
+      <p>兩條路徑，各有其邏輯——一個賭注增長，一個守住本業。</p>
+    </div>
+    <div class="dc-cols">
+      <div class="dc">
+        <div class="dc-head">
+          <div class="dc-glyph">&uarr;</div>
+          <div>
+            <h3>路徑一：全面擁抱 AI</h3>
+            <div class="sub">轉型 SaaS 平台 &middot; 軟體訂閱制</div>
+          </div>
+        </div>
+        <ul class="dc-list">
+          <li class="li-pos"><div class="li-dot"></div><span>迎合股東期望，估值可翻三倍</span></li>
+          <li class="li-pos"><div class="li-dot"></div><span>自動化服務中小企業，規模化效益</span></li>
+          <li class="li-pos"><div class="li-dot"></div><span>歷史數據成為 AI 訓練護城河</span></li>
+          <li class="li-pos"><div class="li-dot"></div><span>有機會被國際軟體集團高價收購</span></li>
+          <li class="li-neg"><div class="li-dot"></div><span>需投入 800–1,000 萬元基礎建設</span></li>
+          <li class="li-neg"><div class="li-dot"></div><span>每月 50 萬元以上固定維運費</span></li>
+          <li class="li-neg"><div class="li-dot"></div><span>金融大客戶可能立即流失（70% 營收）</span></li>
+          <li class="li-neg"><div class="li-dot"></div><span>稀缺人才招募期長達半年</span></li>
+          <li class="li-neg"><div class="li-dot"></div><span>一旦資安失誤，公司直接破產</span></li>
+        </ul>
+      </div>
+      <div class="dc">
+        <div class="dc-head">
+          <div class="dc-glyph">&darr;</div>
+          <div>
+            <h3>路徑二：借力使力</h3>
+            <div class="sub">深化顧問價值 &middot; 顧問服務制</div>
+          </div>
+        </div>
+        <ul class="dc-list">
+          <li class="li-pos"><div class="li-dot"></div><span>守住 70% 金融大客戶穩定營收</span></li>
+          <li class="li-pos"><div class="li-dot"></div><span>人機協作，降低合規與資安風險</span></li>
+          <li class="li-pos"><div class="li-dot"></div><span>維持 15% 以上的健康淨利率</span></li>
+          <li class="li-pos"><div class="li-dot"></div><span>以專業判斷建立難以複製的護城河</span></li>
+          <li class="li-neg"><div class="li-dot"></div><span>中小客戶將持續流失（30% 營收）</span></li>
+          <li class="li-neg"><div class="li-dot"></div><span>股東可能啟動退場條款</span></li>
+          <li class="li-neg"><div class="li-dot"></div><span>長期仍面臨去中介化壓力</span></li>
+          <li class="li-neg"><div class="li-dot"></div><span>成長空間受限，估值難以突破</span></li>
+          <li class="li-neg"><div class="li-dot"></div><span>大客戶也在轉型，護城河終有期限</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────── FOOTER ──────────── -->
+<footer>
+  <p>案例來源：《哈佛商業評論》台灣版 &middot; 2026年5月號 &middot; 競爭策略</p>
+  <p>作者：黃國峯 &middot; 王淑芳 &emsp;|&emsp; 顧問建議：嚴國瑞（永豐銀行）&middot; 陳柏諭（勤業眾信）</p>
+  <p style="font-size:.72rem;opacity:.65;margin-top:.4rem">版權所有，本頁僅供教學與研究用途，請勿複製轉載</p>
+</footer>
+
+<!-- ──────────────────────────────────────────────
+     JAVASCRIPT
+──────────────────────────────────────────────── -->
+<script>
+/* ─── Character data ─── */
+const CHARS = {
+  wang: {
+    name: '王愛玫', role: 'CEO 執行長', color: '#C07826',
+    initial: '王',
+    desc: '公司創辦人兼執行長，帶領 A Plus 五年高速成長。正面臨公司史上最艱難的策略抉擇：轉型 SaaS 平台或深化顧問服務。距董事會不到 48 小時，獨自在會議室白板前陷入迷惘。',
+    chips: [['amber','主角'], ['amber','核心決策者'], ['amber','48hr 倒數']]
+  },
+  su: {
+    name: '蘇霏', role: '媒體部總監', color: '#1A3050',
+    initial: '蘇',
+    desc: '科技信仰者，主張全面 AI 化轉型。推動 Vibe Coding 建立全自動投放平台，連夜推演敏捷開發藍圖，認為不轉型中小客戶半年內歸零。為「AI 技術派」代表。',
+    chips: [['navy','AI 技術派'], ['navy','自動化倡導者'], ['navy','路線衝突核心']]
+  },
+  zhou: {
+    name: '周雪莉', role: '業務長', color: '#1A3050',
+    initial: '周',
+    desc: '出身傳統零售業，深信人類創意與判斷不可取代。主張深化顧問服務鞏固金融大客戶，以溫度和信任建立護城河。環球金控責任附約就是她帶回來的震撼彈。',
+    chips: [['navy','顧問服務派'], ['navy','大客戶守護者'], ['navy','路線衝突核心']]
+  },
+  li: {
+    name: '李廉安', role: 'CTO 資訊長', color: '#1A3050',
+    initial: '李',
+    desc: '務實派技術主管，以技術現實拆解轉型代價。估算自建 GCP 企業級平台第一年底線 800–1,000 萬元，月燒 50 萬維運費。指出資安風險：一次資料外洩即宣告破產。',
+    chips: [['navy','技術務實派'], ['navy','風險示警者']]
+  },
+  lin: {
+    name: '林本恩', role: '股東代表 · 創鼎資本', color: '#A83224',
+    initial: '林',
+    desc: '最大外部股東創鼎資本合夥人，渴望將 A Plus 包裝成 SaaS 科技公司賣出。推算全面轉型後估值翻三倍，施壓「激進」轉型計畫並明確威脅：若無進展將啟動 exit clause。',
+    chips: [['crisis','最大股東'], ['crisis','SaaS 估值導向'], ['crisis','退場條款威脅']]
+  },
+  yasbi: {
+    name: '雅斯比', role: '中型客戶', color: '#C07826',
+    initial: '雅',
+    desc: '以「企業內部 AI 已能做基礎媒體操作」為由，要求明年合約服務費調降 20%。這是整個去中介化浪潮射出的第一顆子彈，暗示知識價值產業的生存危機正式開始。',
+    chips: [['amber','降價壓力'], ['amber','去中介化訊號']]
+  },
+  global: {
+    name: '環球金控', role: '最大金融客戶', color: '#5E2A6E',
+    initial: '環',
+    desc: '提出《AI 生成內容查核與無限期賠償責任附約》，嚴格限制 AI 使用，要求完整的人工審核軌跡，且禁止以其數據訓練自有模型。任何 AI 幻覺或法規漏字，A Plus 須承擔無上限懲罰性賠償。',
+    chips: [['gray','責任附約'], ['gray','70% 營收代表'], ['gray','高監管行業']]
+  },
+  oplatform: {
+    name: 'O 平台', role: '競爭對手 · AI MarTech', color: '#6B7280',
+    initial: 'O',
+    desc: '全自動生成與投放的低價 AI MarTech 平台，月費僅 99 美元。正快速搶奪 A Plus 的中小企業客戶群，一個月內已奪走 3 個客戶，是去中介化浪潮的最直接體現。',
+    chips: [['gray','$99/月訂閱'], ['gray','搶奪中小客戶'], ['gray','低價競爭']]
+  },
+  yan: {
+    name: '嚴國瑞', role: '外部顧問 · 永豐銀行', color: '#1A5A54',
+    initial: '嚴',
+    desc: '永豐銀行數位金融處處長。主張「Go Big or Go Home」，認為保守參與風險更大、大客戶也在轉型、只聚焦大客戶業務集中風險更高。建議全面擁抱 AI 轉型 SaaS。',
+    chips: [['teal','全面轉型派'], ['teal','SaaS 建議顧問']]
+  },
+  chen: {
+    name: '陳柏諭', role: '外部顧問 · 勤業眾信', color: '#1A5A54',
+    initial: '陳',
+    desc: '勤業眾信策略、風險與交易服務資深副總。主張選擇性借力參與，強調人機協作（Human in the Loop）與專業顧問不可取代的責任承擔價值，建議避免落入紅海陷阱。',
+    chips: [['teal','選擇性借力派'], ['teal','Human in Loop 倡導者']]
+  }
+};
+
+/* ─── Show character detail ─── */
+function showChar(id) {
+  const d = CHARS[id];
+  if (!d) return;
+  const body = document.getElementById('dp-body');
+  const empty = document.getElementById('dp-empty');
+  document.getElementById('dp-avatar').style.cssText =
+    `background:${d.color}18;color:${d.color}`;
+  document.getElementById('dp-avatar').textContent = d.initial;
+  document.getElementById('dp-name').textContent = d.name;
+  document.getElementById('dp-role').textContent = d.role;
+  document.getElementById('dp-desc').textContent = d.desc;
+  const chips = d.chips.map(([cls, txt]) =>
+    `<span class="chip ${cls}">${txt}</span>`).join('');
+  document.getElementById('dp-chips').innerHTML = chips;
+  empty.style.display = 'none';
+  body.classList.add('on');
+}
+
+/* ─── Event tabs ─── */
+function setTab(t) {
+  document.querySelectorAll('.etab').forEach(b => {
+    b.classList.toggle('on', b.dataset.t === t);
+  });
+  document.querySelectorAll('.epanel').forEach(p => p.classList.remove('on'));
+  const panel = document.getElementById('ep-' + t);
+  panel.classList.add('on');
+  // animate bars
+  requestAnimationFrame(() => {
+    panel.querySelectorAll('.ifill').forEach(f => {
+      const w = f.dataset.w;
+      f.style.width = '0';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => { f.style.width = w + '%'; });
+      });
+    });
+  });
+}
+
+/* ─── Expert storyboard ─── */
+function setExpert(name) {
+  document.querySelectorAll('.exp-btn').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.sbpanel').forEach(p => p.classList.remove('on'));
+  document.getElementById('eb-' + name).classList.add('on');
+  document.getElementById('sb-' + name).classList.add('on');
+}
+
+/* ─── Smooth nav scroll ─── */
+function goto(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ─── Scroll-aware nav highlight ─── */
+const secIds = ['sec-char', 'sec-timeline', 'sec-events', 'sec-expert', 'sec-decision'];
+const navBtns = document.querySelectorAll('.sn');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 200) cur = id;
+  });
+  navBtns.forEach((b, i) => b.classList.toggle('act', secIds[i] === cur));
+}, { passive: true });
+
+/* ─── Intersection Observer — entry animations ─── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('vis');
+    // animate impact bars on entry
+    e.target.querySelectorAll('.ifill').forEach(f => {
+      const w = f.dataset.w;
+      if (f.style.width === '' || f.style.width === '0px') {
+        f.style.width = '0';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => { f.style.width = w + '%'; });
+        });
+      }
+    });
+    io.unobserve(e.target);
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.io-fade').forEach(el => io.observe(el));
+
+/* ─── Initial bar animation for default-visible crisis panel ─── */
+window.addEventListener('load', () => {
+  document.querySelectorAll('#ep-crisis .ifill').forEach(f => {
+    setTimeout(() => { f.style.width = f.dataset.w + '%'; }, 600);
+  });
+});
+
+/* ─── Zoom controls for character map ─── */
+(function () {
+  const BASE_W = 820, BASE_H = 500;
+  let level = 0; // index into steps
+  const steps = [0.75, 1.0, 1.3, 1.65, 2.1, 2.6];
+  const DEFAULT = 1; // index of 100%
+
+  function applyZoom() {
+    const svg = document.getElementById('charmap');
+    const scroll = document.getElementById('map-scroll');
+    const label = document.getElementById('zlabel');
+    if (!svg) return;
+    const s = steps[level];
+    const w = Math.round(BASE_W * s);
+    const h = Math.round(BASE_H * s);
+    svg.setAttribute('width', w);
+    svg.setAttribute('height', h);
+    scroll.style.maxHeight = Math.min(h + 20, 620) + 'px';
+    label.textContent = Math.round(s * 100) + '%';
+  }
+
+  window.zoom = function (dir) {
+    if (dir === 0) { level = DEFAULT; }
+    else { level = Math.max(0, Math.min(steps.length - 1, level + dir)); }
+    applyZoom();
+  };
+
+  // Init: fit to container width
+  window.addEventListener('load', () => {
+    const wrap = document.getElementById('map-scroll');
+    if (wrap) {
+      const cw = wrap.offsetWidth || 820;
+      // find the step that best fits
+      let best = 1;
+      for (let i = 0; i < steps.length; i++) {
+        if (BASE_W * steps[i] <= cw) best = i;
+      }
+      level = best;
+    } else {
+      level = DEFAULT;
+    }
+    applyZoom();
+  });
+})();
+</script>
+</body>
+</html>
