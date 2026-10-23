@@ -277,8 +277,8 @@
 
   <h3><span class="no">1.2</span>實作順序與觀念（邏輯題最愛考）</h3>
   <ol>
-    <li><b>先 F 後 T</b>：F 檢定確認變異數同質性 → 依結果選擇正確版本的 T 檔定（var.equal）。</li>
-    <li>卡方期望值：$E=\dfrac{\text{列總和}\times\text{行總和}}{\text{總樣本數}}$，統計量 $\chi^2=\sum\frac{(O-E)^2}{E}$。</li>
+    <li><b>先 F 後 T</b>：F 檢定確認變異數同質性 → 依結果選擇正確版本的 T 檢定（var.equal）。</li>
+    <li>卡方期望值：E = (列總和 × 行總和) ÷ 總樣本數；統計量 χ² = Σ (O − E)² / E。</li>
     <li>變數是<b>數值型</b>（年齡、帳戶餘額）但想看「會不會買」→ 先依結果分兩群 → <b>改用 T 檢定</b>（不是卡方）。</li>
     <li>Pima 案例：血壓、血糖、皮膚厚度等出現 0 值是<b>不合理缺失值</b>（Walking Dead Data），先清洗（768 → 392 筆）再 T 檢定，顯著者（血糖、皮膚厚度）當 KPI。</li>
   </ol>
@@ -311,7 +311,7 @@
 
   <h3><span class="no">2.1</span>SMA 簡單移動平均</h3>
   <ul>
-    <li>以過去固定 $n$ 期算術平均當下期預測：$F_t=\frac{A_{t-1}+\dots+A_{t-n}}{n}$，<b>各期等權重</b>。</li>
+    <li>以過去固定 n 期算術平均當下期預測：F<sub>t</sub> = (A<sub>t−1</sub> + … + A<sub>t−n</sub>) / n，<b>各期等權重</b>。</li>
     <li><b>n 大</b>（20 日月線、60 日季線）→ 平滑效果強、反應遲鈍；<b>n 小</b>（5 日週線）→ 對最新價格<b>反應敏感</b>。</li>
     <li>實務：台股加權指數、台積電個股的 5／10／20 日線。</li>
   </ul>
@@ -378,7 +378,7 @@
   <ul>
     <li><b>應用情境</b>：NPD 方案評選、供應商評選（品質、交期、成本、永續四準則）、通路位置評選、可攜式藍牙喇叭選購。</li>
     <li><b>尺度</b>：1–9 相對偏好（優為 1~9、不優為其倒數 1/1~1/9），矩陣對角線 a<sub>ii</sub>=1，具<b>倒數（Reciprocal）特性</b> a<sub>ji</sub>=1/a<sub>ij</sub>；<span class="hl">不是李克特量表</span>。</li>
-    <li><b>Saaty 認知極限</b>：人腦 $7\pm2$ → 評估準則建議 <b>5～7 個以內</b>，避免遞移律矛盾（A&gt;B、B&gt;C 卻填 A&lt;C）。</li>
+    <li><b>Saaty 認知極限</b>：人腦 7 ± 2 → 評估準則建議 <b>5～7 個以內</b>，避免遞移律矛盾（A&gt;B、B&gt;C 卻填 A&lt;C）。</li>
   </ul>
   <p><b>近似法求權重三步驟</b>（老師口述原順序）：</p>
   <div class="formula">行總和 → 標準化 → 列平均（各準則權重加總必為 100%）</div>
@@ -389,7 +389,7 @@
   <h3><span class="no">3.2</span>TOPSIS 逼近理想解排序法</h3>
   <ul>
     <li>流程：決策矩陣 → 向量正規化 → 乘 AHP 權重 → 找<b>正理想解</b>（效益型取最大／成本型取最小，老師比喻「<b>高富帥／白富美</b>」）與<b>負理想解</b> → 算各方案歐氏距離。</li>
-    <li>貼近度：$C_i=\dfrac{D_i^-}{D_i^+ + D_i^-}\in[0,1]$，越接近 1 越優。</li>
+    <li>貼近度：C<sub>i</sub> = D<sub>i</sub>⁻ ÷ (D<sub>i</sub>⁺ + D<sub>i</sub>⁻) ∈ [0, 1]，越接近 1 越優。</li>
     <li><b>排名翻轉 Rank Reversal（必考）</b>：無權重版 vs 結合 AHP 權重版（如<b>交期權重占 47.7%</b>）排名差很多——交期滿分的供應商<b>逆轉奪冠</b>。老師：「整合 AHP 得到的排名跟沒整合的是差蠻多的。」</li>
   </ul>
 
@@ -493,7 +493,7 @@
   </ul>
   <p><b>迭代五步驟</b>：</p>
   <ol>
-    <li>隨機指定 $K$ 個初始中心點（Initial Centroids）。</li>
+    <li>隨機指定 K 個初始中心點（Initial Centroids）。</li>
     <li>計算每個資料點到各中心的距離，分配給最近者。</li>
     <li>重新計算各群的<b>平均中心點</b>（Mean Centroids）。</li>
     <li>資料點依新中心重新歸派。</li>
@@ -540,8 +540,8 @@
   <table>
     <thead><tr><th>指標</th><th>公式</th><th>白話</th><th>行銷意義</th></tr></thead>
     <tbody>
-      <tr><td><b>Support 支援度</b></td><td>$P(A\cap B)$＝同時包含 A、B 的交易數 / 總交易數</td><td>A、B 同時出現的<b>普遍性</b></td><td>規則夠不夠「量」，值太小沒有商業價值</td></tr>
-      <tr><td><b>Confidence 信賴度</b></td><td>$P(B|A)$＝Support / P(A)</td><td>買 A 的人當中，也買 B 的<b>條件機率</b></td><td>搭售／貨架陳列的直接依據</td></tr>
+      <tr><td><b>Support 支援度</b></td><td>P(A∩B)＝同時包含 A、B 的交易數 / 總交易數</td><td>A、B 同時出現的<b>普遍性</b></td><td>規則夠不夠「量」，值太小沒有商業價值</td></tr>
+      <tr><td><b>Confidence 信賴度</b></td><td>P(B|A)＝Support / P(A)</td><td>買 A 的人當中，也買 B 的<b>條件機率</b></td><td>搭售／貨架陳列的直接依據</td></tr>
       <tr><td><b>Lift 增益比</b></td><td>Confidence / P(B)</td><td>相對「本來就會買 B」的<b>增益倍數</b></td><td>&gt;1 正相關適合搭售；=1 獨立；&lt;1 負相關互斥</td></tr>
     </tbody>
   </table>
@@ -554,7 +554,7 @@
 
   <h3><span class="no">6.3</span>組合爆炸與 Apriori 剪枝</h3>
   <ul>
-    <li>d 個商品可產生 $3^d-2^{d+1}+1$ 條規則；<b>100 個商品 → 約 $5.15\times10^{47}$ 條</b>規則，暴力法不可行。</li>
+    <li>d 個商品可產生 3<sup>d</sup> − 2<sup>d+1</sup> + 1 條規則；<b>100 個商品 → 約 5.15×10⁴⁷ 條</b>規則，暴力法不可行。</li>
     <li><b>Apriori 先驗原理</b>：若項集不頻繁（Support 未達門檻），其所有<b>超集必不頻繁</b> → 由下而上逐層搜尋、<b>剪枝 Pruning</b>。</li>
     <li>兩步驟：① 產生頻繁項目集（≥minsup）② 由頻繁項目集產生高信心規則（≥minconf）。</li>
   </ul>
@@ -608,7 +608,7 @@
   <h3><span class="no">7.3</span>聯合分析 Conjoint Analysis</h3>
   <ul>
     <li>目的：量化消費者對各<b>屬性（Attributes）×水準（Levels）</b>的偏好效用（Part-worth Utility），用 dummy variable 迴歸估出。</li>
-    <li><b>正交陣列 Orthogonal Array</b>：全因子組合過多（如 $2\times3^5=96$ 組）→ 部分因子設計縮成 <b>16 組正交代表性卡片</b>。</li>
+    <li><b>正交陣列 Orthogonal Array</b>：全因子組合過多（如 2⁵ × 3 = 96 組）→ 部分因子設計縮成 <b>16 組正交代表性卡片</b>。</li>
     <li><b>排序三階段技巧（16 組 Profile）</b>：<span class="hl">最喜歡 5–6 個 → 最討厭 5–6 個 → 中間 4–5 個</span>，降低受訪者認知負擔。</li>
     <li>偏好分數轉換：<b>Preference Score = 17 − Rank</b>。</li>
   </ul>
